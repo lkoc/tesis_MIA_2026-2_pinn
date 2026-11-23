@@ -1,0 +1,8 @@
+# Dependencias base de la librería pinn-thermal
+# Nota sobre PyTorch: instale la rueda adecuada a su acelerador antes o junto con este archivo
+# (CPU, NVIDIA CUDA, AMD ROCm, Intel XPU, Ascend/vendor NPU o Apple MPS).
+numpy>=1.24
+scipy>=1.10
+torch>=2.1
+plotly>=5.18
+matplotlib>=3.8

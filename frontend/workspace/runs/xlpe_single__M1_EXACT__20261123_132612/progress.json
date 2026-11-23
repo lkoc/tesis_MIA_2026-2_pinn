@@ -1,0 +1,10 @@
+{
+  "best_validation": {
+    "loss": 39.23684310913086,
+    "step": 300
+  },
+  "loss_total": 75.8578872680664,
+  "phase": "adam",
+  "status": "running",
+  "step": 300
+}

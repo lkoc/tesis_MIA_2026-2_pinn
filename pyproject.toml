@@ -1,0 +1,89 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pinn-thermal"
+version = "0.4.0"
+description = "Librería modular en PyTorch de redes neuronales informadas por física (PINN) y referencia FEniCSx para conducción térmica 2D multimaterial en cables subterráneos"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [
+    { name = "L. Koc" },
+]
+keywords = [
+    "pinn",
+    "physics-informed-neural-networks",
+    "heat-conduction",
+    "underground-cables",
+    "pytorch",
+    "fenicsx",
+    "scipy",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Education",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "torch>=2.1",
+]
+
+[project.optional-dependencies]
+viz = [
+    "plotly>=5.18",
+    "matplotlib>=3.8",
+]
+ui = [
+    "streamlit>=1.35",
+    "plotly>=5.18",
+    "matplotlib>=3.8",
+    "pandas>=2.0",
+]
+notebooks = [
+    "jupyter>=1.0",
+    "nbformat>=5.9",
+    "plotly>=5.18",
+    "matplotlib>=3.8",
+]
+deepxde = [
+    "deepxde>=1.14",
+]
+dev = [
+    "pytest>=8.0",
+    "build>=1.0",
+]
+all = [
+    "pinn-thermal[viz,ui,notebooks,dev]",
+]
+
+[project.urls]
+Documentation = "docs/arquitectura.md"
+
+[project.scripts]
+pinn-thermal = "pinn_thermal.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["pinn_thermal*"]
+
+[tool.setuptools.package-data]
+"pinn_thermal.data" = ["*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+markers = [
+    "fem: pruebas que requieren FEniCSx vía WSL2 o Linux nativo",
+    "slow: pruebas de integración de mayor duración",
+]

@@ -1,0 +1,2 @@
+[console_scripts]
+pinn-thermal = pinn_thermal.cli:main

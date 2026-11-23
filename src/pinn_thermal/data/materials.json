@@ -1,0 +1,76 @@
+{
+  "notice": "Valores orientativos de literatura técnica o de normas habituales (IEC 60287, hojas de datos genéricas). No sustituyen los datos reales de un caso: confirme siempre con la fuente del cable o del estudio de suelos antes de reportar resultados.",
+  "groups": [
+    {
+      "id": "conductor",
+      "title": "Conductores",
+      "items": [
+        {"name": "Cobre (Cu)", "k": 400.0, "rho20": 1.7241e-8, "alpha": 0.00393, "range": "385-401", "note": "k de cobre puro; alpha del cobre recocido estándar"},
+        {"name": "Aluminio (Al)", "k": 237.0, "rho20": 2.8264e-8, "alpha": 0.00403, "range": "205-237", "note": "alpha del aluminio estándar"}
+      ]
+    },
+    {
+      "id": "insulation",
+      "title": "Aislamientos y polímeros",
+      "items": [
+        {"name": "XLPE", "k": 0.286, "range": "0.26-0.35", "note": "Equivale a rho_t = 3.5 K*m/W (IEC 60287)"},
+        {"name": "PE (polietileno)", "k": 0.286, "range": "0.26-0.40", "note": "Equivale a rho_t = 3.5 K*m/W"},
+        {"name": "EPR", "k": 0.286, "range": "0.25-0.35", "note": "Equivale a rho_t = 3.5 K*m/W"},
+        {"name": "PVC", "k": 0.20, "range": "0.15-0.20", "note": "rho_t = 5-6 K*m/W"},
+        {"name": "Papel impregnado (aceite)", "k": 0.167, "range": "0.15-0.20", "note": "rho_t = 6 K*m/W"},
+        {"name": "Semiconductor extruido", "k": 0.286, "range": "0.2-0.4", "note": "Suele asimilarse al aislamiento; verificar hoja de datos"},
+        {"name": "Cinta hinchable (water blocking)", "k": 0.167, "range": "0.1-0.2", "note": "Valor empleado en la ficha de Kim et al. (2025)"}
+      ]
+    },
+    {
+      "id": "metal",
+      "title": "Pantallas y cubiertas metálicas",
+      "items": [
+        {"name": "Cobre (hilos o cinta)", "k": 400.0, "range": "385-401", "note": "Pantalla metálica de cobre"},
+        {"name": "Aluminio (lámina o corrugado)", "k": 237.0, "range": "205-237", "note": "Pantalla laminada de aluminio"},
+        {"name": "Plomo", "k": 35.0, "range": "34-35", "note": "Cubierta de plomo"},
+        {"name": "Acero (armadura)", "k": 50.0, "range": "15-60", "note": "Depende de la aleación"}
+      ]
+    },
+    {
+      "id": "soil",
+      "title": "Suelos y rellenos térmicos",
+      "items": [
+        {"name": "Suelo húmedo típico", "k": 1.0, "range": "0.8-1.5", "note": "rho_t = 1.0 K*m/W (valor de proyecto habitual)"},
+        {"name": "Suelo seco", "k": 0.4, "range": "0.3-0.5", "note": "rho_t = 2.5 K*m/W"},
+        {"name": "Arena seca", "k": 0.35, "range": "0.25-0.5", "note": "rho_t ~ 2.5-3 K*m/W"},
+        {"name": "Arena saturada", "k": 2.0, "range": "1.5-2.5", "note": "rho_t ~ 0.5 K*m/W"},
+        {"name": "Arcilla húmeda", "k": 1.2, "range": "0.9-1.6", "note": "Depende del contenido de humedad"},
+        {"name": "Grava", "k": 1.5, "range": "0.5-2.0", "note": "Muy variable según compactación y agua"},
+        {"name": "Hormigón", "k": 1.0, "range": "0.8-1.8", "note": "rho_t = 1.0 K*m/W (IEC 60287)"},
+        {"name": "Relleno térmico (CLSM / PAC)", "k": 2.0, "range": "1.0-2.5", "note": "El PAC de Kim et al. (2025) usa 2.094 W/(m*K)"}
+      ]
+    },
+    {
+      "id": "other",
+      "title": "Otros medios",
+      "items": [
+        {"name": "Agua (estancada)", "k": 0.6, "range": "0.58-0.68", "note": "Conducción pura, sin convección"},
+        {"name": "Aire (estancado)", "k": 0.026, "range": "0.024-0.03", "note": "Conducción pura, sin convección"}
+      ]
+    }
+  ],
+  "convection": {
+    "title": "Coeficiente de transferencia convectiva h en superficie (condición Robin)",
+    "items": [
+      {"name": "Aire en calma", "h": 7.371, "range": "5-10", "note": "Término sin viento de h = 7.371 + 6.43*v^0.75 (Kim et al., 2025)"},
+      {"name": "Aire con viento 1.17 m/s (Kim, verano)", "h": 14.605, "range": "-", "note": "Valor del caso kim_v5_summer"},
+      {"name": "Superficie con viento moderado", "h": 20.0, "range": "10-30", "note": "Orden de magnitud típico"},
+      {"name": "Superficie con viento fuerte", "h": 40.0, "range": "25-60", "note": "Orden de magnitud típico"}
+    ]
+  },
+  "electrical": {
+    "title": "Coeficientes eléctricos de referencia",
+    "items": [
+      {"name": "Cu: rho20 (ohm*m)", "value": 1.7241e-8},
+      {"name": "Cu: alpha20 (1/K)", "value": 0.00393},
+      {"name": "Al: rho20 (ohm*m)", "value": 2.8264e-8},
+      {"name": "Al: alpha20 (1/K)", "value": 0.00403}
+    ]
+  }
+}
