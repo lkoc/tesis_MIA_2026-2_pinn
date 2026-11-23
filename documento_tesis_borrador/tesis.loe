@@ -1,0 +1,20 @@
+\addvspace {10\p@ }
+\contentsline {formula}{\numberline {1.1}{\ignorespaces Conductividad térmica equivalente ponderada por área en el dominio externo. Fuente: Elaboración propia.}}{21}{formula.caption.26}%
+\contentsline {formula}{\numberline {1.2}{\ignorespaces Métricas operacionales de evaluación térmica, de ampacidad y de balance energético. Fuente: Elaboración propia.}}{22}{formula.caption.28}%
+\addvspace {10\p@ }
+\contentsline {formula}{\numberline {2.1}{\ignorespaces Ley de Fourier para conducción en un medio heterogéneo. Fuente: Elaboración propia a partir de \blx@tocontentsinit {0}\BLTXAPAifInParensTF {\nptextcite }{\textcitei }{carslaw1959conduction}.}}{32}{formula.caption.32}%
+\contentsline {formula}{\numberline {2.2}{\ignorespaces Ecuación de conducción de calor 2D transitoria. Fuente: Elaboración propia a partir de \blx@tocontentsinit {0}\BLTXAPAifInParensTF {\nptextcite }{\textcitei }{carslaw1959conduction}.}}{34}{formula.caption.36}%
+\contentsline {formula}{\numberline {2.3}{\ignorespaces Ecuación de conducción de calor 2D estacionaria. Fuente: Elaboración propia a partir de \blx@tocontentsinit {0}\BLTXAPAifInParensTF {\nptextcite }{\textcitei }{carslaw1959conduction}.}}{34}{formula.caption.37}%
+\contentsline {formula}{\numberline {2.4}{\ignorespaces Condiciones de continuidad térmica en una interfaz. Fuente: Elaboración propia a partir de \blx@tocontentsinit {0}\BLTXAPAifInParensTF {\nptextcite }{\textcitei }{carslaw1959conduction}.}}{34}{formula.caption.38}%
+\contentsline {formula}{\numberline {2.5}{\ignorespaces Ecuación de calor polar completa en las capas anulares. Fuente: Elaboración propia.}}{35}{formula.caption.39}%
+\contentsline {formula}{\numberline {2.6}{\ignorespaces Resistencia efectiva referida a \SI {20}{\celsius } y fuente Joule uniforme por conductor. Fuente: Elaboración propia a partir de \blx@tocontentsinit {0}\BLTXAPAifInParensTF {\nptextcite }{\textcitei }{iec60287}.}}{35}{formula.caption.40}%
+\contentsline {formula}{\numberline {2.7}{\ignorespaces Fuente Joule DC dependiente de la temperatura local. Fuente: Elaboración propia.}}{36}{formula.caption.41}%
+\contentsline {formula}{\numberline {2.8}{\ignorespaces Estimación cilíndrica del efecto piel y su fuente volumétrica. Fuente: Elaboración propia.}}{36}{formula.caption.42}%
+\contentsline {formula}{\numberline {2.9}{\ignorespaces Relación entre conductividad y resistividad térmica. Fuente: Elaboración propia.}}{37}{formula.caption.43}%
+\contentsline {formula}{\numberline {2.10}{\ignorespaces Condición operacional para determinar la ampacidad. Fuente: Elaboración propia.}}{37}{formula.caption.45}%
+\contentsline {formula}{\numberline {2.11}{\ignorespaces Residuo físico de una PINN para conducción de calor 2D estacionaria. Fuente: Elaboración propia.}}{39}{formula.caption.48}%
+\contentsline {formula}{\numberline {2.12}{\ignorespaces Función de pérdida lógica del artefacto PINN. Fuente: Elaboración propia a partir de \blx@tocontentsinit {0}\BLTXAPAifInParensTF {\nptextcite }{\textcitei }{raissi2019}.}}{40}{formula.caption.49}%
+\addvspace {10\p@ }
+\contentsline {formula}{\numberline {3.1}{\ignorespaces Pérdida adimensional común de la campaña explícita. Fuente: Elaboración propia.}}{50}{formula.caption.51}%
+\contentsline {formula}{\numberline {3.2}{\ignorespaces Indicadores de insensibilidad observada al aumentar colocaciones. Fuente: Elaboración propia.}}{53}{formula.caption.52}%
+\addvspace {10\p@ }

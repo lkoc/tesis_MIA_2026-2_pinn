@@ -1,0 +1,25 @@
+\babel@toc {spanish}{}\relax 
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Máxima demanda y longitud de la red troncal}}{4}{figure.caption.13}%
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Participación de la generación solar y eólica en el Perú}}{5}{figure.caption.14}%
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Resistividad térmica y ampacidad en cuatro casos publicados}}{7}{figure.caption.16}%
+\contentsline {figure}{\numberline {1.4}{\ignorespaces Relación entre presión de red, uso de cables enterrados, entorno térmico heterogéneo, simplificación homogénea y riesgo de decisión. Fuente: Elaboración propia.}}{7}{figure.caption.17}%
+\contentsline {figure}{\numberline {1.5}{\ignorespaces Articulación de los problemas específicos}}{13}{figure.caption.18}%
+\contentsline {figure}{\numberline {1.6}{\ignorespaces Articulación de los objetivos específicos}}{15}{figure.caption.19}%
+\contentsline {figure}{\numberline {1.7}{\ignorespaces Articulación de las proposiciones de diseño}}{16}{figure.caption.20}%
+\contentsline {figure}{\numberline {1.8}{\ignorespaces Modelo entrada--proceso--salida de las dimensiones operativas. Las VI y las VD son objetos discretos; VD1--VD3 se heredan como componentes obligatorios de VI2--VI4. Los parámetros físicos y numéricos se documentan por caso, pero no se clasifican como VI ni VD. Fuente: Elaboración propia.}}{18}{figure.caption.21}%
+\contentsline {figure}{\numberline {1.9}{\ignorespaces Síntesis metodológica de la evidencia DSR}}{20}{figure.caption.24}%
+\contentsline {figure}{\numberline {1.10}{\ignorespaces Arquitectura lógica de seis componentes del artefacto DSR propuesto. Fuente: Elaboración propia.}}{20}{figure.caption.25}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Cadena física y metodológica entre heterogeneidad térmica, campo de temperatura y ampacidad. Fuente: Elaboración propia.}}{32}{figure.caption.33}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Estructura multicapa de un cable XLPE}}{33}{figure.caption.34}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Zanja y entorno térmico del cable enterrado}}{33}{figure.caption.35}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Arquitectura general de una red neuronal informada por física}}{39}{figure.caption.47}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Flujo lógico de una PINN aplicada a conducción de calor 2D. Fuente: Elaboración propia a partir de \blx@tocontentsinit {0}\BLTXAPAifInParensTF {\nptextcite }{\textcitei }{raissi2019}, \blx@tocontentsinit {0}\BLTXAPAifInParensTF {\nptextcite }{\textcitei }{lawal2022} y \blx@tocontentsinit {0}\BLTXAPAifInParensTF {\nptextcite }{\textcitei }{pan2025}.}}{40}{figure.caption.50}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Comparación de desarrollo. Verde: aceptación completa; rojo: al menos un rechazo. Los paneles corresponden a etapas distintas y no a un único factorial. Fuente: elaboración propia.}}{64}{figure.caption.53}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Sensibilidad al número de colocaciones con la misma arquitectura y política geométrica. Fuente: elaboración propia.}}{65}{figure.caption.54}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Cobertura del dominio para las cuatro políticas a igual presupuesto 2x, estratos y semilla 11. Azul: suelo; naranja: materiales del cable; líneas: interfaces geométricas. Se muestran colocaciones interiores, no las cuadraturas de trazas. Fuente: nubes archivadas; la política residual muestra la nube posterior a la adaptación.}}{65}{figure.caption.55}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Detalle del cable para las cuatro políticas a igual presupuesto 2x, estratos y semilla 11. Azul: suelo; naranja: materiales del cable; líneas: interfaces geométricas. Se muestran colocaciones interiores, no las cuadraturas de trazas. Fuente: nubes archivadas; la política residual muestra la nube posterior a la adaptación.}}{66}{figure.caption.56}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Suelo y detalle interior del cable en XLPE con zona seca cercana, semilla 71 fijada previamente. Las temperaturas comparten escala y el error usa escala simétrica. Fuente: campos de confirmación.}}{66}{figure.caption.57}%
+\addvspace {10\p@ }

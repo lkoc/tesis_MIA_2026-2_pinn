@@ -1,0 +1,273 @@
+\setcounter{section}{0}
+\renewcommand{\thesection}{\Alph{section}}
+\renewcommand{\theHsection}{anexo.\arabic{section}}
+\counterwithin{table}{section}
+\renewcommand{\theHtable}{anexo.\arabic{section}.\arabic{table}}
+
+\begin{landscape}
+\chapter*{ANEXOS}
+\addcontentsline{toc}{chapter}{ANEXOS}
+\thispagestyle{empty}
+
+\section{MATRIZ DE CONSISTENCIA}
+\label{anx:matriz-consistencia}
+\begingroup\scriptsize
+La matriz articula los problemas de investigación con los objetivos específicos, los productos verificables, las entradas discretas, los resultados, las proposiciones contrastables y los indicadores de evaluación del artefacto. Los problemas se formulan como enunciados narrativos de manera que cada fila exprese una carencia técnica verificable atendida por el diseño, la implementación y la delimitación del solucionador PINN 2D.
+
+La Tabla~\ref{tab:matriz-consistencia-a} presenta la primera parte de la matriz y verifica la correspondencia entre cada fase de ciencia del diseño, el problema que atiende, el objetivo asociado y el producto verificable que permite comprobar su avance. El protocolo preliminar de juicio de expertos asociado al indicador de la fase F4 se detalla en el Anexo~\ref{anx:protocolo-expertos}.
+
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.18}
+
+\begin{longtable}{%
+L{3.8cm}
+L{6.2cm}
+L{5.3cm}
+L{5.0cm}}
+\caption{Matriz de consistencia de la investigación: problema, objetivo y producto verificable. Fuente: Elaboración propia.}
+\label{tab:matriz-consistencia-a}\\
+\toprule
+\textbf{Fase DSR / actividad} &
+\textbf{Problema} &
+\textbf{Objetivo} &
+\textbf{Producto verificable} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Fase DSR / actividad} &
+\textbf{Problema} &
+\textbf{Objetivo} &
+\textbf{Producto verificable} \\
+\midrule
+\endhead
+
+\midrule
+\multicolumn{4}{r}{\small Continúa en la siguiente página.}\\
+\midrule
+\endfoot
+
+\bottomrule
+\endlastfoot
+
+\textbf{F0. Definición del objeto de estudio, caso de uso y alcance del artefacto} &
+\textbf{PG.} En el arreglo de cables--entorno térmico, la heterogeneidad espacial del suelo nativo, el lecho de asiento y el suelo de relleno puede modificar $T(x,y)$, $\Tmax$ e $\Imax$ respecto de una representación homogénea equivalente \parencites[4--6]{enescu2021}[3--4,93--99]{cigre2025}. Sin embargo, resulta complejo cuantificar esas diferencias de forma reproducible y establecer cuándo son relevantes para las decisiones de diseño y operación. Las representaciones homogéneas equivalentes son rápidas, aunque no describen de forma explícita la conductividad variable $\kx$; los modelos FEM sí pueden representarla, pero exigen construir, mallar y verificar cada escenario. En consecuencia, persiste la necesidad de una formulación computacional verificada y trazable que represente $\kx$, estime el campo térmico y documente la exactitud, la consistencia física y la robustez del análisis. &
+\textbf{OG.} Diseñar y evaluar un artefacto computacional basado en una red neuronal informada por física (PINN) que represente el arreglo de cables--entorno térmico, estime $T(x,y)$, $\Tmax$ e $\Imax$, cuantifique el efecto de la heterogeneidad térmica espacial y documente su exactitud, consistencia física, robustez y reproducibilidad. &
+Protocolo general del artefacto; dominio de validez; criterios de aceptación; repositorio de escenarios y resultados. \\
+
+\midrule
+\textbf{F1. Especificación física, datos y requisitos} &
+\textbf{PE1.} La representación física requerida por el artefacto no está formalizada en términos de entradas, requisitos funcionales y criterios de calidad que ordenen el cable multicapa, las interfaces, las fuentes, los contornos y $\kx$ en escenarios heterogéneos. &
+\textbf{OE1.} Elaborar una especificación trazable de las entradas físicas, los requisitos funcionales y los criterios de calidad del artefacto para representar el arreglo de cables--entorno térmico, incluyendo dominios multicapa, fuentes térmicas, condiciones de contorno, interfaces y conductividad térmica espacialmente variable $\kx$. &
+\textbf{VD1.} Especificación trazable: documento de requisitos; catálogo de materiales y geometrías; ficha de supuestos; matriz requisito--prueba; estado incompleto, completo pendiente o trazable aceptado. \\
+
+\midrule
+\textbf{F2. Preparación de datos, geometría y referencias} &
+\textbf{PE2.} No se dispone de un paquete reproducible de soluciones analíticas o manufacturadas, referencias FEM con convergencia y casos publicados que permita construir y verificar el artefacto dentro del dominio delimitado. &
+\textbf{OE2.} Construir y verificar el artefacto a partir de la especificación trazable y de un conjunto de soluciones analíticas o manufacturadas, benchmarks FEM con convergencia y casos publicados, clasificando su estado de aceptación según la exactitud, la consistencia física y la robustez entre ejecuciones. &
+\textbf{VD2.} Artefacto verificado: versión del prototipo, base de benchmarks, pruebas, métricas, dominio de validez e informe con estado rechazado, aceptado con restricciones o aceptado. \\
+
+\midrule
+\textbf{F3. Experimentación numérica y análisis de sensibilidad} &
+\textbf{PE3.} No se ha cuantificado de forma trazable cómo el contraste, el patrón, la extensión y la proximidad de las heterogeneidades modifican $\Tmax$, el campo $T(x,y)$ y la localización del punto caliente. &
+\textbf{OE3.} Aplicar el artefacto verificado a un catálogo de escenarios controlados de contraste, patrón, extensión y proximidad de heterogeneidades del suelo nativo y de los suelos de relleno, y consolidar un expediente de evidencia con los cambios en $\Tmax$, el campo de temperatura $T(x,y)$ y la localización del punto caliente. &
+\textbf{VD3.} Expediente de evidencia térmica: plan de casos; mapas de $\kx$ y $T(x,y)$; resultados de sensibilidad; punto caliente; límites; y estado inconcluso, sin efecto relevante, con efecto relevante no crítico o con condición crítica. \\
+
+\midrule
+\textbf{F4. Evaluación de ampacidad y comparación de escenarios} &
+\textbf{PE4.} No se han identificado las condiciones que producen la mayor discrepancia de ampacidad entre una representación 2D heterogénea verificada y una representación homogénea equivalente. &
+\textbf{OE4.} Usar el expediente de evidencia térmica y un catálogo de representaciones pareadas para elaborar un expediente comparativo de ampacidad entre la representación 2D heterogénea y las representaciones homogéneas, e identificar las condiciones que generan mayor discrepancia. &
+\textbf{VD4.} Expediente comparativo de ampacidad: rutina de búsqueda de $\Imax$; tabla de reducción o aumento; clasificación de escenarios críticos; y estado sin discrepancia relevante, reducción, aumento o inconcluso/fuera del dominio. \\
+
+\end{longtable}
+
+La matriz concluye en PE4--OE4 debido a que la síntesis y la comunicación no introducen una brecha específica adicional. Los productos consolidados de reproducibilidad y delimitación derivan de la secuencia DSR ilustrada en la Figura~\ref{fig:sintesis-metodologica-dsr} de la Sección~\ref{sec:metodologia}, a partir de la evidencia obtenida en las cuatro correspondencias problema--objetivo.
+
+\vspace{0.5cm}
+
+La Tabla~\ref{tab:matriz-consistencia-b} completa la matriz con las variables independientes discretas que ingresan en cada etapa, sus variables dependientes, los estados posibles, las proposiciones contrastables, los indicadores y los parámetros controlados. De este modo se verifica que cada VD intermedia se conserva como componente heredado de la VI siguiente mientras $\kx$ y el contraste físico permanecen en una columna de control separada.
+
+\setlength{\tabcolsep}{2pt}
+\renewcommand{\arraystretch}{1.15}
+
+\begin{longtable}{%
+L{2.25cm}
+L{3.20cm}
+L{3.30cm}
+L{3.10cm}
+L{4.10cm}
+L{3.40cm}
+L{3.40cm}}
+\caption{Matriz de consistencia de la investigación: entradas discretas, salidas, hipótesis, indicadores y parámetros de caso. Fuente: Elaboración propia.}
+\label{tab:matriz-consistencia-b}\\
+\toprule
+\textbf{Fase / objetivo} &
+\textbf{VI discreta: composición} &
+\textbf{Realizaciones de la VI} &
+\textbf{VD discreta: objeto y estados} &
+\textbf{Proposición / hipótesis} &
+\textbf{Indicadores de evaluación} &
+\textbf{Parámetros, controles y metadatos} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Fase / objetivo} &
+\textbf{VI discreta: composición} &
+\textbf{Realizaciones de la VI} &
+\textbf{VD discreta: objeto y estados} &
+\textbf{Proposición / hipótesis} &
+\textbf{Indicadores de evaluación} &
+\textbf{Parámetros, controles y metadatos} \\
+\midrule
+\endhead
+
+\midrule
+\multicolumn{7}{r}{\small Continúa en la siguiente página.}\\
+\midrule
+\endfoot
+
+\bottomrule
+\endlastfoot
+
+\textbf{F1 / OE1. Especificación física, datos y requisitos} &
+\textbf{VI1=$P_1$. Paquete inicial de requisitos y datos.} No posee entrada heredada. &
+Básico; completo; completo documentado. Incluye geometría, materiales, fuentes, contornos, interfaces, unidades, supuestos y procedencia. &
+\textbf{VD1. Especificación trazable:} requisitos verificables, catálogo de datos, criterios y matriz requisito--prueba. Estados: incompleta; completa pendiente de trazabilidad; trazable aceptada. &
+\textbf{HE1.} Un paquete inicial completo y documentado permitirá producir una especificación trazable aceptada, cubrir los requisitos críticos y vincular cada requisito con al menos una prueba física o funcional. &
+Cobertura mayor que 90\,\pct{} de los requisitos críticos identificados, con trazabilidad completa entre requisito y prueba. &
+Parámetros del caso contenidos en el paquete: geometría, materiales, $\kx$, fuentes y contornos. Controles: norma, sistema de unidades, alcance y exclusiones. \\
+
+\midrule
+\textbf{F2 / OE2. Construcción y verificación} &
+\textbf{VI2=$\{\mathrm{VD1},R_2\}$. Expediente de construcción y verificación.} Hereda VD1 y agrega referencias. &
+VD1 trazable aceptada más $R_2$ analítico/manufacturado; FEM convergente; publicado; o mixto. Sin VD1 aceptada no se habilita OE2. &
+\textbf{VD2. Artefacto verificado y expediente de aceptación:} versión, pruebas, métricas y dominio. Estados: rechazado; aceptado con restricciones; aceptado en el dominio. &
+\textbf{HE2.} La especificación trazable y las referencias válidas permitirán producir un artefacto aceptado en F2: en el umbral estricto del plan $E_T<\SI{0.1}{\kelvin}$ y $\mathrm{NRMSE}<1\,\pct{}$; en la campaña explícita tolerancia del 5\,\pct{}, balance no mayor a 2\,\pct{} y continuidad de interfaz. &
+$E_T=|T_{\max}^{\mathrm{PINN}}-T_{\max}^{\mathrm{ref}}|$; NRMSE global y RMSE por material; desequilibrio energético y saltos de temperatura y flujo de la Sección~\ref{sec:seleccion-pinn}. &
+Parámetros físicos coincidentes entre artefacto y referencia. Controles y metadatos: dominio, malla y tolerancia FEM, puntos de colocación, arquitectura, pesos de pérdida y semilla. \\
+
+\midrule
+\textbf{F3 / OE3. Evaluación de escenarios} &
+\textbf{VI3=$\{\mathrm{VD2},E_3\}$. Expediente de evaluación térmica.} Hereda VD2 y agrega escenarios. &
+VD2 aceptada o aceptada con restricciones compatibles más $E_3$ base; estratificado; localizado; mejorado; seco; o multimaterial. &
+\textbf{VD3. Expediente de evidencia térmica:} mapas, diferencias y límites. Estados: inconcluso; sin efecto relevante; efecto relevante no crítico; condición crítica. &
+\textbf{HE3.} A pérdidas iguales se espera aumento de $\Tmax$ ante baja $k$ cercana y reducción ante relleno de alta $k$. Se contrastarán el sentido y la relevancia, admitiendo casos sin efecto o inconclusos. &
+$E_T$: error absoluto frente a FEM; $\Delta T_{\max}=T_{\max}^{\mathrm{het}}-T_{\max}^{\mathrm{hom}}$; $\mathrm{NRMSE}<2,5\,\pct{}$ y $E_T<\SI{0,5}{\kelvin}$ en umbral F3; relevancia $\delta_T=\SI{1}{\kelvin}$ (Sección~\ref{subsec:relevancia-decision}). &
+Parámetros físicos del escenario: mapa $\kx$, $C_k$, $f_h$ y $d_h/D$. Controles: corriente o pérdidas, profundidad, disposición, $T_{\mathrm{amb}}$, dominio, contornos y configuración aceptada. \\
+
+\midrule
+\textbf{F4 / OE4. Comparación de ampacidad} &
+\textbf{VI4=$\{\mathrm{VD3},C_4\}$. Expediente de comparación de ampacidad.} Hereda VD3 y agrega representaciones pareadas. &
+VD3 concluyente más $C_4$: heterogénea 2D frente a homogénea equivalente; conservadora; u optimista. &
+\textbf{VD4. Expediente comparativo de ampacidad:} resultados, márgenes y casos críticos. Estados: sin discrepancia relevante; reducción; aumento; inconcluso/fuera del dominio. &
+\textbf{HE4.} Con promedio por área del entorno se espera sobreestimación homogénea de $\Imax$ ante baja $k$ cercana. Se contrastarán reducción y sensibilidad al contraste, extensión y proximidad. &
+Ampacidad $\Imax$ (\si{\ampere}); cambio $\Delta I$ (\pct{}) con error frente a FEM menor al 1\,\pct{} y relevancia $\delta_I=2\,\pct{}$; margen respecto a $T_{\mathrm{lim}}$ (\si{\kelvin}); calidad por juicio de expertos (Anexo~\ref{anx:protocolo-expertos}). &
+Parámetros físicos heredados mediante VD3. Controles: $k_{eq}$ por área (Sección~\ref{subsec:homogenizacion}), $T_{\mathrm{lim}}$, ley $R(T)$, geometría, contornos y bisección de la Sección~\ref{subsec:busqueda-ampacidad}. \\
+
+\end{longtable}
+\endgroup
+\end{landscape}
+
+Los productos evaluados en esta investigación corresponden a la especificación y a los expedientes de la formulación explícita. La evidencia previa de reconstrucción radial permanece únicamente como antecedente histórico, mientras que el cumplimiento integral de OE4 requiere ejecutar la rutina de búsqueda acotada de corriente límite y su contraste con referencias FEM independientes.
+
+\section{PROTOCOLO PRELIMINAR DE JUICIO DE EXPERTOS}
+\label{anx:protocolo-expertos}
+
+\subsection*{Propósito y estado de aplicación}
+
+Este anexo recoge el protocolo preliminar correspondiente al indicador de calidad técnica de la fase F4 dentro de la matriz de consistencia (Anexo~\ref{anx:matriz-consistencia}). Su finalidad consiste en contrastar de manera estructurada las soluciones térmicas producidas por el artefacto computacional frente a los métodos convencionales empleados en ingeniería de cables subterráneos. Este protocolo no ha sido ejecutado ni validado empíricamente en la campaña actual, de modo que la conformación del panel evaluador, las ponderaciones y el umbral final de aceptación deberán congelarse antes de su aplicación futura.
+
+\subsection*{Objeto de comparación y panel evaluador}
+
+Cada evaluador comparará, bajo condiciones idénticas de entrada, el resultado emitido por el artefacto frente al cálculo analítico de corriente admisible según la norma IEC~60287 \parencite{iec60287} y frente a una referencia verificada por elementos finitos. El expediente de cada caso incluirá geometría, conductividades, pérdidas eléctricas, condiciones de contorno y ampacidad estimada, manteniendo oculto el método que generó cada resultado cuando el formato lo permita. Se propone conformar un panel de tres a cinco profesionales con trayectoria comprobada en cables de potencia, ampacidad o modelado térmico, quienes deberán declarar por escrito cualquier vínculo o conflicto de interés antes de calificar los casos.
+
+\subsection*{Criterios de calificación y procedimiento}
+
+Cada caso se calificará de 1 a 10 en cinco dimensiones: exactitud técnica, consistencia física, utilidad para ampacidad, trazabilidad documental y claridad de límites. Los cinco criterios evalúan, respectivamente, la concordancia con la referencia, el cumplimiento de conservación y continuidad, el sustento del margen térmico, la documentación de supuestos y las exclusiones de uso. En esta escala, el nivel 1 representa resultados que contradicen la referencia o las leyes físicas sin explicación. Por su parte, el nivel 5 indica concordancia aproximada en orden de magnitud con supuestos incompletos, y el nivel 10 refleja plena exactitud, respeto físico y trazabilidad completa.
+
+Los evaluadores recibirán los casos de forma independiente sin conocer las calificaciones de sus pares y registrarán una justificación escrita por criterio. Si dos evaluadores discrepan en más de tres puntos para un mismo criterio, revisarán conjuntamente sus fundamentos técnicos; en caso de persistir la diferencia, intervendrá un evaluador dirimente. Previo a la calificación cuantitativa, cada especialista responderá el cuestionario binario de verificación siguiente:
+
+\begin{enumerate}
+  \item ¿El caso declara explícitamente la geometría, los materiales, las pérdidas, los contornos y la versión del código?
+  \item ¿El resultado informa el error de $\Tmax$ frente a la referencia independiente junto con el balance energético?
+  \item ¿Se encuentran documentados los supuestos físicos, la semilla y la configuración numérica empleada?
+  \item ¿Se declaran explícitamente el dominio de validez y las configuraciones donde el uso queda excluido?
+  \item ¿Cada calificación emitida cuenta con su justificación técnica escrita?
+\end{enumerate}
+
+Un caso que obtenga respuestas negativas en la lista de verificación previa será clasificado como inconcluso hasta completar la documentación faltante. La calificación agregada por criterio corresponderá a la mediana de las puntuaciones válidas, informando la concordancia interevaluadores mediante el coeficiente de correlación intraclase de dos vías con acuerdo absoluto. Finalmente, esta valoración experta complementa —pero nunca sustituye— las métricas numéricas de error térmico, NRMSE, balance energético y discrepancia de ampacidad $\Delta I$, dado que depende de la disponibilidad del panel y de la calidad de los expedientes presentados.
+
+\section{MATRIZ DE OPERACIONALIZACIÓN}
+\label{anx:operacionalizacion}
+
+La operacionalización sigue una cadena secuencial de objetos de investigación en la que el producto verificable de una etapa constituye parte de la entrada discreta de la siguiente. Los parámetros físicos de cada caso describen escenarios discretos y no deben interpretarse como variables aleatorias de una población estadística.
+
+Se conserva la estructura definida en la metodología: $\mathrm{VI1}=P_1$, $\mathrm{VI2}=\{\mathrm{VD1},R_2\}$, $\mathrm{VI3}=\{\mathrm{VD2},E_3\}$ y $\mathrm{VI4}=\{\mathrm{VD3},C_4\}$, donde los objetos nuevos incorporados progresivamente son el paquete físico $P_1$, las referencias independientes $R_2$, el catálogo de escenarios térmicos $E_3$ y los pares de representación $C_4$. Los indicadores cuantitativos están contenidos en los expedientes trazables y no convierten las semillas numéricas en una muestra probabilística de instalaciones. La Tabla~\ref{tab:operacionalizacion} resume esta secuencia operacional por etapa.
+
+\begin{table}[H]
+\centering
+\caption{Operacionalización por etapas del artefacto. Fuente: Elaboración propia.}
+\label{tab:operacionalizacion}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\textwidth}{L{1.0cm}Y Y Y}
+\toprule
+\textbf{Etapa} & \textbf{Entrada} & \textbf{Salida} & \textbf{Indicadores} \\
+\midrule
+OE1 & Paquete de geometría, materiales, fuentes, contornos y requisitos. & Especificación trazable. & Cobertura, trazabilidad, unidades y supuestos. \\
+OE2 & Especificación y referencias independientes. & Artefacto verificado y expediente de aceptación. & Error, NRMSE, residuos, balance, robustez y dominio. \\
+OE3 & Artefacto aceptado y catálogo de escenarios. & Expediente de evidencia térmica. & $T(x,y)$, $\Tmax$, $\Delta\Tmax$, gradiente y punto caliente. \\
+OE4 & Evidencia térmica y catálogo de pares. & Expediente comparativo de ampacidad. & $\Imax$, $\Delta I$, margen y clasificación del caso. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{MATRIZ REQUISITO--EVIDENCIA}
+\label{anx:requisito-evidencia}
+
+La Tabla~\ref{tab:explicit-requirements} vincula cada requisito físico o metodológico crítico del artefacto con las pruebas automatizadas y los expedientes que sustentan su verificación o delimitan sus restricciones vigentes.
+
+\begin{longtable}{L{1cm}L{4.5cm}L{8cm}}
+\caption{Trazabilidad de requisitos críticos de la formulación explícita. Fuente: contrato físico, pruebas y expedientes de ejecución.}\label{tab:explicit-requirements}\\
+\toprule ID & Requisito & Evidencia y límite \\
+\midrule\endfirsthead
+\toprule ID & Requisito & Evidencia y límite \\
+\midrule\endhead
+R1 & PDE en el conductor, cada capa y el suelo. & Pruebas parametrizadas de residuos y retropropagación en todas las variantes; campos FEM con etiquetas de cada material. La presencia de un residuo no acredita por sí sola aceptación numérica. \\
+R2 & Continuidad de temperatura y flujo. & Pérdidas de transmisión y evaluación independiente de cada interfaz. En la red mixta se comprueban ambos flujos. Los fallos permanecen registrados como rechazos. \\
+R3 & Resolución de escalas milimétricas y métricas. & Coordenadas locales, presupuesto por material y pruebas de cobertura; comparación en la etapa B a 1x, 2x y 4x frente a FEM. La admisibilidad se separa de la insensibilidad. \\
+R4 & Fuente eléctrica trazable y no duplicada. & Contrato DC/AC, pruebas de integral de fuente piel y conservación de corriente DC con temperatura local; comparación FEM de perfiles a igual potencia. La procedencia eléctrica real sigue condicionada a fichas auténticas. \\
+R5 & Referencia del mismo problema físico. & Identidad física, coordenadas comunes, SHA-256 del campo y puertas de refinamiento FEM. Las referencias reducidas no son intercambiables. \\
+R6 & Elección sin seleccionar una semilla favorable. & Manifiestos A--C, configuración congelada y etapa D con semillas 71, 83 y 97. Se publican todos los intentos. \\
+R7 & Corriente límite con PDE interior. & Raíces FEM de tres mallas, algoritmo acotado de bisección y nueve ensayos exploratorios de corriente límite. El error térmico aislado no sustituye las puertas completas. \\
+R8 & Reproducción y documento consistente. & Fuentes y nubes archivadas, repetición de casos y semillas en A y B, pruebas automáticas, auditoría de referencias y generación de tablas y PDF desde los registros. \\
+\bottomrule
+\end{longtable}
+
+Las pruebas de operadores temporales verifican la forma matemática del término de almacenamiento térmico y la exigencia de documentar capacidades caloríficas; sin embargo, ninguna simulación transitoria completa forma parte de la cobertura ejecutada.
+
+\section{CASOS POR ETAPA Y COBERTURA}
+\label{anx:catalogo-casos}
+
+Las definiciones físicas de los casos ejecutados residen en \path{Benchmarks/explicit_study/cases/}. La etapa A evalúa el control coaxial angular y el cable XLPE homogéneo. Las etapas B y C contrastan el caso XLPE homogéneo y los estratos horizontales con salto exacto. Finalmente, la etapa D conserva ambos casos para confirmación con semillas independientes e incorpora el relleno mejorado, la zona seca cercana, la zona seca lejana, el arreglo plano de Aras y el arreglo en arena de Kim.
+
+Los controles analíticos, manufacturados y de perfil por efecto piel cumplen fines específicos de verificación numérica y no se contabilizan como réplicas de confirmación. Para la ampacidad DC se especifica un par heterogéneo--homogéneo basado en la regla de promedio por área definida en la Fórmula~\ref{for:keq-area}. Las configuraciones publicadas se adaptan a contornos y fuentes controladas, por lo que sus temperaturas no sustituyen la validación de instalaciones reales. Asimismo, el catálogo extendido del plan que incluye veinticuatro combinaciones paramétricas en disposición plana o en trébol, conductividad dependiente de la temperatura $k(T)$, migración de humedad y régimen transitorio representa alcance no ejecutado cuya sola presencia documental no implica cobertura experimental.
+
+\section{REPRODUCCIÓN Y CONTRATO DE ARCHIVOS}
+\label{anx:protocolo-reproduccion}
+
+Los protocolos normativos del repositorio son \path{docs/PROTOCOLO_EXPERIMENTAL_EXPLICITO.md} y \path{docs/PROTOCOLO_AMPACIDAD_EXPLICITA.md}, complementados por \path{docs/PROTOCOLO_CALIBRACION_INTERFACES.md} y por el protocolo preinscrito \path{docs/PROTOCOLO_RONDA_E.md}. La enmienda C2 responde a la evidencia recogida en la etapa B y precede a las etapas C y D. Los manifiestos por etapa y los archivos físicos permiten reconstruir toda la secuencia experimental manteniendo separados los atributos físicos de los hiperparámetros de entrenamiento y las semillas aleatorias.
+
+La secuencia de reproducción inicia con pruebas unitarias de operadores y muestreo, seguidas por las mallas FEM verificadas y la selección en la etapa A. Posteriormente abarca el análisis de colocaciones en la etapa B, el ajuste secuencial en C y C2, la confirmación con semillas nuevas en la etapa D y la extensión opcional de corriente límite. Finalmente, \path{Benchmarks/full_study.py}, \path{Benchmarks/full_ampacity_study.py} y el generador de reportes producen automáticamente las tablas y figuras a partir de los expedientes JSON, sin reintroducir cifras de la formulación reducida previa.
+
+Los archivos binarios NPZ almacenan coordenadas, identificadores de región, ponderaciones geométricas y temperaturas evaluadas, mientras que los expedientes de cada corrida PINN conservan la configuración, las nubes iniciales y adaptadas, los pesos entrenados, el estado de los optimizadores, las fuentes y los historiales de pérdida. Las semillas 11 y 23 con sus muestreos 101 y 103 corresponden exclusivamente al desarrollo, en tanto que las semillas 71, 83 y 97 con sus muestreos 1001, 1003 y 1007 pertenecen a la fase de confirmación. El orquestador reutiliza únicamente expedientes completos de configuración idéntica; ante interrupciones en L-BFGS se exige repetir la corrida íntegra para garantizar determinismo.
+
+Las redes neuronales se entrenan en Python y PyTorch sobre sistema operativo Windows en precisión de 64 bits con un hilo por proceso, mientras que FEniCSx y Gmsh operan en entorno Linux. Cada expediente registra las versiones exactas de las bibliotecas utilizadas y las huellas SHA-256 de los archivos físicos para garantizar auditabilidad completa.
+
+\section{EXPEDIENTE COMPLETO DE EJECUCIONES}
+\label{anx:expediente-evidencia}
+
+La Tabla~\ref{tab:explicit-all} registra la totalidad de las 101 ejecuciones completadas en las etapas A--D de la formulación explícita, incluyendo tanto las corridas aceptadas como las rechazadas, en correspondencia directa con el archivo \path{Benchmarks/explicit_study/report/runs.csv}. El repositorio conserva el respaldo del modelo reducido anterior únicamente como antecedente histórico, asegurando que todas las cifras cuantitativas de los resultados activos provengan del presente expediente.
+
+\input{tablas/explicit_all_runs}

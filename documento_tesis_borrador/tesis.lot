@@ -1,0 +1,41 @@
+\babel@toc {spanish}{}\relax 
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {1.1}{\ignorespaces Casos publicados que relacionan las propiedades térmicas del entorno con la ampacidad o la temperatura. Fuente: Elaboración propia a partir de las referencias indicadas.}}{6}{table.caption.15}%
+\contentsline {table}{\numberline {1.2}{\ignorespaces Variables discretas de entrada y salida, composición y estados por etapa de construcción del artefacto. Fuente: Elaboración propia.}}{18}{table.caption.22}%
+\contentsline {table}{\numberline {1.3}{\ignorespaces Uso de la experimentación numérica dentro del ciclo DSR. Fuente: Elaboración propia.}}{21}{table.caption.27}%
+\contentsline {table}{\numberline {1.4}{\ignorespaces Criterios DSR de evaluación y reglas de aceptación del artefacto. Fuente: Elaboración propia a partir del plan de tesis.}}{23}{table.caption.29}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {2.1}{\ignorespaces Evolución cronológica de los antecedentes, de la fuente más antigua a la más reciente. Fuente: Elaboración propia a partir de las referencias citadas.}}{25}{table.2.1}%
+\contentsline {table}{\numberline {2.2}{\ignorespaces Comparación crítica de antecedentes y consecuencias para el diseño. Fuente: Elaboración propia a partir de las fuentes citadas.}}{30}{table.2.2}%
+\contentsline {table}{\numberline {2.3}{\ignorespaces Elección metodológica condicional de familias PINN. Fuente: Elaboración propia a partir de la bibliografía citada y los requisitos del problema.}}{31}{table.caption.31}%
+\contentsline {table}{\numberline {2.4}{\ignorespaces Relación entre base teórica y uso metodológico en el estudio. Fuente: Elaboración propia.}}{37}{table.caption.44}%
+\contentsline {table}{\numberline {2.5}{\ignorespaces Función de los métodos térmicos dentro de la investigación. Fuente: Elaboración propia a partir de \blx@tocontentsinit {0}\BLTXAPAifInParensTF {\nptextcite }{\textcitei }{iec60287}, \blx@tocontentsinit {0}\BLTXAPAifInParensTF {\nptextcite }{\textcitei }{iec60853}, \blx@tocontentsinit {0}\BLTXAPAifInParensTF {\nptextcite }{\textcitei }{patankar1980numerical}, \blx@tocontentsinit {0}\BLTXAPAifInParensTF {\nptextcite }{\textcitei }[4--6]{enescu2021}, \blx@tocontentsinit {0}\BLTXAPAifInParensTF {\nptextcite }{\textcitei }[3--4,93--99]{cigre2025} y \blx@tocontentsinit {0}\BLTXAPAifInParensTF {\nptextcite }{\textcitei }{raissi2019}.}}{38}{table.caption.46}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {3.1}{\ignorespaces Entradas eléctricas y del suelo base de la campaña a fuente prescrita. Fuente: contratos de caso documentados.}}{48}{table.3.1}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces Capas explícitas: índice cero conductor, los restantes materiales pasivos. Fuente: fichas de entrada auditadas.}}{48}{table.3.2}%
+\contentsline {table}{\numberline {3.3}{\ignorespaces Definición de heterogeneidades suaves del suelo. Fuente: casos registrados.}}{49}{table.3.3}%
+\contentsline {table}{\numberline {3.4}{\ignorespaces Referencias FEM explícitas refinadas. Fuente: registros de la campaña.}}{57}{table.3.4}%
+\contentsline {table}{\numberline {3.5}{\ignorespaces Etapa A: comparación de todas las semillas de desarrollo. Fuente: elaboración propia.}}{57}{table.3.5}%
+\contentsline {table}{\numberline {3.6}{\ignorespaces Mayor restricción relativa de la etapa A, incluidos los intentos rechazados. Fuente: elaboración propia.}}{58}{table.3.6}%
+\contentsline {table}{\numberline {3.7}{\ignorespaces Etapa B: comparación de todas las semillas de desarrollo. Fuente: elaboración propia.}}{59}{table.3.7}%
+\contentsline {table}{\numberline {3.8}{\ignorespaces Mayor restricción relativa de la etapa B, incluidos los intentos rechazados. Fuente: elaboración propia.}}{59}{table.3.8}%
+\contentsline {table}{\numberline {3.9}{\ignorespaces Etapa C: comparación de todas las semillas de desarrollo. Fuente: elaboración propia.}}{60}{table.3.9}%
+\contentsline {table}{\numberline {3.10}{\ignorespaces Etapa C2: comparación de todas las semillas de desarrollo. Fuente: elaboración propia.}}{60}{table.3.10}%
+\contentsline {table}{\numberline {3.11}{\ignorespaces Menor red aceptada por problema entre las candidatas de A. No es una garantía fuera del caso ensayado. Fuente: elaboración propia.}}{61}{table.3.11}%
+\contentsline {table}{\numberline {3.12}{\ignorespaces Colocaciones efectivas por problema y factor. Las interfaces tienen dos trazas en una misma posición. Fuente: elaboración propia.}}{61}{table.3.12}%
+\contentsline {table}{\numberline {3.13}{\ignorespaces Insensibilidad observada al aumentar colocaciones. Ambos cálculos deben estar aceptados. Fuente: elaboración propia.}}{62}{table.3.13}%
+\contentsline {table}{\numberline {3.14}{\ignorespaces Confirmación de la receta congelada: semillas 71, 83 y 97. Fuente: elaboración propia.}}{62}{table.3.14}%
+\contentsline {table}{\numberline {3.15}{\ignorespaces Efectos térmicos respecto al control XLPE homogéneo, a igual fuente prescrita. Fuente: elaboración propia.}}{63}{table.3.15}%
+\contentsline {table}{\numberline {3.16}{\ignorespaces Resolución empírica del efecto: discretización y variabilidad pareada. Fuente: elaboración propia.}}{63}{table.3.16}%
+\contentsline {table}{\numberline {3.17}{\ignorespaces Etapa D: razón máxima entre el valor observado y la tolerancia, por criterio y problema (máximo entre las tres semillas). Un valor mayor que 1 incumple el criterio. Fuente: elaboración propia a partir de los registros de confirmación.}}{68}{table.caption.58}%
+\contentsline {table}{\numberline {3.18}{\ignorespaces Etapas C y C2: razón máxima entre el valor observado y la tolerancia, por candidato (máximo entre las cuatro corridas de desarrollo). El candidato $w_T=100$ de C2 reutiliza las corridas de C con tasa $5\times 10^{-4}$. Fuente: elaboración propia a partir de los registros de desarrollo.}}{69}{table.caption.59}%
+\contentsline {table}{\numberline {3.19}{\ignorespaces Dominio de aceptación de la receta congelada según la confirmación con semillas nuevas. Fuente: elaboración propia a partir de la Tabla~\ref {tab:explicit-production} y del diagnóstico de la Sección~\ref {sec:diagnostico-rechazos}.}}{70}{table.caption.60}%
+\contentsline {table}{\numberline {3.20}{\ignorespaces Matriz de validez de la evidencia. Fuente: elaboración propia a partir de las Tablas~\ref {tab:explicit-fem}, \ref {tab:explicit-production}, \ref {tab:explicit-effects} y~\ref {tab:explicit-effect-resolution}.}}{71}{table.caption.61}%
+\contentsline {table}{\numberline {3.21}{\ignorespaces Costo computacional por corrida de confirmación (etapa D, tres semillas por problema). Fuente: elaboración propia a partir de los registros de confirmación.}}{74}{table.caption.62}%
+\contentsline {table}{\numberline {3.22}{\ignorespaces Matriz cualitativa de riesgos del artefacto y de su uso. Fuente: elaboración propia a partir de los resultados de la campaña.}}{75}{table.caption.63}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {A.1}{\ignorespaces Matriz de consistencia de la investigación: problema, objetivo y producto verificable. Fuente: Elaboración propia.}}{86}{table.anexo.1.1}%
+\contentsline {table}{\numberline {A.2}{\ignorespaces Matriz de consistencia de la investigación: entradas discretas, salidas, hipótesis, indicadores y parámetros de caso. Fuente: Elaboración propia.}}{89}{table.anexo.1.2}%
+\contentsline {table}{\numberline {C.1}{\ignorespaces Operacionalización por etapas del artefacto. Fuente: Elaboración propia.}}{93}{table.caption.66}%
+\contentsline {table}{\numberline {D.1}{\ignorespaces Trazabilidad de requisitos críticos de la formulación explícita. Fuente: contrato físico, pruebas y expedientes de ejecución.}}{94}{table.anexo.4.1}%
+\contentsline {table}{\numberline {G.1}{\ignorespaces Todas las ejecuciones de la campaña explícita. Fuente: manifiestos por etapa.}}{97}{table.anexo.7.1}%
