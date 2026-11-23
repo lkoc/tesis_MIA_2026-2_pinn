@@ -1,0 +1,10 @@
+{
+  "best_validation": {
+    "loss": 8313.693359375,
+    "step": 0
+  },
+  "loss_total": 1.8777971267700195,
+  "phase": "lbfgs",
+  "status": "running",
+  "step": 120
+}

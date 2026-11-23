@@ -1,0 +1,408 @@
+{
+  "compatibility_profile": {
+    "activation": "tanh",
+    "architecture": "M1",
+    "depth": 2,
+    "domain_shape": "rectangle",
+    "exact_boundary": false,
+    "exact_constraints": false,
+    "formulation": "strong",
+    "input_normalization": "region_coordinates",
+    "mixed": false,
+    "model_kind": "baseline_subdomain",
+    "partition": "region",
+    "region_kinds": {
+      "cable_0_layer_0": "conductor",
+      "cable_0_layer_1": "conductor",
+      "cable_0_layer_2": "conductor",
+      "cable_0_layer_3": "conductor",
+      "soil_lower": "soil",
+      "soil_upper": "soil"
+    },
+    "region_names": [
+      "soil_lower",
+      "soil_upper",
+      "cable_0_layer_0",
+      "cable_0_layer_1",
+      "cable_0_layer_2",
+      "cable_0_layer_3"
+    ],
+    "subnets": {
+      "region:cable_0_layer_0": {
+        "in_features": 2,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            2,
+            20
+          ],
+          [
+            20,
+            20
+          ],
+          [
+            20,
+            1
+          ]
+        ]
+      },
+      "region:cable_0_layer_1": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            20
+          ],
+          [
+            20,
+            20
+          ],
+          [
+            20,
+            1
+          ]
+        ]
+      },
+      "region:cable_0_layer_2": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            20
+          ],
+          [
+            20,
+            20
+          ],
+          [
+            20,
+            1
+          ]
+        ]
+      },
+      "region:cable_0_layer_3": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            20
+          ],
+          [
+            20,
+            20
+          ],
+          [
+            20,
+            1
+          ]
+        ]
+      },
+      "region:soil_lower": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            20
+          ],
+          [
+            20,
+            20
+          ],
+          [
+            20,
+            1
+          ]
+        ]
+      },
+      "region:soil_upper": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            20
+          ],
+          [
+            20,
+            20
+          ],
+          [
+            20,
+            1
+          ]
+        ]
+      }
+    },
+    "width": 20
+  },
+  "config": {
+    "accuracy_stop": null,
+    "activation": "tanh",
+    "adam_steps": 0,
+    "architecture": "M1",
+    "attention": null,
+    "base_architecture": "M1",
+    "chain_from": null,
+    "chain_mode": "residual",
+    "depth": 2,
+    "device": "cpu",
+    "dtype": "float32",
+    "exact_energy": false,
+    "focus_criterion": "residual",
+    "focus_surfaces": true,
+    "focused": false,
+    "freeze_chain_source": true,
+    "full_audit": true,
+    "init_seed": 11,
+    "initializer": "rbf_readout",
+    "initializer_settings": {
+      "n_per_region": 120,
+      "stencil_size": 16
+    },
+    "input_normalization": "region_coordinates",
+    "lbfgs_iterations": 5,
+    "lbfgs_steps": 5,
+    "log_every": 100,
+    "lr": 0.002,
+    "point_schedule_stages": 0,
+    "point_schedule_start": 0.5,
+    "points": {
+      "n_boundary": 128,
+      "n_face": 128,
+      "n_interior": 512,
+      "n_layer": 256
+    },
+    "resample_every": 0,
+    "resume_from": null,
+    "sampling": "mixed",
+    "sampling_seed": 101,
+    "soil_envelope_gain": 1.0,
+    "study": null,
+    "trace_parameterization": "standard",
+    "transfer_mode": "auto",
+    "transfer_steps": 150,
+    "validation_every": 250,
+    "warm_start_from": "C:\\usr\\ths_mia_fiis\\tesis_MIA_lk\\tesis_MIA_2026-2_pinn\\frontend\\workspace\\runs\\nb04_ampacity_tmp\\eval_008",
+    "weights": {
+      "constitutive": 1.0,
+      "dirichlet": 100.0,
+      "energy": 0.0,
+      "interface_temperature": 100.0,
+      "neumann": 10.0,
+      "pde": 1.0,
+      "robin": 10.0
+    },
+    "width": 20
+  },
+  "flux_convention": "q = -k * grad(T); normal exterior",
+  "format": "pinn-v4-artifact-1",
+  "physics_sha256": "ea7a3c004f191cde39f8daa1bfa0928b01a91d5af8da5a6e940d9a561cdffc5e",
+  "problem": {
+    "annotations": [
+      {
+        "kind": "note",
+        "text": "Cable XLPE multicapa (estrato superior k=1.0)",
+        "x": 0.0,
+        "y": -0.7
+      },
+      {
+        "kind": "note",
+        "text": "Interfaz de suelo y = -1.0 m (k=0.5 / k=1.0)",
+        "x": -2.0,
+        "y": -1.0
+      }
+    ],
+    "boundaries": {
+      "bottom": {
+        "type": "dirichlet",
+        "value": 20.0
+      },
+      "left": {
+        "type": "dirichlet",
+        "value": 20.0
+      },
+      "right": {
+        "type": "dirichlet",
+        "value": 20.0
+      },
+      "top": {
+        "type": "dirichlet",
+        "value": 20.0
+      }
+    },
+    "domain": {
+      "bounds": [
+        -4.0,
+        4.0,
+        -4.0,
+        0.0
+      ],
+      "shape": "rectangle"
+    },
+    "family": "cable",
+    "id": "xlpe_discrete_layers_amp_9",
+    "metadata": {
+      "conductors": {
+        "centers": [
+          [
+            0.0,
+            -0.7
+          ]
+        ],
+        "layers": [
+          {
+            "inner_radius_m": 0,
+            "k_W_mK": 400,
+            "outer_radius_m": 0.0055
+          },
+          {
+            "inner_radius_m": 0.0055,
+            "k_W_mK": 0.286,
+            "outer_radius_m": 0.012
+          },
+          {
+            "inner_radius_m": 0.012,
+            "k_W_mK": 380,
+            "outer_radius_m": 0.013
+          },
+          {
+            "inner_radius_m": 0.013,
+            "k_W_mK": 0.45,
+            "outer_radius_m": 0.015
+          }
+        ],
+        "pair": "xlpe_single",
+        "radius_m": 0.015
+      },
+      "electrical": {
+        "R20_ohm_m": 0.000193,
+        "alpha_1_K": 0.00393,
+        "current_A": 270.0,
+        "power_W_m": 14.069700000000001
+      },
+      "original_definition": {},
+      "original_domain": {
+        "bounds": [
+          -4.0,
+          4.0,
+          -4.0,
+          0.0
+        ]
+      },
+      "source": {
+        "adaptation": "Dos estratos exactos de suelo: k=0.5 bajo y=-1 m y k=1 sobre la interfaz; sin suavizado.",
+        "citation": "examples/xlpe_single_cable/data"
+      }
+    },
+    "reference": {},
+    "regions": [
+      {
+        "conductivity": 0.5,
+        "id": "soil_lower",
+        "kind": "soil",
+        "priority": 0,
+        "shape": {
+          "bounds": [
+            -4.0,
+            4.0,
+            -4.0,
+            -1.0
+          ],
+          "type": "rectangle"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 1.0,
+        "id": "soil_upper",
+        "kind": "soil",
+        "priority": 1,
+        "shape": {
+          "bounds": [
+            -4.0,
+            4.0,
+            -1.0,
+            0.0
+          ],
+          "type": "rectangle"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 400,
+        "id": "cable_0_layer_0",
+        "priority": 2,
+        "shape": {
+          "center": [
+            0.0,
+            -0.7
+          ],
+          "radius_m": 0.0055,
+          "type": "disk"
+        },
+        "source": 1865289.9222720377
+      },
+      {
+        "conductivity": 0.286,
+        "id": "cable_0_layer_1",
+        "priority": 3,
+        "shape": {
+          "center": [
+            0.0,
+            -0.7
+          ],
+          "inner_radius_m": 0.0055,
+          "outer_radius_m": 0.012,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 380,
+        "id": "cable_0_layer_2",
+        "priority": 4,
+        "shape": {
+          "center": [
+            0.0,
+            -0.7
+          ],
+          "inner_radius_m": 0.012,
+          "outer_radius_m": 0.013,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 0.45,
+        "id": "cable_0_layer_3",
+        "priority": 5,
+        "shape": {
+          "center": [
+            0.0,
+            -0.7
+          ],
+          "inner_radius_m": 0.013,
+          "outer_radius_m": 0.015,
+          "type": "annulus"
+        },
+        "source": 0.0
+      }
+    ],
+    "schema": "pinn-v4-problem-1",
+    "temperature_scale_K": 50.0,
+    "title": "xlpe_discrete_layers"
+  },
+  "runtime": {
+    "torch": "2.9.0+xpu"
+  },
+  "schema_version": 4,
+  "seeds": {
+    "init": 11,
+    "sampling": 101,
+    "validation": 1000104
+  }
+}

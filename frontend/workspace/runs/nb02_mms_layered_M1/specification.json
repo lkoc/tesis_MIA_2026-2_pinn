@@ -1,0 +1,212 @@
+{
+  "compatibility_profile": {
+    "activation": "tanh",
+    "architecture": "M1",
+    "depth": 3,
+    "domain_shape": "rectangle",
+    "exact_boundary": false,
+    "exact_constraints": false,
+    "formulation": "strong",
+    "input_normalization": "region_coordinates",
+    "mixed": false,
+    "model_kind": "baseline_subdomain",
+    "partition": "region",
+    "region_kinds": {
+      "domain": "soil"
+    },
+    "region_names": [
+      "domain"
+    ],
+    "subnets": {
+      "region:domain": {
+        "in_features": 2,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            2,
+            24
+          ],
+          [
+            24,
+            24
+          ],
+          [
+            24,
+            24
+          ],
+          [
+            24,
+            1
+          ]
+        ]
+      }
+    },
+    "width": 24
+  },
+  "config": {
+    "accuracy_stop": null,
+    "activation": "tanh",
+    "adam_steps": 250,
+    "architecture": "M1",
+    "attention": null,
+    "base_architecture": "M1",
+    "chain_from": null,
+    "chain_mode": "residual",
+    "depth": 3,
+    "device": "xpu",
+    "dtype": "float32",
+    "exact_energy": false,
+    "focus_criterion": "residual",
+    "focus_surfaces": true,
+    "focused": false,
+    "freeze_chain_source": true,
+    "full_audit": true,
+    "init_seed": 11,
+    "initializer": null,
+    "initializer_settings": {},
+    "input_normalization": "region_coordinates",
+    "lbfgs_iterations": 20,
+    "lbfgs_steps": 25,
+    "log_every": 100,
+    "lr": 0.002,
+    "point_schedule_stages": 0,
+    "point_schedule_start": 0.5,
+    "points": {
+      "n_boundary": 128,
+      "n_face": 128,
+      "n_interior": 512,
+      "n_layer": 256
+    },
+    "resample_every": 0,
+    "resume_from": null,
+    "sampling": "mixed",
+    "sampling_seed": 101,
+    "soil_envelope_gain": 1.0,
+    "study": null,
+    "trace_parameterization": "standard",
+    "transfer_mode": "auto",
+    "transfer_steps": 150,
+    "validation_every": 250,
+    "warm_start_from": null,
+    "weights": {
+      "constitutive": 1.0,
+      "dirichlet": 100.0,
+      "energy": 0.0,
+      "interface_temperature": 100.0,
+      "neumann": 10.0,
+      "pde": 1.0,
+      "robin": 10.0
+    },
+    "width": 24
+  },
+  "flux_convention": "q = -k * grad(T); normal exterior",
+  "format": "pinn-v4-artifact-1",
+  "physics_sha256": "8c5f88e1490e6d12013a94889578b2605f1837602647da20a43e1e21f533cd3a",
+  "problem": {
+    "boundaries": {
+      "bottom": {
+        "type": "dirichlet",
+        "value": {
+          "expression": "20 + where(y <= 0.5, 20*y, 10*(1+(y-0.5)/2))*sin(pi*x)"
+        }
+      },
+      "left": {
+        "type": "dirichlet",
+        "value": {
+          "expression": "20 + where(y <= 0.5, 20*y, 10*(1+(y-0.5)/2))*sin(pi*x)"
+        }
+      },
+      "right": {
+        "type": "dirichlet",
+        "value": {
+          "expression": "20 + where(y <= 0.5, 20*y, 10*(1+(y-0.5)/2))*sin(pi*x)"
+        }
+      },
+      "top": {
+        "type": "dirichlet",
+        "value": {
+          "expression": "20 + where(y <= 0.5, 20*y, 10*(1+(y-0.5)/2))*sin(pi*x)"
+        }
+      }
+    },
+    "domain": {
+      "bounds": [
+        0.0,
+        1.0,
+        0.0,
+        1.0
+      ],
+      "shape": "rectangle"
+    },
+    "family": "mms",
+    "id": "mms_layered_y",
+    "interfaces": [
+      {
+        "axis": "y",
+        "id": "material_interface",
+        "position": 0.5,
+        "regions": [
+          "domain",
+          "domain"
+        ]
+      }
+    ],
+    "metadata": {
+      "original_definition": {},
+      "original_domain": {
+        "bounds": [
+          0.0,
+          1.0,
+          0.0,
+          1.0
+        ],
+        "interface": {
+          "axis": "y",
+          "position": 0.5
+        }
+      },
+      "source": {
+        "adaptation": "Dos materiales sin suavizado; continuidad exacta de temperatura y flujo; la fuente se deriva por región",
+        "citation": "Elaboración propia: prueba del formato para estratos discontinuos horizontales"
+      }
+    },
+    "reference": {
+      "exact": {
+        "expression": "20 + where(y <= 0.5, 20*y, 10*(1+(y-0.5)/2))*sin(pi*x)"
+      }
+    },
+    "regions": [
+      {
+        "conductivity": {
+          "expression": "where(y <= 0.5, 0.5, 2.0)"
+        },
+        "id": "domain",
+        "priority": 0,
+        "shape": {
+          "bounds": [
+            0.0,
+            1.0,
+            0.0,
+            1.0
+          ],
+          "type": "rectangle"
+        },
+        "source": {
+          "expression": "pi**2 * where(y <= 0.5, 0.5, 2.0) * where(y <= 0.5, 20*y, 10*(1+(y-0.5)/2)) * sin(pi*x)"
+        }
+      }
+    ],
+    "schema": "pinn-v4-problem-1",
+    "temperature_scale_K": 30.0,
+    "title": "mms_layered_y"
+  },
+  "runtime": {
+    "torch": "2.9.0+xpu"
+  },
+  "schema_version": 4,
+  "seeds": {
+    "init": 11,
+    "sampling": 101,
+    "validation": 1000104
+  }
+}
