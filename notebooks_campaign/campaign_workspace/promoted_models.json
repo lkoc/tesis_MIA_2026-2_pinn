@@ -1,0 +1,58 @@
+{
+  "long_run_finalists": [
+    "M1",
+    "M1_EXACT"
+  ],
+  "promoted_models": [
+    "M1",
+    "M1_EXACT",
+    "CUSPR",
+    "M0R",
+    "M2"
+  ],
+  "ranking": [
+    {
+      "architecture": "M1_EXACT",
+      "max_balance_pct": 0.8202970589856885,
+      "mean_nrmse_pct": 13.552805647876808,
+      "mean_score": 1238.7794418729184,
+      "total_elapsed_s": 138.59963700012304
+    },
+    {
+      "architecture": "M1",
+      "max_balance_pct": 5.081450851136057,
+      "mean_nrmse_pct": 14.317780032210614,
+      "mean_score": 1246.5264342367927,
+      "total_elapsed_s": 96.5882918999996
+    },
+    {
+      "architecture": "M0R",
+      "max_balance_pct": 103.78705293013881,
+      "mean_nrmse_pct": 13.934955809405208,
+      "mean_score": 1341.5266337879664,
+      "total_elapsed_s": 116.32009059994016
+    },
+    {
+      "architecture": "CUSPR",
+      "max_balance_pct": 122.75836398766847,
+      "mean_nrmse_pct": 14.10315770839921,
+      "mean_score": 1376.6214398499192,
+      "total_elapsed_s": 129.667719900026
+    },
+    {
+      "architecture": "M2",
+      "max_balance_pct": 52.32758904603789,
+      "mean_nrmse_pct": 25.965191280054313,
+      "mean_score": 1464.458896103861,
+      "total_elapsed_s": 96.7080025000032
+    },
+    {
+      "architecture": "M0",
+      "max_balance_pct": 7185.691650149178,
+      "mean_nrmse_pct": 13.337025204104805,
+      "mean_score": 8393.111584094728,
+      "total_elapsed_s": 110.95491229998879
+    }
+  ],
+  "run_mode": "demo_fast"
+}

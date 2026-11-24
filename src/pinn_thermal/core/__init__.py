@@ -14,6 +14,7 @@ from pinn_thermal.core.shapes import Shape2D
 
 _LAZY_TORCH_EXPORTS = {
     "AcceptanceGate": "pinn_thermal.core.evaluation",
+    "AdaptiveRunTask": "pinn_thermal.core.parallel",
     "AmpacitySolver": "pinn_thermal.core.ampacity",
     "BasePINNModel": "pinn_thermal.core.base_model",
     "ChainedPINN": "pinn_thermal.core.transfer",

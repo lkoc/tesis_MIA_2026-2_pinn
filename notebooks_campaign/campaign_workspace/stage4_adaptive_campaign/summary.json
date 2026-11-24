@@ -1,0 +1,234 @@
+{
+  "cable_disk:M1:seed0": {
+    "architecture": "M1",
+    "case": "cable_disk",
+    "relaxed_reached": false,
+    "seed": 0,
+    "stages": [
+      {
+        "metrics": {
+          "Tmax_pred_C": 19.209796905517578,
+          "balance_pct": 1.9084608634701767,
+          "elapsed_s": 6.855828500003554,
+          "error_Tmax_abs_K": 119.161464648611,
+          "nrmse_pct": 27.96822802461644
+        },
+        "name": "adam_1",
+        "status": "completed",
+        "steps": 60
+      },
+      {
+        "metrics": {
+          "Tmax_pred_C": 19.209796905517578,
+          "balance_pct": 1.9084608634701767,
+          "elapsed_s": 0.1719552999129519,
+          "error_Tmax_abs_K": 119.161464648611,
+          "nrmse_pct": 27.96822802461644
+        },
+        "name": "adam_2",
+        "status": "completed",
+        "steps": 60
+      },
+      {
+        "metrics": {
+          "Tmax_pred_C": 20.34770393371582,
+          "balance_pct": 4.63670589795384,
+          "elapsed_s": 15.150169600034133,
+          "error_Tmax_abs_K": 118.02355762041276,
+          "nrmse_pct": 27.030322609912087
+        },
+        "name": "lbfgs_1",
+        "status": "completed",
+        "steps": 10
+      },
+      {
+        "metrics": {
+          "Tmax_pred_C": 20.34770393371582,
+          "balance_pct": 4.63670589795384,
+          "elapsed_s": 0.17858910001814365,
+          "error_Tmax_abs_K": 118.02355762041276,
+          "nrmse_pct": 27.030322609912087
+        },
+        "name": "lbfgs_2",
+        "status": "completed",
+        "steps": 10
+      }
+    ],
+    "status": "completed",
+    "strict_converged": false
+  },
+  "cable_disk:M1_EXACT:seed0": {
+    "architecture": "M1_EXACT",
+    "case": "cable_disk",
+    "relaxed_reached": false,
+    "seed": 0,
+    "stages": [
+      {
+        "metrics": {
+          "Tmax_pred_C": 22.590105056762695,
+          "balance_pct": 30.275892623240317,
+          "elapsed_s": 13.264905699994415,
+          "error_Tmax_abs_K": 115.78115649736588,
+          "nrmse_pct": 25.425607509043875
+        },
+        "name": "adam_1",
+        "status": "completed",
+        "steps": 60
+      },
+      {
+        "metrics": {
+          "Tmax_pred_C": 22.590105056762695,
+          "balance_pct": 30.275893230368244,
+          "elapsed_s": 0.46091339993290603,
+          "error_Tmax_abs_K": 115.78115649736588,
+          "nrmse_pct": 25.425607506543248
+        },
+        "name": "adam_2",
+        "status": "completed",
+        "steps": 60
+      },
+      {
+        "metrics": {
+          "Tmax_pred_C": 20.204439163208008,
+          "balance_pct": 4.424410998842117,
+          "elapsed_s": 31.110319399973378,
+          "error_Tmax_abs_K": 118.16682239092057,
+          "nrmse_pct": 27.081065816730597
+        },
+        "name": "lbfgs_1",
+        "status": "completed",
+        "steps": 10
+      },
+      {
+        "metrics": {
+          "Tmax_pred_C": 20.204439163208008,
+          "balance_pct": 4.424410998842117,
+          "elapsed_s": 0.3077933000167832,
+          "error_Tmax_abs_K": 118.16682239092057,
+          "nrmse_pct": 27.081065816730597
+        },
+        "name": "lbfgs_2",
+        "status": "completed",
+        "steps": 10
+      }
+    ],
+    "status": "completed",
+    "strict_converged": false
+  },
+  "mms_constant:M1:seed0": {
+    "architecture": "M1",
+    "case": "mms_constant",
+    "relaxed_reached": false,
+    "seed": 0,
+    "stages": [
+      {
+        "metrics": {
+          "Tmax_pred_C": 25.103456497192383,
+          "balance_pct": 84.32655878390231,
+          "elapsed_s": 5.428629400092177,
+          "error_Tmax_abs_K": 24.89439763810735,
+          "nrmse_pct": 41.550673356470604
+        },
+        "name": "adam_1",
+        "status": "completed",
+        "steps": 60
+      },
+      {
+        "metrics": {
+          "Tmax_pred_C": 25.103456497192383,
+          "balance_pct": 84.32655878390231,
+          "elapsed_s": 0.1406546999933198,
+          "error_Tmax_abs_K": 24.89439763810735,
+          "nrmse_pct": 41.550673356470604
+        },
+        "name": "adam_2",
+        "status": "completed",
+        "steps": 60
+      },
+      {
+        "metrics": {
+          "Tmax_pred_C": 47.5316162109375,
+          "balance_pct": 0.009357746073618877,
+          "elapsed_s": 9.662219599937089,
+          "error_Tmax_abs_K": 2.4662379243622325,
+          "nrmse_pct": 4.466991818037012
+        },
+        "name": "lbfgs_1",
+        "status": "completed",
+        "steps": 10
+      },
+      {
+        "metrics": {
+          "Tmax_pred_C": 47.5316162109375,
+          "balance_pct": 0.009357746073618877,
+          "elapsed_s": 0.14469149999786168,
+          "error_Tmax_abs_K": 2.4662379243622325,
+          "nrmse_pct": 4.466991818037012
+        },
+        "name": "lbfgs_2",
+        "status": "completed",
+        "steps": 10
+      }
+    ],
+    "status": "completed",
+    "strict_converged": false
+  },
+  "mms_constant:M1_EXACT:seed0": {
+    "architecture": "M1_EXACT",
+    "case": "mms_constant",
+    "relaxed_reached": false,
+    "seed": 0,
+    "stages": [
+      {
+        "metrics": {
+          "Tmax_pred_C": 50.219520568847656,
+          "balance_pct": 1.3262660006449472,
+          "elapsed_s": 7.347122599952854,
+          "error_Tmax_abs_K": 0.2216664335479237,
+          "nrmse_pct": 2.2374141897019477
+        },
+        "name": "adam_1",
+        "status": "completed",
+        "steps": 60
+      },
+      {
+        "metrics": {
+          "Tmax_pred_C": 50.219512939453125,
+          "balance_pct": 1.3262643992057956,
+          "elapsed_s": 0.24616159999277443,
+          "error_Tmax_abs_K": 0.22165880415339245,
+          "nrmse_pct": 2.23741390814268
+        },
+        "name": "adam_2",
+        "status": "completed",
+        "steps": 60
+      },
+      {
+        "metrics": {
+          "Tmax_pred_C": 49.99674987792969,
+          "balance_pct": 0.7458612132857392,
+          "elapsed_s": 6.87090530002024,
+          "error_Tmax_abs_K": 0.0011042573700450475,
+          "nrmse_pct": 0.012359151579963916
+        },
+        "name": "lbfgs_1",
+        "status": "completed",
+        "steps": 10
+      },
+      {
+        "metrics": {
+          "Tmax_pred_C": 49.99674987792969,
+          "balance_pct": 0.7458612132857392,
+          "elapsed_s": 0.2664068000158295,
+          "error_Tmax_abs_K": 0.0011042573700450475,
+          "nrmse_pct": 0.012359151579963916
+        },
+        "name": "lbfgs_2",
+        "status": "completed",
+        "steps": 10
+      }
+    ],
+    "status": "completed",
+    "strict_converged": false
+  }
+}

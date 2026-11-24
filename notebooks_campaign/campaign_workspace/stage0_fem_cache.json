@@ -1,0 +1,14 @@
+{
+  "cable_disk": {
+    "Tmax_C": 138.37152183590044,
+    "balance_pct": 0.09026750297177907,
+    "dofs": 7825,
+    "status": "ready"
+  },
+  "xlpe_discrete_layers": {
+    "Tmax_C": 37.37297827822672,
+    "balance_pct": 0.15738913209880656,
+    "dofs": 76163,
+    "status": "ready"
+  }
+}

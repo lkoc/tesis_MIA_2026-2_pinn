@@ -1,0 +1,204 @@
+{
+  "compatibility_profile": {
+    "activation": "tanh",
+    "architecture": "M1",
+    "depth": 3,
+    "domain_shape": "rectangle",
+    "exact_boundary": false,
+    "exact_constraints": false,
+    "formulation": "strong",
+    "input_normalization": "region_coordinates",
+    "mixed": false,
+    "model_kind": "baseline_subdomain",
+    "partition": "region",
+    "region_kinds": {
+      "conductor": "conductor",
+      "soil": "soil"
+    },
+    "region_names": [
+      "soil",
+      "conductor"
+    ],
+    "subnets": {
+      "region:conductor": {
+        "in_features": 2,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            2,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:soil": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      }
+    },
+    "width": 32
+  },
+  "config": {
+    "accuracy_stop": null,
+    "activation": "tanh",
+    "adam_steps": 400,
+    "architecture": "M1",
+    "attention": null,
+    "base_architecture": "M1",
+    "chain_from": null,
+    "chain_mode": "residual",
+    "depth": 3,
+    "device": "cpu",
+    "dtype": "float32",
+    "exact_energy": false,
+    "focus_criterion": "residual",
+    "focus_surfaces": false,
+    "focused": true,
+    "freeze_chain_source": true,
+    "full_audit": true,
+    "init_seed": 11,
+    "initializer": null,
+    "initializer_settings": {},
+    "input_normalization": "region_coordinates",
+    "lbfgs_iterations": 20,
+    "lbfgs_steps": 15,
+    "log_every": 100,
+    "lr": 0.002,
+    "point_schedule_stages": 0,
+    "point_schedule_start": 0.5,
+    "points": {
+      "n_boundary": 128,
+      "n_face": 128,
+      "n_interior": 512,
+      "n_layer": 256
+    },
+    "resample_every": 100,
+    "resume_from": null,
+    "sampling": "mixed",
+    "sampling_seed": 101,
+    "soil_envelope_gain": 1.0,
+    "study": null,
+    "trace_parameterization": "standard",
+    "transfer_mode": "auto",
+    "transfer_steps": 150,
+    "validation_every": 250,
+    "warm_start_from": null,
+    "weights": {
+      "constitutive": 1.0,
+      "dirichlet": 100.0,
+      "energy": 100.0,
+      "interface_temperature": 100.0,
+      "neumann": 10.0,
+      "pde": 1.0,
+      "robin": 10.0
+    },
+    "width": 32
+  },
+  "flux_convention": "q = -k * grad(T); normal exterior",
+  "format": "pinn-v4-artifact-1",
+  "physics_sha256": "5bb279212da1decd4db890acca31d838eaa48a994549628a955f8085a297ad46",
+  "problem": {
+    "boundaries": {
+      "bottom": {
+        "type": "dirichlet",
+        "value": 20.0
+      },
+      "left": {
+        "type": "dirichlet",
+        "value": 20.0
+      },
+      "right": {
+        "type": "dirichlet",
+        "value": 20.0
+      },
+      "top": {
+        "type": "dirichlet",
+        "value": 20.0
+      }
+    },
+    "domain": {
+      "bounds": [
+        -1.0,
+        1.0,
+        -1.0,
+        1.0
+      ],
+      "shape": "rectangle"
+    },
+    "id": "cable_disk",
+    "reference": {},
+    "regions": [
+      {
+        "conductivity": 1.0,
+        "id": "soil",
+        "priority": 0,
+        "shape": {
+          "bounds": [
+            -1.0,
+            1.0,
+            -1.0,
+            1.0
+          ],
+          "type": "rectangle"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 380.0,
+        "id": "conductor",
+        "kind": "conductor",
+        "priority": 1,
+        "shape": {
+          "center": [
+            0.0,
+            0.0
+          ],
+          "radius_m": 0.1,
+          "type": "disk"
+        },
+        "source": 10000.0
+      }
+    ],
+    "schema": "pinn-v4-problem-1",
+    "temperature_scale_K": 100.0,
+    "title": "Single circular conductor in homogeneous soil"
+  },
+  "runtime": {
+    "torch": "2.9.0+xpu"
+  },
+  "schema_version": 4,
+  "seeds": {
+    "init": 11,
+    "sampling": 101,
+    "validation": 1000104
+  }
+}

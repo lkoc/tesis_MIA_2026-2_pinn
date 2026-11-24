@@ -16,8 +16,10 @@
 
 En este proyecto basta con sustituir la rueda (*wheel*) de `torch` correspondiente al acelerador del equipo y utilizar `device="auto"` (o indicar explícitamente `--device xpu`, `--device cuda:0`, etc.).
 
-### Política de Precisión Numérica (`float32` vs `float64`)
+### Política de Precisión Numérica (`float32` vs `float64`) y Parche Nativo XPU
 Algunos aceleradores (como ciertas GPUs integradas Intel XPU o MPS) no admiten operaciones completas en doble precisión (`float64`). `DeviceManager.resolve_dtype()` ejecuta una prueba real sobre el acelerador seleccionado; si `float64` no es soportado y `allow_fallback=True`, emite una advertencia informativa y degrada limpiamente a `float32` sin abortar la corrida.
+
+Adicionalmente, cuando Intel XPU está disponible, `DeviceManager.patch_xpu_ops()` reemplaza automáticamente `torch.Tensor.dot` y `torch.dot` para tensores 1D en XPU mediante `torch.sum(a * b)` (kernel nativo XPU), eliminando los fallbacks `aten::dot` a CPU durante `torch.optim.LBFGS`.
 
 ---
 

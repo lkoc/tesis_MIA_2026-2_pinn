@@ -1,0 +1,300 @@
+{
+  "architecture": "M1_EXACT",
+  "best_loss": 0.019396280869841576,
+  "best_step": 9,
+  "best_validation": {
+    "loss": Infinity,
+    "step": null
+  },
+  "case": "cable_disk",
+  "config": {
+    "accuracy_stop": null,
+    "activation": "tanh",
+    "adam_steps": 0,
+    "architecture": "M1_EXACT",
+    "attention": null,
+    "base_architecture": "M1_EXACT",
+    "chain_from": null,
+    "chain_mode": "residual",
+    "depth": 3,
+    "device": "cpu",
+    "dtype": "float32",
+    "exact_energy": false,
+    "focus_criterion": "residual",
+    "focus_surfaces": false,
+    "focused": true,
+    "freeze_chain_source": true,
+    "full_audit": true,
+    "init_seed": 0,
+    "initializer": null,
+    "initializer_settings": {},
+    "input_normalization": "region_coordinates",
+    "lbfgs_iterations": 20,
+    "lbfgs_steps": 10,
+    "log_every": 100,
+    "lr": 0.002,
+    "point_schedule_stages": 0,
+    "point_schedule_start": 0.5,
+    "points": {
+      "n_boundary": 128,
+      "n_face": 128,
+      "n_interior": 512,
+      "n_layer": 256
+    },
+    "resample_every": 100,
+    "resume_from": "C:\\usr\\ths_mia_fiis\\tesis_MIA_2026-2_pinn\\notebooks_campaign\\campaign_workspace\\stage4_adaptive_campaign\\cable_disk\\M1_EXACT\\seed_0\\lbfgs_1\\model.pt",
+    "sampling": "mixed",
+    "sampling_seed": 11,
+    "soil_envelope_gain": 1.0,
+    "study": null,
+    "trace_parameterization": "standard",
+    "transfer_mode": "auto",
+    "transfer_steps": 150,
+    "validation_every": 250,
+    "warm_start_from": null,
+    "weights": {
+      "constitutive": 0.0,
+      "dirichlet": 0.0,
+      "energy": 0.0,
+      "interface_temperature": 0.0,
+      "neumann": 0.0,
+      "pde": 1.0,
+      "robin": 0.0
+    },
+    "width": 32
+  },
+  "device": "cpu",
+  "dtype": "float32",
+  "elapsed_s": 0.3077933000167832,
+  "error": null,
+  "evaluation": {
+    "Tmax_pred_C": 20.204439163208008,
+    "Tmax_ref_C": 138.37126155412858,
+    "acceptance": {
+      "accepted": false,
+      "criteria": {
+        "Tmax_rise_pct": 10.0,
+        "nrmse_pct": 10.0
+      },
+      "gates": {
+        "Tmax_rise_pct": false,
+        "nrmse_pct": false
+      },
+      "raw_gates": {
+        "Tmax_rise_pct": false,
+        "nrmse_pct": false
+      },
+      "state": "rejected"
+    },
+    "balance": {
+      "global_constitutive_pct": 4.424410998842117,
+      "global_derived_W_m": 13.899697090424278,
+      "global_derived_pct": 4.424410998842117,
+      "normalization": "integrated_source",
+      "power_scale_W_m": 314.1592653589793,
+      "region_constitutive_pct": {
+        "conductor": 4.516357421875003,
+        "soil": 0.0919464230328848
+      },
+      "region_derived_W_m": {
+        "conductor": 14.188555297548248,
+        "soil": 0.28885820712397026
+      },
+      "region_derived_pct": {
+        "conductor": 4.516357421875003,
+        "soil": 0.0919464230328848
+      }
+    },
+    "boundary": [
+      {
+        "region": "soil",
+        "rms": 0.0011893908958882093,
+        "side": "bottom",
+        "type": "dirichlet",
+        "unit": "K"
+      },
+      {
+        "region": "soil",
+        "rms": 0.0017014247132465243,
+        "side": "top",
+        "type": "dirichlet",
+        "unit": "K"
+      },
+      {
+        "region": "soil",
+        "rms": 0.0011665720958262682,
+        "side": "left",
+        "type": "dirichlet",
+        "unit": "K"
+      },
+      {
+        "region": "soil",
+        "rms": 0.0006274351617321372,
+        "side": "right",
+        "type": "dirichlet",
+        "unit": "K"
+      }
+    ],
+    "conductor_mean_error_K": {
+      "conductor": -118.25114680720992
+    },
+    "conductor_mean_pred_C": {
+      "conductor": 20.087558435440062
+    },
+    "conductor_mean_ref_C": {
+      "conductor": 138.33870524264998
+    },
+    "constitutive_rms": {},
+    "error_Tmax_abs_K": 118.16682239092057,
+    "error_Tmax_site_K": 118.24420352495378,
+    "error_percentiles_K": {
+      "50": 116.43382435834837,
+      "90": 118.32831470992113,
+      "95": 118.3595805164642,
+      "99": 118.39432334827276
+    },
+    "error_rise_pct": 99.82728986704723,
+    "error_rise_site_pct": 99.89266142177871,
+    "hotspot_distance_m": 0.09751206377339197,
+    "hotspot_pred_xy": [
+      -0.0920748943314813,
+      0.035332298054514544
+    ],
+    "hotspot_ref_xy": [
+      0.00030105567437333517,
+      0.004102721658701738
+    ],
+    "interfaces": [
+      {
+        "T_jump_max_K": 1.9073486328125e-06,
+        "T_jump_rms_K": 2.384185791015625e-07,
+        "derived_flux_jump_rms_pct": 38.37528991699219,
+        "flux_jump_max_pct": 76.05916595458984,
+        "flux_jump_rms_pct": 38.37528991699219,
+        "flux_scale_W_m2": 1772.453850905516,
+        "name": "conductor->soil@0"
+      }
+    ],
+    "level_C": 20.0,
+    "mae_K": 22.38413201284574,
+    "max_error_K": 118.41057898875289,
+    "nrmse_pct": 27.081065816730597,
+    "pde_rms": {
+      "conductor": 0.1318996250629425,
+      "soil": 0.14906415343284607
+    },
+    "reference_label": "FEM_WSL_cache:cable_disk",
+    "region_max_error_K": {
+      "conductor": 118.41057898875289,
+      "soil": 114.76495442926054
+    },
+    "region_rmse_K": {
+      "conductor": 118.25117174542831,
+      "soil": 30.414474630436974
+    },
+    "region_rmse_rise_pct": {
+      "conductor": 99.89854817197724,
+      "soil": 25.694137437682965
+    },
+    "rise_ref_K": 118.37126155412858,
+    "rmse_K": 32.05619924956788,
+    "temperature_normalization": "reference_rise",
+    "temperature_normalization_K": 118.37126155412858
+  },
+  "fem_labels_used": 0,
+  "format": "pinn-v4-artifact-1",
+  "history": [
+    {
+      "constitutive": 0.0,
+      "dirichlet": 0.0,
+      "energy": 0.0,
+      "interface_temperature": 0.00037880928721278906,
+      "lr": 0.001998643239407028,
+      "neumann": 0.0,
+      "optimized_pde": 17889.0390625,
+      "pde": 17889.0390625,
+      "phase": "adam",
+      "robin": 0.0,
+      "step": 0,
+      "total": 17889.0390625,
+      "validation_loss": 592.0171508789062
+    },
+    {
+      "constitutive": 0.0,
+      "dirichlet": 0.0,
+      "energy": 0.0,
+      "interface_temperature": 1.395831304762396e-06,
+      "lr": 2e-05,
+      "neumann": 0.0,
+      "optimized_pde": 21.05622100830078,
+      "pde": 21.05622100830078,
+      "phase": "adam",
+      "robin": 0.0,
+      "step": 59,
+      "total": 21.05622100830078
+    },
+    {
+      "constitutive": 0.0,
+      "dirichlet": 0.0,
+      "energy": 0.0,
+      "interface_temperature": 5.880837647964654e-07,
+      "lr": 1.0,
+      "neumann": 0.0,
+      "optimized_pde": 2.5597920417785645,
+      "pde": 2.5597920417785645,
+      "phase": "lbfgs",
+      "robin": 0.0,
+      "step": 0,
+      "total": 2.5597920417785645,
+      "validation_loss": 2.977160930633545
+    },
+    {
+      "constitutive": 0.0,
+      "dirichlet": 0.0,
+      "energy": 0.0,
+      "interface_temperature": 8.749460600476766e-10,
+      "lr": 1.0,
+      "neumann": 0.0,
+      "optimized_pde": 0.02866552025079727,
+      "pde": 0.02866552025079727,
+      "phase": "lbfgs",
+      "robin": 0.0,
+      "step": 5,
+      "total": 0.02866552025079727
+    },
+    {
+      "constitutive": 0.0,
+      "dirichlet": 0.0,
+      "energy": 0.0,
+      "interface_temperature": 1.1396936727692264e-08,
+      "lr": 1.0,
+      "neumann": 0.0,
+      "optimized_pde": 0.019396280869841576,
+      "pde": 0.019396280869841576,
+      "phase": "lbfgs",
+      "robin": 0.0,
+      "step": 9,
+      "total": 0.019396280869841576
+    }
+  ],
+  "initializer_report": null,
+  "model_kind": "exact_cable_interface",
+  "parameters": 4531,
+  "physics_sha256": "5bb279212da1decd4db890acca31d838eaa48a994549628a955f8085a297ad46",
+  "reference_used_in_loss": false,
+  "seeds": {
+    "init": 0,
+    "sampling": 11,
+    "validation": 1000014
+  },
+  "status": "completed",
+  "study": null,
+  "training_elapsed_s": {
+    "adam": 8.100061677396297e-06,
+    "lbfgs": 0.00033660000190138817
+  },
+  "transfer_report": {
+    "method": "exact_resume",
+    "source": "C:\\usr\\ths_mia_fiis\\tesis_MIA_2026-2_pinn\\notebooks_campaign\\campaign_workspace\\stage4_adaptive_campaign\\cable_disk\\M1_EXACT\\seed_0\\lbfgs_1\\model.pt"
+  }
+}

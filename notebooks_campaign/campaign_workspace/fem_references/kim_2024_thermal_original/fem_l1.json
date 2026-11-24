@@ -1,0 +1,16 @@
+{
+  "Tmax_C": 56.45434149526693,
+  "Tmin_C": 15.2,
+  "balance_pct": 0.22938887751586892,
+  "boundary_flux_W": 95.47690469474544,
+  "case": "kim_2024_thermal_original",
+  "cells": 234217,
+  "dofs": 468564,
+  "elapsed_s": 34.552749557,
+  "kind": "fem",
+  "level": 1,
+  "method": "FEniCSx-Gmsh-P2-L1",
+  "npz": "fem_l1.npz",
+  "physics_sha256": "90ff559152fb250c91e5931c92ccf8f2b01d9931493540e0066dc5c2eb3f6df9",
+  "power_W": 95.25789129477927
+}

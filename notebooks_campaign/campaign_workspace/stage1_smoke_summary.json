@@ -1,0 +1,112 @@
+{
+  "cable_disk:CUSPR": {
+    "Tmax_pred_C": 20.528898239135742,
+    "architecture": "CUSPR",
+    "balance_pct": 175.70211788824096,
+    "best_loss": 0.0021087280474603176,
+    "case": "cable_disk",
+    "elapsed_s": 44.93454179994296,
+    "error_Tmax_abs_K": 117.84236331499284,
+    "nrmse_pct": 26.992486959809742,
+    "status": "completed"
+  },
+  "cable_disk:M0": {
+    "Tmax_pred_C": 13.903854370117188,
+    "architecture": "M0",
+    "balance_pct": 17645.846992490304,
+    "best_loss": 0.07244174182415009,
+    "case": "cable_disk",
+    "elapsed_s": 37.556154699996114,
+    "error_Tmax_abs_K": 124.46740718401139,
+    "nrmse_pct": 28.8426264376418,
+    "status": "completed"
+  },
+  "cable_disk:M1": {
+    "Tmax_pred_C": 21.428993225097656,
+    "architecture": "M1",
+    "balance_pct": 4.286997322999742,
+    "best_loss": 0.003159876214340329,
+    "case": "cable_disk",
+    "elapsed_s": 30.259589499910362,
+    "error_Tmax_abs_K": 116.94226832903092,
+    "nrmse_pct": 26.769063790253846,
+    "status": "completed"
+  },
+  "cable_disk:M1_EXACT": {
+    "Tmax_pred_C": 19.92708969116211,
+    "architecture": "M1_EXACT",
+    "balance_pct": 7.720844746062836,
+    "best_loss": 0.31533384323120117,
+    "case": "cable_disk",
+    "elapsed_s": 68.93388150003739,
+    "error_Tmax_abs_K": 118.44417186296647,
+    "nrmse_pct": 27.871178773243077,
+    "status": "completed"
+  },
+  "cable_disk:M2": {
+    "Tmax_pred_C": 19.853775024414062,
+    "architecture": "M2",
+    "balance_pct": 0.5471875446811207,
+    "best_loss": 0.001939875422976911,
+    "case": "cable_disk",
+    "elapsed_s": 27.69904790003784,
+    "error_Tmax_abs_K": 118.51748652971452,
+    "nrmse_pct": 27.08208199408482,
+    "status": "completed"
+  },
+  "mms_sine:CUSPR": {
+    "Tmax_pred_C": 49.11705017089844,
+    "architecture": "CUSPR",
+    "balance_pct": 0.09026245200719223,
+    "best_loss": 0.031479381024837494,
+    "case": "mms_sine",
+    "elapsed_s": 22.022640200098976,
+    "error_Tmax_abs_K": 0.880803964401295,
+    "nrmse_pct": 2.2007063583729614,
+    "status": "completed"
+  },
+  "mms_sine:M0": {
+    "Tmax_pred_C": 49.75739288330078,
+    "architecture": "M0",
+    "balance_pct": 0.006332627516443103,
+    "best_loss": 0.014948001131415367,
+    "case": "mms_sine",
+    "elapsed_s": 21.88180990004912,
+    "error_Tmax_abs_K": 0.2404612519989513,
+    "nrmse_pct": 0.6584131176805315,
+    "status": "completed"
+  },
+  "mms_sine:M1": {
+    "Tmax_pred_C": 48.678993225097656,
+    "architecture": "M1",
+    "balance_pct": 0.02014877029269326,
+    "best_loss": 0.04720286652445793,
+    "case": "mms_sine",
+    "elapsed_s": 19.302201900049113,
+    "error_Tmax_abs_K": 1.3188609102020763,
+    "nrmse_pct": 3.0291378350565075,
+    "status": "completed"
+  },
+  "mms_sine:M1_EXACT": {
+    "Tmax_pred_C": 50.00084686279297,
+    "architecture": "M1_EXACT",
+    "balance_pct": 0.7658151451133782,
+    "best_loss": 1.2609399391294573e-06,
+    "case": "mms_sine",
+    "elapsed_s": 26.495235799928196,
+    "error_Tmax_abs_K": 0.0029927274932362025,
+    "nrmse_pct": 0.01103832796720192,
+    "status": "completed"
+  },
+  "mms_sine:M2": {
+    "Tmax_pred_C": 21.72036361694336,
+    "architecture": "M2",
+    "balance_pct": 93.78683406781441,
+    "best_loss": 0.22408705949783325,
+    "case": "mms_sine",
+    "elapsed_s": 17.493420399958268,
+    "error_Tmax_abs_K": 28.277490518356373,
+    "nrmse_pct": 46.948372012594504,
+    "status": "completed"
+  }
+}

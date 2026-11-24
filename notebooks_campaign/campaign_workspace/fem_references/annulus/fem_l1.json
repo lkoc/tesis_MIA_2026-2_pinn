@@ -1,0 +1,16 @@
+{
+  "Tmax_C": 49.566962076801346,
+  "Tmin_C": 20.0,
+  "balance_pct": 0.6958633644464478,
+  "boundary_flux_W": 0.2778610046649632,
+  "case": "annulus",
+  "cells": 6684,
+  "dofs": 13494,
+  "elapsed_s": 0.629932564999999,
+  "kind": "fem",
+  "level": 1,
+  "method": "FEniCSx-Gmsh-P2-L1",
+  "npz": "fem_l1.npz",
+  "physics_sha256": "c58c799de8b1600e8d1397f6360278d5cfaa7fe2a85763da0bf16381551ca107",
+  "power_W": 0.0
+}

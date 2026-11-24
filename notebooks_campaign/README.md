@@ -26,6 +26,13 @@ Cada cuaderno declara al inicio la variable `RUN_MODE`:
 | Bloques Adaptativos (Etapa 4A) | `ADAM=(60, 60)`, `LBFGS=(10, 10)` | `ADAM=(500, 500, 500)`, `LBFGS=(50, 50, 50, 50)` |
 | Corrida Larga Profunda (Etapa 4B) | `120 Adam + 15 L-BFGS` | `8000 Adam + 20 L-BFGS` con `AccuracyStop` |
 
+## Paralelismo y Selección de Dispositivo (`USE_PARALLEL`)
+
+Los cuadernos de entrenamiento (`01` a `04`) incorporan las banderas `USE_PARALLEL`, `MAX_WORKERS` y `DEVICE`:
+
+- **`USE_PARALLEL = True` (predeterminado)**: fija automáticamente `DEVICE = "cpu"` y ejecuta las corridas en paralelo con `ParallelRunner` (contexto `spawn`, reparto automático de hilos CPU por proceso).
+- **`USE_PARALLEL = False`**: fija `DEVICE = "auto"` y ejecuta secuencialmente en el acelerador detectado (p. ej. Intel XPU con parche nativo de `aten::dot` en `DeviceManager.patch_xpu_ops()`, sin fallbacks a CPU).
+
 ## Criterios Oficiales de Calificación
 
 - **Umbral Estricto (`STRICT`, calificación oficial)**: simultáneamente:

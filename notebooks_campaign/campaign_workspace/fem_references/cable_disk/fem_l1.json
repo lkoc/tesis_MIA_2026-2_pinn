@@ -1,0 +1,16 @@
+{
+  "Tmax_C": 138.37152183590044,
+  "Tmin_C": 20.0,
+  "balance_pct": 0.09026750297177907,
+  "boundary_flux_W": 311.8627501662477,
+  "case": "cable_disk",
+  "cells": 3856,
+  "dofs": 7825,
+  "elapsed_s": 0.3606806909999989,
+  "kind": "fem",
+  "level": 1,
+  "method": "FEniCSx-Gmsh-P2-L1",
+  "npz": "fem_l1.npz",
+  "physics_sha256": "5bb279212da1decd4db890acca31d838eaa48a994549628a955f8085a297ad46",
+  "power_W": 312.1445152258054
+}

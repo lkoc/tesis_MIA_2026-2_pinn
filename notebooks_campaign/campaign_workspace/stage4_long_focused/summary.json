@@ -1,0 +1,458 @@
+{
+  "cable_disk:M1": {
+    "Tmax_pred_C": 20.239429473876953,
+    "accuracy_stop": {
+      "checks": [
+        {
+          "gates": {
+            "balance_pct": false,
+            "error_Tmax_abs_K": false,
+            "nrmse_pct": false
+          },
+          "met": false,
+          "phase": "adam",
+          "step": 0,
+          "values": {
+            "balance_pct": 113.01513530869727,
+            "error_Tmax_abs_K": 117.8876437715358,
+            "nrmse_pct": 48.36879314895024
+          }
+        },
+        {
+          "gates": {
+            "balance_pct": false,
+            "error_Tmax_abs_K": false,
+            "nrmse_pct": false
+          },
+          "met": false,
+          "phase": "adam",
+          "step": 100,
+          "values": {
+            "balance_pct": 1.544856193704949,
+            "error_Tmax_abs_K": 109.40450854814713,
+            "nrmse_pct": 23.864210762684806
+          }
+        },
+        {
+          "gates": {
+            "balance_pct": false,
+            "error_Tmax_abs_K": false,
+            "nrmse_pct": false
+          },
+          "met": false,
+          "phase": "lbfgs",
+          "step": 120,
+          "values": {
+            "balance_pct": 0.5276620448642158,
+            "error_Tmax_abs_K": 110.77540584123795,
+            "nrmse_pct": 25.462634026263366
+          }
+        },
+        {
+          "gates": {
+            "balance_pct": false,
+            "error_Tmax_abs_K": false,
+            "nrmse_pct": false
+          },
+          "met": false,
+          "phase": "lbfgs",
+          "step": 125,
+          "values": {
+            "balance_pct": 4.504658872952253,
+            "error_Tmax_abs_K": 117.73461719072526,
+            "nrmse_pct": 27.03195128949465
+          }
+        },
+        {
+          "gates": {
+            "balance_pct": false,
+            "error_Tmax_abs_K": false,
+            "nrmse_pct": false
+          },
+          "met": false,
+          "phase": "lbfgs",
+          "step": 130,
+          "values": {
+            "balance_pct": 4.802058107321567,
+            "error_Tmax_abs_K": 117.91152759111588,
+            "nrmse_pct": 26.99699735842781
+          }
+        },
+        {
+          "gates": {
+            "balance_pct": false,
+            "error_Tmax_abs_K": false,
+            "nrmse_pct": false
+          },
+          "met": false,
+          "phase": "lbfgs",
+          "step": 134,
+          "values": {
+            "balance_pct": 4.855328036467019,
+            "error_Tmax_abs_K": 118.13183208025163,
+            "nrmse_pct": 27.042448685099565
+          }
+        }
+      ],
+      "enabled": true,
+      "reference_label": "FEM_WSL_cache:cable_disk",
+      "settings": {
+        "after_phase": "adam",
+        "balance_pct": 0.5,
+        "error_Tmax_abs_K": 0.01,
+        "every": 100,
+        "nrmse_pct": 0.1
+      },
+      "triggered": false
+    },
+    "architecture": "M1",
+    "balance_pct": 4.855328036467019,
+    "case": "cable_disk",
+    "elapsed_s": 32.311132599948905,
+    "error_Tmax_abs_K": 118.13183208025163,
+    "nrmse_pct": 27.042448685099565,
+    "status": "completed"
+  },
+  "cable_disk:M1_EXACT": {
+    "Tmax_pred_C": 20.084442138671875,
+    "accuracy_stop": {
+      "checks": [
+        {
+          "gates": {
+            "balance_pct": false,
+            "error_Tmax_abs_K": false,
+            "nrmse_pct": false
+          },
+          "met": false,
+          "phase": "adam",
+          "step": 0,
+          "values": {
+            "balance_pct": 85.74573658813127,
+            "error_Tmax_abs_K": 117.64348407304948,
+            "nrmse_pct": 32.036033374938505
+          }
+        },
+        {
+          "gates": {
+            "balance_pct": false,
+            "error_Tmax_abs_K": false,
+            "nrmse_pct": false
+          },
+          "met": false,
+          "phase": "adam",
+          "step": 100,
+          "values": {
+            "balance_pct": 5.335849960664975,
+            "error_Tmax_abs_K": 116.75880809343522,
+            "nrmse_pct": 27.664307666413777
+          }
+        },
+        {
+          "gates": {
+            "balance_pct": false,
+            "error_Tmax_abs_K": false,
+            "nrmse_pct": false
+          },
+          "met": false,
+          "phase": "lbfgs",
+          "step": 120,
+          "values": {
+            "balance_pct": 3.2191351150233785,
+            "error_Tmax_abs_K": 116.734369235403,
+            "nrmse_pct": 27.416338152028118
+          }
+        },
+        {
+          "gates": {
+            "balance_pct": false,
+            "error_Tmax_abs_K": false,
+            "nrmse_pct": false
+          },
+          "met": false,
+          "phase": "lbfgs",
+          "step": 125,
+          "values": {
+            "balance_pct": 6.24024572321886,
+            "error_Tmax_abs_K": 117.52425952470963,
+            "nrmse_pct": 27.00044158682011
+          }
+        },
+        {
+          "gates": {
+            "balance_pct": false,
+            "error_Tmax_abs_K": false,
+            "nrmse_pct": false
+          },
+          "met": false,
+          "phase": "lbfgs",
+          "step": 130,
+          "values": {
+            "balance_pct": 1.4252768321268092,
+            "error_Tmax_abs_K": 118.00437541521256,
+            "nrmse_pct": 27.078350830970173
+          }
+        },
+        {
+          "gates": {
+            "balance_pct": false,
+            "error_Tmax_abs_K": false,
+            "nrmse_pct": false
+          },
+          "met": false,
+          "phase": "lbfgs",
+          "step": 134,
+          "values": {
+            "balance_pct": 1.1951793715156342,
+            "error_Tmax_abs_K": 118.2868194154567,
+            "nrmse_pct": 27.106433181503103
+          }
+        }
+      ],
+      "enabled": true,
+      "reference_label": "FEM_WSL_cache:cable_disk",
+      "settings": {
+        "after_phase": "adam",
+        "balance_pct": 0.5,
+        "error_Tmax_abs_K": 0.01,
+        "every": 100,
+        "nrmse_pct": 0.1
+      },
+      "triggered": false
+    },
+    "architecture": "M1_EXACT",
+    "balance_pct": 1.1951793715156342,
+    "case": "cable_disk",
+    "elapsed_s": 70.13709370000288,
+    "error_Tmax_abs_K": 118.2868194154567,
+    "nrmse_pct": 27.106433181503103,
+    "status": "completed"
+  },
+  "mms_sine:M1": {
+    "Tmax_pred_C": 49.750980377197266,
+    "accuracy_stop": {
+      "checks": [
+        {
+          "gates": {
+            "balance_pct": false,
+            "error_Tmax_abs_K": false,
+            "nrmse_pct": false
+          },
+          "met": false,
+          "phase": "adam",
+          "step": 0,
+          "values": {
+            "balance_pct": 95.02999730058369,
+            "error_Tmax_abs_K": 124.94452867720027,
+            "nrmse_pct": 288.30912537047493
+          }
+        },
+        {
+          "gates": {
+            "balance_pct": false,
+            "error_Tmax_abs_K": false,
+            "nrmse_pct": false
+          },
+          "met": false,
+          "phase": "adam",
+          "step": 100,
+          "values": {
+            "balance_pct": 42.39876239311235,
+            "error_Tmax_abs_K": 12.307573220993092,
+            "nrmse_pct": 21.119932356600234
+          }
+        },
+        {
+          "gates": {
+            "balance_pct": false,
+            "error_Tmax_abs_K": false,
+            "nrmse_pct": false
+          },
+          "met": false,
+          "phase": "lbfgs",
+          "step": 120,
+          "values": {
+            "balance_pct": 1.56063874912182,
+            "error_Tmax_abs_K": 2.1380137422333263,
+            "nrmse_pct": 6.2035765134278105
+          }
+        },
+        {
+          "gates": {
+            "balance_pct": true,
+            "error_Tmax_abs_K": false,
+            "nrmse_pct": false
+          },
+          "met": false,
+          "phase": "lbfgs",
+          "step": 125,
+          "values": {
+            "balance_pct": 0.012232856566848976,
+            "error_Tmax_abs_K": 0.46939649369817005,
+            "nrmse_pct": 2.572076860829857
+          }
+        },
+        {
+          "gates": {
+            "balance_pct": true,
+            "error_Tmax_abs_K": false,
+            "nrmse_pct": false
+          },
+          "met": false,
+          "phase": "lbfgs",
+          "step": 130,
+          "values": {
+            "balance_pct": 0.019492180240579936,
+            "error_Tmax_abs_K": 1.2598170259247325,
+            "nrmse_pct": 3.646872312100566
+          }
+        },
+        {
+          "gates": {
+            "balance_pct": true,
+            "error_Tmax_abs_K": false,
+            "nrmse_pct": false
+          },
+          "met": false,
+          "phase": "lbfgs",
+          "step": 134,
+          "values": {
+            "balance_pct": 0.003981714842047107,
+            "error_Tmax_abs_K": 0.24687375810246692,
+            "nrmse_pct": 1.7664189553216987
+          }
+        }
+      ],
+      "enabled": true,
+      "reference_label": "analytic_reference",
+      "settings": {
+        "after_phase": "adam",
+        "balance_pct": 0.5,
+        "error_Tmax_abs_K": 0.01,
+        "every": 100,
+        "nrmse_pct": 0.1
+      },
+      "triggered": false
+    },
+    "architecture": "M1",
+    "balance_pct": 0.003981714842047107,
+    "case": "mms_sine",
+    "elapsed_s": 21.157684300094843,
+    "error_Tmax_abs_K": 0.24687375810246692,
+    "nrmse_pct": 1.7664189553216987,
+    "status": "completed"
+  },
+  "mms_sine:M1_EXACT": {
+    "Tmax_pred_C": 50.0036735534668,
+    "accuracy_stop": {
+      "checks": [
+        {
+          "gates": {
+            "balance_pct": false,
+            "error_Tmax_abs_K": false,
+            "nrmse_pct": false
+          },
+          "met": false,
+          "phase": "adam",
+          "step": 0,
+          "values": {
+            "balance_pct": 31.833888549149076,
+            "error_Tmax_abs_K": 45.37714586470027,
+            "nrmse_pct": 106.62769001155802
+          }
+        },
+        {
+          "gates": {
+            "balance_pct": true,
+            "error_Tmax_abs_K": false,
+            "nrmse_pct": false
+          },
+          "met": false,
+          "phase": "adam",
+          "step": 100,
+          "values": {
+            "balance_pct": 0.40980241022262553,
+            "error_Tmax_abs_K": 0.2838725068817638,
+            "nrmse_pct": 2.584040881668338
+          }
+        },
+        {
+          "gates": {
+            "balance_pct": false,
+            "error_Tmax_abs_K": false,
+            "nrmse_pct": true
+          },
+          "met": false,
+          "phase": "lbfgs",
+          "step": 120,
+          "values": {
+            "balance_pct": 0.7351315709707166,
+            "error_Tmax_abs_K": 0.015527822708079952,
+            "nrmse_pct": 0.07228678773920981
+          }
+        },
+        {
+          "gates": {
+            "balance_pct": false,
+            "error_Tmax_abs_K": true,
+            "nrmse_pct": true
+          },
+          "met": false,
+          "phase": "lbfgs",
+          "step": 125,
+          "values": {
+            "balance_pct": 0.7520635871194828,
+            "error_Tmax_abs_K": 0.0058194181670643275,
+            "nrmse_pct": 0.009969225754870255
+          }
+        },
+        {
+          "gates": {
+            "balance_pct": false,
+            "error_Tmax_abs_K": true,
+            "nrmse_pct": true
+          },
+          "met": false,
+          "phase": "lbfgs",
+          "step": 130,
+          "values": {
+            "balance_pct": 0.7520635871194828,
+            "error_Tmax_abs_K": 0.0058194181670643275,
+            "nrmse_pct": 0.009969225754870255
+          }
+        },
+        {
+          "gates": {
+            "balance_pct": false,
+            "error_Tmax_abs_K": true,
+            "nrmse_pct": true
+          },
+          "met": false,
+          "phase": "lbfgs",
+          "step": 134,
+          "values": {
+            "balance_pct": 0.7520635871194828,
+            "error_Tmax_abs_K": 0.0058194181670643275,
+            "nrmse_pct": 0.009969225754870255
+          }
+        }
+      ],
+      "enabled": true,
+      "reference_label": "analytic_reference",
+      "settings": {
+        "after_phase": "adam",
+        "balance_pct": 0.5,
+        "error_Tmax_abs_K": 0.01,
+        "every": 100,
+        "nrmse_pct": 0.1
+      },
+      "triggered": false
+    },
+    "architecture": "M1_EXACT",
+    "balance_pct": 0.7520635871194828,
+    "case": "mms_sine",
+    "elapsed_s": 21.36506520002149,
+    "error_Tmax_abs_K": 0.0058194181670643275,
+    "nrmse_pct": 0.009969225754870255,
+    "status": "completed"
+  }
+}

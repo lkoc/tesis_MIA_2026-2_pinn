@@ -1,0 +1,16 @@
+{
+  "Tmax_C": 62.79082480727765,
+  "Tmin_C": 19.5,
+  "balance_pct": 0.5013906087844141,
+  "boundary_flux_W": 57.019316737943136,
+  "case": "tabla_heterogenea_demo",
+  "cells": 7398,
+  "dofs": 14891,
+  "elapsed_s": 0.36040323299999955,
+  "kind": "fem",
+  "level": 1,
+  "method": "FEniCSx-Gmsh-P2-L1",
+  "npz": "fem_l1.npz",
+  "physics_sha256": "5f7c84d5ddcc35b0e7fffbe60228c394e4e814b734de18eedee53c6bdb421e2a",
+  "power_W": 56.73342723862605
+}

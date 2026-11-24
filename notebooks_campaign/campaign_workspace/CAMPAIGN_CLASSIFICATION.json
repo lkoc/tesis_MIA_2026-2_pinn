@@ -1,0 +1,434 @@
+{
+  "counts": {
+    "qualified": 1,
+    "requires_more_steps": 41
+  },
+  "criteria": {
+    "balance_pct": 0.5,
+    "error_Tmax_abs_K": 0.05,
+    "nrmse_pct": 0.25
+  },
+  "rows": [
+    {
+      "architecture": "CUSPR",
+      "balance_pct": 175.70211788824096,
+      "case": "cable_disk",
+      "error_Tmax_abs_K": 117.84236331499284,
+      "key": "cable_disk:CUSPR",
+      "nrmse_pct": 26.992486959809742,
+      "qualification": "requires_more_steps",
+      "source": "stage1_smoke_summary.json"
+    },
+    {
+      "architecture": "M0",
+      "balance_pct": 17645.846992490304,
+      "case": "cable_disk",
+      "error_Tmax_abs_K": 124.46740718401139,
+      "key": "cable_disk:M0",
+      "nrmse_pct": 28.8426264376418,
+      "qualification": "requires_more_steps",
+      "source": "stage1_smoke_summary.json"
+    },
+    {
+      "architecture": "M1",
+      "balance_pct": 4.286997322999742,
+      "case": "cable_disk",
+      "error_Tmax_abs_K": 116.94226832903092,
+      "key": "cable_disk:M1",
+      "nrmse_pct": 26.769063790253846,
+      "qualification": "requires_more_steps",
+      "source": "stage1_smoke_summary.json"
+    },
+    {
+      "architecture": "M1_EXACT",
+      "balance_pct": 7.720844746062836,
+      "case": "cable_disk",
+      "error_Tmax_abs_K": 118.44417186296647,
+      "key": "cable_disk:M1_EXACT",
+      "nrmse_pct": 27.871178773243077,
+      "qualification": "requires_more_steps",
+      "source": "stage1_smoke_summary.json"
+    },
+    {
+      "architecture": "M2",
+      "balance_pct": 0.5471875446811207,
+      "case": "cable_disk",
+      "error_Tmax_abs_K": 118.51748652971452,
+      "key": "cable_disk:M2",
+      "nrmse_pct": 27.08208199408482,
+      "qualification": "requires_more_steps",
+      "source": "stage1_smoke_summary.json"
+    },
+    {
+      "architecture": "CUSPR",
+      "balance_pct": 0.09026245200719223,
+      "case": "mms_sine",
+      "error_Tmax_abs_K": 0.880803964401295,
+      "key": "mms_sine:CUSPR",
+      "nrmse_pct": 2.2007063583729614,
+      "qualification": "requires_more_steps",
+      "source": "stage1_smoke_summary.json"
+    },
+    {
+      "architecture": "M0",
+      "balance_pct": 0.006332627516443103,
+      "case": "mms_sine",
+      "error_Tmax_abs_K": 0.2404612519989513,
+      "key": "mms_sine:M0",
+      "nrmse_pct": 0.6584131176805315,
+      "qualification": "requires_more_steps",
+      "source": "stage1_smoke_summary.json"
+    },
+    {
+      "architecture": "M1",
+      "balance_pct": 0.02014877029269326,
+      "case": "mms_sine",
+      "error_Tmax_abs_K": 1.3188609102020763,
+      "key": "mms_sine:M1",
+      "nrmse_pct": 3.0291378350565075,
+      "qualification": "requires_more_steps",
+      "source": "stage1_smoke_summary.json"
+    },
+    {
+      "architecture": "M1_EXACT",
+      "balance_pct": 0.7658151451133782,
+      "case": "mms_sine",
+      "error_Tmax_abs_K": 0.0029927274932362025,
+      "key": "mms_sine:M1_EXACT",
+      "nrmse_pct": 0.01103832796720192,
+      "qualification": "requires_more_steps",
+      "source": "stage1_smoke_summary.json"
+    },
+    {
+      "architecture": "M2",
+      "balance_pct": 93.78683406781441,
+      "case": "mms_sine",
+      "error_Tmax_abs_K": 28.277490518356373,
+      "key": "mms_sine:M2",
+      "nrmse_pct": 46.948372012594504,
+      "qualification": "requires_more_steps",
+      "source": "stage1_smoke_summary.json"
+    },
+    {
+      "architecture": "CUSPR",
+      "balance_pct": 122.75836398766847,
+      "case": "cable_disk",
+      "error_Tmax_abs_K": 119.33390994585221,
+      "key": "cable_disk:CUSPR",
+      "nrmse_pct": 27.332084350567957,
+      "qualification": "requires_more_steps",
+      "source": "stage2_selection_summary.json"
+    },
+    {
+      "architecture": "M0",
+      "balance_pct": 7185.691650149178,
+      "case": "cable_disk",
+      "error_Tmax_abs_K": 115.39053340471452,
+      "key": "cable_disk:M0",
+      "nrmse_pct": 26.430075821166778,
+      "qualification": "requires_more_steps",
+      "source": "stage2_selection_summary.json"
+    },
+    {
+      "architecture": "M0R",
+      "balance_pct": 103.78705293013881,
+      "case": "cable_disk",
+      "error_Tmax_abs_K": 117.78884120500749,
+      "key": "cable_disk:M0R",
+      "nrmse_pct": 26.99568055257995,
+      "qualification": "requires_more_steps",
+      "source": "stage2_selection_summary.json"
+    },
+    {
+      "architecture": "M1",
+      "balance_pct": 5.081450851136057,
+      "case": "cable_disk",
+      "error_Tmax_abs_K": 117.82624049699967,
+      "key": "cable_disk:M1",
+      "nrmse_pct": 26.967034955671,
+      "qualification": "requires_more_steps",
+      "source": "stage2_selection_summary.json"
+    },
+    {
+      "architecture": "M1_EXACT",
+      "balance_pct": 0.8202970589856885,
+      "case": "cable_disk",
+      "error_Tmax_abs_K": 118.29223437822526,
+      "key": "cable_disk:M1_EXACT",
+      "nrmse_pct": 27.091212844065083,
+      "qualification": "requires_more_steps",
+      "source": "stage2_selection_summary.json"
+    },
+    {
+      "architecture": "M2",
+      "balance_pct": 0.9189732086061808,
+      "case": "cable_disk",
+      "error_Tmax_abs_K": 118.45224566972917,
+      "key": "cable_disk:M2",
+      "nrmse_pct": 27.10169888250188,
+      "qualification": "requires_more_steps",
+      "source": "stage2_selection_summary.json"
+    },
+    {
+      "architecture": "CUSPR",
+      "balance_pct": 0.11741377859794883,
+      "case": "mms_sine",
+      "error_Tmax_abs_K": 0.39939317915339245,
+      "key": "mms_sine:CUSPR",
+      "nrmse_pct": 0.8742310662304658,
+      "qualification": "requires_more_steps",
+      "source": "stage2_selection_summary.json"
+    },
+    {
+      "architecture": "M0",
+      "balance_pct": 0.012557948714602647,
+      "case": "mms_sine",
+      "error_Tmax_abs_K": 0.015394113327076298,
+      "key": "mms_sine:M0",
+      "nrmse_pct": 0.2439745870428308,
+      "qualification": "qualified",
+      "source": "stage2_selection_summary.json"
+    },
+    {
+      "architecture": "M0R",
+      "balance_pct": 0.11741377859794883,
+      "case": "mms_sine",
+      "error_Tmax_abs_K": 0.39939317915339245,
+      "key": "mms_sine:M0R",
+      "nrmse_pct": 0.8742310662304658,
+      "qualification": "requires_more_steps",
+      "source": "stage2_selection_summary.json"
+    },
+    {
+      "architecture": "M1",
+      "balance_pct": 0.02250128440624075,
+      "case": "mms_sine",
+      "error_Tmax_abs_K": 0.5888957002411388,
+      "key": "mms_sine:M1",
+      "nrmse_pct": 1.6685251087502286,
+      "qualification": "requires_more_steps",
+      "source": "stage2_selection_summary.json"
+    },
+    {
+      "architecture": "M1_EXACT",
+      "balance_pct": 0.7766921198303385,
+      "case": "mms_sine",
+      "error_Tmax_abs_K": 0.0048886320342518275,
+      "key": "mms_sine:M1_EXACT",
+      "nrmse_pct": 0.014398451688533433,
+      "qualification": "requires_more_steps",
+      "source": "stage2_selection_summary.json"
+    },
+    {
+      "architecture": "M2",
+      "balance_pct": 52.32758904603789,
+      "case": "mms_sine",
+      "error_Tmax_abs_K": 12.282911203170826,
+      "key": "mms_sine:M2",
+      "nrmse_pct": 24.828683677606744,
+      "qualification": "requires_more_steps",
+      "source": "stage2_selection_summary.json"
+    },
+    {
+      "architecture": "CUSPR",
+      "balance_pct": 17.14267534105129,
+      "case": "cable_disk",
+      "error_Tmax_abs_K": 120.7014979890651,
+      "key": "cable_disk:CUSPR:seed0",
+      "nrmse_pct": 27.88788550976871,
+      "qualification": "requires_more_steps",
+      "source": "stage3_multicase_smoke\\summary.json"
+    },
+    {
+      "architecture": "M1",
+      "balance_pct": 0.9416655917870971,
+      "case": "cable_disk",
+      "error_Tmax_abs_K": 120.96220012224381,
+      "key": "cable_disk:M1:seed0",
+      "nrmse_pct": 27.74382508900264,
+      "qualification": "requires_more_steps",
+      "source": "stage3_multicase_smoke\\summary.json"
+    },
+    {
+      "architecture": "M1_EXACT",
+      "balance_pct": 39.60647951548427,
+      "case": "cable_disk",
+      "error_Tmax_abs_K": 115.9349078706569,
+      "key": "cable_disk:M1_EXACT:seed0",
+      "nrmse_pct": 24.94429680583031,
+      "qualification": "requires_more_steps",
+      "source": "stage3_multicase_smoke\\summary.json"
+    },
+    {
+      "architecture": "CUSPR",
+      "balance_pct": 11.612606464162496,
+      "case": "mms_constant",
+      "error_Tmax_abs_K": 6.886114022995045,
+      "key": "mms_constant:CUSPR:seed0",
+      "nrmse_pct": 11.597178605232587,
+      "qualification": "requires_more_steps",
+      "source": "stage3_multicase_smoke\\summary.json"
+    },
+    {
+      "architecture": "M1",
+      "balance_pct": 34.70742408451937,
+      "case": "mms_constant",
+      "error_Tmax_abs_K": 11.950605294967701,
+      "key": "mms_constant:M1:seed0",
+      "nrmse_pct": 23.09346367644126,
+      "qualification": "requires_more_steps",
+      "source": "stage3_multicase_smoke\\summary.json"
+    },
+    {
+      "architecture": "M1_EXACT",
+      "balance_pct": 0.8652810580290841,
+      "case": "mms_constant",
+      "error_Tmax_abs_K": 0.3467844941864513,
+      "key": "mms_constant:M1_EXACT:seed0",
+      "nrmse_pct": 1.7259649183826782,
+      "qualification": "requires_more_steps",
+      "source": "stage3_multicase_smoke\\summary.json"
+    },
+    {
+      "architecture": "CUSPR",
+      "balance_pct": 33.65414726280124,
+      "case": "mms_layered_y",
+      "error_Tmax_abs_K": 1.91215750946089,
+      "key": "mms_layered_y:CUSPR:seed0",
+      "nrmse_pct": 14.052700688717394,
+      "qualification": "requires_more_steps",
+      "source": "stage3_multicase_smoke\\summary.json"
+    },
+    {
+      "architecture": "M1",
+      "balance_pct": 28.976546784911548,
+      "case": "mms_layered_y",
+      "error_Tmax_abs_K": 3.3261933065800307,
+      "key": "mms_layered_y:M1:seed0",
+      "nrmse_pct": 24.018095835132595,
+      "qualification": "requires_more_steps",
+      "source": "stage3_multicase_smoke\\summary.json"
+    },
+    {
+      "architecture": "M1_EXACT",
+      "balance_pct": 2.425517010598485,
+      "case": "mms_layered_y",
+      "error_Tmax_abs_K": 0.00024178253129747418,
+      "key": "mms_layered_y:M1_EXACT:seed0",
+      "nrmse_pct": 0.9221774711892187,
+      "qualification": "requires_more_steps",
+      "source": "stage3_multicase_smoke\\summary.json"
+    },
+    {
+      "architecture": "CUSPR",
+      "balance_pct": 4667.577566887056,
+      "case": "xlpe_discrete_layers",
+      "error_Tmax_abs_K": 6.424458884932804,
+      "key": "xlpe_discrete_layers:CUSPR:seed0",
+      "nrmse_pct": 28.652104226418068,
+      "qualification": "requires_more_steps",
+      "source": "stage3_multicase_smoke\\summary.json"
+    },
+    {
+      "architecture": "M1",
+      "balance_pct": 1040.1823929079349,
+      "case": "xlpe_discrete_layers",
+      "error_Tmax_abs_K": 11.533112144730282,
+      "key": "xlpe_discrete_layers:M1:seed0",
+      "nrmse_pct": 6.513250482194912,
+      "qualification": "requires_more_steps",
+      "source": "stage3_multicase_smoke\\summary.json"
+    },
+    {
+      "architecture": "M1_EXACT",
+      "balance_pct": 636.8649595450131,
+      "case": "xlpe_discrete_layers",
+      "error_Tmax_abs_K": 2.0002664563439367,
+      "key": "xlpe_discrete_layers:M1_EXACT:seed0",
+      "nrmse_pct": 7.671435006618987,
+      "qualification": "requires_more_steps",
+      "source": "stage3_multicase_smoke\\summary.json"
+    },
+    {
+      "architecture": "M1",
+      "balance_pct": 4.63670589795384,
+      "case": "cable_disk",
+      "error_Tmax_abs_K": 118.02355762041276,
+      "key": "cable_disk:M1:seed0",
+      "nrmse_pct": 27.030322609912087,
+      "qualification": "requires_more_steps",
+      "source": "stage4_adaptive_campaign\\summary.json"
+    },
+    {
+      "architecture": "M1_EXACT",
+      "balance_pct": 4.424410998842117,
+      "case": "cable_disk",
+      "error_Tmax_abs_K": 118.16682239092057,
+      "key": "cable_disk:M1_EXACT:seed0",
+      "nrmse_pct": 27.081065816730597,
+      "qualification": "requires_more_steps",
+      "source": "stage4_adaptive_campaign\\summary.json"
+    },
+    {
+      "architecture": "M1",
+      "balance_pct": 0.009357746073618877,
+      "case": "mms_constant",
+      "error_Tmax_abs_K": 2.4662379243622325,
+      "key": "mms_constant:M1:seed0",
+      "nrmse_pct": 4.466991818037012,
+      "qualification": "requires_more_steps",
+      "source": "stage4_adaptive_campaign\\summary.json"
+    },
+    {
+      "architecture": "M1_EXACT",
+      "balance_pct": 0.7458612132857392,
+      "case": "mms_constant",
+      "error_Tmax_abs_K": 0.0011042573700450475,
+      "key": "mms_constant:M1_EXACT:seed0",
+      "nrmse_pct": 0.012359151579963916,
+      "qualification": "requires_more_steps",
+      "source": "stage4_adaptive_campaign\\summary.json"
+    },
+    {
+      "architecture": "M1",
+      "balance_pct": 4.855328036467019,
+      "case": "cable_disk",
+      "error_Tmax_abs_K": 118.13183208025163,
+      "key": "cable_disk:M1",
+      "nrmse_pct": 27.042448685099565,
+      "qualification": "requires_more_steps",
+      "source": "stage4_long_focused\\summary.json"
+    },
+    {
+      "architecture": "M1_EXACT",
+      "balance_pct": 1.1951793715156342,
+      "case": "cable_disk",
+      "error_Tmax_abs_K": 118.2868194154567,
+      "key": "cable_disk:M1_EXACT",
+      "nrmse_pct": 27.106433181503103,
+      "qualification": "requires_more_steps",
+      "source": "stage4_long_focused\\summary.json"
+    },
+    {
+      "architecture": "M1",
+      "balance_pct": 0.003981714842047107,
+      "case": "mms_sine",
+      "error_Tmax_abs_K": 0.24687375810246692,
+      "key": "mms_sine:M1",
+      "nrmse_pct": 1.7664189553216987,
+      "qualification": "requires_more_steps",
+      "source": "stage4_long_focused\\summary.json"
+    },
+    {
+      "architecture": "M1_EXACT",
+      "balance_pct": 0.7520635871194828,
+      "case": "mms_sine",
+      "error_Tmax_abs_K": 0.0058194181670643275,
+      "key": "mms_sine:M1_EXACT",
+      "nrmse_pct": 0.009969225754870255,
+      "qualification": "requires_more_steps",
+      "source": "stage4_long_focused\\summary.json"
+    }
+  ],
+  "total": 42
+}

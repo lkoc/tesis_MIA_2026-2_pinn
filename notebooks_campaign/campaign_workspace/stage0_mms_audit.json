@@ -1,0 +1,47 @@
+{
+  "annulus": {
+    "bc_error": 0.0,
+    "max_residual": 0.00017763568394002505,
+    "ok": true
+  },
+  "mms_constant": {
+    "bc_error": 0.0,
+    "max_residual": 0.00030219788072827214,
+    "ok": true
+  },
+  "mms_high_contrast": {
+    "bc_error": 0.0,
+    "max_residual": 0.00099893648575744,
+    "ok": true
+  },
+  "mms_interface": {
+    "bc_error": 0.0,
+    "max_residual": 0.0002959786195049219,
+    "ok": true
+  },
+  "mms_layered_y": {
+    "bc_error": 0.0,
+    "max_residual": 0.00023690802046871795,
+    "ok": true
+  },
+  "mms_robin": {
+    "bc_error": 0.0,
+    "max_residual": 0.00016545729491213024,
+    "ok": true
+  },
+  "mms_sine": {
+    "bc_error": 0.0,
+    "max_residual": 0.00030219788072827214,
+    "ok": true
+  },
+  "mms_smooth_2d": {
+    "bc_error": 0.0,
+    "max_residual": 0.00033086836856455193,
+    "ok": true
+  },
+  "mms_variable": {
+    "bc_error": 0.0,
+    "max_residual": 0.00046482164191274933,
+    "ok": true
+  }
+}

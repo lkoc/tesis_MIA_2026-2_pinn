@@ -1,0 +1,122 @@
+{
+  "cable_disk:CUSPR": {
+    "Tmax_pred_C": 19.037351608276367,
+    "architecture": "CUSPR",
+    "balance_pct": 122.75836398766847,
+    "case": "cable_disk",
+    "elapsed_s": 79.2560378999915,
+    "error_Tmax_abs_K": 119.33390994585221,
+    "nrmse_pct": 27.332084350567957,
+    "status": "completed"
+  },
+  "cable_disk:M0": {
+    "Tmax_pred_C": 22.980728149414062,
+    "architecture": "M0",
+    "balance_pct": 7185.691650149178,
+    "case": "cable_disk",
+    "elapsed_s": 71.27248469996266,
+    "error_Tmax_abs_K": 115.39053340471452,
+    "nrmse_pct": 26.430075821166778,
+    "status": "completed"
+  },
+  "cable_disk:M0R": {
+    "Tmax_pred_C": 20.582420349121094,
+    "architecture": "M0R",
+    "balance_pct": 103.78705293013881,
+    "case": "cable_disk",
+    "elapsed_s": 71.0951664999593,
+    "error_Tmax_abs_K": 117.78884120500749,
+    "nrmse_pct": 26.99568055257995,
+    "status": "completed"
+  },
+  "cable_disk:M1": {
+    "Tmax_pred_C": 20.545021057128906,
+    "architecture": "M1",
+    "balance_pct": 5.081450851136057,
+    "case": "cable_disk",
+    "elapsed_s": 59.37058350001462,
+    "error_Tmax_abs_K": 117.82624049699967,
+    "nrmse_pct": 26.967034955671,
+    "status": "completed"
+  },
+  "cable_disk:M1_EXACT": {
+    "Tmax_pred_C": 20.07902717590332,
+    "architecture": "M1_EXACT",
+    "balance_pct": 0.8202970589856885,
+    "case": "cable_disk",
+    "elapsed_s": 96.03443870006595,
+    "error_Tmax_abs_K": 118.29223437822526,
+    "nrmse_pct": 27.091212844065083,
+    "status": "completed"
+  },
+  "cable_disk:M2": {
+    "Tmax_pred_C": 19.919015884399414,
+    "architecture": "M2",
+    "balance_pct": 0.9189732086061808,
+    "case": "cable_disk",
+    "elapsed_s": 58.61702130001504,
+    "error_Tmax_abs_K": 118.45224566972917,
+    "nrmse_pct": 27.10169888250188,
+    "status": "completed"
+  },
+  "mms_sine:CUSPR": {
+    "Tmax_pred_C": 50.397247314453125,
+    "architecture": "CUSPR",
+    "balance_pct": 0.11741377859794883,
+    "case": "mms_sine",
+    "elapsed_s": 50.41168200003449,
+    "error_Tmax_abs_K": 0.39939317915339245,
+    "nrmse_pct": 0.8742310662304658,
+    "status": "completed"
+  },
+  "mms_sine:M0": {
+    "Tmax_pred_C": 49.982460021972656,
+    "architecture": "M0",
+    "balance_pct": 0.012557948714602647,
+    "case": "mms_sine",
+    "elapsed_s": 39.68242760002613,
+    "error_Tmax_abs_K": 0.015394113327076298,
+    "nrmse_pct": 0.2439745870428308,
+    "status": "completed"
+  },
+  "mms_sine:M0R": {
+    "Tmax_pred_C": 50.397247314453125,
+    "architecture": "M0R",
+    "balance_pct": 0.11741377859794883,
+    "case": "mms_sine",
+    "elapsed_s": 45.22492409998085,
+    "error_Tmax_abs_K": 0.39939317915339245,
+    "nrmse_pct": 0.8742310662304658,
+    "status": "completed"
+  },
+  "mms_sine:M1": {
+    "Tmax_pred_C": 49.408958435058594,
+    "architecture": "M1",
+    "balance_pct": 0.02250128440624075,
+    "case": "mms_sine",
+    "elapsed_s": 37.217708399984986,
+    "error_Tmax_abs_K": 0.5888957002411388,
+    "nrmse_pct": 1.6685251087502286,
+    "status": "completed"
+  },
+  "mms_sine:M1_EXACT": {
+    "Tmax_pred_C": 50.002742767333984,
+    "architecture": "M1_EXACT",
+    "balance_pct": 0.7766921198303385,
+    "case": "mms_sine",
+    "elapsed_s": 42.56519830005709,
+    "error_Tmax_abs_K": 0.0048886320342518275,
+    "nrmse_pct": 0.014398451688533433,
+    "status": "completed"
+  },
+  "mms_sine:M2": {
+    "Tmax_pred_C": 37.714942932128906,
+    "architecture": "M2",
+    "balance_pct": 52.32758904603789,
+    "case": "mms_sine",
+    "elapsed_s": 38.090981199988164,
+    "error_Tmax_abs_K": 12.282911203170826,
+    "nrmse_pct": 24.828683677606744,
+    "status": "completed"
+  }
+}

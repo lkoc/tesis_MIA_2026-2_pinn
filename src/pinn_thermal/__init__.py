@@ -9,6 +9,7 @@ from __future__ import annotations
 __version__ = "0.4.0"
 
 _EXPORTS = {
+    "AdaptiveRunTask": "pinn_thermal.core.parallel",
     "AmpacitySolver": "pinn_thermal.core.ampacity",
     "CaseCatalog": "pinn_thermal.core.problem",
     "ChainedPINN": "pinn_thermal.core.transfer",

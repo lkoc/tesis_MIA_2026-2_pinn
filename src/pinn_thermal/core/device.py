@@ -17,9 +17,75 @@ import torch
 
 DTYPES: dict[str, torch.dtype] = {"float32": torch.float32, "float64": torch.float64}
 
+_ORIG_TENSOR_DOT = torch.Tensor.dot
+_ORIG_TORCH_DOT = torch.dot
+_XPU_DOT_PATCHED: bool = False
+
+
+def _xpu_safe_tensor_dot(self: torch.Tensor, tensor: torch.Tensor) -> torch.Tensor:
+    """Producto punto 1D nativo en XPU para evitar el fallback CPU de ``aten::dot``."""
+    if (
+        self.device.type == "xpu"
+        and tensor.device.type == "xpu"
+        and not self.is_complex()
+        and not tensor.is_complex()
+    ):
+        if self.dim() != 1 or tensor.dim() != 1:
+            raise RuntimeError(f"1D tensors expected, but got {self.dim()}D and {tensor.dim()}D tensors")
+        if self.numel() != tensor.numel():
+            raise RuntimeError(
+                f"inconsistent tensor size, expected tensor [{self.numel()}] and src [{tensor.numel()}] "
+                "to have the same number of elements"
+            )
+        if self.dtype != tensor.dtype:
+            raise RuntimeError(f"expected both vectors to have same dtype, but found {self.dtype} and {tensor.dtype}")
+        return torch.sum(self * tensor)
+    return _ORIG_TENSOR_DOT(self, tensor)
+
+
+def _xpu_safe_torch_dot(
+    input: torch.Tensor,
+    tensor: torch.Tensor,
+    *,
+    out: torch.Tensor | None = None,
+) -> torch.Tensor:
+    """Envoltorio nativo de ``torch.dot`` para tensores 1D en XPU sin fallback a CPU."""
+    if (
+        input.device.type == "xpu"
+        and tensor.device.type == "xpu"
+        and not input.is_complex()
+        and not tensor.is_complex()
+    ):
+        res = _xpu_safe_tensor_dot(input, tensor)
+        if out is not None:
+            return out.copy_(res)
+        return res
+    if out is not None:
+        return _ORIG_TORCH_DOT(input, tensor, out=out)
+    return _ORIG_TORCH_DOT(input, tensor)
+
 
 class DeviceManager:
     """Detector y gestor unificado de hardware y precisión numérica en PyTorch."""
+
+    @staticmethod
+    def patch_xpu_ops() -> bool:
+        """Parchea operadores faltantes en Intel XPU (``aten::dot``) usando kernels nativos XPU.
+
+        En PyTorch XPU (p. ej. 2.9+xpu), ``torch.optim.LBFGS`` llama repetidamente a
+        ``Tensor.dot()``, cuyo kernel ``aten::dot`` cae a CPU. Reemplazarlo por
+        ``torch.sum(a * b)`` mantiene el 100 % de las operaciones de L-BFGS en XPU
+        sin advertencias ni copias XPU<->CPU.
+        """
+        global _XPU_DOT_PATCHED
+        xpu_mod = getattr(torch, "xpu", None)
+        if xpu_mod is None or not xpu_mod.is_available():
+            return False
+        if not _XPU_DOT_PATCHED:
+            torch.Tensor.dot = _xpu_safe_tensor_dot  # type: ignore[method-assign]
+            torch.dot = _xpu_safe_torch_dot  # type: ignore[assignment]
+            _XPU_DOT_PATCHED = True
+        return True
 
     @staticmethod
     def available_backends() -> dict[str, dict[str, Any]]:
@@ -102,6 +168,8 @@ class DeviceManager:
         - ``"cpu"``, ``"cuda"``, ``"cuda:N"``, ``"rocm"``, ``"xpu"``, ``"xpu:N"``, ``"npu"``, ``"mps"``, ``"dml"``.
         """
         if isinstance(requested, torch.device):
+            if requested.type == "xpu":
+                cls.patch_xpu_ops()
             return requested
         req = str(requested).strip().lower()
         info = cls.available_backends()
@@ -114,6 +182,8 @@ class DeviceManager:
             if chosen == "dml":
                 import torch_directml  # type: ignore[import-not-found]
                 return torch_directml.device()
+            if chosen == "xpu":
+                cls.patch_xpu_ops()
             return torch.device(chosen)
 
         if req == "gpu":
@@ -124,6 +194,8 @@ class DeviceManager:
             if chosen == "dml":
                 import torch_directml  # type: ignore[import-not-found]
                 return torch_directml.device()
+            if chosen == "xpu":
+                cls.patch_xpu_ops()
             return torch.device(chosen)
 
         if req == "cpu":
@@ -137,6 +209,7 @@ class DeviceManager:
         if req == "xpu" or req.startswith("xpu:"):
             if not info["xpu"]["available"]:
                 raise RuntimeError(f"Se solicitó {requested!r}, pero Intel XPU no está disponible.")
+            cls.patch_xpu_ops()
             return torch.device(req)
 
         if req == "npu" or req.startswith("npu:"):
@@ -279,3 +352,7 @@ class DeviceManager:
             "recommended_device": str(cls.resolve("auto")),
             "cpu_threads": int(torch.get_num_threads()),
         }
+
+
+# Activa automáticamente el parche nativo XPU al importar el módulo si XPU está disponible.
+DeviceManager.patch_xpu_ops()
