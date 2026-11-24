@@ -1,5 +1,12 @@
 # `PINN_V4` (`pinn-thermal`) — Plataforma Modular de PINNs para Conducción Térmica 2D
 
+Tema: **DISEÑO Y EVALUACIÓN DE UNA RED NEURONAL INFORMADA POR FÍSICA PARA ESTIMAR LA TEMPERATURA Y LA AMPACIDAD DE CABLES ELÉCTRICOS ENTERRADOS EN ENTORNOS HETEROGÉNEOS.** 
+Tesistas: 
+* Luis Enrique Koc Góngora;
+* Herbert Antonio Meléndez García.
+
+Programa Maestría en Inteligencia Artificial. Universidad Nacional de Ingeniería.
+
 Librería Python **autocontenida, instalable vía `pip` / PyPI**, construida sobre **PyTorch**, documentada íntegramente en español y diseñada bajo programación orientada a objetos (POO) por capas para modelar conducción térmica estacionaria en cables subterráneos y medios heterogéneos 2D.
 
 ---
