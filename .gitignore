@@ -1,0 +1,11 @@
+# Carpetas locales y metadatos de Git
+.git/
+
+# Cachés de Python y pytest
+__pycache__/
+**/__pycache__/
+.pytest_cache/
+
+# Entorno virtual y configuración local de VS Code
+.venv/
+.vscode/

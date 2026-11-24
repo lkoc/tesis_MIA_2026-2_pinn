@@ -50,6 +50,7 @@ tests/test_curated_cases.py
 tests/test_device_and_parallel.py
 tests/test_expressions_and_fields.py
 tests/test_fem_wsl.py
+tests/test_frontend_app.py
 tests/test_models_registry.py
 tests/test_problem_and_shapes.py
 tests/test_training_and_audit.py
