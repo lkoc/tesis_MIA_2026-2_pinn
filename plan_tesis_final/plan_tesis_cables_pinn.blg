@@ -1,0 +1,17 @@
+[0] Config.pm:328> INFO - This is Biber 2.21
+[0] Config.pm:331> INFO - Logfile is 'plan_tesis_cables_pinn.blg'
+[113] biber-MSWIN64:342> INFO - === 
+[156] Biber.pm:421> INFO - Reading 'plan_tesis_cables_pinn.bcf'
+[394] Biber.pm:1002> INFO - Found 50 citekeys in bib section 0
+[415] Biber.pm:4487> INFO - Processing section 0
+[426] Biber.pm:4678> INFO - Looking for bibtex file 'referencias_plan_tesis.bib' for section 0
+[489] bibtex.pm:1713> INFO - LaTeX decoding ...
+[535] bibtex.pm:1519> INFO - Found BibTeX data source 'referencias_plan_tesis.bib'
+[806] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[806] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'variable = shifted' with 'variable = non-ignorable'
+[807] Biber.pm:4307> INFO - Sorting list 'nyt/apasortcite//global/global/global' of type 'entry' with template 'nyt' and locale 'es-ES'
+[892] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[893] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'variable = shifted' with 'variable = non-ignorable'
+[893] Biber.pm:4307> INFO - Sorting list 'nyt/global//global/global/global' of type 'entry' with template 'nyt' and locale 'es-ES'
+[948] bbl.pm:676> INFO - Writing 'plan_tesis_cables_pinn.bbl' with encoding 'UTF-8'
+[1004] bbl.pm:779> INFO - Output to plan_tesis_cables_pinn.bbl

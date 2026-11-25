@@ -108,7 +108,12 @@ def test_parallel_runner_executes_spawn_pool(tmp_path: Path, mms_problem: Therma
         ),
     ]
     completed: list[str] = []
-    results = ParallelRunner(max_workers=2).run(tasks, on_complete=lambda r: completed.append(r["name"]))
+    results = ParallelRunner(max_workers=2).run(
+        tasks,
+        on_complete=lambda r: completed.append(r["name"]),
+        show_progress=True,
+        progress_interval=0.25,
+    )
     assert len(results) == 2
     assert set(completed) == {"t_m1", "t_cuspr"}
     assert all(r["status"] == "completed" for r in results)
@@ -116,6 +121,14 @@ def test_parallel_runner_executes_spawn_pool(tmp_path: Path, mms_problem: Therma
     assert all("best_loss" in r for r in results)
     assert (tmp_path / "out_m1" / "model.pt").is_file()
     assert (tmp_path / "out_cuspr" / "model.pt").is_file()
+
+    import json
+
+    prog = json.loads((tmp_path / "out_m1" / "progress.json").read_text(encoding="utf-8"))
+    assert prog["status"] == "completed"
+    assert prog["total_steps"] == 15
+    assert prog["completed_steps"] == 15
+    assert prog["pct"] == 100.0
 
 
 def test_parallel_runner_executes_adaptive_tasks(tmp_path: Path, mms_problem: ThermalProblem2D) -> None:

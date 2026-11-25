@@ -32,6 +32,7 @@ Los cuadernos de entrenamiento (`01` a `04`) incorporan las banderas `USE_PARALL
 
 - **`USE_PARALLEL = True` (predeterminado)**: fija automáticamente `DEVICE = "cpu"` y ejecuta las corridas en paralelo con `ParallelRunner` (contexto `spawn`, reparto automático de hilos CPU por proceso).
 - **`USE_PARALLEL = False`**: fija `DEVICE = "auto"` y ejecuta secuencialmente en el acelerador detectado (p. ej. Intel XPU con parche nativo de `aten::dot` en `DeviceManager.patch_xpu_ops()`, sin fallbacks a CPU).
+- **Avance en vivo (`show_progress = True`)**: `ParallelRunner` muestra en los cuadernos un panel HTML actualizado en sitio (o resumen en consola) con barra global por pasos ejecutados, porcentaje, fase (`adam` / `lbfgs`), `loss` actual, tiempo transcurrido y ETA estimada leyendo `progress.json` de cada trabajador.
 
 ## Criterios Oficiales de Calificación
 

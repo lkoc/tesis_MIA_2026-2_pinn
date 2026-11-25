@@ -1,0 +1,15 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {formula}{\numberline {3.1}{\ignorespaces Ley de Fourier para conducción en un medio heterogéneo. Fuente: Elaboración propia.}}{25}{formula.caption.16}%
+\contentsline {formula}{\numberline {3.2}{\ignorespaces Ecuación de conducción de calor 2D transitoria. Fuente: Elaboración propia.}}{26}{formula.caption.18}%
+\contentsline {formula}{\numberline {3.3}{\ignorespaces Ecuación de conducción de calor 2D estacionaria en notación vectorial. Fuente: Elaboración propia.}}{27}{formula.caption.19}%
+\contentsline {formula}{\numberline {3.4}{\ignorespaces Residuo físico de una PINN para conducción de calor 2D estacionaria. Fuente: Elaboración propia.}}{32}{formula.caption.25}%
+\addvspace {10\p@ }
+\contentsline {formula}{\numberline {4.1}{\ignorespaces Ecuación de conducción de calor 2D estacionaria. Fuente: Elaboración propia.}}{42}{formula.caption.30}%
+\contentsline {formula}{\numberline {4.2}{\ignorespaces Condiciones de interfaz entre dos materiales. Fuente: Elaboración propia.}}{42}{formula.caption.31}%
+\contentsline {formula}{\numberline {4.3}{\ignorespaces Función de pérdida lógica del artefacto PINN. Fuente: Elaboración propia.}}{43}{formula.caption.32}%
+\contentsline {formula}{\numberline {4.4}{\ignorespaces Condición para calcular la ampacidad. Fuente: Elaboración propia.}}{43}{formula.caption.33}%
+\contentsline {formula}{\numberline {4.5}{\ignorespaces Resistencia efectiva y fuente Joule uniforme por conductor. Fuente: Elaboración propia a partir de \blx@tocontentsinit {0}\BLTXAPAifInParensTF {\nptextcite }{\textcitei }{iec60287}.}}{44}{formula.caption.34}%
+\contentsline {formula}{\numberline {4.6}{\ignorespaces Métricas de evaluación térmica, de ampacidad y de balance energético. Fuente: Elaboración propia.}}{53}{formula.caption.37}%
+\addvspace {10\p@ }

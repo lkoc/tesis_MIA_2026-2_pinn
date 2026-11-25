@@ -280,7 +280,7 @@ class _LiveProgressDisplay:
                 f"<td style='padding:3px 8px;font-family:monospace;'>{html.escape(it['phase'])}</td>"
                 f"<td style='padding:3px 8px;text-align:right;font-family:monospace;'>{it['completed_steps']:,} / {it['total_steps']:,}</td>"
                 f"<td style='padding:3px 8px;min-width:120px;'>"
-                f"<div style='background:#e9ecef;border-radius:4px;height:10px;overflow:hidden;'>"
+                f"<div style='background:rgba(128,128,128,0.22);border-radius:4px;height:10px;overflow:hidden;'>"
                 f"<div style='width:{pct_v:.1f}%;background:{badge_bg};height:100%;'></div></div>"
                 f"</td>"
                 f"<td style='padding:3px 8px;text-align:right;font-family:monospace;'>{pct_v:5.1f}%</td>"
@@ -290,24 +290,24 @@ class _LiveProgressDisplay:
             )
         omitted = len(self.items) - len(visible)
         extra_note = (
-            f"<div style='font-size:11px;color:#666;margin-top:4px;'>… y {omitted} tarea(s) adicional(es) en cola/completadas.</div>"
+            f"<div style='font-size:11px;opacity:0.75;margin-top:4px;'>… y {omitted} tarea(s) adicional(es) en cola/completadas.</div>"
             if omitted > 0
             else ""
         )
         fail_str = f" | Fallidas: <b>{s['n_fail']}</b>" if s["n_fail"] else ""
         return (
-            "<div style='border:1px solid #d0d7de;border-radius:8px;padding:10px 12px;margin:4px 0;font-size:12px;'>"
-            f"<div style='display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;'>"
+            "<div style='border:1px solid rgba(128,128,128,0.35);border-radius:8px;padding:10px 12px;margin:4px 0;font-size:12px;'>"
+            f"<div style='display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:6px;'>"
             f"<b>{html.escape(self.title)}</b>"
             f"<span style='font-family:monospace;'><b>{s['pct']:5.1f}%</b> | Pasos: {s['done_steps']:,} / {s['total_steps']:,} "
             f"| Completadas: <b>{s['n_done']}/{s['n_total']}</b>{fail_str} | En curso: {s['n_run']} (workers={self.workers}) "
             f"| Tiempo: {_format_duration(s['elapsed'])} | ETA: {_format_duration(s['eta'])}</span>"
             "</div>"
-            "<div style='background:#e9ecef;border-radius:6px;height:14px;overflow:hidden;margin-bottom:8px;'>"
+            "<div style='background:rgba(128,128,128,0.22);border-radius:6px;height:14px;overflow:hidden;margin-bottom:8px;'>"
             f"<div style='width:{s['pct']:.1f}%;background:#1f7a4c;height:100%;transition:width 0.25s;'></div>"
             "</div>"
             "<table style='width:100%;border-collapse:collapse;font-size:12px;'>"
-            "<thead><tr style='border-bottom:1px solid #d0d7de;text-align:left;'>"
+            "<thead><tr style='border-bottom:1px solid rgba(128,128,128,0.35);text-align:left;'>"
             "<th style='padding:3px 8px;'>Tarea</th><th style='padding:3px 8px;'>Estado</th>"
             "<th style='padding:3px 8px;'>Fase</th><th style='padding:3px 8px;text-align:right;'>Pasos</th>"
             "<th style='padding:3px 8px;'>Progreso</th><th style='padding:3px 8px;text-align:right;'>%</th>"
