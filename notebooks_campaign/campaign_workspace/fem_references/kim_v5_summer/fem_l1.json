@@ -1,0 +1,16 @@
+{
+  "Tmax_C": 50.64171718528086,
+  "Tmin_C": 15.2,
+  "balance_pct": 1.4639942191009365,
+  "boundary_flux_W": 96.78545711079823,
+  "case": "kim_v5_summer",
+  "cells": 1899025,
+  "dofs": 3798144,
+  "elapsed_s": 149.127123159,
+  "kind": "fem",
+  "level": 1,
+  "method": "FEniCSx-Gmsh-P2-L1",
+  "npz": "fem_l1.npz",
+  "physics_sha256": "9128fd98cd02ea063307954877c074b727844236301a3b21e105454f42b0416c",
+  "power_W": 95.36852361376573
+}

@@ -1,0 +1,229 @@
+{
+  "compatibility_profile": {
+    "activation": "tanh",
+    "architecture": "FBPINN",
+    "depth": 2,
+    "domain_shape": "rectangle",
+    "exact_boundary": false,
+    "exact_constraints": false,
+    "formulation": "strong",
+    "input_normalization": "region_coordinates",
+    "mixed": false,
+    "model_kind": "fbpinn",
+    "partition": "region",
+    "region_kinds": {
+      "domain": "soil"
+    },
+    "region_names": [
+      "domain"
+    ],
+    "subnets": {
+      "fbpinn:domain:tile_0_0": {
+        "in_features": 2,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            2,
+            24
+          ],
+          [
+            24,
+            24
+          ],
+          [
+            24,
+            1
+          ]
+        ]
+      },
+      "fbpinn:domain:tile_0_1": {
+        "in_features": 2,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            2,
+            24
+          ],
+          [
+            24,
+            24
+          ],
+          [
+            24,
+            1
+          ]
+        ]
+      },
+      "fbpinn:domain:tile_1_0": {
+        "in_features": 2,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            2,
+            24
+          ],
+          [
+            24,
+            24
+          ],
+          [
+            24,
+            1
+          ]
+        ]
+      },
+      "fbpinn:domain:tile_1_1": {
+        "in_features": 2,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            2,
+            24
+          ],
+          [
+            24,
+            24
+          ],
+          [
+            24,
+            1
+          ]
+        ]
+      }
+    },
+    "width": 24
+  },
+  "config": {
+    "accuracy_stop": null,
+    "activation": "tanh",
+    "adam_steps": 1200,
+    "architecture": "FBPINN",
+    "attention": null,
+    "base_architecture": "FBPINN",
+    "chain_from": null,
+    "chain_mode": "residual",
+    "depth": 2,
+    "device": "cpu",
+    "dtype": "float32",
+    "exact_energy": false,
+    "focus_criterion": "residual",
+    "focus_surfaces": false,
+    "focused": true,
+    "freeze_chain_source": true,
+    "full_audit": true,
+    "init_seed": 11,
+    "initializer": null,
+    "initializer_settings": {},
+    "input_normalization": "region_coordinates",
+    "lbfgs_iterations": 20,
+    "lbfgs_steps": 10,
+    "log_every": 100,
+    "lr": 0.002,
+    "point_schedule_stages": 0,
+    "point_schedule_start": 0.5,
+    "points": {
+      "n_boundary": 128,
+      "n_face": 128,
+      "n_interior": 512,
+      "n_layer": 256
+    },
+    "resample_every": 100,
+    "resume_from": null,
+    "sampling": "mixed",
+    "sampling_seed": 101,
+    "soil_envelope_gain": 1.0,
+    "study": null,
+    "trace_parameterization": "standard",
+    "transfer_mode": "auto",
+    "transfer_steps": 150,
+    "validation_every": 250,
+    "warm_start_from": null,
+    "weights": {
+      "constitutive": 1.0,
+      "dirichlet": 100.0,
+      "energy": 100.0,
+      "interface_temperature": 100.0,
+      "neumann": 10.0,
+      "pde": 1.0,
+      "robin": 10.0
+    },
+    "width": 24
+  },
+  "flux_convention": "q = -k * grad(T); normal exterior",
+  "format": "pinn-v4-artifact-1",
+  "physics_sha256": "a26890c5f6f2ea7a7b243eabd8cc51c4f81e9715b9fb008efcc3573181d3d0f0",
+  "problem": {
+    "boundaries": {
+      "bottom": {
+        "type": "dirichlet",
+        "value": {
+          "expression": "20 + 30*sin(pi*x)*sin(pi*y)"
+        }
+      },
+      "left": {
+        "type": "dirichlet",
+        "value": {
+          "expression": "20 + 30*sin(pi*x)*sin(pi*y)"
+        }
+      },
+      "right": {
+        "type": "dirichlet",
+        "value": {
+          "expression": "20 + 30*sin(pi*x)*sin(pi*y)"
+        }
+      },
+      "top": {
+        "type": "dirichlet",
+        "value": {
+          "expression": "20 + 30*sin(pi*x)*sin(pi*y)"
+        }
+      }
+    },
+    "domain": {
+      "bounds": [
+        0.0,
+        1.0,
+        0.0,
+        1.0
+      ],
+      "shape": "rectangle"
+    },
+    "id": "mms_sine",
+    "reference": {
+      "exact": {
+        "expression": "20 + 30*sin(pi*x)*sin(pi*y)"
+      }
+    },
+    "regions": [
+      {
+        "conductivity": 1.0,
+        "id": "domain",
+        "priority": 0,
+        "shape": {
+          "bounds": [
+            0.0,
+            1.0,
+            0.0,
+            1.0
+          ],
+          "type": "rectangle"
+        },
+        "source": {
+          "expression": "60*pi**2*sin(pi*x)*sin(pi*y)"
+        }
+      }
+    ],
+    "schema": "pinn-v4-problem-1",
+    "temperature_scale_K": 30.0,
+    "title": "Manufactured sine field on a unit square"
+  },
+  "runtime": {
+    "torch": "2.9.0+xpu"
+  },
+  "schema_version": 4,
+  "seeds": {
+    "init": 11,
+    "sampling": 101,
+    "validation": 1000104
+  }
+}

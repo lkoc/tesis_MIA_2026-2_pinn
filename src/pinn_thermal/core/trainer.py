@@ -532,6 +532,23 @@ class PINNTrainer:
         _save_collocation(out / "collocation.npz", objective)
         monitor = AccuracyStop(cfg.accuracy_stop, reference, reference_label) if cfg.accuracy_stop else None
 
+        total_planned_steps = max(int(cfg.adam_steps) + (int(cfg.lbfgs_steps) if cfg.attention is None else 0), 1)
+        replace_json_atomic(
+            out / "progress.json",
+            {
+                "status": "running",
+                "phase": "init",
+                "step": 0,
+                "completed_steps": 0,
+                "adam_steps": int(cfg.adam_steps),
+                "lbfgs_steps": int(cfg.lbfgs_steps) if cfg.attention is None else 0,
+                "total_steps": total_planned_steps,
+                "pct": 0.0,
+                "loss_total": None,
+                "elapsed_s": 0.0,
+            },
+        )
+
         best_val = {"loss": float("inf"), "step": None}
         last_val_step: int | None = None
 
@@ -544,13 +561,21 @@ class PINNTrainer:
                 last_val_step = int(row["step"])
                 if np.isfinite(v_loss) and v_loss < best_val["loss"]:
                     best_val.update(loss=v_loss, step=int(row["step"]))
+            completed_steps = min(int(row["step"]) + 1, total_planned_steps)
+            pct = 100.0 * completed_steps / total_planned_steps
             replace_json_atomic(
                 out / "progress.json",
                 {
                     "status": "running",
                     "phase": row["phase"],
                     "step": int(row["step"]),
+                    "completed_steps": completed_steps,
+                    "adam_steps": int(cfg.adam_steps),
+                    "lbfgs_steps": int(cfg.lbfgs_steps) if cfg.attention is None else 0,
+                    "total_steps": total_planned_steps,
+                    "pct": round(pct, 2),
                     "loss_total": float(row["total"]),
+                    "elapsed_s": round(time.perf_counter() - started, 2),
                     "best_validation": best_val,
                 },
             )
@@ -635,5 +660,21 @@ class PINNTrainer:
             ),
             with_sources=False,
         )
-        replace_json_atomic(out / "progress.json", {"status": status, "step": int(history[-1]["step"]) if history else -1, "loss_total": total_loss})
+        final_step = int(history[-1]["step"]) if history else -1
+        final_completed = total_planned_steps if status == "completed" else max(final_step + 1, 0)
+        replace_json_atomic(
+            out / "progress.json",
+            {
+                "status": status,
+                "phase": "done" if status == "completed" else "failed",
+                "step": final_step,
+                "completed_steps": final_completed,
+                "adam_steps": int(cfg.adam_steps),
+                "lbfgs_steps": int(cfg.lbfgs_steps) if cfg.attention is None else 0,
+                "total_steps": total_planned_steps,
+                "pct": 100.0 if status == "completed" else round(100.0 * final_completed / total_planned_steps, 2),
+                "loss_total": total_loss if np.isfinite(total_loss) else None,
+                "elapsed_s": round(time.perf_counter() - started, 2),
+            },
+        )
         return artifact

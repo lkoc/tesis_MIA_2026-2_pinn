@@ -62,7 +62,7 @@
   "config": {
     "accuracy_stop": null,
     "activation": "tanh",
-    "adam_steps": 250,
+    "adam_steps": 1200,
     "architecture": "M2",
     "attention": null,
     "base_architecture": "M2",

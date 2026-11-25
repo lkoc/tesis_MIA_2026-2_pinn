@@ -7,6 +7,7 @@ from __future__ import annotations
 
 from datetime import datetime, timezone
 import hashlib
+import importlib.metadata
 import json
 import os
 from pathlib import Path
@@ -84,13 +85,16 @@ def replace_json_atomic(path: str | Path, payload: Any) -> Path:
 
 
 def host_versions() -> dict[str, Any]:
-    """Recopila versiones relevantes de Python y librerías científicas instaladas."""
+    """Recopila versiones relevantes de Python y librerías científicas instaladas sin importar módulos pesados."""
     versions: dict[str, Any] = {"python": sys.version.split()[0], "platform": platform.platform()}
     for name in ("numpy", "scipy", "torch", "plotly", "matplotlib", "deepxde"):
+        loaded = sys.modules.get(name)
+        if loaded is not None:
+            versions[name] = getattr(loaded, "__version__", "unknown")
+            continue
         try:
-            mod = __import__(name)
-            versions[name] = getattr(mod, "__version__", "unknown")
-        except ImportError:
+            versions[name] = importlib.metadata.version(name)
+        except importlib.metadata.PackageNotFoundError:
             versions[name] = None
     return versions
 

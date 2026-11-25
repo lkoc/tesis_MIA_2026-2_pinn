@@ -76,10 +76,12 @@ class DeviceManager:
         ``Tensor.dot()``, cuyo kernel ``aten::dot`` cae a CPU. Reemplazarlo por
         ``torch.sum(a * b)`` mantiene el 100 % de las operaciones de L-BFGS en XPU
         sin advertencias ni copias XPU<->CPU.
+
+        No invoca ``torch.xpu.is_available()`` para evitar inicializar el driver
+        SYCL/Level-Zero en procesos trabajadores dedicados únicamente a CPU.
         """
         global _XPU_DOT_PATCHED
-        xpu_mod = getattr(torch, "xpu", None)
-        if xpu_mod is None or not xpu_mod.is_available():
+        if getattr(torch, "xpu", None) is None:
             return False
         if not _XPU_DOT_PATCHED:
             torch.Tensor.dot = _xpu_safe_tensor_dot  # type: ignore[method-assign]
@@ -172,6 +174,8 @@ class DeviceManager:
                 cls.patch_xpu_ops()
             return requested
         req = str(requested).strip().lower()
+        if req == "cpu":
+            return torch.device("cpu")
         info = cls.available_backends()
 
         if req == "auto":
@@ -197,9 +201,6 @@ class DeviceManager:
             if chosen == "xpu":
                 cls.patch_xpu_ops()
             return torch.device(chosen)
-
-        if req == "cpu":
-            return torch.device("cpu")
 
         if req in ("rocm", "cuda") or req.startswith("cuda:"):
             if not info["cuda"]["available"]:
@@ -294,9 +295,9 @@ class DeviceManager:
         random.seed(s)
         np.random.seed(s % (2 ** 32))
         torch.manual_seed(s)
-        if torch.cuda.is_available():
+        if (device is None or device.type == "cuda") and torch.cuda.is_available():
             torch.cuda.manual_seed_all(s)
-        if hasattr(torch, "xpu") and torch.xpu.is_available():
+        if (device is None or device.type == "xpu") and hasattr(torch, "xpu") and torch.xpu.is_available():
             torch.xpu.manual_seed_all(s)
         if device is not None and device.type == "npu" and hasattr(torch, "npu"):
             torch.npu.manual_seed_all(s)
@@ -316,9 +317,9 @@ class DeviceManager:
                 np_state[4],
             ),
         }
-        if torch.cuda.is_available():
+        if (device is None or device.type == "cuda") and torch.cuda.is_available():
             state["cuda"] = [t.cpu() for t in torch.cuda.get_rng_state_all()]
-        if hasattr(torch, "xpu") and torch.xpu.is_available():
+        if (device is None or device.type == "xpu") and hasattr(torch, "xpu") and torch.xpu.is_available():
             state["xpu"] = [t.cpu() for t in torch.xpu.get_rng_state_all()]
         return state
 

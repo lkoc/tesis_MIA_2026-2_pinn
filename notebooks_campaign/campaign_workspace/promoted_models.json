@@ -12,47 +12,75 @@
   ],
   "ranking": [
     {
+      "architecture": "FBPINN",
+      "max_balance_pct": 105.35903926154477,
+      "mean_nrmse_pct": 36.89833736885815,
+      "mean_score": 1229.8211424588496,
+      "total_elapsed_s": 1055.9082266000332
+    },
+    {
       "architecture": "M1_EXACT",
-      "max_balance_pct": 0.8202970589856885,
-      "mean_nrmse_pct": 13.552805647876808,
-      "mean_score": 1238.7794418729184,
-      "total_elapsed_s": 138.59963700012304
+      "max_balance_pct": 0.7305466506799838,
+      "mean_nrmse_pct": 13.541147202164252,
+      "mean_score": 1236.5349440548237,
+      "total_elapsed_s": 609.8289908999577
+    },
+    {
+      "architecture": "DCSNN",
+      "max_balance_pct": 5.125516598049545,
+      "mean_nrmse_pct": 13.727097246624721,
+      "mean_score": 1243.750521535702,
+      "total_elapsed_s": 356.51818710006773
     },
     {
       "architecture": "M1",
-      "max_balance_pct": 5.081450851136057,
-      "mean_nrmse_pct": 14.317780032210614,
-      "mean_score": 1246.5264342367927,
-      "total_elapsed_s": 96.5882918999996
+      "max_balance_pct": 5.429682549858911,
+      "mean_nrmse_pct": 13.767708309667047,
+      "mean_score": 1245.4817123747373,
+      "total_elapsed_s": 398.6752662000945
     },
     {
       "architecture": "M0R",
-      "max_balance_pct": 103.78705293013881,
-      "mean_nrmse_pct": 13.934955809405208,
-      "mean_score": 1341.5266337879664,
-      "total_elapsed_s": 116.32009059994016
-    },
-    {
-      "architecture": "CUSPR",
-      "max_balance_pct": 122.75836398766847,
-      "mean_nrmse_pct": 14.10315770839921,
-      "mean_score": 1376.6214398499192,
-      "total_elapsed_s": 129.667719900026
+      "max_balance_pct": 50.14716508929636,
+      "mean_nrmse_pct": 13.609093955238082,
+      "mean_score": 1282.285559841554,
+      "total_elapsed_s": 451.7231289000483
     },
     {
       "architecture": "M2",
-      "max_balance_pct": 52.32758904603789,
-      "mean_nrmse_pct": 25.965191280054313,
-      "mean_score": 1464.458896103861,
-      "total_elapsed_s": 96.7080025000032
+      "max_balance_pct": 4.763002990146009,
+      "mean_nrmse_pct": 16.273692328792112,
+      "mean_score": 1303.9652148068517,
+      "total_elapsed_s": 353.37880619987845
+    },
+    {
+      "architecture": "CUSPR",
+      "max_balance_pct": 92.04812424637733,
+      "mean_nrmse_pct": 13.712137905066083,
+      "mean_score": 1333.5304841961402,
+      "total_elapsed_s": 508.7691228999756
+    },
+    {
+      "architecture": "CUSP",
+      "max_balance_pct": 452.59590752104594,
+      "mean_nrmse_pct": 13.887857622615439,
+      "mean_score": 1703.5826170867317,
+      "total_elapsed_s": 431.4991974000586
+    },
+    {
+      "architecture": "CUSP_EXACT",
+      "max_balance_pct": 1855.8020255536096,
+      "mean_nrmse_pct": 12.84426575361372,
+      "mean_score": 3029.8258516223045,
+      "total_elapsed_s": 541.6339912001276
     },
     {
       "architecture": "M0",
-      "max_balance_pct": 7185.691650149178,
-      "mean_nrmse_pct": 13.337025204104805,
-      "mean_score": 8393.111584094728,
-      "total_elapsed_s": 110.95491229998879
+      "max_balance_pct": 5888.31607210393,
+      "mean_nrmse_pct": 13.567064640215097,
+      "mean_score": 7118.545297135978,
+      "total_elapsed_s": 489.2498024001252
     }
   ],
-  "run_mode": "demo_fast"
+  "run_mode": "full_campaign"
 }

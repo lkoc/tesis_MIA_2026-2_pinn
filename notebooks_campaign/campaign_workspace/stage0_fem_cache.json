@@ -1,14 +1,176 @@
 {
+  "annulus": {
+    "Tmax_C": 49.566962076801346,
+    "balance_pct": 0.6958633644464478,
+    "dofs": 13494,
+    "status": "ready"
+  },
+  "aras_flat": {
+    "Tmax_C": 50.01569757774422,
+    "balance_pct": 0.002874191091163344,
+    "dofs": 217886,
+    "status": "ready"
+  },
+  "aras_single": {
+    "Tmax_C": 63.03720495623982,
+    "balance_pct": 0.0053086262925741,
+    "dofs": 73592,
+    "status": "ready"
+  },
   "cable_disk": {
     "Tmax_C": 138.37152183590044,
     "balance_pct": 0.09026750297177907,
     "dofs": 7825,
     "status": "ready"
   },
+  "coaxial_bc_dirichlet": {
+    "Tmax_C": 32.144027700852625,
+    "balance_pct": 0.028216766533927375,
+    "dofs": 125285,
+    "status": "ready"
+  },
+  "coaxial_robin": {
+    "Tmax_C": 33.03012314664075,
+    "balance_pct": 0.014956104649528157,
+    "dofs": 125285,
+    "status": "ready"
+  },
+  "kim_2024_thermal_original": {
+    "Tmax_C": 56.45434149526693,
+    "balance_pct": 0.22938887751586892,
+    "dofs": 468564,
+    "status": "ready"
+  },
+  "kim_layered": {
+    "Tmax_C": 47.94144900292389,
+    "balance_pct": 0.0012851448108058775,
+    "dofs": 3798144,
+    "status": "ready"
+  },
+  "kim_pac": {
+    "Tmax_C": 47.828327400333905,
+    "balance_pct": 0.013781478494519349,
+    "dofs": 3798144,
+    "status": "ready"
+  },
+  "kim_sand": {
+    "Tmax_C": 49.756195336201614,
+    "balance_pct": 0.014621174040422269,
+    "dofs": 3798144,
+    "status": "ready"
+  },
+  "kim_v5_summer": {
+    "Tmax_C": 50.64171718528086,
+    "balance_pct": 1.4639942191009365,
+    "dofs": 3798144,
+    "status": "ready"
+  },
+  "mms_constant": {
+    "Tmax_C": 49.99612195427269,
+    "balance_pct": 0.05584105688682092,
+    "dofs": 3741,
+    "status": "ready"
+  },
+  "mms_high_contrast": {
+    "Tmax_C": 49.99612352773823,
+    "balance_pct": 0.530405903529303,
+    "dofs": 3741,
+    "status": "ready"
+  },
+  "mms_interface": {
+    "Tmax_C": 32.5,
+    "balance_pct": 0.9270847909416611,
+    "dofs": 3741,
+    "status": "ready"
+  },
+  "mms_layered_y": {
+    "Tmax_C": 32.5,
+    "balance_pct": 0.6072992776413729,
+    "dofs": 3741,
+    "status": "ready"
+  },
+  "mms_robin": {
+    "Tmax_C": 35.00002636607345,
+    "balance_pct": 0.00031947553647269943,
+    "dofs": 3741,
+    "status": "ready"
+  },
+  "mms_sine": {
+    "Tmax_C": 49.99612195427269,
+    "balance_pct": 0.05584105688682092,
+    "dofs": 3741,
+    "status": "ready"
+  },
+  "mms_smooth_2d": {
+    "Tmax_C": 49.99612307275219,
+    "balance_pct": 0.05550630830996641,
+    "dofs": 3741,
+    "status": "ready"
+  },
+  "mms_variable": {
+    "Tmax_C": 49.99612219207838,
+    "balance_pct": 0.05311262223974858,
+    "dofs": 3741,
+    "status": "ready"
+  },
+  "symmetric_full": {
+    "Tmax_C": 38.049256414703834,
+    "balance_pct": 1.2689758398926632,
+    "dofs": 150889,
+    "status": "ready"
+  },
+  "symmetric_half": {
+    "Tmax_C": 38.04926276288094,
+    "balance_pct": 1.098266836604709,
+    "dofs": 77882,
+    "status": "ready"
+  },
+  "tabla_heterogenea_demo": {
+    "Tmax_C": 62.79082480727765,
+    "balance_pct": 0.5013906087844141,
+    "dofs": 14891,
+    "status": "ready"
+  },
+  "two_layer_slab": {
+    "Tmax_C": 98.77032866832691,
+    "balance_pct": 0.02264162602352957,
+    "dofs": 4458,
+    "status": "ready"
+  },
+  "xlpe_backfill": {
+    "Tmax_C": 33.52382198246788,
+    "balance_pct": 0.12437166967013,
+    "dofs": 76085,
+    "status": "ready"
+  },
   "xlpe_discrete_layers": {
     "Tmax_C": 37.37297827822672,
     "balance_pct": 0.15738913209880656,
     "dofs": 76163,
+    "status": "ready"
+  },
+  "xlpe_dry_far": {
+    "Tmax_C": 36.89065003782512,
+    "balance_pct": 0.11740882116571813,
+    "dofs": 76085,
+    "status": "ready"
+  },
+  "xlpe_dry_large": {
+    "Tmax_C": 44.856270751468124,
+    "balance_pct": 0.11694989579371771,
+    "dofs": 76085,
+    "status": "ready"
+  },
+  "xlpe_dry_near": {
+    "Tmax_C": 42.87158488931615,
+    "balance_pct": 0.11544673918039584,
+    "dofs": 76085,
+    "status": "ready"
+  },
+  "xlpe_single": {
+    "Tmax_C": 36.85444600516125,
+    "balance_pct": 0.11931259862865001,
+    "dofs": 76085,
     "status": "ready"
   }
 }

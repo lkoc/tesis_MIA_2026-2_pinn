@@ -1,0 +1,16 @@
+{
+  "Tmax_C": 44.856270751468124,
+  "Tmin_C": 20.0,
+  "balance_pct": 0.11694989579371771,
+  "boundary_flux_W": 14.044697996445237,
+  "case": "xlpe_dry_large",
+  "cells": 37994,
+  "dofs": 76085,
+  "elapsed_s": 2.5114620760000435,
+  "kind": "fem",
+  "level": 1,
+  "method": "FEniCSx-Gmsh-P2-L1",
+  "npz": "fem_l1.npz",
+  "physics_sha256": "90584b7b01eeed7321d74a700d0ad7483ac593b7a280b61fbb1a1ad529a62a8e",
+  "power_W": 14.06114248793228
+}
