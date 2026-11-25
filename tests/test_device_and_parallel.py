@@ -166,3 +166,102 @@ def test_parallel_runner_executes_adaptive_tasks(tmp_path: Path, mms_problem: Th
     assert len(results) == 2
     assert all(r["status"] == "completed" for r in results)
     assert all(len(r["stages"]) == 2 for r in results)
+
+
+def test_divergence_guard_rules() -> None:
+    from pinn_thermal.core.trainer import DivergenceGuard
+
+    # 1. NaN/Inf y max_loss inmediatos
+    g1 = DivergenceGuard({"max_loss": 1e6})
+    assert g1.check_step(3, "adam", float("nan")) is True
+    assert g1.reason == "non_finite_loss"
+
+    g2 = DivergenceGuard({"max_loss": 1e6})
+    assert g2.check_step(5, "adam", 2e6) is True
+    assert g2.reason == "loss_exceeded_max_loss"
+
+    # 2. Explosión relativa con paciencia (no dispara en un pico aislado tras resample)
+    g3 = DivergenceGuard({"warmup_steps": 10, "explosion_factor": 100.0, "patience_explosion": 3})
+    assert g3.check_adam_log(10, 1.0) is False
+    assert g3.check_adam_log(20, 200.0) is False
+    g3.notify_resample()
+    assert g3.check_adam_log(30, 50.0) is False  # resetea racha
+    assert g3.check_adam_log(40, 200.0) is False
+    assert g3.check_adam_log(50, 300.0) is False
+    assert g3.check_adam_log(60, 400.0) is True
+    assert g3.reason == "loss_explosion_vs_best"
+
+    # 3. Crecimiento sostenido
+    g4 = DivergenceGuard({"warmup_steps": 10, "growth_patience": 3, "min_growth_ratio": 1.05})
+    for step, loss_v in ((10, 1.0), (20, 1.2), (30, 1.4), (40, 1.6)):
+        res = g4.check_adam_log(step, loss_v)
+    assert res is True
+    assert g4.reason == "sustained_loss_growth"
+
+    # 4. Meseta temprana en L-BFGS
+    g5 = DivergenceGuard({"lbfgs_stagnation_checks": 3, "lbfgs_min_rel_improve": 1e-4})
+    assert g5.check_lbfgs_log(100, 1.0) is None
+    assert g5.check_lbfgs_log(101, 1.0) is None
+    assert g5.check_lbfgs_log(102, 1.0) is None
+    assert g5.check_lbfgs_log(103, 1.0) == "plateau"
+    assert g5.lbfgs_early_stop is not None and g5.lbfgs_early_stop["reason"] == "lbfgs_plateau"
+
+
+def test_trainer_and_parallel_runner_stop_on_divergence(tmp_path: Path, mms_problem: ThermalProblem2D) -> None:
+    import json
+    from pinn_thermal.core.trainer import PINNTrainer, TrainConfig
+
+    # Corrida intencionalmente inestable (lr=1e3) debe abortar muy antes de 300 pasos y saltar L-BFGS
+    cfg = TrainConfig(
+        adam_steps=300,
+        lbfgs_steps=20,
+        lr=1e3,
+        width=12,
+        depth=2,
+        log_every=10,
+        device="cpu",
+        dtype="float32",
+        full_audit=False,
+        divergence_stop={"max_loss": 1e6, "warmup_steps": 5, "growth_patience": 3},
+    )
+    art = PINNTrainer(cfg).train(mms_problem.doc, "M0", tmp_path / "div_direct", overwrite=True)
+    assert art.result["status"] == "diverged"
+    assert art.result["divergence_stop"]["triggered"] is True
+    assert art.result["divergence_stop"]["step"] < 300
+    assert art.result["training_elapsed_s"]["lbfgs"] == 0.0
+    prog = json.loads((tmp_path / "div_direct" / "progress.json").read_text(encoding="utf-8"))
+    assert prog["status"] == "diverged"
+
+    # ParallelRunner con una tarea normal y una divergente
+    tasks = [
+        RunTask(
+            name="ok_run",
+            problem_source=mms_problem.doc,
+            architecture="M1",
+            output_dir=tmp_path / "par_ok",
+            config_kwargs={"adam_steps": 15, "lbfgs_steps": 0, "width": 12, "depth": 2, "device": "cpu", "full_audit": False},
+            overwrite=True,
+        ),
+        RunTask(
+            name="div_run",
+            problem_source=mms_problem.doc,
+            architecture="M0",
+            output_dir=tmp_path / "par_div",
+            config_kwargs={
+                "adam_steps": 200,
+                "lbfgs_steps": 10,
+                "lr": 1e3,
+                "width": 12,
+                "depth": 2,
+                "log_every": 10,
+                "device": "cpu",
+                "full_audit": False,
+                "divergence_stop": {"max_loss": 1e6, "warmup_steps": 5},
+            },
+            overwrite=True,
+        ),
+    ]
+    results = ParallelRunner(max_workers=2).run(tasks, show_progress=True, progress_interval=0.2)
+    assert results[0]["status"] == "completed"
+    assert results[1]["status"] == "diverged"
+    assert results[1]["divergence_stop"]["triggered"] is True

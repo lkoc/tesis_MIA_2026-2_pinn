@@ -12,74 +12,74 @@
   ],
   "ranking": [
     {
-      "architecture": "FBPINN",
-      "max_balance_pct": 105.35903926154477,
-      "mean_nrmse_pct": 36.89833736885815,
-      "mean_score": 1229.8211424588496,
-      "total_elapsed_s": 1055.9082266000332
-    },
-    {
       "architecture": "M1_EXACT",
-      "max_balance_pct": 0.7305466506799838,
-      "mean_nrmse_pct": 13.541147202164252,
-      "mean_score": 1236.5349440548237,
-      "total_elapsed_s": 609.8289908999577
-    },
-    {
-      "architecture": "DCSNN",
-      "max_balance_pct": 5.125516598049545,
-      "mean_nrmse_pct": 13.727097246624721,
-      "mean_score": 1243.750521535702,
-      "total_elapsed_s": 356.51818710006773
-    },
-    {
-      "architecture": "M1",
-      "max_balance_pct": 5.429682549858911,
-      "mean_nrmse_pct": 13.767708309667047,
-      "mean_score": 1245.4817123747373,
-      "total_elapsed_s": 398.6752662000945
-    },
-    {
-      "architecture": "M0R",
-      "max_balance_pct": 50.14716508929636,
-      "mean_nrmse_pct": 13.609093955238082,
-      "mean_score": 1282.285559841554,
-      "total_elapsed_s": 451.7231289000483
+      "max_balance_pct": 0.7604407153209579,
+      "mean_nrmse_pct": 13.536216058560967,
+      "mean_score": 1237.632744622518,
+      "total_elapsed_s": 1084.733260299996
     },
     {
       "architecture": "M2",
-      "max_balance_pct": 4.763002990146009,
-      "mean_nrmse_pct": 16.273692328792112,
-      "mean_score": 1303.9652148068517,
-      "total_elapsed_s": 353.37880619987845
+      "max_balance_pct": 3.5298251380359673,
+      "mean_nrmse_pct": 13.989660398948537,
+      "mean_score": 1243.315621574441,
+      "total_elapsed_s": 808.6788565999959
+    },
+    {
+      "architecture": "DCSNN",
+      "max_balance_pct": 5.1607578866722825,
+      "mean_nrmse_pct": 13.723657229948719,
+      "mean_score": 1243.669608132032,
+      "total_elapsed_s": 730.7327690000093
+    },
+    {
+      "architecture": "M1",
+      "max_balance_pct": 5.192005557634911,
+      "mean_nrmse_pct": 13.74476056828566,
+      "mean_score": 1243.9483216565282,
+      "total_elapsed_s": 780.7666166999988
+    },
+    {
+      "architecture": "FBPINN",
+      "max_balance_pct": 111.42526344285575,
+      "mean_nrmse_pct": 38.0957606582149,
+      "mean_score": 1258.379710264089,
+      "total_elapsed_s": 1826.915742199999
+    },
+    {
+      "architecture": "M0R",
+      "max_balance_pct": 45.78297479791851,
+      "mean_nrmse_pct": 13.648175565092886,
+      "mean_score": 1280.7131186135023,
+      "total_elapsed_s": 792.6067547000057
     },
     {
       "architecture": "CUSPR",
-      "max_balance_pct": 92.04812424637733,
-      "mean_nrmse_pct": 13.712137905066083,
-      "mean_score": 1333.5304841961402,
-      "total_elapsed_s": 508.7691228999756
+      "max_balance_pct": 71.90633212101973,
+      "mean_nrmse_pct": 13.73111995695502,
+      "mean_score": 1314.3786989081048,
+      "total_elapsed_s": 860.5755031999943
     },
     {
       "architecture": "CUSP",
-      "max_balance_pct": 452.59590752104594,
-      "mean_nrmse_pct": 13.887857622615439,
-      "mean_score": 1703.5826170867317,
-      "total_elapsed_s": 431.4991974000586
+      "max_balance_pct": 382.6186192407575,
+      "mean_nrmse_pct": 13.85099418217495,
+      "mean_score": 1630.9732439712332,
+      "total_elapsed_s": 791.4583658999982
     },
     {
       "architecture": "CUSP_EXACT",
-      "max_balance_pct": 1855.8020255536096,
-      "mean_nrmse_pct": 12.84426575361372,
-      "mean_score": 3029.8258516223045,
-      "total_elapsed_s": 541.6339912001276
+      "max_balance_pct": 1871.9639709479552,
+      "mean_nrmse_pct": 12.835519106215584,
+      "mean_score": 3045.520210595215,
+      "total_elapsed_s": 1015.4257277999932
     },
     {
       "architecture": "M0",
-      "max_balance_pct": 5888.31607210393,
-      "mean_nrmse_pct": 13.567064640215097,
-      "mean_score": 7118.545297135978,
-      "total_elapsed_s": 489.2498024001252
+      "max_balance_pct": 7064.7272065126035,
+      "mean_nrmse_pct": 13.489878474168124,
+      "mean_score": 8287.512052310682,
+      "total_elapsed_s": 862.0732523999977
     }
   ],
   "run_mode": "full_campaign"

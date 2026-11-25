@@ -188,6 +188,15 @@ class _LiveProgressDisplay:
             item["completed_steps"] = item["total_steps"]
             item["pct"] = 100.0
             item["phase"] = "done"
+        elif status == "diverged":
+            div = res.get("divergence_stop") or {}
+            div_step = div.get("step")
+            if div_step is not None:
+                comp = min(max(int(div_step) + 1, item["completed_steps"]), item["total_steps"])
+                item["completed_steps"] = comp
+                item["pct"] = round(100.0 * comp / item["total_steps"], 2)
+            reason = div.get("reason")
+            item["phase"] = f"diverged:{reason}" if reason else "diverged"
         else:
             item["phase"] = "failed"
         if res.get("elapsed_s") is not None:
@@ -238,14 +247,15 @@ class _LiveProgressDisplay:
 
     def _summary(self) -> dict[str, Any]:
         total_steps = sum(it["total_steps"] for it in self.items) or 1
-        done_steps = sum(it["completed_steps"] for it in self.items)
+        done_steps = sum(it["total_steps"] if it["done"] else it["completed_steps"] for it in self.items)
         pct = min(100.0, 100.0 * done_steps / total_steps)
         elapsed = time.perf_counter() - self.started_mono
         eta = (elapsed * (100.0 - pct) / pct) if 0.5 <= pct < 100.0 else (0.0 if pct >= 100.0 else None)
         n_done = sum(1 for it in self.items if it["done"] and it["status"] == "completed")
-        n_fail = sum(1 for it in self.items if it["done"] and it["status"] != "completed")
+        n_div = sum(1 for it in self.items if it["done"] and it["status"] == "diverged")
+        n_fail = sum(1 for it in self.items if it["done"] and it["status"] not in ("completed", "diverged"))
         n_run = sum(1 for it in self.items if not it["done"] and it["status"] == "running")
-        n_pend = len(self.items) - n_done - n_fail - n_run
+        n_pend = len(self.items) - n_done - n_div - n_fail - n_run
         return {
             "total_steps": total_steps,
             "done_steps": done_steps,
@@ -254,6 +264,7 @@ class _LiveProgressDisplay:
             "eta": eta,
             "n_total": len(self.items),
             "n_done": n_done,
+            "n_div": n_div,
             "n_fail": n_fail,
             "n_run": n_run,
             "n_pend": n_pend,
@@ -269,7 +280,12 @@ class _LiveProgressDisplay:
         rows_html = []
         for it in visible:
             st = it["status"]
-            badge_bg = {"completed": "#1f7a4c", "running": "#1d6fa5", "failed": "#b9382c"}.get(st, "#6c757d")
+            badge_bg = {
+                "completed": "#1f7a4c",
+                "running": "#1d6fa5",
+                "diverged": "#c2410c",
+                "failed": "#b9382c",
+            }.get(st, "#6c757d")
             loss_s = f"{it['loss']:.2e}" if it["loss"] is not None else "-"
             el_s = f"{it['elapsed_s']:.1f}s" if it["elapsed_s"] else "-"
             pct_v = max(0.0, min(100.0, float(it["pct"])))
@@ -294,13 +310,14 @@ class _LiveProgressDisplay:
             if omitted > 0
             else ""
         )
+        div_str = f" | Divergidas: <b>{s['n_div']}</b>" if s["n_div"] else ""
         fail_str = f" | Fallidas: <b>{s['n_fail']}</b>" if s["n_fail"] else ""
         return (
             "<div style='border:1px solid rgba(128,128,128,0.35);border-radius:8px;padding:10px 12px;margin:4px 0;font-size:12px;'>"
             f"<div style='display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:6px;'>"
             f"<b>{html.escape(self.title)}</b>"
             f"<span style='font-family:monospace;'><b>{s['pct']:5.1f}%</b> | Pasos: {s['done_steps']:,} / {s['total_steps']:,} "
-            f"| Completadas: <b>{s['n_done']}/{s['n_total']}</b>{fail_str} | En curso: {s['n_run']} (workers={self.workers}) "
+            f"| Completadas: <b>{s['n_done']}/{s['n_total']}</b>{div_str}{fail_str} | En curso: {s['n_run']} (workers={self.workers}) "
             f"| Tiempo: {_format_duration(s['elapsed'])} | ETA: {_format_duration(s['eta'])}</span>"
             "</div>"
             "<div style='background:rgba(128,128,128,0.22);border-radius:6px;height:14px;overflow:hidden;margin-bottom:8px;'>"
@@ -384,6 +401,7 @@ def _worker_execute(
         "parameters": artifact.result.get("parameters"),
         "best_loss": artifact.result.get("best_loss"),
         "accuracy_stop": artifact.result.get("accuracy_stop"),
+        "divergence_stop": artifact.result.get("divergence_stop"),
         "elapsed_s": artifact.result.get("elapsed_s"),
         "evaluation": artifact.result.get("evaluation", {}),
         "error": artifact.result.get("error"),
@@ -409,6 +427,8 @@ def _adaptive_worker_execute(
     prev_ckpt: Path | None = None
     relaxed_hit = task.reference is None
     strict_hit = False
+    diverged_info: dict[str, Any] | None = None
+    diverged_error: dict[str, Any] | None = None
 
     def _emit_progress(phase_label: str, stage_step: int, loss_val: float | None, status: str = "running") -> None:
         comp = min(completed_before + max(stage_step, 0), total_steps)
@@ -430,7 +450,7 @@ def _adaptive_worker_execute(
     _emit_progress("init", 0, None)
 
     for idx, b_steps in enumerate(task.adam_blocks, 1):
-        if task.reference is not None and relaxed_hit:
+        if (task.reference is not None and relaxed_hit) or diverged_info is not None:
             break
         stage_name = f"adam_{idx}"
         s_dir = run_root / stage_name
@@ -463,11 +483,17 @@ def _adaptive_worker_execute(
         prev_ckpt = s_dir / "model.pt"
         m = _extract_stage_metrics(art.result)
         stages.append({"name": stage_name, "steps": int(b_steps), "metrics": m, "status": art.result.get("status")})
+        if art.result.get("status") == "diverged":
+            diverged_info = art.result.get("divergence_stop")
+            diverged_error = art.result.get("error")
+            break
         if task.reference is not None and _passes_criteria(m, task.relaxed_criteria):
             relaxed_hit = True
             break
 
     for idx, l_steps in enumerate(task.lbfgs_blocks, 1):
+        if diverged_info is not None:
+            break
         stage_name = f"lbfgs_{idx}"
         s_dir = run_root / stage_name
         cfg_kwargs = dict(task.base_config_kwargs)
@@ -499,19 +525,26 @@ def _adaptive_worker_execute(
         prev_ckpt = s_dir / "model.pt"
         m = _extract_stage_metrics(art.result)
         stages.append({"name": stage_name, "steps": int(l_steps), "metrics": m, "status": art.result.get("status")})
+        if art.result.get("status") == "diverged":
+            diverged_info = art.result.get("divergence_stop")
+            diverged_error = art.result.get("error")
+            break
         if task.reference is not None and _passes_criteria(m, task.strict_criteria):
             strict_hit = True
             break
 
-    _emit_progress("done", total_steps, None, status="completed")
+    final_status = "diverged" if diverged_info is not None else "completed"
+    _emit_progress("diverged" if final_status == "diverged" else "done", 0 if final_status == "diverged" else total_steps, None, status=final_status)
     return {
         "name": task.name,
         "case": task.case_id,
         "architecture": task.architecture,
         "seed": int(task.seed),
-        "status": "completed",
+        "status": final_status,
         "relaxed_reached": relaxed_hit,
         "strict_converged": strict_hit,
+        "divergence_stop": diverged_info,
+        "error": diverged_error,
         "elapsed_s": time.perf_counter() - started,
         "stages": stages,
     }

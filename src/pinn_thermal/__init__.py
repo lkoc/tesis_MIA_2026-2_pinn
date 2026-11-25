@@ -15,6 +15,7 @@ _EXPORTS = {
     "ChainedPINN": "pinn_thermal.core.transfer",
     "CompatibilityChecker": "pinn_thermal.core.transfer",
     "DeviceManager": "pinn_thermal.core.device",
+    "DivergenceGuard": "pinn_thermal.core.trainer",
     "FEniCSxAdapter": "pinn_thermal.fem.runner",
     "FunctionalTransfer": "pinn_thermal.core.transfer",
     "ModelRegistry": "pinn_thermal.core.base_model",

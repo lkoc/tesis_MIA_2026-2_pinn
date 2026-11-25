@@ -86,6 +86,7 @@ class TrainConfig:
     chain_mode: str = "residual"  # 'residual', 'feature'
     freeze_chain_source: bool = True
     accuracy_stop: dict[str, Any] | None = None
+    divergence_stop: dict[str, Any] | None = None
     study: str | None = None
 
 
@@ -144,6 +145,165 @@ class AccuracyStop:
             "triggered": self.triggered,
             "checks": self.checks,
             "reference_label": self.reference_label,
+        }
+
+
+class DivergenceGuard:
+    """Detector temprano de divergencia y estancamiento para abortar corridas inestables."""
+
+    DEFAULTS: dict[str, Any] = {
+        "max_loss": 1e12,
+        "explosion_factor": 1e4,
+        "patience_explosion": 3,
+        "growth_patience": 6,
+        "min_growth_ratio": 1.05,
+        "warmup_steps": 150,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_stagnation_checks": 8,
+        "lbfgs_min_rel_improve": 1e-6,
+        "check_nonfinite_grads": True,
+    }
+
+    def __init__(self, settings: dict[str, Any]) -> None:
+        unknown = set(settings) - set(self.DEFAULTS)
+        if unknown:
+            raise ValueError(f"Claves desconocidas en divergence_stop: {sorted(unknown)}.")
+        self.settings = dict(self.DEFAULTS, **settings)
+        self.triggered: bool = False
+        self.reason: str | None = None
+        self.message: str | None = None
+        self.step: int | None = None
+        self.phase: str | None = None
+        self.best_loss: float = float("inf")
+        self.prev_loss: float | None = None
+        self.explosion_streak: int = 0
+        self.growth_streak: int = 0
+        self.lbfgs_best_loss: float = float("inf")
+        self.lbfgs_stagnation_streak: int = 0
+        self.lbfgs_explosion_streak: int = 0
+        self.lbfgs_early_stop: dict[str, Any] | None = None
+
+    def _trip(self, reason: str, message: str, step: int, phase: str) -> bool:
+        self.triggered = True
+        self.reason = reason
+        self.message = message
+        self.step = int(step)
+        self.phase = phase
+        return True
+
+    def notify_resample(self) -> None:
+        """Reinicia la racha de crecimiento tras remuestreo para evitar falsos positivos."""
+        self.prev_loss = None
+        self.growth_streak = 0
+
+    def check_step(self, step: int, phase: str, loss_val: float) -> bool:
+        """Comprueba por paso si la pérdida es no finita o supera ``max_loss``."""
+        if self.triggered:
+            return True
+        if not np.isfinite(loss_val):
+            return self._trip(
+                "non_finite_loss",
+                f"Pérdida no finita ({loss_val}) en {phase} paso {step}.",
+                step,
+                phase,
+            )
+        max_loss = float(self.settings["max_loss"])
+        if loss_val > max_loss:
+            return self._trip(
+                "loss_exceeded_max_loss",
+                f"Pérdida ({loss_val:.3e}) superó max_loss ({max_loss:.3e}) en {phase} paso {step}.",
+                step,
+                phase,
+            )
+        return False
+
+    def check_gradients(self, step: int, phase: str, model: BasePINNModel) -> bool:
+        """Comprueba gradientes NaN/Inf tras ``backward()`` antes de actualizar pesos."""
+        if self.triggered or not self.settings["check_nonfinite_grads"]:
+            return self.triggered
+        for p in model.parameters():
+            if p.grad is not None and not bool(torch.isfinite(p.grad).all()):
+                return self._trip(
+                    "non_finite_gradient",
+                    f"Gradiente no finito detectado en {phase} paso {step}.",
+                    step,
+                    phase,
+                )
+        return False
+
+    def check_adam_log(self, step: int, loss_val: float) -> bool:
+        """Evalúa explosión relativa y crecimiento sostenido de pérdida en puntos de log."""
+        if self.check_step(step, "adam", loss_val):
+            return True
+        if loss_val < self.best_loss:
+            self.best_loss = loss_val
+
+        if step >= int(self.settings["warmup_steps"]):
+            baseline = max(self.best_loss, 1e-12)
+            if loss_val > float(self.settings["explosion_factor"]) * baseline:
+                self.explosion_streak += 1
+            else:
+                self.explosion_streak = 0
+            if self.explosion_streak >= int(self.settings["patience_explosion"]):
+                return self._trip(
+                    "loss_explosion_vs_best",
+                    f"Explosión de pérdida ({loss_val:.3e} > {self.settings['explosion_factor']}x mejor {baseline:.3e}) en adam paso {step}.",
+                    step,
+                    "adam",
+                )
+
+            if self.prev_loss is not None and loss_val > self.prev_loss * float(self.settings["min_growth_ratio"]):
+                self.growth_streak += 1
+            else:
+                self.growth_streak = 0
+            if self.growth_streak >= int(self.settings["growth_patience"]):
+                return self._trip(
+                    "sustained_loss_growth",
+                    f"Crecimiento sostenido de pérdida durante {self.growth_streak} logs consecutivos hasta {loss_val:.3e} en adam paso {step}.",
+                    step,
+                    "adam",
+                )
+
+        self.prev_loss = loss_val
+        return False
+
+    def check_lbfgs_log(self, g_step: int, loss_val: float) -> str | None:
+        """Evalúa divergencia dura o meseta/explosión en L-BFGS."""
+        if self.check_step(g_step, "lbfgs", loss_val):
+            return "diverged"
+
+        baseline = min(self.best_loss, self.lbfgs_best_loss)
+        if not np.isfinite(baseline):
+            baseline = loss_val
+        if loss_val > float(self.settings["lbfgs_explosion_factor"]) * max(baseline, 1e-12):
+            self.lbfgs_explosion_streak += 1
+            if self.lbfgs_explosion_streak >= 2:
+                self.lbfgs_early_stop = {"reason": "lbfgs_loss_explosion", "step": int(g_step), "loss": float(loss_val)}
+                return "plateau"
+        else:
+            self.lbfgs_explosion_streak = 0
+
+        if loss_val < self.lbfgs_best_loss * (1.0 - float(self.settings["lbfgs_min_rel_improve"])):
+            self.lbfgs_best_loss = loss_val
+            self.lbfgs_stagnation_streak = 0
+        else:
+            self.lbfgs_stagnation_streak += 1
+            if self.lbfgs_stagnation_streak >= int(self.settings["lbfgs_stagnation_checks"]):
+                self.lbfgs_early_stop = {"reason": "lbfgs_plateau", "step": int(g_step), "loss": float(loss_val)}
+                return "plateau"
+        return None
+
+    def summary(self) -> dict[str, Any]:
+        return {
+            "enabled": True,
+            "settings": dict(self.settings),
+            "triggered": self.triggered,
+            "reason": self.reason,
+            "message": self.message,
+            "step": self.step,
+            "phase": self.phase,
+            "best_loss": self.best_loss if np.isfinite(self.best_loss) else None,
+            "lbfgs_early_stop": self.lbfgs_early_stop,
         }
 
 
@@ -208,6 +368,7 @@ class PINNTrainer:
         on_checkpoint: Callable[[dict[str, Any], BasePINNModel, dict[str, Any]], None] | None = None,
         resume_state: dict[str, Any] | None = None,
         accuracy_stop: AccuracyStop | None = None,
+        divergence_guard: DivergenceGuard | None = None,
     ) -> tuple[list[dict[str, Any]], dict[str, Any]]:
         history: list[dict[str, Any]] = copy.deepcopy(resume_state["history"]) if resume_state else []
         best: dict[str, Any] = (
@@ -216,6 +377,7 @@ class PINNTrainer:
             else {"total": float("inf"), "state": None, "step": -1}
         )
         stopped = False
+        diverged = False
 
         def keep(total: torch.Tensor, step: int) -> None:
             val = float(total.detach())
@@ -277,6 +439,8 @@ class PINNTrainer:
             if cfg.resample_every and step > 0 and step % int(cfg.resample_every) == 0:
                 objective.resample()
                 best.update(total=float("inf"), state=None, step=-1)
+                if divergence_guard is not None:
+                    divergence_guard.notify_resample()
             if stages:
                 p_stage = min(step // stage_interval, stages - 1)
                 if p_stage != active_stage:
@@ -285,9 +449,21 @@ class PINNTrainer:
                     active_stage = p_stage
             optimizer.zero_grad(set_to_none=True)
             total, parts, _ = objective()
-            if not torch.isfinite(total):
+            if divergence_guard is not None:
+                total_val = float(total.detach())
+                if divergence_guard.check_step(step, "adam", total_val):
+                    if np.isfinite(total_val):
+                        row = self._row(step, "adam", total, parts, optimizer.param_groups[0]["lr"])
+                        history.append(row)
+                        notify(row, optimizer, scheduler, "adam", step + 1)
+                    diverged = True
+                    break
+            elif not torch.isfinite(total):
                 raise FloatingPointError(f"La pérdida de Adam divergió en el paso {step}.")
             total.backward()
+            if divergence_guard is not None and divergence_guard.check_gradients(step, "adam", model):
+                diverged = True
+                break
             optimizer.step()
             scheduler.step()
             objective.update_attention()
@@ -298,6 +474,9 @@ class PINNTrainer:
                 row = self._row(step, "adam", total_e, parts_e, optimizer.param_groups[0]["lr"])
                 history.append(row)
                 notify(row, optimizer, scheduler, "adam", step + 1)
+                if divergence_guard is not None and divergence_guard.check_adam_log(step, float(total_e.detach())):
+                    diverged = True
+                    break
                 if accuracy_stop is not None and accuracy_stop.triggered:
                     best["stopped_state"] = cpu_state(model.state_dict())
                     best["stopped_step"] = step
@@ -307,7 +486,7 @@ class PINNTrainer:
         DeviceManager.synchronize(device)
         elapsed_phases["adam"] = time.perf_counter() - t0
 
-        if int(cfg.lbfgs_steps) > 0 and not stopped and cfg.attention is None:
+        if int(cfg.lbfgs_steps) > 0 and not stopped and not diverged and cfg.attention is None:
             DeviceManager.synchronize(device)
             t1 = time.perf_counter()
             objective.set_point_fraction(1.0)
@@ -337,6 +516,9 @@ class PINNTrainer:
                     break
                 total_e, parts_e, _ = objective()
                 if not torch.isfinite(total_e):
+                    if divergence_guard is not None:
+                        divergence_guard.check_step(int(cfg.adam_steps) + step, "lbfgs", float(total_e.detach()))
+                        diverged = True
                     break
                 if step % max(int(cfg.log_every) // 20, 1) == 0 or step == int(cfg.lbfgs_steps) - 1:
                     g_step = int(cfg.adam_steps) + step
@@ -344,6 +526,13 @@ class PINNTrainer:
                     row = self._row(g_step, "lbfgs", total_e, parts_e, 1.0)
                     history.append(row)
                     notify(row, lbfgs, None, "lbfgs", step + 1)
+                    if divergence_guard is not None:
+                        action = divergence_guard.check_lbfgs_log(g_step, float(total_e.detach()))
+                        if action == "diverged":
+                            diverged = True
+                            break
+                        if action == "plateau":
+                            break
                     if accuracy_stop is not None and accuracy_stop.triggered:
                         best["stopped_state"] = cpu_state(model.state_dict())
                         best["stopped_step"] = g_step
@@ -356,6 +545,7 @@ class PINNTrainer:
         elif best["state"] is not None:
             model.load_state_dict(best["state"])
         best["phase_elapsed_s"] = elapsed_phases
+        best["diverged"] = diverged
         return history, best
 
     def train(
@@ -531,6 +721,7 @@ class PINNTrainer:
 
         _save_collocation(out / "collocation.npz", objective)
         monitor = AccuracyStop(cfg.accuracy_stop, reference, reference_label) if cfg.accuracy_stop else None
+        div_guard = DivergenceGuard(cfg.divergence_stop) if cfg.divergence_stop else None
 
         total_planned_steps = max(int(cfg.adam_steps) + (int(cfg.lbfgs_steps) if cfg.attention is None else 0), 1)
         replace_json_atomic(
@@ -597,12 +788,36 @@ class PINNTrainer:
                 on_checkpoint=on_ckpt,
                 resume_state=resume_state,
                 accuracy_stop=monitor,
+                divergence_guard=div_guard,
             )
-            report, arrays = evaluate_model(
-                model, reference=reference, reference_label=reference_label, include_audit=cfg.full_audit, criteria=self.criteria
-            )
-            if not (_tree_is_finite(report) and _tree_is_finite(arrays)):
-                raise FloatingPointError("La evaluación final produjo métricas o temperaturas no finitas.")
+            if best.get("diverged") and div_guard is not None and div_guard.triggered:
+                status = "diverged"
+                error_info = {
+                    "type": "DivergenceDetected",
+                    "reason": div_guard.reason,
+                    "message": div_guard.message,
+                    "step": div_guard.step,
+                    "phase": div_guard.phase,
+                }
+                if best.get("state") is not None:
+                    try:
+                        cand_report, cand_arrays = evaluate_model(
+                            model,
+                            reference=reference,
+                            reference_label=reference_label,
+                            include_audit=cfg.full_audit,
+                            criteria=self.criteria,
+                        )
+                        if _tree_is_finite(cand_report) and _tree_is_finite(cand_arrays):
+                            report, arrays = cand_report, cand_arrays
+                    except Exception:
+                        report, arrays = {}, {}
+            else:
+                report, arrays = evaluate_model(
+                    model, reference=reference, reference_label=reference_label, include_audit=cfg.full_audit, criteria=self.criteria
+                )
+                if not (_tree_is_finite(report) and _tree_is_finite(arrays)):
+                    raise FloatingPointError("La evaluación final produjo métricas o temperaturas no finitas.")
         except Exception as exc:
             status = "failed"
             error_info = {"type": type(exc).__name__, "message": str(exc), "traceback": traceback.format_exc()}
@@ -639,6 +854,8 @@ class PINNTrainer:
             result["attention_weights"] = objective.attention.summary()
         if monitor is not None:
             result["accuracy_stop"] = monitor.summary()
+        if div_guard is not None:
+            result["divergence_stop"] = div_guard.summary()
 
         artifact = SolutionArtifact(
             kind="pinn",
@@ -661,20 +878,22 @@ class PINNTrainer:
             with_sources=False,
         )
         final_step = int(history[-1]["step"]) if history else -1
-        final_completed = total_planned_steps if status == "completed" else max(final_step + 1, 0)
-        replace_json_atomic(
-            out / "progress.json",
-            {
-                "status": status,
-                "phase": "done" if status == "completed" else "failed",
-                "step": final_step,
-                "completed_steps": final_completed,
-                "adam_steps": int(cfg.adam_steps),
-                "lbfgs_steps": int(cfg.lbfgs_steps) if cfg.attention is None else 0,
-                "total_steps": total_planned_steps,
-                "pct": 100.0 if status == "completed" else round(100.0 * final_completed / total_planned_steps, 2),
-                "loss_total": total_loss if np.isfinite(total_loss) else None,
-                "elapsed_s": round(time.perf_counter() - started, 2),
-            },
-        )
+        if status == "diverged" and div_guard is not None and div_guard.step is not None:
+            final_step = max(final_step, int(div_guard.step))
+        final_completed = total_planned_steps if status == "completed" else min(max(final_step + 1, 0), total_planned_steps)
+        final_prog = {
+            "status": status,
+            "phase": "done" if status == "completed" else status,
+            "step": final_step,
+            "completed_steps": final_completed,
+            "adam_steps": int(cfg.adam_steps),
+            "lbfgs_steps": int(cfg.lbfgs_steps) if cfg.attention is None else 0,
+            "total_steps": total_planned_steps,
+            "pct": 100.0 if status == "completed" else round(100.0 * final_completed / total_planned_steps, 2),
+            "loss_total": total_loss if np.isfinite(total_loss) else None,
+            "elapsed_s": round(time.perf_counter() - started, 2),
+        }
+        if status == "diverged" and div_guard is not None:
+            final_prog["reason"] = div_guard.reason
+        replace_json_atomic(out / "progress.json", final_prog)
         return artifact

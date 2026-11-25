@@ -20,6 +20,7 @@ _LAZY_TORCH_EXPORTS = {
     "ChainedPINN": "pinn_thermal.core.transfer",
     "CompatibilityChecker": "pinn_thermal.core.transfer",
     "DeviceManager": "pinn_thermal.core.device",
+    "DivergenceGuard": "pinn_thermal.core.trainer",
     "ErrorMetrics": "pinn_thermal.core.evaluation",
     "FunctionalTransfer": "pinn_thermal.core.transfer",
     "ModelMetadata": "pinn_thermal.core.base_model",
