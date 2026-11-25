@@ -1,14 +1,25 @@
-# `PINN_V4` (`pinn-thermal`) — Plataforma Modular de PINNs para Conducción Térmica 2D
+# Proyecto de Tesis UNI — `PINN_V4` (`pinn-thermal`)
 
-Tema: **DISEÑO Y EVALUACIÓN DE UNA RED NEURONAL INFORMADA POR FÍSICA PARA ESTIMAR LA TEMPERATURA Y LA AMPACIDAD DE CABLES ELÉCTRICOS ENTERRADOS EN ENTORNOS HETEROGÉNEOS.**
+> **Proyecto de Tesis de Maestría — Universidad Nacional de Ingeniería (UNI)**  
+> **Unidad académica:** Unidad de Posgrado de la Facultad de Ingeniería Industrial y de Sistemas (FIIS-UNI)  
+> **Programa:** Maestría en Inteligencia Artificial  
+> **Tema:** **DISEÑO Y EVALUACIÓN DE UNA RED NEURONAL INFORMADA POR FÍSICA PARA ESTIMAR LA TEMPERATURA Y LA AMPACIDAD DE CABLES ELÉCTRICOS ENTERRADOS EN ENTORNOS HETEROGÉNEOS.**  
+> **Tesistas:** Luis Enrique Koc Góngora; Herbert Antonio Meléndez García.  
+> **Asesor:** Samuel Oporto.
 
-Tesistas: 
-* Luis Enrique Koc Góngora;
-* Herbert Antonio Meléndez García.
+Este repositorio integra el desarrollo completo del proyecto de tesis de la **Universidad Nacional de Ingeniería (UNI)**: el **Plan de Tesis**, el **borrador del documento de tesis**, la **colección de artículos científicos y papers de referencia**, y el artefacto computacional **`PINN_V4` (`pinn-thermal`)** — una librería Python **autocontenida, instalable vía `pip` / PyPI**, construida sobre **PyTorch**, documentada íntegramente en español y diseñada bajo programación orientada a objetos (POO) por capas para modelar conducción térmica estacionaria y ampacidad en cables subterráneos y medios heterogéneos 2D.
 
-Programa Maestría en Inteligencia Artificial. Universidad Nacional de Ingeniería.
+---
 
-Librería Python **autocontenida, instalable vía `pip` / PyPI**, construida sobre **PyTorch**, documentada íntegramente en español y diseñada bajo programación orientada a objetos (POO) por capas para modelar conducción térmica estacionaria en cables subterráneos y medios heterogéneos 2D.
+## Documentos de Tesis, Plan y Carpeta de Artículos / Papers
+
+| Componente | Ubicación en el repositorio | Contenido principal |
+| :--- | :--- | :--- |
+| **Plan de Tesis** | [`plan_tesis_final/`](plan_tesis_final/) | Documento fuente LaTeX ([`plan_tesis_cables_pinn.tex`](plan_tesis_final/plan_tesis_cables_pinn.tex)), versión compilada ([`plan_tesis_cables_pinn.pdf`](plan_tesis_final/plan_tesis_cables_pinn.pdf)), capítulos (`capitulos/`), referencias ([`referencias_plan_tesis.bib`](plan_tesis_final/referencias_plan_tesis.bib)), matriz de consistencia (`matriz_consistencia/`) y guías UNI (`guias/`). |
+| **Borrador del Documento de Tesis** | [`documento_tesis_borrador/`](documento_tesis_borrador/) | Manuscrito principal en LaTeX ([`tesis.tex`](documento_tesis_borrador/tesis.tex)), borrador compilado ([`tesis.pdf`](documento_tesis_borrador/tesis.pdf)), capítulos (`capitulos/`), tablas e imágenes (`tablas/`, `imagenes/`), referencias ([`referencias.bib`](documento_tesis_borrador/referencias.bib)), script de compilación ([`compilar.ps1`](documento_tesis_borrador/compilar.ps1)), guía ([`README.md`](documento_tesis_borrador/README.md)) y seguimiento ([`PENDIENTES.md`](documento_tesis_borrador/PENDIENTES.md)). |
+| **Artículos y Papers (Bibliografía PDF)** | [`documento_tesis_borrador/bibliografia/`](documento_tesis_borrador/bibliografia/) | Colección de **80 artículos científicos, papers, normas técnicas (IEC/CIGRE/ASTM) y libros en PDF** sobre PINNs, conducción térmica, heterogeneidad de suelos y ampacidad de cables subterráneos. |
+| **Literatura Metodológica y Datos Fuente** | [`plan_tesis_final/literatura/`](plan_tesis_final/literatura/) y [`plan_tesis_final/datos_fuente/`](plan_tesis_final/datos_fuente/) | Papers base de *Design Science Research* (DSR) y redacción científica, junto con extractos de texto y figuras de apoyo. |
+| **Plataforma Computacional y Campañas** | [`src/pinn_thermal/`](src/pinn_thermal/), [`cases/`](cases/), [`notebooks/`](notebooks/), [`notebooks_campaign/`](notebooks_campaign/), [`frontend/`](frontend/) | Código fuente de la librería `pinn-thermal`, catálogo de casos JSON, cuadernos de campaña experimental, aplicación Streamlit y pruebas unitarias ([`tests/`](tests/)). |
 
 ---
 
