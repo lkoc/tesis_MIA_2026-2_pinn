@@ -50,6 +50,17 @@
     "chain_mode": "residual",
     "depth": 2,
     "device": "cpu",
+    "divergence_stop": {
+      "check_nonfinite_grads": true,
+      "explosion_factor": 10000.0,
+      "growth_patience": 6,
+      "lbfgs_explosion_factor": 100.0,
+      "lbfgs_stagnation_checks": 8,
+      "max_loss": 1000000000000.0,
+      "min_growth_ratio": 1.05,
+      "patience_explosion": 3,
+      "warmup_steps": 150
+    },
     "dtype": "float32",
     "exact_energy": false,
     "focus_criterion": "residual",

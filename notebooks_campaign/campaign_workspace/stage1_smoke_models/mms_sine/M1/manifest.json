@@ -1,9 +1,9 @@
 {
   "command": [
     "c:\\Python312\\Lib\\site-packages\\ipykernel_launcher.py",
-    "--f=c:\\Users\\QU1267\\AppData\\Roaming\\jupyter\\runtime\\kernel-v350b6ca64e41d2a22e7b19014c6cd2974c6e1538c.json"
+    "--f=c:\\Users\\QU1267\\AppData\\Roaming\\jupyter\\runtime\\kernel-v3947a76ac78e995dcc372a37b84bd20397b13e962.json"
   ],
-  "created_utc": "2026-11-24T19:14:47.389830+00:00",
+  "created_utc": "2026-11-25T12:55:08.718215+00:00",
   "extra": {
     "architecture": "M1",
     "case": "mms_sine",
@@ -13,7 +13,7 @@
   "fem_environment": null,
   "git": {
     "branch": "main",
-    "commit": "bd7bbf6fe83ec5973ad2f340729856d8b0fb7e34"
+    "commit": "675205a6ab7aac00a89f5d21495a4d1d8ef74acb"
   },
   "host": {
     "deepxde": "1.15.0",

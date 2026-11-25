@@ -4,6 +4,7 @@ Evalúa cada término normalizado por las escalas físicas propias de cada subre
 - ``pde``: residuo ``-div(k grad T) - Q`` en cada región (o ``div(q) - Q`` en M2).
 - ``constitutive``: ley de Fourier ``q + k grad T = 0`` (solo en formulaciones mixtas).
 - ``interface_temperature``: continuidad de temperatura ``[T] = 0`` entre regiones vecinas.
+- ``interface_flux``: continuidad de flujo normal ``[q · n] = 0`` entre regiones vecinas.
 - ``dirichlet``, ``neumann``, ``robin``: condiciones de contorno externas.
 - ``energy``: balance energético regional entre potencia generada y flujos de borde.
 
@@ -27,6 +28,7 @@ DEFAULT_WEIGHTS: dict[str, float] = {
     "pde": 1.0,
     "constitutive": 1.0,
     "interface_temperature": 100.0,
+    "interface_flux": 100.0,
     "dirichlet": 100.0,
     "neumann": 10.0,
     "robin": 10.0,
@@ -95,7 +97,7 @@ class PhysicsObjective:
         if self.exact_constraints:
             if self.weights["pde"] <= 0:
                 raise ValueError("Los modelos exactos requieren peso positivo en el término 'pde'.")
-            kept = ("pde", "energy") if self.exact_energy else ("pde",)
+            kept = ("pde", "interface_flux", "energy") if self.exact_energy else ("pde", "interface_flux")
             self.weights = {name: (self.weights[name] if name in kept else 0.0) for name in LOSS_TERMS}
 
         self.focused = bool(focused)
@@ -432,7 +434,9 @@ class PhysicsObjective:
                 constitutive = constitutive + torch.mean(((qr - dr) / problem.scales(right)["flux"]) ** 2)
             qln = (ql * normal).sum(1, keepdim=True)
             qrn = (qr * normal).sum(1, keepdim=True)
+            f_scale = problem.interface_flux_scale(face)
             parts["interface_temperature"] = parts["interface_temperature"] + torch.mean(((tl - tr) / problem.T_scale) ** 2)
+            parts["interface_flux"] = parts["interface_flux"] + torch.mean(((qln - qrn) / f_scale) ** 2)
             balance[left.id] = balance[left.id] + face.weight * qln.sum()
             balance[right.id] = balance[right.id] - face.weight * qrn.sum()
 
@@ -457,11 +461,11 @@ class PhysicsObjective:
         parts["constitutive"] = constitutive
         if self.exact_constraints and not self.exact_energy:
             parts["energy"] = zero
-            total = sum(self.weights[name] * parts[name] for name in ("pde", "constitutive", "interface_temperature"))
+            total = sum(self.weights[name] * parts[name] for name in ("pde", "constitutive", "interface_temperature", "interface_flux"))
         else:
             parts["energy"] = sum((value / problem.power_scale) ** 2 for value in balance.values())
             if self.exact_constraints:
-                total = sum(self.weights[name] * parts[name] for name in ("pde", "energy", "constitutive", "interface_temperature"))
+                total = sum(self.weights[name] * parts[name] for name in ("pde", "energy", "constitutive", "interface_temperature", "interface_flux"))
             else:
                 total = sum(self.weights[name] * value for name, value in parts.items())
 

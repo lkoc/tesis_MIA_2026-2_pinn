@@ -665,7 +665,7 @@ class PINNTrainer:
         # Pesos efectivos de pérdida
         eff_weights = dict(DEFAULT_WEIGHTS, **(cfg.weights or {}))
         if getattr(model, "exact_constraints", False):
-            kept = ("pde", "energy") if cfg.exact_energy else ("pde",)
+            kept = ("pde", "interface_flux", "energy") if cfg.exact_energy else ("pde", "interface_flux")
             eff_weights = {k: (eff_weights[k] if k in kept else 0.0) for k in DEFAULT_WEIGHTS}
 
         points = dict(DEFAULT_POINTS, **(cfg.points or {}))

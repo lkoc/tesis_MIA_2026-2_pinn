@@ -18,6 +18,17 @@
     "chain_mode": "residual",
     "depth": 2,
     "device": "cpu",
+    "divergence_stop": {
+      "check_nonfinite_grads": true,
+      "explosion_factor": 10000.0,
+      "growth_patience": 6,
+      "lbfgs_explosion_factor": 100.0,
+      "lbfgs_stagnation_checks": 8,
+      "max_loss": 1000000000000.0,
+      "min_growth_ratio": 1.05,
+      "patience_explosion": 3,
+      "warmup_steps": 150
+    },
     "dtype": "float32",
     "exact_energy": false,
     "focus_criterion": "residual",
@@ -64,8 +75,30 @@
     "width": 24
   },
   "device": "cpu",
+  "divergence_stop": {
+    "best_loss": 1.0952026844024658,
+    "enabled": true,
+    "lbfgs_early_stop": null,
+    "message": null,
+    "phase": null,
+    "reason": null,
+    "settings": {
+      "check_nonfinite_grads": true,
+      "explosion_factor": 10000.0,
+      "growth_patience": 6,
+      "lbfgs_explosion_factor": 100.0,
+      "lbfgs_min_rel_improve": 1e-06,
+      "lbfgs_stagnation_checks": 8,
+      "max_loss": 1000000000000.0,
+      "min_growth_ratio": 1.05,
+      "patience_explosion": 3,
+      "warmup_steps": 150
+    },
+    "step": null,
+    "triggered": false
+  },
   "dtype": "float32",
-  "elapsed_s": 54.90189930004999,
+  "elapsed_s": 41.12331940000149,
   "error": null,
   "evaluation": {
     "Tmax_pred_C": 51.54264450073242,
@@ -424,8 +457,8 @@
   "status": "completed",
   "study": null,
   "training_elapsed_s": {
-    "adam": 40.69777890003752,
-    "lbfgs": 8.514341300004162
+    "adam": 32.18180840000423,
+    "lbfgs": 6.621662800003833
   },
   "transfer_report": null
 }

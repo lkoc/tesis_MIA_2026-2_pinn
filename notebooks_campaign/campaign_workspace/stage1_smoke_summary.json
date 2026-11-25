@@ -5,7 +5,7 @@
     "balance_pct": 420.0386594580224,
     "best_loss": 0.002984384773299098,
     "case": "cable_disk",
-    "elapsed_s": 127.1572377999546,
+    "elapsed_s": 96.09622279999894,
     "error_Tmax_abs_K": 116.6203383973903,
     "nrmse_pct": 26.67740045522374,
     "status": "completed"
@@ -16,7 +16,7 @@
     "balance_pct": 195.77107883417972,
     "best_loss": 0.0027593974955379963,
     "case": "cable_disk",
-    "elapsed_s": 141.43060199997853,
+    "elapsed_s": 101.24015800000052,
     "error_Tmax_abs_K": 118.65333362138932,
     "nrmse_pct": 27.17752467130955,
     "status": "completed"
@@ -27,7 +27,7 @@
     "balance_pct": 1614.6127604356132,
     "best_loss": 0.00010326548363082111,
     "case": "cable_disk",
-    "elapsed_s": 171.8073105000658,
+    "elapsed_s": 112.59622520000266,
     "error_Tmax_abs_K": 112.94737811601823,
     "nrmse_pct": 25.84679288962047,
     "status": "completed"
@@ -38,7 +38,7 @@
     "balance_pct": 5.03150911053192,
     "best_loss": 0.011356870643794537,
     "case": "cable_disk",
-    "elapsed_s": 81.62374319997616,
+    "elapsed_s": 65.75984600000083,
     "error_Tmax_abs_K": 118.09209247148698,
     "nrmse_pct": 27.0398392006676,
     "status": "completed"
@@ -49,7 +49,7 @@
     "balance_pct": 15.45785797619494,
     "best_loss": 11037.38671875,
     "case": "cable_disk",
-    "elapsed_s": 322.7560166999465,
+    "elapsed_s": 230.92517980000412,
     "error_Tmax_abs_K": 111.87784381426042,
     "nrmse_pct": 26.608893932165053,
     "status": "completed"
@@ -60,7 +60,7 @@
     "balance_pct": 19476.52049895764,
     "best_loss": 0.04757855832576752,
     "case": "cable_disk",
-    "elapsed_s": 105.96086810005363,
+    "elapsed_s": 84.72965989999648,
     "error_Tmax_abs_K": 119.33252330339616,
     "nrmse_pct": 27.398117709851388,
     "status": "completed"
@@ -71,7 +71,7 @@
     "balance_pct": 286.2329718597103,
     "best_loss": 0.0019881497137248516,
     "case": "cable_disk",
-    "elapsed_s": 107.83476100000553,
+    "elapsed_s": 80.45851770000445,
     "error_Tmax_abs_K": 117.87785525835221,
     "nrmse_pct": 26.995807960760512,
     "status": "completed"
@@ -82,7 +82,7 @@
     "balance_pct": 4.574050448559742,
     "best_loss": 0.005864573176950216,
     "case": "cable_disk",
-    "elapsed_s": 81.94994999992196,
+    "elapsed_s": 69.27457879999565,
     "error_Tmax_abs_K": 117.1951732209987,
     "nrmse_pct": 26.84547557970687,
     "status": "completed"
@@ -93,7 +93,7 @@
     "balance_pct": 1.2039221303170053,
     "best_loss": 0.03983069956302643,
     "case": "cable_disk",
-    "elapsed_s": 224.98788209992927,
+    "elapsed_s": 146.9279639000015,
     "error_Tmax_abs_K": 118.51050181902116,
     "nrmse_pct": 27.24494112842427,
     "status": "completed"
@@ -104,7 +104,7 @@
     "balance_pct": 1.6852266986647493,
     "best_loss": 0.0019722788129001856,
     "case": "cable_disk",
-    "elapsed_s": 68.20327079994604,
+    "elapsed_s": 54.4196382999944,
     "error_Tmax_abs_K": 118.37282176531022,
     "nrmse_pct": 27.05368716138364,
     "status": "completed"
@@ -115,7 +115,7 @@
     "balance_pct": 0.0722035499120678,
     "best_loss": 0.05652669444680214,
     "case": "mms_sine",
-    "elapsed_s": 54.90189930004999,
+    "elapsed_s": 41.12331940000149,
     "error_Tmax_abs_K": 1.5447903654326893,
     "nrmse_pct": 2.20783944067107,
     "status": "completed"
@@ -126,7 +126,7 @@
     "balance_pct": 0.02707819750121606,
     "best_loss": 0.031065281480550766,
     "case": "mms_sine",
-    "elapsed_s": 61.91191549994983,
+    "elapsed_s": 53.15913670000009,
     "error_Tmax_abs_K": 0.9194468477020763,
     "nrmse_pct": 2.0626333859651065,
     "status": "completed"
@@ -137,7 +137,7 @@
     "balance_pct": 0.7534280132765574,
     "best_loss": 7.228480853882502e-07,
     "case": "mms_sine",
-    "elapsed_s": 92.01744669990148,
+    "elapsed_s": 72.76636139999755,
     "error_Tmax_abs_K": 0.0013789155731700475,
     "nrmse_pct": 0.0046713559850813,
     "status": "completed"
@@ -148,7 +148,7 @@
     "balance_pct": 0.009860597967188592,
     "best_loss": 0.031935710459947586,
     "case": "mms_sine",
-    "elapsed_s": 55.798148400033824,
+    "elapsed_s": 41.26489839999704,
     "error_Tmax_abs_K": 0.1661967256317638,
     "nrmse_pct": 1.5080872558332181,
     "status": "completed"
@@ -159,7 +159,7 @@
     "balance_pct": 103.65443219703118,
     "best_loss": 1248.26123046875,
     "case": "mms_sine",
-    "elapsed_s": 295.5175609999569,
+    "elapsed_s": 237.64430449999782,
     "error_Tmax_abs_K": 13.151899240280201,
     "nrmse_pct": 70.18044524492652,
     "status": "completed"
@@ -170,7 +170,7 @@
     "balance_pct": 0.019393965236043743,
     "best_loss": 0.006126101128757,
     "case": "mms_sine",
-    "elapsed_s": 64.20384370000102,
+    "elapsed_s": 49.0838076,
     "error_Tmax_abs_K": 0.562749765182545,
     "nrmse_pct": 0.8433283329807331,
     "status": "completed"
@@ -181,7 +181,7 @@
     "balance_pct": 0.02707819750121606,
     "best_loss": 0.031065281480550766,
     "case": "mms_sine",
-    "elapsed_s": 65.60004699998535,
+    "elapsed_s": 50.00472100000479,
     "error_Tmax_abs_K": 0.9194468477020763,
     "nrmse_pct": 2.0626333859651065,
     "status": "completed"
@@ -192,7 +192,7 @@
     "balance_pct": 0.0722035499120678,
     "best_loss": 0.05652669444680214,
     "case": "mms_sine",
-    "elapsed_s": 55.14114859991241,
+    "elapsed_s": 40.47382240000297,
     "error_Tmax_abs_K": 1.5447903654326893,
     "nrmse_pct": 2.20783944067107,
     "status": "completed"
@@ -203,7 +203,7 @@
     "balance_pct": 0.7534280132765574,
     "best_loss": 7.228480853882502e-07,
     "case": "mms_sine",
-    "elapsed_s": 91.07485219999216,
+    "elapsed_s": 73.18760749999637,
     "error_Tmax_abs_K": 0.0013789155731700475,
     "nrmse_pct": 0.0046713559850813,
     "status": "completed"
@@ -214,7 +214,7 @@
     "balance_pct": 87.51096568736098,
     "best_loss": 0.16457468271255493,
     "case": "mms_sine",
-    "elapsed_s": 50.063220000010915,
+    "elapsed_s": 37.84574379999685,
     "error_Tmax_abs_K": 25.453515908981373,
     "nrmse_pct": 43.818443980747894,
     "status": "completed"

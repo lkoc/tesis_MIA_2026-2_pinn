@@ -9,6 +9,86 @@
     "nrmse_pct": 27.27946707032107,
     "status": "completed"
   },
+  "cable_disk:CUSP:no_energy": {
+    "Tmax_pred_C": 19.686668395996094,
+    "architecture": "CUSP",
+    "balance_pct": 223.1266487985374,
+    "case": "cable_disk",
+    "divergence_stop": {
+      "best_loss": 0.16861321032047272,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 5.199208317208104e-06,
+        "reason": "lbfgs_plateau",
+        "step": 4125
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 550.7618229,
+    "energy_mode": "no_energy",
+    "energy_weight": 0.0,
+    "error_Tmax_abs_K": 118.68459315813249,
+    "exact_energy": false,
+    "nrmse_pct": 27.16371967356131,
+    "status": "completed",
+    "use_energy_loss": false
+  },
+  "cable_disk:CUSP:with_energy": {
+    "Tmax_pred_C": 19.25877571105957,
+    "architecture": "CUSP",
+    "balance_pct": 366.1681265820544,
+    "case": "cable_disk",
+    "divergence_stop": {
+      "best_loss": 0.36496788263320923,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 0.0017309040995314717,
+        "reason": "lbfgs_plateau",
+        "step": 4060
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 494.74432839999645,
+    "energy_mode": "with_energy",
+    "energy_weight": 100.0,
+    "error_Tmax_abs_K": 119.11248584306901,
+    "exact_energy": true,
+    "nrmse_pct": 27.262438520877097,
+    "status": "completed",
+    "use_energy_loss": true
+  },
   "cable_disk:CUSPR": {
     "Tmax_pred_C": 19.741451263427734,
     "architecture": "CUSPR",
@@ -18,6 +98,86 @@
     "error_Tmax_abs_K": 118.62981029070085,
     "nrmse_pct": 27.151081522043516,
     "status": "completed"
+  },
+  "cable_disk:CUSPR:no_energy": {
+    "Tmax_pred_C": 19.697860717773438,
+    "architecture": "CUSPR",
+    "balance_pct": 74.77814955953795,
+    "case": "cable_disk",
+    "divergence_stop": {
+      "best_loss": 0.002188806189224124,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 1.620109105715528e-05,
+        "reason": "lbfgs_plateau",
+        "step": 4080
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 518.2983162000019,
+    "energy_mode": "no_energy",
+    "energy_weight": 0.0,
+    "error_Tmax_abs_K": 118.67340083635514,
+    "exact_energy": false,
+    "nrmse_pct": 27.161113329950453,
+    "status": "completed",
+    "use_energy_loss": false
+  },
+  "cable_disk:CUSPR:with_energy": {
+    "Tmax_pred_C": 19.67450523376465,
+    "architecture": "CUSPR",
+    "balance_pct": 73.36961806191704,
+    "case": "cable_disk",
+    "divergence_stop": {
+      "best_loss": 0.006849081255495548,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 0.001867634360678494,
+        "reason": "lbfgs_plateau",
+        "step": 4060
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 529.1353360000066,
+    "energy_mode": "with_energy",
+    "energy_weight": 100.0,
+    "error_Tmax_abs_K": 118.69675632036393,
+    "exact_energy": true,
+    "nrmse_pct": 27.167435262508384,
+    "status": "completed",
+    "use_energy_loss": true
   },
   "cable_disk:CUSP_EXACT": {
     "Tmax_pred_C": 26.228118896484375,
@@ -29,6 +189,86 @@
     "nrmse_pct": 25.66585633890246,
     "status": "completed"
   },
+  "cable_disk:CUSP_EXACT:no_energy": {
+    "Tmax_pred_C": 26.228118896484375,
+    "architecture": "CUSP_EXACT",
+    "balance_pct": 1871.9639709479552,
+    "case": "cable_disk",
+    "divergence_stop": {
+      "best_loss": 0.027616001665592194,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 5.1354742026887834e-05,
+        "reason": "lbfgs_plateau",
+        "step": 4060
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 588.8486068999991,
+    "energy_mode": "no_energy",
+    "energy_weight": 0.0,
+    "error_Tmax_abs_K": 112.1431426576442,
+    "exact_energy": false,
+    "nrmse_pct": 25.66585633890246,
+    "status": "completed",
+    "use_energy_loss": false
+  },
+  "cable_disk:CUSP_EXACT:with_energy": {
+    "Tmax_pred_C": 25.894508361816406,
+    "architecture": "CUSP_EXACT",
+    "balance_pct": 1774.2602947484372,
+    "case": "cable_disk",
+    "divergence_stop": {
+      "best_loss": 0.20797032117843628,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 0.0019861117471009493,
+        "reason": "lbfgs_plateau",
+        "step": 4065
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 813.879366000001,
+    "energy_mode": "with_energy",
+    "energy_weight": 100.0,
+    "error_Tmax_abs_K": 112.47675319231217,
+    "exact_energy": true,
+    "nrmse_pct": 25.751747392885626,
+    "status": "completed",
+    "use_energy_loss": true
+  },
   "cable_disk:DCSNN": {
     "Tmax_pred_C": 20.074296951293945,
     "architecture": "DCSNN",
@@ -38,6 +278,86 @@
     "error_Tmax_abs_K": 118.29696460283463,
     "nrmse_pct": 27.0787943406098,
     "status": "completed"
+  },
+  "cable_disk:DCSNN:no_energy": {
+    "Tmax_pred_C": 20.078052520751953,
+    "architecture": "DCSNN",
+    "balance_pct": 0.005371673548731545,
+    "case": "cable_disk",
+    "divergence_stop": {
+      "best_loss": 0.8754599094390869,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 3.839928103843704e-05,
+        "reason": "lbfgs_plateau",
+        "step": 4130
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 430.9599021000031,
+    "energy_mode": "no_energy",
+    "energy_weight": 0.0,
+    "error_Tmax_abs_K": 118.29320903337663,
+    "exact_energy": false,
+    "nrmse_pct": 27.072713581952836,
+    "status": "completed",
+    "use_energy_loss": false
+  },
+  "cable_disk:DCSNN:with_energy": {
+    "Tmax_pred_C": 20.09263801574707,
+    "architecture": "DCSNN",
+    "balance_pct": 5.19749083613664,
+    "case": "cable_disk",
+    "divergence_stop": {
+      "best_loss": 0.023370403796434402,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 0.001687814248725772,
+        "reason": "lbfgs_plateau",
+        "step": 4120
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 442.26011370000197,
+    "energy_mode": "with_energy",
+    "energy_weight": 100.0,
+    "error_Tmax_abs_K": 118.27862353838151,
+    "exact_energy": true,
+    "nrmse_pct": 27.07335877386041,
+    "status": "completed",
+    "use_energy_loss": true
   },
   "cable_disk:FBPINN": {
     "Tmax_pred_C": 49.8216438293457,
@@ -49,6 +369,86 @@
     "nrmse_pct": 23.40935618869403,
     "status": "completed"
   },
+  "cable_disk:FBPINN:no_energy": {
+    "Tmax_pred_C": 53.97146987915039,
+    "architecture": "FBPINN",
+    "balance_pct": 21.162890431234388,
+    "case": "cable_disk",
+    "divergence_stop": {
+      "best_loss": 14244.0244140625,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 1084.8255615234375,
+        "reason": "lbfgs_plateau",
+        "step": 4045
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 924.2738266000015,
+    "energy_mode": "no_energy",
+    "energy_weight": 0.0,
+    "error_Tmax_abs_K": 84.39979167497819,
+    "exact_energy": false,
+    "nrmse_pct": 23.37642865098976,
+    "status": "completed",
+    "use_energy_loss": false
+  },
+  "cable_disk:FBPINN:with_energy": {
+    "Tmax_pred_C": 49.821292877197266,
+    "architecture": "FBPINN",
+    "balance_pct": 17.95080756593112,
+    "case": "cable_disk",
+    "divergence_stop": {
+      "best_loss": 14245.80859375,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 1178.824951171875,
+        "reason": "lbfgs_plateau",
+        "step": 4045
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 1128.524447799995,
+    "energy_mode": "with_energy",
+    "energy_weight": 100.0,
+    "error_Tmax_abs_K": 88.54996867693131,
+    "exact_energy": true,
+    "nrmse_pct": 23.407804623107697,
+    "status": "completed",
+    "use_energy_loss": true
+  },
   "cable_disk:M0": {
     "Tmax_pred_C": 21.617528915405273,
     "architecture": "M0",
@@ -58,6 +458,86 @@
     "error_Tmax_abs_K": 116.7537326387233,
     "nrmse_pct": 26.73054240918781,
     "status": "completed"
+  },
+  "cable_disk:M0:no_energy": {
+    "Tmax_pred_C": 20.619834899902344,
+    "architecture": "M0",
+    "balance_pct": 4949.106382418962,
+    "case": "cable_disk",
+    "divergence_stop": {
+      "best_loss": 0.00534451100975275,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 6.545746146002784e-06,
+        "reason": "lbfgs_plateau",
+        "step": 4090
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 528.8529232000001,
+    "energy_mode": "no_energy",
+    "energy_weight": 0.0,
+    "error_Tmax_abs_K": 117.75142665422624,
+    "exact_energy": false,
+    "nrmse_pct": 26.946874978538954,
+    "status": "completed",
+    "use_energy_loss": false
+  },
+  "cable_disk:M0:with_energy": {
+    "Tmax_pred_C": 21.40904998779297,
+    "architecture": "M0",
+    "balance_pct": 7015.462638351395,
+    "case": "cable_disk",
+    "divergence_stop": {
+      "best_loss": 0.1806550770998001,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 0.002393381902948022,
+        "reason": "lbfgs_plateau",
+        "step": 4055
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 389.8233992000023,
+    "energy_mode": "with_energy",
+    "energy_weight": 100.0,
+    "error_Tmax_abs_K": 116.96221156633561,
+    "exact_energy": true,
+    "nrmse_pct": 26.780439179754527,
+    "status": "completed",
+    "use_energy_loss": true
   },
   "cable_disk:M0R": {
     "Tmax_pred_C": 20.462495803833008,
@@ -69,6 +549,86 @@
     "nrmse_pct": 26.98519273831925,
     "status": "completed"
   },
+  "cable_disk:M0R:no_energy": {
+    "Tmax_pred_C": 20.159875869750977,
+    "architecture": "M0R",
+    "balance_pct": 1.6713760294231688,
+    "case": "cable_disk",
+    "divergence_stop": {
+      "best_loss": 0.0009423281298950315,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 3.918992206308758e-06,
+        "reason": "lbfgs_plateau",
+        "step": 4100
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 455.625661500002,
+    "energy_mode": "no_energy",
+    "energy_weight": 0.0,
+    "error_Tmax_abs_K": 118.2113856843776,
+    "exact_energy": false,
+    "nrmse_pct": 27.053309136687215,
+    "status": "completed",
+    "use_energy_loss": false
+  },
+  "cable_disk:M0R:with_energy": {
+    "Tmax_pred_C": 20.576574325561523,
+    "architecture": "M0R",
+    "balance_pct": 47.43090423613007,
+    "case": "cable_disk",
+    "divergence_stop": {
+      "best_loss": 0.012216414324939251,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 0.001312626525759697,
+        "reason": "lbfgs_plateau",
+        "step": 4105
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 509.72975399999996,
+    "energy_mode": "with_energy",
+    "energy_weight": 100.0,
+    "error_Tmax_abs_K": 117.79468722856706,
+    "exact_energy": true,
+    "nrmse_pct": 26.957720791370516,
+    "status": "completed",
+    "use_energy_loss": true
+  },
   "cable_disk:M1": {
     "Tmax_pred_C": 20.11348533630371,
     "architecture": "M1",
@@ -78,6 +638,86 @@
     "error_Tmax_abs_K": 118.25777621782487,
     "nrmse_pct": 27.066999842542486,
     "status": "completed"
+  },
+  "cable_disk:M1:no_energy": {
+    "Tmax_pred_C": 20.221290588378906,
+    "architecture": "M1",
+    "balance_pct": 0.029803792977402342,
+    "case": "cable_disk",
+    "divergence_stop": {
+      "best_loss": 0.004550348035991192,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 1.0212957022304181e-05,
+        "reason": "lbfgs_plateau",
+        "step": 4125
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 455.8693106999999,
+    "energy_mode": "no_energy",
+    "energy_weight": 0.0,
+    "error_Tmax_abs_K": 118.14997096574967,
+    "exact_energy": false,
+    "nrmse_pct": 27.038987165814707,
+    "status": "completed",
+    "use_energy_loss": false
+  },
+  "cable_disk:M1:with_energy": {
+    "Tmax_pred_C": 20.010494232177734,
+    "architecture": "M1",
+    "balance_pct": 5.398880599627383,
+    "case": "cable_disk",
+    "divergence_stop": {
+      "best_loss": 0.017712486907839775,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 0.0023047244176268578,
+        "reason": "lbfgs_plateau",
+        "step": 4065
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 334.4022430999976,
+    "energy_mode": "with_energy",
+    "energy_weight": 100.0,
+    "error_Tmax_abs_K": 118.36076732195085,
+    "exact_energy": true,
+    "nrmse_pct": 27.08919685520851,
+    "status": "completed",
+    "use_energy_loss": true
   },
   "cable_disk:M1_EXACT": {
     "Tmax_pred_C": 20.128406524658203,
@@ -89,6 +729,86 @@
     "nrmse_pct": 27.06725024359323,
     "status": "completed"
   },
+  "cable_disk:M1_EXACT:no_energy": {
+    "Tmax_pred_C": 20.128406524658203,
+    "architecture": "M1_EXACT",
+    "balance_pct": 0.27659344761552773,
+    "case": "cable_disk",
+    "divergence_stop": {
+      "best_loss": 0.0347977951169014,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 0.008291221223771572,
+        "reason": "lbfgs_plateau",
+        "step": 4050
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 690.2068903999971,
+    "energy_mode": "no_energy",
+    "energy_weight": 0.0,
+    "error_Tmax_abs_K": 118.24285502947038,
+    "exact_energy": false,
+    "nrmse_pct": 27.06725024359323,
+    "status": "completed",
+    "use_energy_loss": false
+  },
+  "cable_disk:M1_EXACT:with_energy": {
+    "Tmax_pred_C": 20.1457576751709,
+    "architecture": "M1_EXACT",
+    "balance_pct": 5.061726291449702,
+    "case": "cable_disk",
+    "divergence_stop": {
+      "best_loss": 0.036237865686416626,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 0.013690573163330555,
+        "reason": "lbfgs_plateau",
+        "step": 4050
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 1037.4737378999998,
+    "energy_mode": "with_energy",
+    "energy_weight": 100.0,
+    "error_Tmax_abs_K": 118.22550387895768,
+    "exact_energy": true,
+    "nrmse_pct": 27.098105261188422,
+    "status": "completed",
+    "use_energy_loss": true
+  },
   "cable_disk:M2": {
     "Tmax_pred_C": 20.056110382080078,
     "architecture": "M2",
@@ -98,6 +818,82 @@
     "error_Tmax_abs_K": 118.3151511720485,
     "nrmse_pct": 27.0798059400839,
     "status": "completed"
+  },
+  "cable_disk:M2:no_energy": {
+    "Tmax_pred_C": 20.052471160888672,
+    "architecture": "M2",
+    "balance_pct": 0.4369107041559086,
+    "case": "cable_disk",
+    "divergence_stop": {
+      "best_loss": 0.0006747099687345326,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 6.331167242024094e-06,
+        "reason": "lbfgs_plateau",
+        "step": 4130
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 364.66628300000593,
+    "energy_mode": "no_energy",
+    "energy_weight": 0.0,
+    "error_Tmax_abs_K": 118.31879039323991,
+    "exact_energy": false,
+    "nrmse_pct": 27.077390293602868,
+    "status": "completed",
+    "use_energy_loss": false
+  },
+  "cable_disk:M2:with_energy": {
+    "Tmax_pred_C": 20.067914962768555,
+    "architecture": "M2",
+    "balance_pct": 3.630215546492028,
+    "case": "cable_disk",
+    "divergence_stop": {
+      "best_loss": 0.0025385816115885973,
+      "enabled": true,
+      "lbfgs_early_stop": null,
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 514.7229249999946,
+    "energy_mode": "with_energy",
+    "energy_weight": 100.0,
+    "error_Tmax_abs_K": 118.30334659136003,
+    "exact_energy": true,
+    "nrmse_pct": 27.07400497115697,
+    "status": "completed",
+    "use_energy_loss": true
   },
   "mms_sine:CUSP": {
     "Tmax_pred_C": 49.87832260131836,
@@ -109,6 +905,86 @@
     "nrmse_pct": 0.42252129402883165,
     "status": "completed"
   },
+  "mms_sine:CUSP:no_energy": {
+    "Tmax_pred_C": 50.154693603515625,
+    "architecture": "CUSP",
+    "balance_pct": 1.362042151289366,
+    "case": "mms_sine",
+    "divergence_stop": {
+      "best_loss": 0.3906760513782501,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 0.00035559231764636934,
+        "reason": "lbfgs_plateau",
+        "step": 4105
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 278.1247551999986,
+    "energy_mode": "no_energy",
+    "energy_weight": 0.0,
+    "error_Tmax_abs_K": 0.15683946821589245,
+    "exact_energy": false,
+    "nrmse_pct": 0.189146680023635,
+    "status": "completed",
+    "use_energy_loss": false
+  },
+  "mms_sine:CUSP:with_energy": {
+    "Tmax_pred_C": 49.93196105957031,
+    "architecture": "CUSP",
+    "balance_pct": 0.002170487161705234,
+    "case": "mms_sine",
+    "divergence_stop": {
+      "best_loss": 0.4158031940460205,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 0.0004283021844457835,
+        "reason": "lbfgs_plateau",
+        "step": 4100
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 235.02550889999839,
+    "energy_mode": "with_energy",
+    "energy_weight": 100.0,
+    "error_Tmax_abs_K": 0.06589307572942005,
+    "exact_energy": true,
+    "nrmse_pct": 0.34628832629886164,
+    "status": "completed",
+    "use_energy_loss": true
+  },
   "mms_sine:CUSPR": {
     "Tmax_pred_C": 49.87305450439453,
     "architecture": "CUSPR",
@@ -118,6 +994,86 @@
     "error_Tmax_abs_K": 0.1247996309052013,
     "nrmse_pct": 0.3111583918665241,
     "status": "completed"
+  },
+  "mms_sine:CUSPR:no_energy": {
+    "Tmax_pred_C": 50.027347564697266,
+    "architecture": "CUSPR",
+    "balance_pct": 0.8009090826792595,
+    "case": "mms_sine",
+    "divergence_stop": {
+      "best_loss": 0.20758569240570068,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 0.00010414628923172131,
+        "reason": "lbfgs_plateau",
+        "step": 4085
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 303.2149317000003,
+    "energy_mode": "no_energy",
+    "energy_weight": 0.0,
+    "error_Tmax_abs_K": 0.029493429397533077,
+    "exact_energy": false,
+    "nrmse_pct": 0.09038290622099149,
+    "status": "completed",
+    "use_energy_loss": false
+  },
+  "mms_sine:CUSPR:with_energy": {
+    "Tmax_pred_C": 49.87373352050781,
+    "architecture": "CUSPR",
+    "balance_pct": 0.0016996640511654365,
+    "case": "mms_sine",
+    "divergence_stop": {
+      "best_loss": 0.2225414663553238,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 0.00019625254208222032,
+        "reason": "lbfgs_plateau",
+        "step": 4070
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 248.96362919999956,
+    "energy_mode": "with_energy",
+    "energy_weight": 100.0,
+    "error_Tmax_abs_K": 0.12412061479192005,
+    "exact_energy": true,
+    "nrmse_pct": 0.3007049783911972,
+    "status": "completed",
+    "use_energy_loss": true
   },
   "mms_sine:CUSP_EXACT": {
     "Tmax_pred_C": 49.99562454223633,
@@ -129,6 +1085,86 @@
     "nrmse_pct": 0.005181873528706775,
     "status": "completed"
   },
+  "mms_sine:CUSP_EXACT:no_energy": {
+    "Tmax_pred_C": 49.99562454223633,
+    "architecture": "CUSP_EXACT",
+    "balance_pct": 0.7604407153209579,
+    "case": "mms_sine",
+    "divergence_stop": {
+      "best_loss": 0.0001326562778558582,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 6.085954851187125e-07,
+        "reason": "lbfgs_plateau",
+        "step": 4045
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 374.24846190000244,
+    "energy_mode": "no_energy",
+    "energy_weight": 0.0,
+    "error_Tmax_abs_K": 0.0022295930634044225,
+    "exact_energy": false,
+    "nrmse_pct": 0.005181873528706775,
+    "status": "completed",
+    "use_energy_loss": false
+  },
+  "mms_sine:CUSP_EXACT:with_energy": {
+    "Tmax_pred_C": 49.845542907714844,
+    "architecture": "CUSP_EXACT",
+    "balance_pct": 0.0020295605163735938,
+    "case": "mms_sine",
+    "divergence_stop": {
+      "best_loss": 0.00017126828606706113,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 4.5460285036824644e-05,
+        "reason": "lbfgs_plateau",
+        "step": 4045
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 613.6123700000026,
+    "energy_mode": "with_energy",
+    "energy_weight": 100.0,
+    "error_Tmax_abs_K": 0.1523112275848888,
+    "exact_energy": true,
+    "nrmse_pct": 0.2655956625268178,
+    "status": "completed",
+    "use_energy_loss": true
+  },
   "mms_sine:DCSNN": {
     "Tmax_pred_C": 49.93341064453125,
     "architecture": "DCSNN",
@@ -138,6 +1174,86 @@
     "error_Tmax_abs_K": 0.06444349076848255,
     "nrmse_pct": 0.36852011928763867,
     "status": "completed"
+  },
+  "mms_sine:DCSNN:no_energy": {
+    "Tmax_pred_C": 50.035194396972656,
+    "architecture": "DCSNN",
+    "balance_pct": 1.3403938968394442,
+    "case": "mms_sine",
+    "divergence_stop": {
+      "best_loss": 0.4865911900997162,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 0.0007354639819823205,
+        "reason": "lbfgs_plateau",
+        "step": 4085
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 253.822164600002,
+    "energy_mode": "no_energy",
+    "energy_weight": 0.0,
+    "error_Tmax_abs_K": 0.0373402616729237,
+    "exact_energy": false,
+    "nrmse_pct": 0.15441237331332075,
+    "status": "completed",
+    "use_energy_loss": false
+  },
+  "mms_sine:DCSNN:with_energy": {
+    "Tmax_pred_C": 49.89705276489258,
+    "architecture": "DCSNN",
+    "balance_pct": 7.470084329203175e-06,
+    "case": "mms_sine",
+    "divergence_stop": {
+      "best_loss": 0.331818550825119,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 0.0006095111020840704,
+        "reason": "lbfgs_plateau",
+        "step": 4080
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 215.3106151999964,
+    "energy_mode": "with_energy",
+    "energy_weight": 100.0,
+    "error_Tmax_abs_K": 0.10080137040715442,
+    "exact_energy": true,
+    "nrmse_pct": 0.36536233365563897,
+    "status": "completed",
+    "use_energy_loss": true
   },
   "mms_sine:FBPINN": {
     "Tmax_pred_C": 40.893409729003906,
@@ -149,6 +1265,86 @@
     "nrmse_pct": 52.782165127735766,
     "status": "completed"
   },
+  "mms_sine:FBPINN:no_energy": {
+    "Tmax_pred_C": 40.724761962890625,
+    "architecture": "FBPINN",
+    "balance_pct": 111.17572719426965,
+    "case": "mms_sine",
+    "divergence_stop": {
+      "best_loss": 72600.9140625,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 2054.3544921875,
+        "reason": "lbfgs_plateau",
+        "step": 4050
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 925.5863131000006,
+    "energy_mode": "no_energy",
+    "energy_weight": 0.0,
+    "error_Tmax_abs_K": 9.273092172409108,
+    "exact_energy": false,
+    "nrmse_pct": 53.11613168816043,
+    "status": "completed",
+    "use_energy_loss": false
+  },
+  "mms_sine:FBPINN:with_energy": {
+    "Tmax_pred_C": 40.79155731201172,
+    "architecture": "FBPINN",
+    "balance_pct": 116.59433268568394,
+    "case": "mms_sine",
+    "divergence_stop": {
+      "best_loss": 72601.6328125,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 3453.4345703125,
+        "reason": "lbfgs_plateau",
+        "step": 4045
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 1068.0731983000005,
+    "energy_mode": "with_energy",
+    "energy_weight": 100.0,
+    "error_Tmax_abs_K": 9.206296823288014,
+    "exact_energy": true,
+    "nrmse_pct": 52.553870972416235,
+    "status": "completed",
+    "use_energy_loss": true
+  },
   "mms_sine:M0": {
     "Tmax_pred_C": 49.869293212890625,
     "architecture": "M0",
@@ -158,6 +1354,86 @@
     "error_Tmax_abs_K": 0.12856092240910755,
     "nrmse_pct": 0.24921453914843886,
     "status": "completed"
+  },
+  "mms_sine:M0:no_energy": {
+    "Tmax_pred_C": 49.983917236328125,
+    "architecture": "M0",
+    "balance_pct": 0.7150911614288967,
+    "case": "mms_sine",
+    "divergence_stop": {
+      "best_loss": 0.024700356647372246,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 1.1044940038118511e-05,
+        "reason": "lbfgs_plateau",
+        "step": 4120
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 340.23362530000304,
+    "energy_mode": "no_energy",
+    "energy_weight": 0.0,
+    "error_Tmax_abs_K": 0.013936898971607548,
+    "exact_energy": false,
+    "nrmse_pct": 0.023667468419970843,
+    "status": "completed",
+    "use_energy_loss": false
+  },
+  "mms_sine:M0:with_energy": {
+    "Tmax_pred_C": 49.867942810058594,
+    "architecture": "M0",
+    "balance_pct": 0.0025948685368516497,
+    "case": "mms_sine",
+    "divergence_stop": {
+      "best_loss": 0.030166877433657646,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 5.0669746997300535e-05,
+        "reason": "lbfgs_plateau",
+        "step": 4120
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 283.3450362000003,
+    "energy_mode": "with_energy",
+    "energy_weight": 100.0,
+    "error_Tmax_abs_K": 0.1299113252411388,
+    "exact_energy": true,
+    "nrmse_pct": 0.2534204347062935,
+    "status": "completed",
+    "use_energy_loss": true
   },
   "mms_sine:M0R": {
     "Tmax_pred_C": 49.87305450439453,
@@ -169,6 +1445,86 @@
     "nrmse_pct": 0.3111583918665241,
     "status": "completed"
   },
+  "mms_sine:M0R:no_energy": {
+    "Tmax_pred_C": 50.027347564697266,
+    "architecture": "M0R",
+    "balance_pct": 0.8009090826792595,
+    "case": "mms_sine",
+    "divergence_stop": {
+      "best_loss": 0.20758569240570068,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 0.00010414628923172131,
+        "reason": "lbfgs_plateau",
+        "step": 4085
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 296.4790475000045,
+    "energy_mode": "no_energy",
+    "energy_weight": 0.0,
+    "error_Tmax_abs_K": 0.029493429397533077,
+    "exact_energy": false,
+    "nrmse_pct": 0.09038290622099149,
+    "status": "completed",
+    "use_energy_loss": false
+  },
+  "mms_sine:M0R:with_energy": {
+    "Tmax_pred_C": 49.87373352050781,
+    "architecture": "M0R",
+    "balance_pct": 0.0016996640511654365,
+    "case": "mms_sine",
+    "divergence_stop": {
+      "best_loss": 0.2225414663553238,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 0.00019625254208222032,
+        "reason": "lbfgs_plateau",
+        "step": 4070
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 243.59748820000095,
+    "energy_mode": "with_energy",
+    "energy_weight": 100.0,
+    "error_Tmax_abs_K": 0.12412061479192005,
+    "exact_energy": true,
+    "nrmse_pct": 0.3007049783911972,
+    "status": "completed",
+    "use_energy_loss": true
+  },
   "mms_sine:M1": {
     "Tmax_pred_C": 49.87832260131836,
     "architecture": "M1",
@@ -178,6 +1534,86 @@
     "error_Tmax_abs_K": 0.11953153398137317,
     "nrmse_pct": 0.42252129402883165,
     "status": "completed"
+  },
+  "mms_sine:M1:no_energy": {
+    "Tmax_pred_C": 50.154693603515625,
+    "architecture": "M1",
+    "balance_pct": 1.362042151289366,
+    "case": "mms_sine",
+    "divergence_stop": {
+      "best_loss": 0.3906760513782501,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 0.00035559231764636934,
+        "reason": "lbfgs_plateau",
+        "step": 4105
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 274.9641849000036,
+    "energy_mode": "no_energy",
+    "energy_weight": 0.0,
+    "error_Tmax_abs_K": 0.15683946821589245,
+    "exact_energy": false,
+    "nrmse_pct": 0.189146680023635,
+    "status": "completed",
+    "use_energy_loss": false
+  },
+  "mms_sine:M1:with_energy": {
+    "Tmax_pred_C": 49.93196105957031,
+    "architecture": "M1",
+    "balance_pct": 0.002170487161705234,
+    "case": "mms_sine",
+    "divergence_stop": {
+      "best_loss": 0.4158031940460205,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 0.0004283021844457835,
+        "reason": "lbfgs_plateau",
+        "step": 4100
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 227.5891799999954,
+    "energy_mode": "with_energy",
+    "energy_weight": 100.0,
+    "error_Tmax_abs_K": 0.06589307572942005,
+    "exact_energy": true,
+    "nrmse_pct": 0.34628832629886164,
+    "status": "completed",
+    "use_energy_loss": true
   },
   "mms_sine:M1_EXACT": {
     "Tmax_pred_C": 49.99562454223633,
@@ -189,6 +1625,86 @@
     "nrmse_pct": 0.005181873528706775,
     "status": "completed"
   },
+  "mms_sine:M1_EXACT:no_energy": {
+    "Tmax_pred_C": 49.99562454223633,
+    "architecture": "M1_EXACT",
+    "balance_pct": 0.7604407153209579,
+    "case": "mms_sine",
+    "divergence_stop": {
+      "best_loss": 0.0001326562778558582,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 6.085954851187125e-07,
+        "reason": "lbfgs_plateau",
+        "step": 4045
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 371.7623354000025,
+    "energy_mode": "no_energy",
+    "energy_weight": 0.0,
+    "error_Tmax_abs_K": 0.0022295930634044225,
+    "exact_energy": false,
+    "nrmse_pct": 0.005181873528706775,
+    "status": "completed",
+    "use_energy_loss": false
+  },
+  "mms_sine:M1_EXACT:with_energy": {
+    "Tmax_pred_C": 49.845542907714844,
+    "architecture": "M1_EXACT",
+    "balance_pct": 0.0020295605163735938,
+    "case": "mms_sine",
+    "divergence_stop": {
+      "best_loss": 0.00017126828606706113,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 4.5460285036824644e-05,
+        "reason": "lbfgs_plateau",
+        "step": 4045
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 611.3341413000016,
+    "energy_mode": "with_energy",
+    "energy_weight": 100.0,
+    "error_Tmax_abs_K": 0.1523112275848888,
+    "exact_energy": true,
+    "nrmse_pct": 0.2655956625268178,
+    "status": "completed",
+    "use_energy_loss": true
+  },
   "mms_sine:M2": {
     "Tmax_pred_C": 49.965721130371094,
     "architecture": "M2",
@@ -198,5 +1714,85 @@
     "error_Tmax_abs_K": 0.0321330049286388,
     "nrmse_pct": 0.8995148578131736,
     "status": "completed"
+  },
+  "mms_sine:M2:no_energy": {
+    "Tmax_pred_C": 51.278236389160156,
+    "architecture": "M2",
+    "balance_pct": 0.23820500226153585,
+    "case": "mms_sine",
+    "divergence_stop": {
+      "best_loss": 0.12900659441947937,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 0.0005829485016874969,
+        "reason": "lbfgs_plateau",
+        "step": 4155
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 302.8970637999955,
+    "energy_mode": "no_energy",
+    "energy_weight": 0.0,
+    "error_Tmax_abs_K": 1.2803822538604237,
+    "exact_energy": false,
+    "nrmse_pct": 1.5767394779530746,
+    "status": "completed",
+    "use_energy_loss": false
+  },
+  "mms_sine:M2:with_energy": {
+    "Tmax_pred_C": 49.842506408691406,
+    "architecture": "M2",
+    "balance_pct": 0.03284337844660133,
+    "case": "mms_sine",
+    "divergence_stop": {
+      "best_loss": 0.1878306120634079,
+      "enabled": true,
+      "lbfgs_early_stop": {
+        "loss": 0.00036877227830700576,
+        "reason": "lbfgs_plateau",
+        "step": 4165
+      },
+      "message": null,
+      "phase": null,
+      "reason": null,
+      "settings": {
+        "check_nonfinite_grads": true,
+        "explosion_factor": 10000.0,
+        "growth_patience": 6,
+        "lbfgs_explosion_factor": 100.0,
+        "lbfgs_min_rel_improve": 1e-06,
+        "lbfgs_stagnation_checks": 8,
+        "max_loss": 1000000000000.0,
+        "min_growth_ratio": 1.05,
+        "patience_explosion": 3,
+        "warmup_steps": 150
+      },
+      "step": null,
+      "triggered": false
+    },
+    "elapsed_s": 262.2080219999989,
+    "energy_mode": "with_energy",
+    "energy_weight": 100.0,
+    "error_Tmax_abs_K": 0.1553477266083263,
+    "exact_energy": true,
+    "nrmse_pct": 0.7065992121063871,
+    "status": "completed",
+    "use_energy_loss": true
   }
 }

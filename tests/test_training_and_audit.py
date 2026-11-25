@@ -96,3 +96,38 @@ def test_ampacity_solver_pinn(tmp_path: Path, cable_problem: ThermalProblem2D) -
     assert res.power_W_m > 0.0
     assert math.isfinite(res.Tmax_at_mid_C)
     assert len(res.trace) >= 1
+
+
+def test_interface_flux_continuity_enforced_in_objective(cable_problem: ThermalProblem2D) -> None:
+    """Verifica que interface_flux está activo por defecto (incluso en M1_EXACT) y penaliza saltos [q·n]."""
+    import torch
+    import pinn_thermal.models  # noqa: F401
+    from pinn_thermal.core.base_model import ModelRegistry
+    from pinn_thermal.core.objective import DEFAULT_WEIGHTS, PhysicsObjective
+
+    assert DEFAULT_WEIGHTS["interface_flux"] > 0.0
+    torch.manual_seed(42)
+    points = {"n_interior": 64, "n_layer": 32, "n_face": 24, "n_boundary": 24}
+
+    for arch in ("M1", "M1_EXACT"):
+        model = ModelRegistry.build(cable_problem, arch, width=16, depth=2).to(dtype=torch.float32)
+        obj_flux = PhysicsObjective(model, **points, exact_energy=False)
+        obj_no_flux = PhysicsObjective(model, **points, weights={"interface_flux": 0.0}, exact_energy=False)
+        assert obj_flux.weights["interface_flux"] == pytest.approx(DEFAULT_WEIGHTS["interface_flux"])
+        assert obj_no_flux.weights["interface_flux"] == 0.0
+
+        total_with, parts_with, _ = obj_flux()
+        total_without, parts_without, _ = obj_no_flux()
+        flux_term = float(parts_with["interface_flux"].item())
+        assert math.isfinite(flux_term) and flux_term > 0.0
+        assert float(parts_without["interface_flux"].item()) == pytest.approx(flux_term, rel=1e-5)
+        diff = float((total_with - total_without).item())
+        assert diff == pytest.approx(DEFAULT_WEIGHTS["interface_flux"] * flux_term, rel=1e-4)
+
+    model_exact = ModelRegistry.build(cable_problem, "M1_EXACT", width=16, depth=2).to(dtype=torch.float32)
+    obj_exact_energy = PhysicsObjective(
+        model_exact, **points, weights={"energy": 100.0}, exact_energy=True
+    )
+    assert obj_exact_energy.weights["interface_flux"] == pytest.approx(DEFAULT_WEIGHTS["interface_flux"])
+    assert obj_exact_energy.weights["energy"] == pytest.approx(100.0)
+
