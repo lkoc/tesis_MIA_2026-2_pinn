@@ -105,3 +105,32 @@ def test_polygon_problem_construction() -> None:
     pts = prob.sample_region_interior(prob.regions[1], 40, 123)
     assert len(pts) == 40
     assert np.all(prob.owner(pts[:, 0], pts[:, 1]) == 1)
+
+
+def test_shape_areas_thin_layer_scaling_and_smooth_distance_at_origin(catalog) -> None:
+    """Verifica áreas exactas en regiones delgadas (sin 1e-12), escalas Fourier y suavidad C^inf en r=0."""
+    import math
+    import torch
+
+    assert RectangleShape((-1.0, 2.0, 0.0, 4.0)).area() == pytest.approx(12.0)
+    assert DiskShape((0.0, 0.0), 0.5).area() == pytest.approx(math.pi * 0.25)
+    assert AnnulusShape((0.0, 0.0), 0.2, 0.5).area() == pytest.approx(math.pi * (0.25 - 0.04))
+    assert PolygonShape(((0.0, 0.0), (2.0, 0.0), (0.0, 3.0))).area() == pytest.approx(3.0)
+
+    prob = catalog.load("xlpe_discrete_layers")
+    for reg in prob.regions:
+        assert prob.areas[reg.id] > 1e-6, f"Área colapsada en {reg.name}: {prob.areas[reg.id]}"
+        sc = prob.scales(reg)
+        assert math.isfinite(sc["flux"]) and sc["flux"] < 1e5
+        assert math.isfinite(sc["divergence"]) and sc["divergence"] < 1e9
+
+    d0 = prob.source_disks[0]
+    xy0 = torch.tensor([list(d0.center)], dtype=torch.float32, requires_grad=True)
+    lvls = prob.level_sets(xy0)
+    sfeats = torch.cat(prob._source_distance_features(xy0, prob.bounds), dim=1)
+    for feat in (lvls, sfeats):
+        assert torch.isfinite(feat).all()
+        g = torch.autograd.grad(feat.sum(), xy0, create_graph=True)[0]
+        h = torch.autograd.grad(g.sum(), xy0, retain_graph=True)[0]
+        assert torch.isfinite(g).all()
+        assert torch.isfinite(h).all()

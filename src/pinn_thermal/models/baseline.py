@@ -67,9 +67,8 @@ class _OffsetMLPModel(BasePINNModel):
             "compartida recibe coordenadas normalizadas y salidas por región con escala global."
         ),
         modifications=(
-            "Se adaptó la entrada global agregando codificación geométrica por región "
-            "(coordenadas locales rellenadas, selector one-hot y distancias logarítmicas a fuentes) "
-            "junto con sesgos regionales entrenables para estabilizar la escala térmica."
+            "Se emplea una red escalar continua única sobre coordenadas globales normalizadas "
+            "del dominio (x, y) manteniendo escala térmica uniforme T_scale y sesgo global único."
         ),
         supports_exact_constraints=False,
         supports_mixed_flux=False,
@@ -77,7 +76,7 @@ class _OffsetMLPModel(BasePINNModel):
     ),
 )
 class M0GlobalPINN(_OffsetMLPModel):
-    """PINN global única ``M0`` con escala térmica uniforme ``T_scale`` por defecto."""
+    """PINN global única ``M0`` con campo escalar continuo y escala térmica uniforme ``T_scale``."""
 
     model_kind = "baseline_global"
 
@@ -101,17 +100,22 @@ class M0GlobalPINN(_OffsetMLPModel):
             formulation="strong",
             input_normalization=input_normalization,
         )
-        in_features = problem.input_size(problem.regions[0], "global")
-        n_regions = len(problem.regions)
-        self.networks.append(build_mlp(in_features, self.width, self.depth, n_regions, self.activation))
-        for _ in problem.regions:
-            self.offsets.append(nn.Parameter(torch.zeros((), dtype=torch.float32)))
+        self.networks.append(build_mlp(2, self.width, self.depth, 1, self.activation))
+        self.offsets.append(nn.Parameter(torch.zeros((), dtype=torch.float32)))
+
+    def _features(self, xy: torch.Tensor) -> torch.Tensor:
+        norm = self.problem.normalized_xy(xy)
+        if self.input_normalization == "unit_box_v1":
+            norm = (norm + 1.0) * 0.5
+        return norm
 
     def field(self, region: RegionSpec, xy: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor | None]:
-        features = self.input_coordinates(region, xy)
-        raw = self.networks[0](features)[:, region.id:region.id + 1]
-        temp = self.problem.T_ref + self.problem.T_scale * (self.offsets[region.id] + raw)
+        raw = self.networks[0](self._features(xy))[:, 0:1]
+        temp = self.problem.T_ref + self.problem.T_scale * (self.offsets[0] + raw)
         return temp, None
+
+    def subnetwork_map(self) -> dict[str, nn.Module]:
+        return {"global": self.networks[0]}
 
 
 @ModelRegistry.register(

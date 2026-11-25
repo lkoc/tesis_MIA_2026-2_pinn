@@ -182,6 +182,7 @@ class ThermalProblem2D:
         grid_xy, cell_area = self._scale_grid()
         owner = self.owner_index(grid_xy)
         exact_areas = self._exact_cable_areas()
+        local_rng = np.random.default_rng(20261125)
         self.k_ref: dict[int, float] = {}
         self.region_power: dict[int, float] = {}
         self.source_abs: dict[int, float] = {}
@@ -189,8 +190,24 @@ class ThermalProblem2D:
         absolute = 0.0
         for region in self.regions:
             mine = owner == region.id
-            self.areas[region.id] = exact_areas.get(region.id, max(float(np.count_nonzero(mine)) * cell_area, 1e-12))
-            points = grid_xy[mine] if np.any(mine) else self._representative_point(region).reshape(1, 2)
+            hits = int(np.count_nonzero(mine))
+            if region.id in exact_areas:
+                self.areas[region.id] = exact_areas[region.id]
+                points = grid_xy[mine] if hits >= 64 else self._representative_point(region).reshape(1, 2)
+                if hits < 64:
+                    local_pts = region.shape.sample_local(4096, local_rng)
+                    owned = self.owner(local_pts[:, 0], local_pts[:, 1]) == region.id
+                    if np.any(owned):
+                        points = local_pts[owned]
+            elif hits >= 64:
+                self.areas[region.id] = max(float(hits) * cell_area, 1e-12)
+                points = grid_xy[mine]
+            else:
+                local_pts = region.shape.sample_local(4096, local_rng)
+                owned = self.owner(local_pts[:, 0], local_pts[:, 1]) == region.id
+                frac = float(np.mean(owned)) if len(owned) else 0.0
+                self.areas[region.id] = max(region.shape.area() * frac, 1e-12)
+                points = local_pts[owned] if np.any(owned) else self._representative_point(region).reshape(1, 2)
             k_values = region.conductivity_spec.evaluate_numpy(points[:, 0], points[:, 1])
             q_values = region.source_spec.evaluate_numpy(points[:, 0], points[:, 1])
             self.k_ref[region.id] = float(np.mean(k_values))
@@ -199,6 +216,7 @@ class ThermalProblem2D:
             absolute += self.source_abs[region.id] * self.areas[region.id]
 
         characteristic = max(self.k_ref.values()) * self.T_scale
+        self._source_power_abs: float = absolute
         self.power_total: float = sum(self.region_power.values())
         self.power_scale: float = absolute if absolute > 0.0 else characteristic
 
@@ -809,9 +827,15 @@ class ThermalProblem2D:
     def scales(self, region: RegionSpec) -> dict[str, float]:
         """Escalas físicas adimensionales propias de cada región."""
         k = self.k_ref[region.id]
-        length = max(math.sqrt(self.areas[region.id]), 1e-12)
+        length = max(min(math.sqrt(self.areas[region.id]), region.shape.characteristic_size()), 1e-12)
         src = self.source_abs[region.id]
-        local = src * (length ** 2) / k if src > 0.0 else self.T_scale
+        if src > 0.0:
+            local = src * (length ** 2) / k
+        elif self._source_power_abs > 0.0:
+            fourier_local = 2.0 * math.pi * self._source_power_abs * (length ** 2) / max(k * self.areas[region.id], 1e-12)
+            local = min(self.T_scale, max(fourier_local, 1e-6 * self.T_scale))
+        else:
+            local = self.T_scale
         return {
             "temperature": self.T_scale,
             "local_temperature": local,
@@ -885,11 +909,12 @@ class ThermalProblem2D:
         for disk in self.source_disks:
             center = xy.new_tensor(disk.center)  # type: ignore[attr-defined]
             rm = float(disk.radius_m)  # type: ignore[attr-defined]
-            maximum = torch.linalg.vector_norm(corners - center, dim=1).max()
-            denom = torch.log((maximum / rm).clamp_min(1.0 + eps))
-            dist = torch.linalg.vector_norm(xy[:, :2] - center, dim=1, keepdim=True)
-            log_d = torch.log((dist / rm).clamp_min(eps))
-            features.append((2.0 * log_d / denom.clamp_min(eps) - 1.0).clamp(-1.0, 1.0))
+            rm2 = max(rm * rm, 1e-24)
+            max_r2 = ((corners - center) ** 2).sum(dim=1).max()
+            denom = (0.5 * torch.log1p(max_r2 / rm2)).clamp_min(eps)
+            r2 = ((xy[:, :2] - center) ** 2).sum(dim=1, keepdim=True)
+            log_d = 0.5 * torch.log1p(r2 / rm2)
+            features.append(2.0 * log_d / denom - 1.0)
         return features
 
     def coordinates(self, region: RegionSpec, xy: Any, partition: str) -> Any:
@@ -967,7 +992,11 @@ class ThermalProblem2D:
         for spec in self._level_set_specs():
             kind = spec[0]
             if kind == "circle":
-                columns.append(torch.linalg.vector_norm(xy[:, :2] - xy.new_tensor(spec[1]), dim=1, keepdim=True) - spec[2])
+                c = xy.new_tensor(spec[1])
+                r_val = float(spec[2])
+                eps_r = max(0.1 * r_val, 1e-6)
+                r_reg = torch.sqrt(((xy[:, :2] - c) ** 2).sum(dim=1, keepdim=True) + eps_r * eps_r)
+                columns.append(r_reg - math.hypot(r_val, eps_r))
             elif kind == "x_left":
                 columns.append(xy[:, 0:1] - spec[1])
             elif kind == "x_right":

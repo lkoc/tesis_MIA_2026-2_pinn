@@ -13,6 +13,8 @@ de trazas de interfaz:
 
 from __future__ import annotations
 
+import math
+
 import torch
 from torch import nn
 
@@ -50,22 +52,23 @@ def _boundary_lift_and_distance(problem: ThermalProblem2D, xy: torch.Tensor) -> 
         center = xy.new_tensor(dom["center"])
         ri = float(dom["inner_radius_m"])
         ro = float(dom["outer_radius_m"])
-        span = max(ro - ri, 1e-12)
-        r = torch.linalg.vector_norm(xy[:, :2] - center, dim=1, keepdim=True)
+        ri_safe = max(ri, 1e-12)
+        log_ratio = max(math.log(max(ro, ri_safe * 1.000001) / ri_safe), 1e-12)
+        r = torch.linalg.vector_norm(xy[:, :2] - center, dim=1, keepdim=True).clamp_min(1e-12)
+        frac = torch.log(r / ri_safe) / log_ratio
         has_in = "inner" in d_sides
         has_out = "outer" in d_sides
         if has_in and has_out:
             t_in = evaluate_field_torch(bounds["inner"]["value"], xy[:, 0:1], xy[:, 1:2])
             t_out = evaluate_field_torch(bounds["outer"]["value"], xy[:, 0:1], xy[:, 1:2])
-            frac = (r - ri) / span
             g_d = (1.0 - frac) * t_in + frac * t_out
-            d_d = 4.0 * ((r - ri) / span) * ((ro - r) / span)
+            d_d = 4.0 * frac * (1.0 - frac)
             return g_d, d_d
         if has_in:
             t_in = evaluate_field_torch(bounds["inner"]["value"], xy[:, 0:1], xy[:, 1:2])
-            return t_in, (r - ri) / span
+            return t_in, frac
         t_out = evaluate_field_torch(bounds["outer"]["value"], xy[:, 0:1], xy[:, 1:2])
-        return t_out, (ro - r) / span
+        return t_out, 1.0 - frac
 
     # Dominio rectangular: distancia normalizada respecto a cada borde Dirichlet activo
     x0, x1, y0, y1 = problem.bounds
@@ -101,8 +104,139 @@ def _boundary_lift_and_distance(problem: ThermalProblem2D, xy: torch.Tensor) -> 
 
     denom = sum(inv_weights) + eps
     g_d = sum(w * vals[s] for w, s in zip(inv_weights, d_sides)) / denom
-    # Escala O(1) en el centro del rectángulo
-    return g_d, d_d * (4.0 ** min(len(d_sides), 2))
+    # Escala O(1) en el centro del rectángulo según ejes restringidos
+    scale = (4.0 if ("left" in d_sides and "right" in d_sides) else 1.0) * (
+        4.0 if ("bottom" in d_sides and "top" in d_sides) else 1.0
+    )
+    return g_d, d_d * scale
+
+
+def _side_owner_regions(problem: ThermalProblem2D) -> dict[str, tuple[int, ...]]:
+    """Mapea cada frontera declarada del dominio a los IDs de las regiones en contacto."""
+    owners: dict[str, list[int]] = {}
+    for seg in problem.sample_boundary_regions(4, rows=1):
+        side = str(seg["side"])
+        reg_id = int(seg["region"])
+        lst = owners.setdefault(side, [])
+        if reg_id not in lst:
+            lst.append(reg_id)
+    return {side: tuple(ids) for side, ids in owners.items()}
+
+
+def _boundary_conductivity(
+    problem: ThermalProblem2D,
+    region: RegionSpec,
+    side: str,
+    xy_p: torch.Tensor,
+    side_owners: dict[str, tuple[int, ...]],
+) -> torch.Tensor:
+    """Conductividad de la región propietaria del borde (preserva [T]=0 en ansatz globales)."""
+    ids = side_owners.get(side, ())
+    if not ids or region.id in ids:
+        return problem.conductivity(region, xy_p)
+    return problem.conductivity(problem.regions[ids[0]], xy_p)
+
+
+def _apply_exact_natural_bcs(
+    problem: ThermalProblem2D,
+    region: RegionSpec,
+    xy: torch.Tensor,
+    t0_fn,
+    side_owners: dict[str, tuple[int, ...]],
+    interior_zero_factor: torch.Tensor | None = None,
+) -> torch.Tensor:
+    """Impone analíticamente condiciones Neumann y Robin sobre un campo base ``t0_fn`` Dirichlet-exacto.
+
+    Aplica extensión de Hermite de primer orden localizado con distancia acotada
+    ``psi = l_s * tanh(phi_s / l_s)`` y ponderación racional tipo Shepard
+    (Sukumar & Srivastava, 2022), asegurando exactitud simultánea en bordes Dirichlet,
+    Neumann y Robin sin requerir términos de penalización en la pérdida.
+    """
+    bounds = problem.doc["boundaries"]
+    d_sides = [s for s, c in bounds.items() if c["type"] == "dirichlet"]
+    m_sides = [s for s, c in bounds.items() if c["type"] in ("neumann", "robin")]
+    t0 = t0_fn(xy)
+    if not m_sides:
+        return t0
+
+    is_annulus = problem.domain_shape == "annulus"
+    if is_annulus:
+        dom = problem.doc["domain"]
+        center = xy.new_tensor(dom["center"])
+        ri, ro = float(dom["inner_radius_m"]), float(dom["outer_radius_m"])
+        ri_safe = max(ri, 1e-12)
+        ro_safe = max(ro, ri_safe * 1.000001)
+        span = max(ro_safe - ri_safe, 1e-12)
+        log_ratio = max(math.log(ro_safe / ri_safe), 1e-12)
+        delta = xy[:, :2] - center
+        r = torch.linalg.vector_norm(delta, dim=1, keepdim=True).clamp_min(1e-12)
+        unit = delta / r
+        eta = torch.log(r / ri_safe) / log_ratio
+        phi_norm = {"inner": eta, "outer": 1.0 - eta}
+        scale_out = max(min(ro_safe, 0.25 * span), 1e-12)
+        psi_map = {
+            "inner": ri_safe * torch.log(r / ri_safe),
+            "outer": scale_out * torch.tanh((ro_safe * torch.log(ro_safe / r)) / scale_out),
+        }
+        w_loc_map: dict[str, torch.Tensor] | None = None
+        proj = {"inner": center + ri * unit, "outer": center + ro * unit}
+    else:
+        x0, x1, y0, y1 = problem.bounds
+        dx, dy = max(x1 - x0, 1e-12), max(y1 - y0, 1e-12)
+        x, y = xy[:, 0:1], xy[:, 1:2]
+        phi_phys = {"left": x - x0, "right": x1 - x, "bottom": y - y0, "top": y1 - y}
+        phi_norm = {"left": (x - x0) / dx, "right": (x1 - x) / dx, "bottom": (y - y0) / dy, "top": (y1 - y) / dy}
+        l_loc = {"left": 0.25 * dx, "right": 0.25 * dx, "bottom": 0.25 * dy, "top": 0.25 * dy}
+        psi_map = {
+            s: max(l_loc[s], 1e-12) * torch.tanh(phi_phys[s] / max(l_loc[s], 1e-12))
+            for s in m_sides
+        }
+        w_loc_map = {
+            s: torch.exp(-((phi_phys[s] / max(l_loc[s], 1e-12)) ** 2))
+            for s in m_sides
+        }
+        proj = {
+            "left": torch.cat([xy.new_full((len(xy), 1), x0), y], dim=1),
+            "right": torch.cat([xy.new_full((len(xy), 1), x1), y], dim=1),
+            "bottom": torch.cat([x, xy.new_full((len(xy), 1), y0)], dim=1),
+            "top": torch.cat([x, xy.new_full((len(xy), 1), y1)], dim=1),
+        }
+
+    d_d2 = xy.new_ones((len(xy), 1))
+    for s in d_sides:
+        d_d2 = d_d2 * (phi_norm[s] ** 2)
+    if interior_zero_factor is not None:
+        d_d2 = d_d2 * interior_zero_factor
+
+    jets: list[torch.Tensor] = []
+    p_sides: list[torch.Tensor] = []
+    for s in m_sides:
+        bc = bounds[s]
+        xy_p = proj[s]
+        t_s = t0_fn(xy_p)
+        k_s = _boundary_conductivity(problem, region, s, xy_p, side_owners).clamp_min(1e-12)
+        if bc["type"] == "neumann":
+            qn = evaluate_field_torch(bc["q_n_W_m2"], xy_p[:, 0:1], xy_p[:, 1:2])
+            slope = qn / k_s
+        else:
+            h = float(bc["h_W_m2K"])
+            t_inf = evaluate_field_torch(bc["T_inf_C"], xy_p[:, 0:1], xy_p[:, 1:2])
+            slope = (h / k_s) * (t_s - t_inf)
+        jets.append(t_s + psi_map[s] * slope)
+
+        p = d_d2 if w_loc_map is None else (d_d2 * w_loc_map[s])
+        for other in m_sides:
+            if other != s:
+                p = p * (phi_norm[other] ** 2)
+        p_sides.append(p)
+
+    p_int = xy.new_ones((len(xy), 1))
+    for s in m_sides:
+        p_int = p_int * (phi_norm[s] ** 2)
+
+    denom = (p_int + sum(p_sides)).clamp_min(1e-24)
+    num = p_int * t0 + sum(p * jet for p, jet in zip(p_sides, jets))
+    return num / denom
 
 
 def _harmonic_trace_basis(
@@ -183,8 +317,9 @@ class ExactInterfaceCablePINN(BasePINNModel):
         self.trace_parameterization = str(trace_parameterization)
         self.soil_envelope_gain = float(soil_envelope_gain)
         self.harmonics = int(harmonics)
-        self.exact_boundary = len(_dirichlet_sides(problem)) > 0
-        self.exact_constraints = _all_boundaries_dirichlet(problem)
+        self._side_owners = _side_owner_regions(problem)
+        self.exact_boundary = True
+        self.exact_constraints = True
 
         self.networks = nn.ModuleList()
         for region in problem.regions:
@@ -216,23 +351,24 @@ class ExactInterfaceCablePINN(BasePINNModel):
         return self.problem.T_ref + self.trace_scale * (basis @ coeff)
 
     def field(self, region: RegionSpec, xy: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor | None]:
-        features = self.input_coordinates(region, xy)
-        raw = self.networks[region.id](features)
         amplitude = self.problem.amplitude(region, "region")
 
         if region.id in self._layer_by_region:
+            features = self.input_coordinates(region, xy)
+            raw = self.networks[region.id](features)
             layer = self._layer_by_region[region.id]
             cable = self.problem.cable_layout[layer.cable_index]
             l_idx = next(i for i, item in enumerate(cable.layers) if item.region_id == region.id)
             outer_trace_idx = self._trace_index_by_key[(cable.index, l_idx)]
             center = xy.new_tensor(layer.center)
-            r = torch.linalg.vector_norm(xy[:, :2] - center, dim=1, keepdim=True)
 
             t_out = self._trace_temperature(outer_trace_idx, xy, layer.center, layer.outer_radius, polynomial=(layer.inner_radius == 0.0))
             if layer.inner_radius == 0.0:
-                bubble = 1.0 - (r / max(layer.outer_radius, 1e-12)) ** 2
+                r2 = ((xy[:, :2] - center) ** 2).sum(dim=1, keepdim=True)
+                bubble = 1.0 - r2 / (max(layer.outer_radius, 1e-12) ** 2)
                 return t_out + amplitude * bubble * raw, None
 
+            r = torch.linalg.vector_norm(xy[:, :2] - center, dim=1, keepdim=True)
             inner_trace_idx = self._trace_index_by_key[(cable.index, l_idx - 1)]
             t_in = self._trace_temperature(inner_trace_idx, xy, layer.center, layer.outer_radius, polynomial=False)
             if self.trace_parameterization == "fourier":
@@ -244,39 +380,60 @@ class ExactInterfaceCablePINN(BasePINNModel):
             bubble = 4.0 * frac * (1.0 - frac)
             return base + amplitude * bubble * raw, None
 
-        # Región de suelo circundante: acopla exacto a cada superficie externa de cable y borde externo
-        g_d, d_d = _boundary_lift_and_distance(self.problem, xy)
-        surf_dists = []
-        cable_temps = []
+        # Región de suelo circundante: acopla exacto a cada superficie externa de cable y bordes externos
+        def _soil_dirichlet_base(pts: torch.Tensor) -> torch.Tensor:
+            feats = self.input_coordinates(region, pts)
+            raw_pts = self.networks[region.id](feats)
+            g_d, d_d = _boundary_lift_and_distance(self.problem, pts)
+            surf_dists = []
+            cable_temps = []
+            for cable in self.problem.cable_layout:
+                c = pts.new_tensor(cable.center)
+                r_c = torch.linalg.vector_norm(pts[:, :2] - c, dim=1, keepdim=True)
+                s_c = r_c - cable.radius
+                surf_dists.append(s_c)
+                outer_idx = self._trace_index_by_key[(cable.index, len(cable.layers) - 1)]
+                cable_temps.append(self._trace_temperature(outer_idx, pts, cable.center, cable.radius, polynomial=False))
+
+            # Pesos de Shepard suaves por cable vs frontera externa (sin división por cero)
+            pi_d = pts.new_ones((len(pts), 1))
+            for s_c in surf_dists:
+                pi_d = pi_d * (s_c ** 2)
+
+            pi_cables = []
+            for i, cable in enumerate(self.problem.cable_layout):
+                w = (d_d ** 2) * torch.exp(-self.soil_envelope_gain * surf_dists[i] / max(cable.radius, 1e-12))
+                for j, s_j in enumerate(surf_dists):
+                    if j != i:
+                        w = w * (s_j ** 2)
+                pi_cables.append(w)
+
+            denom = (pi_d + sum(pi_cables)).clamp_min(1e-24)
+            base_pts = (pi_d * g_d + sum(pi_c * t_c for pi_c, t_c in zip(pi_cables, cable_temps))) / denom
+
+            cable_bubble = pts.new_ones((len(pts), 1))
+            for s_c, cable in zip(surf_dists, self.problem.cable_layout):
+                cable_bubble = cable_bubble * (1.0 - torch.exp(-self.soil_envelope_gain * s_c / max(cable.radius, 1e-12)))
+
+            return base_pts + amplitude * d_d * cable_bubble * raw_pts
+
+        x0, x1, y0, y1 = self.problem.bounds
+        dom_span = max(x1 - x0, y1 - y0, 1e-12)
+        cable_zero = xy.new_ones((len(xy), 1))
         for cable in self.problem.cable_layout:
-            center = xy.new_tensor(cable.center)
-            r = torch.linalg.vector_norm(xy[:, :2] - center, dim=1, keepdim=True)
-            s_c = r - cable.radius
-            surf_dists.append(s_c)
-            outer_idx = self._trace_index_by_key[(cable.index, len(cable.layers) - 1)]
-            cable_temps.append(self._trace_temperature(outer_idx, xy, cable.center, cable.radius, polynomial=False))
+            c = xy.new_tensor(cable.center)
+            r_c = torch.linalg.vector_norm(xy[:, :2] - c, dim=1, keepdim=True)
+            cable_zero = cable_zero * (((r_c - cable.radius) / dom_span) ** 2)
 
-        # Pesos de Shepard suaves por cable vs frontera externa (sin división por cero)
-        pi_d = xy.new_ones((len(xy), 1))
-        for s_c in surf_dists:
-            pi_d = pi_d * (s_c ** 2)
-
-        pi_cables = []
-        for i, cable in enumerate(self.problem.cable_layout):
-            w = (d_d ** 2) * torch.exp(-self.soil_envelope_gain * surf_dists[i] / max(cable.radius, 1e-12))
-            for j, s_j in enumerate(surf_dists):
-                if j != i:
-                    w = w * (s_j ** 2)
-            pi_cables.append(w)
-
-        denom = (pi_d + sum(pi_cables)).clamp_min(1e-24)
-        base = (pi_d * g_d + sum(pi_c * t_c for pi_c, t_c in zip(pi_cables, cable_temps))) / denom
-
-        cable_bubble = xy.new_ones((len(xy), 1))
-        for s_c, cable in zip(surf_dists, self.problem.cable_layout):
-            cable_bubble = cable_bubble * (1.0 - torch.exp(-self.soil_envelope_gain * s_c / max(cable.radius, 1e-12)))
-
-        return base + amplitude * d_d * cable_bubble * raw, None
+        temp = _apply_exact_natural_bcs(
+            self.problem,
+            region,
+            xy,
+            _soil_dirichlet_base,
+            self._side_owners,
+            interior_zero_factor=cable_zero,
+        )
+        return temp, None
 
 
 class ExactBoundaryPINN(BasePINNModel):
@@ -302,15 +459,23 @@ class ExactBoundaryPINN(BasePINNModel):
             input_normalization=base_model.input_normalization,
         )
         self.base_model = base_model
-        self.exact_boundary = len(_dirichlet_sides(problem)) > 0
-        # Solo elimina pérdidas débiles si es dominio homogéneo de región única totalmente Dirichlet
-        self.exact_constraints = len(problem.regions) == 1 and _all_boundaries_dirichlet(problem)
+        self._side_owners = _side_owner_regions(problem)
+        self.exact_boundary = True
+        # Solo elimina pérdidas de interfaz cuando es dominio de región única (sin interfaces)
+        self.exact_constraints = len(problem.regions) == 1
 
     def field(self, region: RegionSpec, xy: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor | None]:
-        g_d, d_d = _boundary_lift_and_distance(self.problem, xy)
-        t_raw, q_raw = self.base_model.field(region, xy)
-        temp = g_d + d_d * (t_raw - self.problem.T_ref)
-        return temp, q_raw
+        q_out: list[torch.Tensor | None] = [None]
+
+        def _dirichlet_exact(pts: torch.Tensor) -> torch.Tensor:
+            g_d, d_d = _boundary_lift_and_distance(self.problem, pts)
+            t_raw, q_raw = self.base_model.field(region, pts)
+            if pts is xy:
+                q_out[0] = q_raw
+            return g_d + d_d * (t_raw - self.problem.T_ref)
+
+        temp = _apply_exact_natural_bcs(self.problem, region, xy, _dirichlet_exact, self._side_owners)
+        return temp, q_out[0]
 
     def subnetwork_map(self) -> dict[str, nn.Module]:
         return self.base_model.subnetwork_map()
@@ -332,9 +497,9 @@ class ExactCorrectorPINN(ExactBoundaryPINN):
         base_model: BasePINNModel,
     ) -> None:
         super().__init__(problem=problem, architecture=architecture, base_model=base_model)
-        # Cuando base_model es global continuo escalar único (CUSP), [T]=0 se satisface globalmente
-        is_globally_continuous = architecture == "CUSP_EXACT"
-        self.exact_constraints = is_globally_continuous and _all_boundaries_dirichlet(problem)
+        # Cuando base_model es global continuo escalar único (CUSP, M0), [T]=0 se satisface globalmente
+        is_globally_continuous = architecture in ("CUSP_EXACT", "M0_EXACT")
+        self.exact_constraints = is_globally_continuous
 
 
 def _build_m1_exact(
@@ -431,10 +596,10 @@ for _arch, _cls, _authors, _doi, _desc in (
     )
 
 for _arch, _cls, _authors, _doi, _desc in (
-    ("M0_EXACT", M0GlobalPINN, "Raissi / PFNN exacto sobre M0", "10.1016/j.jcp.2020.110085", "Corrector exacto de frontera sobre red global M0."),
-    ("CUSP_EXACT", CuspPINN, "Tseng et al. + PFNN exacto sobre CUSP", "10.1016/j.jcp.2023.112359", "CUSP con continuidad global exacta [T]=0 y fronteras Dirichlet exactas."),
-    ("DCSNN_EXACT", DCSNNPINN, "Hu et al. + PFNN sobre DCSNN", "10.1016/j.jcp.2022.111576", "DCSNN con función de distancia Dirichlet exacta."),
-    ("FBPINN_EXACT", FBPINNPINN, "Moseley et al. + PFNN sobre FBPINN", "10.1007/s10444-023-10065-9", "FBPINN envuelto con imposición exacta de bordes Dirichlet."),
+    ("M0_EXACT", M0GlobalPINN, "Raissi / PFNN + Hermite-Shepard sobre M0", "10.1016/j.jcp.2020.110085", "M0 con fronteras Dirichlet, Neumann y Robin impuestas analíticamente."),
+    ("CUSP_EXACT", CuspPINN, "Tseng et al. + PFNN + Hermite-Shepard sobre CUSP", "10.1016/j.jcp.2023.112359", "CUSP con continuidad global exacta [T]=0 y fronteras Dirichlet/Neumann/Robin exactas."),
+    ("DCSNN_EXACT", DCSNNPINN, "Hu et al. + PFNN + Hermite-Shepard sobre DCSNN", "10.1016/j.jcp.2022.111576", "DCSNN con imposición exacta de fronteras Dirichlet, Neumann y Robin."),
+    ("FBPINN_EXACT", FBPINNPINN, "Moseley et al. + PFNN + Hermite-Shepard sobre FBPINN", "10.1007/s10444-023-10065-9", "FBPINN envuelto con imposición exacta de bordes Dirichlet, Neumann y Robin."),
 ):
     ModelRegistry.register_entry(
         _arch,
@@ -447,8 +612,8 @@ for _arch, _cls, _authors, _doi, _desc in (
             year=2025,
             doi=_doi,
             summary=_desc,
-            modifications="Combina la función trial exacta Dirichlet con los bloques base de la arquitectura.",
-            supports_exact_constraints=_arch == "CUSP_EXACT",
+            modifications="Combina la función trial exacta Dirichlet/Neumann/Robin con los bloques base de la arquitectura.",
+            supports_exact_constraints=_arch in ("CUSP_EXACT", "M0_EXACT"),
             supports_mixed_flux=False,
             tags=("exact-bc", "exact-corrector"),
         ),

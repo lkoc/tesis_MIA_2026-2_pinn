@@ -27,7 +27,8 @@ from pinn_thermal.core.problem import RegionSpec, ThermalProblem2D
         ),
         modifications=(
             "Se adapta el indicador por pieza a cualquier número arbitrario de regiones del JSON "
-            "(cables multicapa o estratos del suelo) con amplitud térmica regional."
+            "(cables multicapa o estratos del suelo) con funciones de nivel regularizadas, "
+            "amplitud térmica regional y sesgos entrenables por región."
         ),
         supports_exact_constraints=False,
         supports_mixed_flux=False,
@@ -65,7 +66,9 @@ class DCSNNPINN(BasePINNModel):
         self._length_scale = max(math.hypot(x1 - x0, y1 - y0), 1e-12)
         in_features = 2 + n_regions + n_levels
         self.networks = nn.ModuleList([build_mlp(in_features, self.width, self.depth, 1, self.activation)])
-        self.offsets = nn.ParameterList([nn.Parameter(torch.zeros((), dtype=torch.float32))])
+        self.offsets = nn.ParameterList(
+            [nn.Parameter(torch.zeros((), dtype=torch.float32)) for _ in problem.regions]
+        )
 
     def field(self, region: RegionSpec, xy: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor | None]:
         norm = self.problem.normalized_xy(xy)
@@ -76,7 +79,7 @@ class DCSNNPINN(BasePINNModel):
         levels = self.problem.level_sets(xy) / self._length_scale
         raw = self.networks[0](torch.cat([norm, indicator, levels], dim=1))[:, 0:1]
         amplitude = self.problem.amplitude(region, "region")
-        temp = self.problem.T_ref + self.problem.T_scale * self.offsets[0] + amplitude * raw
+        temp = self.problem.T_ref + self.problem.T_scale * self.offsets[region.id] + amplitude * raw
         return temp, None
 
     def subnetwork_map(self) -> dict[str, nn.Module]:

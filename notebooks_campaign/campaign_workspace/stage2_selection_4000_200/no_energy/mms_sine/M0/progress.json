@@ -1,12 +1,12 @@
 {
   "adam_steps": 4000,
   "completed_steps": 4200,
-  "elapsed_s": 341.22,
+  "elapsed_s": 256.28,
   "lbfgs_steps": 200,
-  "loss_total": 1.1044940038118511e-05,
+  "loss_total": 1.1908410670002922e-05,
   "pct": 100.0,
   "phase": "done",
   "status": "completed",
-  "step": 4120,
+  "step": 4115,
   "total_steps": 4200
 }

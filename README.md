@@ -125,7 +125,8 @@ Los casos creados en `frontend/workspace/user_cases/` y las soluciones guardadas
 ## Documentación Detallada
 
 - [`docs/arquitectura.md`](docs/arquitectura.md): diseño por capas, clases principales y flujo de datos.
-- [`docs/teoria_modelos_pinn.md`](docs/teoria_modelos_pinn.md): formulación matemática, autores originales (con DOI) y aportes implementados.
+- [`docs/teoria_modelos_pinn.md`](docs/teoria_modelos_pinn.md): formulación matemática, autores originales (con DOI), imposición analítica exacta de fronteras Dirichlet/Neumann/Robin, término `interface_flux` y aportes implementados.
+- [`docs/detalle_tecnico_implementaciones_pinn.md`](docs/detalle_tecnico_implementaciones_pinn.md): especificación técnica por arquitectura PINN, comparación con sus papers fundacionales y auditoría integral de estabilidad.
 - [`docs/formato_json.md`](docs/formato_json.md): manual completo para crear y editar casos 2D en texto o desde la interfaz.
 - [`docs/transferencia_y_compatibilidad.md`](docs/transferencia_y_compatibilidad.md): reanudación, pesos compatibles, transferencia funcional y encadenamiento `ChainedPINN`.
 - [`docs/aceleracion_y_paralelismo.md`](docs/aceleracion_y_paralelismo.md): uso de GPU/XPU/NPU/CPU y paralelismo multi-proceso.

@@ -103,6 +103,7 @@
       "constitutive": 0.0,
       "dirichlet": 0.0,
       "energy": 0.0,
+      "interface_flux": 100.0,
       "interface_temperature": 0.0,
       "neumann": 0.0,
       "pde": 1.0,

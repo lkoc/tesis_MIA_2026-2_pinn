@@ -70,8 +70,8 @@ class CuspPINN(BasePINNModel):
             input_normalization=input_normalization or "region_coordinates",
         )
         n_cusps = len(problem._level_set_specs())
-        # Coordenadas normalizadas + características log-radiales + |level_sets|
-        in_features = 2 + len(problem.source_disks) + n_cusps
+        # Coordenadas globales normalizadas + |level_sets| (fiel a Tseng et al., 2023)
+        in_features = 2 + n_cusps
         self._length_scale = _domain_length_scale(problem)
         self._amp = max(
             [problem.T_scale, *(problem.amplitude(r, "region") for r in problem.regions)]
@@ -83,9 +83,8 @@ class CuspPINN(BasePINNModel):
         norm = self.problem.normalized_xy(xy)
         if self.input_normalization == "unit_box_v1":
             norm = (norm + 1.0) * 0.5
-        log_feats = self.problem._source_distance_features(xy, self.problem.bounds)
         cusp = self.problem.level_sets(xy).abs() / self._length_scale
-        return torch.cat([norm, *log_feats, cusp], dim=1)
+        return torch.cat([norm, cusp], dim=1)
 
     def field(self, region: RegionSpec, xy: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor | None]:
         raw = self.networks[0](self._features(xy))[:, 0:1]

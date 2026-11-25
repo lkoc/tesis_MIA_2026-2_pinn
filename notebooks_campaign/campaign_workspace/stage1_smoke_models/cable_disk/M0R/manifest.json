@@ -1,9 +1,9 @@
 {
   "command": [
     "c:\\Python312\\Lib\\site-packages\\ipykernel_launcher.py",
-    "--f=c:\\Users\\QU1267\\AppData\\Roaming\\jupyter\\runtime\\kernel-v3947a76ac78e995dcc372a37b84bd20397b13e962.json"
+    "--f=c:\\Users\\QU1267\\AppData\\Roaming\\jupyter\\runtime\\kernel-v3554116c4d2005d2c30db3dd0b73fc8ca8566a654.json"
   ],
-  "created_utc": "2026-11-25T12:57:44.014118+00:00",
+  "created_utc": "2026-11-25T16:36:19.339410+00:00",
   "extra": {
     "architecture": "M0R",
     "case": "cable_disk",
@@ -13,7 +13,7 @@
   "fem_environment": null,
   "git": {
     "branch": "main",
-    "commit": "675205a6ab7aac00a89f5d21495a4d1d8ef74acb"
+    "commit": "bae468bfbfc94d2785f8de94a2826deabbf1f84a"
   },
   "host": {
     "deepxde": "1.15.0",

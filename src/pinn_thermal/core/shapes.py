@@ -56,6 +56,10 @@ class Shape2D(ABC):
         """Longitud característica mínima interior (lado, radio o espesor anular)."""
 
     @abstractmethod
+    def area(self) -> float:
+        """Área geométrica exacta de la región sin descontar solapamientos de mayor prioridad."""
+
+    @abstractmethod
     def interior_margin(self, span: float, factor: float = 1e-7) -> float:
         """Margen de exclusión respecto a fronteras e interfaces escalado localmente."""
 
@@ -170,6 +174,10 @@ class RectangleShape(Shape2D):
         x0, x1, y0, y1 = self.bounds
         return float(min(x1 - x0, y1 - y0))
 
+    def area(self) -> float:
+        x0, x1, y0, y1 = self.bounds
+        return float((x1 - x0) * (y1 - y0))
+
     def interior_margin(self, span: float, factor: float = 1e-7) -> float:
         x0, x1, y0, y1 = self.bounds
         return min(factor * max(float(span), 1.0), 0.1 * min(x1 - x0, y1 - y0))
@@ -236,6 +244,9 @@ class DiskShape(Shape2D):
 
     def characteristic_size(self) -> float:
         return float(self.radius_m)
+
+    def area(self) -> float:
+        return float(math.pi * (self.radius_m ** 2))
 
     def interior_margin(self, span: float, factor: float = 1e-7) -> float:
         return min(factor * max(float(span), 1.0), 0.1 * self.radius_m)
@@ -315,6 +326,9 @@ class AnnulusShape(Shape2D):
 
     def characteristic_size(self) -> float:
         return float(self.outer_radius_m - self.inner_radius_m)
+
+    def area(self) -> float:
+        return float(math.pi * (self.outer_radius_m ** 2 - self.inner_radius_m ** 2))
 
     def interior_margin(self, span: float, factor: float = 1e-7) -> float:
         thickness = self.outer_radius_m - self.inner_radius_m
@@ -440,6 +454,9 @@ class PolygonShape(Shape2D):
         x0, x1, y0, y1 = self._bbox()
         area = abs(self.signed_area())
         return float(min(x1 - x0, y1 - y0, math.sqrt(area)))
+
+    def area(self) -> float:
+        return float(abs(self.signed_area()))
 
     def interior_margin(self, span: float, factor: float = 1e-7) -> float:
         return min(factor * max(float(span), 1.0), 0.1 * self.characteristic_size())

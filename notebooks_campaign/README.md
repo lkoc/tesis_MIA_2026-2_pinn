@@ -7,11 +7,13 @@ Esta carpeta separada contiene los **6 cuadernos Jupyter** necesarios para repro
 ```mermaid
 flowchart LR
     S0["00: Auditoría MMS y FEM WSL2 P2"] --> S1["01: Smoke de 10 Arquitecturas"]
-    S1 --> S2["02: Screening 1200+50 y Poda"]
+    S1 --> S2["02: Screening Dual (with/no energy) y Poda Acotada"]
     S2 --> S3["03: Smoke Multicaso sobre Promovidos"]
     S3 --> S4["04: Campaña Adaptativa y Corridas Largas 8000+20"]
     S4 --> S5["05: Clasificación STRICT y Reporte Tesis"]
 ```
+
+> **Criterio de Etapa 2 (`02_screening_seleccion_modelos_1200_50.ipynb`)**: evalúa todas las arquitecturas en dos pasadas (`with_energy` con `"energy": 100.0` y `no_energy` con `"energy": 0.0`) manteniendo activo `interface_flux=100.0`, con `divergence_stop` temprano, puntuación compuesta logarítmica `log1p` y compuerta de sanidad sobre `mms_sine` antes de promover hasta 5 modelos a las Etapas 3 y 4.
 
 ## Presupuestos por Modo de Ejecución (`RUN_MODE`)
 

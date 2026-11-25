@@ -1,6 +1,6 @@
 # Manual Completo del Formato JSON (`pinn-v4-problem-1`)
 
-Todos los modelos PINN, el solucionador FEniCSx y las herramientas gráficas leen íntegramente el problema térmico 2D desde un único archivo `.json`. Este documento permite redactar o editar casos directamente en cualquier editor de texto plano o mediante `CaseEditorHelper` / Streamlit.
+Todos los modelos PINN, el solucionador FEniCSx y las herramientas gráficas leen íntegramente el problema térmico 2D desde un único archivo `.json`, sin lógica *ad hoc* por caso (las áreas exactas vía `Shape2D.area()`, escalas térmicas de Fourier, interfaces `interface_flux` y condiciones límite exactas Dirichlet/Neumann/Robin se derivan automáticamente de esta especificación). Este documento permite redactar o editar casos directamente en cualquier editor de texto plano o mediante `CaseEditorHelper` / Streamlit.
 
 ---
 
