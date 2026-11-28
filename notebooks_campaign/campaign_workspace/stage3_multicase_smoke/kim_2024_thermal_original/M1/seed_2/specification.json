@@ -1,0 +1,2487 @@
+{
+  "compatibility_profile": {
+    "activation": "tanh",
+    "architecture": "M1",
+    "depth": 3,
+    "domain_shape": "rectangle",
+    "exact_boundary": false,
+    "exact_constraints": false,
+    "formulation": "strong",
+    "input_normalization": "region_coordinates",
+    "mixed": false,
+    "model_kind": "baseline_subdomain",
+    "partition": "region",
+    "region_kinds": {
+      "background": "soil",
+      "cable_0_layer_0": "conductor",
+      "cable_0_layer_1": "conductor",
+      "cable_0_layer_2": "conductor",
+      "cable_0_layer_3": "conductor",
+      "cable_0_layer_4": "conductor",
+      "cable_0_layer_5": "conductor",
+      "cable_0_layer_6": "conductor",
+      "cable_0_layer_7": "conductor",
+      "cable_0_layer_8": "conductor",
+      "cable_1_layer_0": "conductor",
+      "cable_1_layer_1": "conductor",
+      "cable_1_layer_2": "conductor",
+      "cable_1_layer_3": "conductor",
+      "cable_1_layer_4": "conductor",
+      "cable_1_layer_5": "conductor",
+      "cable_1_layer_6": "conductor",
+      "cable_1_layer_7": "conductor",
+      "cable_1_layer_8": "conductor",
+      "cable_2_layer_0": "conductor",
+      "cable_2_layer_1": "conductor",
+      "cable_2_layer_2": "conductor",
+      "cable_2_layer_3": "conductor",
+      "cable_2_layer_4": "conductor",
+      "cable_2_layer_5": "conductor",
+      "cable_2_layer_6": "conductor",
+      "cable_2_layer_7": "conductor",
+      "cable_2_layer_8": "conductor",
+      "cable_3_layer_0": "conductor",
+      "cable_3_layer_1": "conductor",
+      "cable_3_layer_2": "conductor",
+      "cable_3_layer_3": "conductor",
+      "cable_3_layer_4": "conductor",
+      "cable_3_layer_5": "conductor",
+      "cable_3_layer_6": "conductor",
+      "cable_3_layer_7": "conductor",
+      "cable_3_layer_8": "conductor",
+      "cable_4_layer_0": "conductor",
+      "cable_4_layer_1": "conductor",
+      "cable_4_layer_2": "conductor",
+      "cable_4_layer_3": "conductor",
+      "cable_4_layer_4": "conductor",
+      "cable_4_layer_5": "conductor",
+      "cable_4_layer_6": "conductor",
+      "cable_4_layer_7": "conductor",
+      "cable_4_layer_8": "conductor",
+      "cable_5_layer_0": "conductor",
+      "cable_5_layer_1": "conductor",
+      "cable_5_layer_2": "conductor",
+      "cable_5_layer_3": "conductor",
+      "cable_5_layer_4": "conductor",
+      "cable_5_layer_5": "conductor",
+      "cable_5_layer_6": "conductor",
+      "cable_5_layer_7": "conductor",
+      "cable_5_layer_8": "conductor"
+    },
+    "region_names": [
+      "background",
+      "cable_0_layer_0",
+      "cable_0_layer_1",
+      "cable_0_layer_2",
+      "cable_0_layer_3",
+      "cable_0_layer_4",
+      "cable_0_layer_5",
+      "cable_0_layer_6",
+      "cable_0_layer_7",
+      "cable_0_layer_8",
+      "cable_1_layer_0",
+      "cable_1_layer_1",
+      "cable_1_layer_2",
+      "cable_1_layer_3",
+      "cable_1_layer_4",
+      "cable_1_layer_5",
+      "cable_1_layer_6",
+      "cable_1_layer_7",
+      "cable_1_layer_8",
+      "cable_2_layer_0",
+      "cable_2_layer_1",
+      "cable_2_layer_2",
+      "cable_2_layer_3",
+      "cable_2_layer_4",
+      "cable_2_layer_5",
+      "cable_2_layer_6",
+      "cable_2_layer_7",
+      "cable_2_layer_8",
+      "cable_3_layer_0",
+      "cable_3_layer_1",
+      "cable_3_layer_2",
+      "cable_3_layer_3",
+      "cable_3_layer_4",
+      "cable_3_layer_5",
+      "cable_3_layer_6",
+      "cable_3_layer_7",
+      "cable_3_layer_8",
+      "cable_4_layer_0",
+      "cable_4_layer_1",
+      "cable_4_layer_2",
+      "cable_4_layer_3",
+      "cable_4_layer_4",
+      "cable_4_layer_5",
+      "cable_4_layer_6",
+      "cable_4_layer_7",
+      "cable_4_layer_8",
+      "cable_5_layer_0",
+      "cable_5_layer_1",
+      "cable_5_layer_2",
+      "cable_5_layer_3",
+      "cable_5_layer_4",
+      "cable_5_layer_5",
+      "cable_5_layer_6",
+      "cable_5_layer_7",
+      "cable_5_layer_8"
+    ],
+    "subnets": {
+      "region:background": {
+        "in_features": 8,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            8,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_0_layer_0": {
+        "in_features": 2,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            2,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_0_layer_1": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_0_layer_2": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_0_layer_3": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_0_layer_4": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_0_layer_5": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_0_layer_6": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_0_layer_7": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_0_layer_8": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_1_layer_0": {
+        "in_features": 2,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            2,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_1_layer_1": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_1_layer_2": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_1_layer_3": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_1_layer_4": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_1_layer_5": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_1_layer_6": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_1_layer_7": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_1_layer_8": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_2_layer_0": {
+        "in_features": 2,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            2,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_2_layer_1": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_2_layer_2": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_2_layer_3": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_2_layer_4": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_2_layer_5": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_2_layer_6": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_2_layer_7": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_2_layer_8": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_3_layer_0": {
+        "in_features": 2,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            2,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_3_layer_1": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_3_layer_2": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_3_layer_3": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_3_layer_4": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_3_layer_5": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_3_layer_6": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_3_layer_7": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_3_layer_8": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_4_layer_0": {
+        "in_features": 2,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            2,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_4_layer_1": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_4_layer_2": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_4_layer_3": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_4_layer_4": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_4_layer_5": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_4_layer_6": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_4_layer_7": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_4_layer_8": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_5_layer_0": {
+        "in_features": 2,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            2,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_5_layer_1": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_5_layer_2": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_5_layer_3": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_5_layer_4": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_5_layer_5": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_5_layer_6": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_5_layer_7": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      },
+      "region:cable_5_layer_8": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      }
+    },
+    "width": 32
+  },
+  "config": {
+    "accuracy_stop": null,
+    "activation": "tanh",
+    "adam_steps": 800,
+    "architecture": "M1",
+    "attention": null,
+    "base_architecture": "M1",
+    "chain_from": null,
+    "chain_mode": "residual",
+    "depth": 3,
+    "device": "cpu",
+    "divergence_stop": {
+      "check_nonfinite_grads": true,
+      "explosion_factor": 10000.0,
+      "growth_patience": 6,
+      "lbfgs_explosion_factor": 100.0,
+      "lbfgs_stagnation_checks": 8,
+      "max_loss": 1000000000000.0,
+      "min_growth_ratio": 1.05,
+      "patience_explosion": 3,
+      "warmup_steps": 150
+    },
+    "dtype": "float32",
+    "exact_energy": true,
+    "focus_criterion": "residual",
+    "focus_surfaces": false,
+    "focused": true,
+    "freeze_chain_source": true,
+    "full_audit": true,
+    "init_seed": 2,
+    "initializer": null,
+    "initializer_settings": {},
+    "input_normalization": "region_coordinates",
+    "lbfgs_iterations": 1,
+    "lbfgs_steps": 50,
+    "log_every": 100,
+    "lr": 0.002,
+    "point_schedule_stages": 0,
+    "point_schedule_start": 0.5,
+    "points": {
+      "n_boundary": 128,
+      "n_face": 128,
+      "n_interior": 512,
+      "n_layer": 256
+    },
+    "resample_every": 100,
+    "resume_from": null,
+    "sampling": "mixed",
+    "sampling_seed": 13,
+    "soil_envelope_gain": 1.0,
+    "study": null,
+    "trace_parameterization": "standard",
+    "transfer_mode": "auto",
+    "transfer_steps": 150,
+    "validation_every": 250,
+    "warm_start_from": null,
+    "weights": {
+      "constitutive": 1.0,
+      "dirichlet": 100.0,
+      "energy": 100.0,
+      "interface_flux": 100.0,
+      "interface_temperature": 100.0,
+      "neumann": 10.0,
+      "pde": 1.0,
+      "robin": 10.0
+    },
+    "width": 32
+  },
+  "flux_convention": "q = -k * grad(T); normal exterior",
+  "format": "pinn-v4-artifact-1",
+  "physics_sha256": "90ff559152fb250c91e5931c92ccf8f2b01d9931493540e0066dc5c2eb3f6df9",
+  "problem": {
+    "boundaries": {
+      "bottom": {
+        "type": "dirichlet",
+        "value": 15.2
+      },
+      "left": {
+        "q_n_W_m2": 0.0,
+        "type": "neumann"
+      },
+      "right": {
+        "q_n_W_m2": 0.0,
+        "type": "neumann"
+      },
+      "top": {
+        "T_inf_C": 27.2,
+        "h_W_m2K": 7.371,
+        "type": "robin"
+      }
+    },
+    "domain": {
+      "bounds": [
+        -45.5,
+        45.5,
+        -45.5,
+        0.0
+      ],
+      "shape": "rectangle"
+    },
+    "family": "cable",
+    "id": "kim_2024_thermal_original",
+    "metadata": {
+      "conductors": {
+        "centers": [
+          [
+            -0.4,
+            -1.6
+          ],
+          [
+            0.0,
+            -1.6
+          ],
+          [
+            0.4,
+            -1.6
+          ],
+          [
+            -0.4,
+            -1.2
+          ],
+          [
+            0.0,
+            -1.2
+          ],
+          [
+            0.4,
+            -1.2
+          ]
+        ],
+        "layers": [
+          {
+            "inner_radius_m": 0.0,
+            "k_W_mK": 400.0,
+            "outer_radius_m": 0.0212
+          },
+          {
+            "inner_radius_m": 0.0212,
+            "k_W_mK": 0.2857,
+            "outer_radius_m": 0.0232
+          },
+          {
+            "inner_radius_m": 0.0232,
+            "k_W_mK": 0.2857,
+            "outer_radius_m": 0.0402
+          },
+          {
+            "inner_radius_m": 0.0402,
+            "k_W_mK": 0.2857,
+            "outer_radius_m": 0.0415
+          },
+          {
+            "inner_radius_m": 0.0415,
+            "k_W_mK": 0.167,
+            "outer_radius_m": 0.0425
+          },
+          {
+            "inner_radius_m": 0.0425,
+            "k_W_mK": 237.0,
+            "outer_radius_m": 0.045
+          },
+          {
+            "inner_radius_m": 0.045,
+            "k_W_mK": 0.2857,
+            "outer_radius_m": 0.05
+          },
+          {
+            "inner_radius_m": 0.05,
+            "k_W_mK": 2.15,
+            "outer_radius_m": 0.1
+          },
+          {
+            "inner_radius_m": 0.1,
+            "k_W_mK": 0.2857,
+            "outer_radius_m": 0.11
+          }
+        ],
+        "radius_m": 0.11
+      },
+      "electrical": {
+        "R20_ohm_m": 1.51e-05,
+        "alpha_1_K": 0.00393,
+        "current_A": 1026.0,
+        "power_W_m": 15.8954076
+      },
+      "original_definition": {
+        "boundary_conditions": {
+          "bottom": {
+            "temperature": {
+              "unit": "degC",
+              "value": 15.2
+            },
+            "type": "dirichlet"
+          },
+          "left": {
+            "depth_m": [
+              0.0,
+              0.5,
+              1.0,
+              1.4,
+              2.0,
+              3.0,
+              3.6,
+              45.5
+            ],
+            "temperature_C": [
+              26.1,
+              23.68,
+              21.46,
+              19.89,
+              17.95,
+              15.82,
+              15.2,
+              15.2
+            ],
+            "type": "dirichlet_profile"
+          },
+          "right": {
+            "depth_m": [
+              0.0,
+              0.5,
+              1.0,
+              1.4,
+              2.0,
+              3.0,
+              3.6,
+              45.5
+            ],
+            "temperature_C": [
+              26.1,
+              23.68,
+              21.46,
+              19.89,
+              17.95,
+              15.82,
+              15.2,
+              15.2
+            ],
+            "type": "dirichlet_profile"
+          },
+          "top": {
+            "T_inf": {
+              "unit": "degC",
+              "value": 27.2
+            },
+            "h": {
+              "unit": "W/(m2 K)",
+              "value": 7.371
+            },
+            "type": "robin"
+          }
+        },
+        "contact": [],
+        "data_status": {
+          "boundary_conditions": {
+            "note": "Top Robin condition, bottom temperature, and left/right depth profiles are preserved from the original boundary data.",
+            "source": "kim2024_boundary_data",
+            "status": "extraido"
+          },
+          "geometry": {
+            "note": "Six cable centers, domain bounds, radius and nine cable layers are preserved from the original case data.",
+            "source": "kim2024_case_data",
+            "status": "extraido"
+          },
+          "materials": {
+            "note": "Cable layers, soil strata and the local conductivity patch are preserved from the original case data.",
+            "source": "kim2024_case_data",
+            "status": "extraido"
+          },
+          "source": {
+            "note": "The fixed thermal source is 27.97 W/m per cable; it is not recomputed from the separate 20 C DC resistance.",
+            "source": "kim2024_case_data",
+            "status": "extraido"
+          }
+        },
+        "inconsistencies": [
+          {
+            "field": "source_power_W_m",
+            "resolution": "Preserve the recorded fixed thermal source per cable; do not substitute the separate I^2 R20 DC value.",
+            "values": {
+              "dc_power_W_m": 15.8954076,
+              "fixed_power_W_m": 27.97
+            }
+          }
+        ],
+        "provenance": [
+          {
+            "citation": "examples/kim_2024_154kv_bedding/data/kim_thermal_pde_case.json and associated cable/material data",
+            "id": "kim2024_case_data"
+          },
+          {
+            "citation": "examples/kim_2024_154kv_bedding/data/boundary_profiles.csv and boundary_conditions.csv",
+            "id": "kim2024_boundary_data"
+          }
+        ]
+      },
+      "original_domain": {
+        "bounds": [
+          -45.5,
+          45.5,
+          -45.5,
+          0.0
+        ]
+      },
+      "source": {
+        "citation": "Kim et al. 2024 geometry/material data; boundary_profiles.csv; IEC 60287 source at 1026 A and 70.6 C"
+      }
+    },
+    "reference": {},
+    "regions": [
+      {
+        "conductivity": {
+          "expression": "(1.55)+(2.094-(1.55))*(0.5*(tanh((x-(-0.65))/0.1)-tanh((x-(0.65))/0.1)))*(0.5*(tanh((y-(-1.8499999999999999))/0.1)-tanh((y-(-0.95))/0.1)))"
+        },
+        "id": "background",
+        "priority": 0,
+        "shape": {
+          "bounds": [
+            -45.5,
+            45.5,
+            -45.5,
+            0.0
+          ],
+          "type": "rectangle"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 400.0,
+        "id": "cable_0_layer_0",
+        "priority": 1,
+        "shape": {
+          "center": [
+            -0.4,
+            -1.6
+          ],
+          "radius_m": 0.0212,
+          "type": "disk"
+        },
+        "source": 11257.710448560345
+      },
+      {
+        "conductivity": 0.2857,
+        "id": "cable_0_layer_1",
+        "priority": 2,
+        "shape": {
+          "center": [
+            -0.4,
+            -1.6
+          ],
+          "inner_radius_m": 0.0212,
+          "outer_radius_m": 0.0232,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 0.2857,
+        "id": "cable_0_layer_2",
+        "priority": 3,
+        "shape": {
+          "center": [
+            -0.4,
+            -1.6
+          ],
+          "inner_radius_m": 0.0232,
+          "outer_radius_m": 0.0402,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 0.2857,
+        "id": "cable_0_layer_3",
+        "priority": 4,
+        "shape": {
+          "center": [
+            -0.4,
+            -1.6
+          ],
+          "inner_radius_m": 0.0402,
+          "outer_radius_m": 0.0415,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 0.167,
+        "id": "cable_0_layer_4",
+        "priority": 5,
+        "shape": {
+          "center": [
+            -0.4,
+            -1.6
+          ],
+          "inner_radius_m": 0.0415,
+          "outer_radius_m": 0.0425,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 237.0,
+        "id": "cable_0_layer_5",
+        "priority": 6,
+        "shape": {
+          "center": [
+            -0.4,
+            -1.6
+          ],
+          "inner_radius_m": 0.0425,
+          "outer_radius_m": 0.045,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 0.2857,
+        "id": "cable_0_layer_6",
+        "priority": 7,
+        "shape": {
+          "center": [
+            -0.4,
+            -1.6
+          ],
+          "inner_radius_m": 0.045,
+          "outer_radius_m": 0.05,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 2.15,
+        "id": "cable_0_layer_7",
+        "priority": 8,
+        "shape": {
+          "center": [
+            -0.4,
+            -1.6
+          ],
+          "inner_radius_m": 0.05,
+          "outer_radius_m": 0.1,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 0.2857,
+        "id": "cable_0_layer_8",
+        "priority": 9,
+        "shape": {
+          "center": [
+            -0.4,
+            -1.6
+          ],
+          "inner_radius_m": 0.1,
+          "outer_radius_m": 0.11,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 400.0,
+        "id": "cable_1_layer_0",
+        "priority": 10,
+        "shape": {
+          "center": [
+            0.0,
+            -1.6
+          ],
+          "radius_m": 0.0212,
+          "type": "disk"
+        },
+        "source": 11257.710448560345
+      },
+      {
+        "conductivity": 0.2857,
+        "id": "cable_1_layer_1",
+        "priority": 11,
+        "shape": {
+          "center": [
+            0.0,
+            -1.6
+          ],
+          "inner_radius_m": 0.0212,
+          "outer_radius_m": 0.0232,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 0.2857,
+        "id": "cable_1_layer_2",
+        "priority": 12,
+        "shape": {
+          "center": [
+            0.0,
+            -1.6
+          ],
+          "inner_radius_m": 0.0232,
+          "outer_radius_m": 0.0402,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 0.2857,
+        "id": "cable_1_layer_3",
+        "priority": 13,
+        "shape": {
+          "center": [
+            0.0,
+            -1.6
+          ],
+          "inner_radius_m": 0.0402,
+          "outer_radius_m": 0.0415,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 0.167,
+        "id": "cable_1_layer_4",
+        "priority": 14,
+        "shape": {
+          "center": [
+            0.0,
+            -1.6
+          ],
+          "inner_radius_m": 0.0415,
+          "outer_radius_m": 0.0425,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 237.0,
+        "id": "cable_1_layer_5",
+        "priority": 15,
+        "shape": {
+          "center": [
+            0.0,
+            -1.6
+          ],
+          "inner_radius_m": 0.0425,
+          "outer_radius_m": 0.045,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 0.2857,
+        "id": "cable_1_layer_6",
+        "priority": 16,
+        "shape": {
+          "center": [
+            0.0,
+            -1.6
+          ],
+          "inner_radius_m": 0.045,
+          "outer_radius_m": 0.05,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 2.15,
+        "id": "cable_1_layer_7",
+        "priority": 17,
+        "shape": {
+          "center": [
+            0.0,
+            -1.6
+          ],
+          "inner_radius_m": 0.05,
+          "outer_radius_m": 0.1,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 0.2857,
+        "id": "cable_1_layer_8",
+        "priority": 18,
+        "shape": {
+          "center": [
+            0.0,
+            -1.6
+          ],
+          "inner_radius_m": 0.1,
+          "outer_radius_m": 0.11,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 400.0,
+        "id": "cable_2_layer_0",
+        "priority": 19,
+        "shape": {
+          "center": [
+            0.4,
+            -1.6
+          ],
+          "radius_m": 0.0212,
+          "type": "disk"
+        },
+        "source": 11257.710448560345
+      },
+      {
+        "conductivity": 0.2857,
+        "id": "cable_2_layer_1",
+        "priority": 20,
+        "shape": {
+          "center": [
+            0.4,
+            -1.6
+          ],
+          "inner_radius_m": 0.0212,
+          "outer_radius_m": 0.0232,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 0.2857,
+        "id": "cable_2_layer_2",
+        "priority": 21,
+        "shape": {
+          "center": [
+            0.4,
+            -1.6
+          ],
+          "inner_radius_m": 0.0232,
+          "outer_radius_m": 0.0402,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 0.2857,
+        "id": "cable_2_layer_3",
+        "priority": 22,
+        "shape": {
+          "center": [
+            0.4,
+            -1.6
+          ],
+          "inner_radius_m": 0.0402,
+          "outer_radius_m": 0.0415,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 0.167,
+        "id": "cable_2_layer_4",
+        "priority": 23,
+        "shape": {
+          "center": [
+            0.4,
+            -1.6
+          ],
+          "inner_radius_m": 0.0415,
+          "outer_radius_m": 0.0425,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 237.0,
+        "id": "cable_2_layer_5",
+        "priority": 24,
+        "shape": {
+          "center": [
+            0.4,
+            -1.6
+          ],
+          "inner_radius_m": 0.0425,
+          "outer_radius_m": 0.045,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 0.2857,
+        "id": "cable_2_layer_6",
+        "priority": 25,
+        "shape": {
+          "center": [
+            0.4,
+            -1.6
+          ],
+          "inner_radius_m": 0.045,
+          "outer_radius_m": 0.05,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 2.15,
+        "id": "cable_2_layer_7",
+        "priority": 26,
+        "shape": {
+          "center": [
+            0.4,
+            -1.6
+          ],
+          "inner_radius_m": 0.05,
+          "outer_radius_m": 0.1,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 0.2857,
+        "id": "cable_2_layer_8",
+        "priority": 27,
+        "shape": {
+          "center": [
+            0.4,
+            -1.6
+          ],
+          "inner_radius_m": 0.1,
+          "outer_radius_m": 0.11,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 400.0,
+        "id": "cable_3_layer_0",
+        "priority": 28,
+        "shape": {
+          "center": [
+            -0.4,
+            -1.2
+          ],
+          "radius_m": 0.0212,
+          "type": "disk"
+        },
+        "source": 11257.710448560345
+      },
+      {
+        "conductivity": 0.2857,
+        "id": "cable_3_layer_1",
+        "priority": 29,
+        "shape": {
+          "center": [
+            -0.4,
+            -1.2
+          ],
+          "inner_radius_m": 0.0212,
+          "outer_radius_m": 0.0232,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 0.2857,
+        "id": "cable_3_layer_2",
+        "priority": 30,
+        "shape": {
+          "center": [
+            -0.4,
+            -1.2
+          ],
+          "inner_radius_m": 0.0232,
+          "outer_radius_m": 0.0402,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 0.2857,
+        "id": "cable_3_layer_3",
+        "priority": 31,
+        "shape": {
+          "center": [
+            -0.4,
+            -1.2
+          ],
+          "inner_radius_m": 0.0402,
+          "outer_radius_m": 0.0415,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 0.167,
+        "id": "cable_3_layer_4",
+        "priority": 32,
+        "shape": {
+          "center": [
+            -0.4,
+            -1.2
+          ],
+          "inner_radius_m": 0.0415,
+          "outer_radius_m": 0.0425,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 237.0,
+        "id": "cable_3_layer_5",
+        "priority": 33,
+        "shape": {
+          "center": [
+            -0.4,
+            -1.2
+          ],
+          "inner_radius_m": 0.0425,
+          "outer_radius_m": 0.045,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 0.2857,
+        "id": "cable_3_layer_6",
+        "priority": 34,
+        "shape": {
+          "center": [
+            -0.4,
+            -1.2
+          ],
+          "inner_radius_m": 0.045,
+          "outer_radius_m": 0.05,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 2.15,
+        "id": "cable_3_layer_7",
+        "priority": 35,
+        "shape": {
+          "center": [
+            -0.4,
+            -1.2
+          ],
+          "inner_radius_m": 0.05,
+          "outer_radius_m": 0.1,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 0.2857,
+        "id": "cable_3_layer_8",
+        "priority": 36,
+        "shape": {
+          "center": [
+            -0.4,
+            -1.2
+          ],
+          "inner_radius_m": 0.1,
+          "outer_radius_m": 0.11,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 400.0,
+        "id": "cable_4_layer_0",
+        "priority": 37,
+        "shape": {
+          "center": [
+            0.0,
+            -1.2
+          ],
+          "radius_m": 0.0212,
+          "type": "disk"
+        },
+        "source": 11257.710448560345
+      },
+      {
+        "conductivity": 0.2857,
+        "id": "cable_4_layer_1",
+        "priority": 38,
+        "shape": {
+          "center": [
+            0.0,
+            -1.2
+          ],
+          "inner_radius_m": 0.0212,
+          "outer_radius_m": 0.0232,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 0.2857,
+        "id": "cable_4_layer_2",
+        "priority": 39,
+        "shape": {
+          "center": [
+            0.0,
+            -1.2
+          ],
+          "inner_radius_m": 0.0232,
+          "outer_radius_m": 0.0402,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 0.2857,
+        "id": "cable_4_layer_3",
+        "priority": 40,
+        "shape": {
+          "center": [
+            0.0,
+            -1.2
+          ],
+          "inner_radius_m": 0.0402,
+          "outer_radius_m": 0.0415,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 0.167,
+        "id": "cable_4_layer_4",
+        "priority": 41,
+        "shape": {
+          "center": [
+            0.0,
+            -1.2
+          ],
+          "inner_radius_m": 0.0415,
+          "outer_radius_m": 0.0425,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 237.0,
+        "id": "cable_4_layer_5",
+        "priority": 42,
+        "shape": {
+          "center": [
+            0.0,
+            -1.2
+          ],
+          "inner_radius_m": 0.0425,
+          "outer_radius_m": 0.045,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 0.2857,
+        "id": "cable_4_layer_6",
+        "priority": 43,
+        "shape": {
+          "center": [
+            0.0,
+            -1.2
+          ],
+          "inner_radius_m": 0.045,
+          "outer_radius_m": 0.05,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 2.15,
+        "id": "cable_4_layer_7",
+        "priority": 44,
+        "shape": {
+          "center": [
+            0.0,
+            -1.2
+          ],
+          "inner_radius_m": 0.05,
+          "outer_radius_m": 0.1,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 0.2857,
+        "id": "cable_4_layer_8",
+        "priority": 45,
+        "shape": {
+          "center": [
+            0.0,
+            -1.2
+          ],
+          "inner_radius_m": 0.1,
+          "outer_radius_m": 0.11,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 400.0,
+        "id": "cable_5_layer_0",
+        "priority": 46,
+        "shape": {
+          "center": [
+            0.4,
+            -1.2
+          ],
+          "radius_m": 0.0212,
+          "type": "disk"
+        },
+        "source": 11257.710448560345
+      },
+      {
+        "conductivity": 0.2857,
+        "id": "cable_5_layer_1",
+        "priority": 47,
+        "shape": {
+          "center": [
+            0.4,
+            -1.2
+          ],
+          "inner_radius_m": 0.0212,
+          "outer_radius_m": 0.0232,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 0.2857,
+        "id": "cable_5_layer_2",
+        "priority": 48,
+        "shape": {
+          "center": [
+            0.4,
+            -1.2
+          ],
+          "inner_radius_m": 0.0232,
+          "outer_radius_m": 0.0402,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 0.2857,
+        "id": "cable_5_layer_3",
+        "priority": 49,
+        "shape": {
+          "center": [
+            0.4,
+            -1.2
+          ],
+          "inner_radius_m": 0.0402,
+          "outer_radius_m": 0.0415,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 0.167,
+        "id": "cable_5_layer_4",
+        "priority": 50,
+        "shape": {
+          "center": [
+            0.4,
+            -1.2
+          ],
+          "inner_radius_m": 0.0415,
+          "outer_radius_m": 0.0425,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 237.0,
+        "id": "cable_5_layer_5",
+        "priority": 51,
+        "shape": {
+          "center": [
+            0.4,
+            -1.2
+          ],
+          "inner_radius_m": 0.0425,
+          "outer_radius_m": 0.045,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 0.2857,
+        "id": "cable_5_layer_6",
+        "priority": 52,
+        "shape": {
+          "center": [
+            0.4,
+            -1.2
+          ],
+          "inner_radius_m": 0.045,
+          "outer_radius_m": 0.05,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 2.15,
+        "id": "cable_5_layer_7",
+        "priority": 53,
+        "shape": {
+          "center": [
+            0.4,
+            -1.2
+          ],
+          "inner_radius_m": 0.05,
+          "outer_radius_m": 0.1,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 0.2857,
+        "id": "cable_5_layer_8",
+        "priority": 54,
+        "shape": {
+          "center": [
+            0.4,
+            -1.2
+          ],
+          "inner_radius_m": 0.1,
+          "outer_radius_m": 0.11,
+          "type": "annulus"
+        },
+        "source": 0.0
+      }
+    ],
+    "schema": "pinn-v4-problem-1",
+    "temperature_scale_K": 50.0,
+    "title": "Kim et al. 2024 - thermal original"
+  },
+  "runtime": {
+    "torch": "2.9.0+xpu"
+  },
+  "schema_version": 4,
+  "seeds": {
+    "init": 2,
+    "sampling": 13,
+    "validation": 1000016
+  }
+}

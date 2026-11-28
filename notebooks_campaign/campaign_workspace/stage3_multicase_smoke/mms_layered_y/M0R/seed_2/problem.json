@@ -1,0 +1,98 @@
+{
+  "boundaries": {
+    "bottom": {
+      "type": "dirichlet",
+      "value": {
+        "expression": "20 + where(y <= 0.5, 20*y, 10*(1+(y-0.5)/2))*sin(pi*x)"
+      }
+    },
+    "left": {
+      "type": "dirichlet",
+      "value": {
+        "expression": "20 + where(y <= 0.5, 20*y, 10*(1+(y-0.5)/2))*sin(pi*x)"
+      }
+    },
+    "right": {
+      "type": "dirichlet",
+      "value": {
+        "expression": "20 + where(y <= 0.5, 20*y, 10*(1+(y-0.5)/2))*sin(pi*x)"
+      }
+    },
+    "top": {
+      "type": "dirichlet",
+      "value": {
+        "expression": "20 + where(y <= 0.5, 20*y, 10*(1+(y-0.5)/2))*sin(pi*x)"
+      }
+    }
+  },
+  "domain": {
+    "bounds": [
+      0.0,
+      1.0,
+      0.0,
+      1.0
+    ],
+    "shape": "rectangle"
+  },
+  "family": "mms",
+  "id": "mms_layered_y",
+  "interfaces": [
+    {
+      "axis": "y",
+      "id": "material_interface",
+      "position": 0.5,
+      "regions": [
+        "domain",
+        "domain"
+      ]
+    }
+  ],
+  "metadata": {
+    "original_definition": {},
+    "original_domain": {
+      "bounds": [
+        0.0,
+        1.0,
+        0.0,
+        1.0
+      ],
+      "interface": {
+        "axis": "y",
+        "position": 0.5
+      }
+    },
+    "source": {
+      "adaptation": "Dos materiales sin suavizado; continuidad exacta de temperatura y flujo; la fuente se deriva por región",
+      "citation": "Elaboración propia: prueba del formato para estratos discontinuos horizontales"
+    }
+  },
+  "reference": {
+    "exact": {
+      "expression": "20 + where(y <= 0.5, 20*y, 10*(1+(y-0.5)/2))*sin(pi*x)"
+    }
+  },
+  "regions": [
+    {
+      "conductivity": {
+        "expression": "where(y <= 0.5, 0.5, 2.0)"
+      },
+      "id": "domain",
+      "priority": 0,
+      "shape": {
+        "bounds": [
+          0.0,
+          1.0,
+          0.0,
+          1.0
+        ],
+        "type": "rectangle"
+      },
+      "source": {
+        "expression": "pi**2 * where(y <= 0.5, 0.5, 2.0) * where(y <= 0.5, 20*y, 10*(1+(y-0.5)/2)) * sin(pi*x)"
+      }
+    }
+  ],
+  "schema": "pinn-v4-problem-1",
+  "temperature_scale_K": 30.0,
+  "title": "mms_layered_y"
+}

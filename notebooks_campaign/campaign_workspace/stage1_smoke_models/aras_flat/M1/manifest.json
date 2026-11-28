@@ -1,0 +1,36 @@
+{
+  "command": [
+    "c:\\Python312\\Lib\\site-packages\\ipykernel_launcher.py",
+    "--f=c:\\Users\\QU1267\\AppData\\Roaming\\jupyter\\runtime\\kernel-v3bfdeb27910c591b48cbab09b73db6a20a9460b67.json"
+  ],
+  "created_utc": "2026-11-26T21:28:48.769451+00:00",
+  "extra": {
+    "architecture": "M1",
+    "case": "aras_flat",
+    "physics_sha256": "14b017c358b0bebf6c311ab335afce4dc7f28c0e13cc4ce9721dc1ed5f4d9147",
+    "status": "completed"
+  },
+  "fem_environment": null,
+  "git": {
+    "branch": "main",
+    "commit": "3f0e799aa39800a9abcfd3f5fd5df9a7bbc3addc"
+  },
+  "host": {
+    "deepxde": "1.15.0",
+    "matplotlib": "3.8.4",
+    "numpy": "2.2.0",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "plotly": "7.1.0",
+    "python": "3.12.9",
+    "scipy": "1.13.1",
+    "torch": "2.9.0+xpu"
+  },
+  "inputs": {},
+  "kind": "pinn_training_run",
+  "schema": "pinn-v4-manifest-1",
+  "seeds": {
+    "init": 11,
+    "sampling": 101,
+    "validation": 1000104
+  }
+}

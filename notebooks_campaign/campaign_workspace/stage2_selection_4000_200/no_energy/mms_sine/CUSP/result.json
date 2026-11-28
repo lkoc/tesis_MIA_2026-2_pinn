@@ -103,7 +103,7 @@
     "triggered": false
   },
   "dtype": "float32",
-  "elapsed_s": 186.86762080000335,
+  "elapsed_s": 252.74409519999608,
   "error": null,
   "evaluation": {
     "Tmax_pred_C": 50.140174865722656,
@@ -1087,8 +1087,8 @@
   "status": "completed",
   "study": null,
   "training_elapsed_s": {
-    "adam": 145.61488480000116,
-    "lbfgs": 38.30007949999708
+    "adam": 200.85492809999414,
+    "lbfgs": 45.890041999999085
   },
   "transfer_report": null
 }

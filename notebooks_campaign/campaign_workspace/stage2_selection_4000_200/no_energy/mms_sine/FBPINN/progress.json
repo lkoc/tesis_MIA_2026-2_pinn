@@ -1,16 +1,12 @@
 {
   "adam_steps": 4000,
-  "best_validation": {
-    "loss": 0.9244514107704163,
-    "step": 1500
-  },
-  "completed_steps": 1801,
-  "elapsed_s": 409.12,
+  "completed_steps": 4200,
+  "elapsed_s": 2362.52,
   "lbfgs_steps": 200,
-  "loss_total": 1.0825128555297852,
-  "pct": 42.88,
-  "phase": "adam",
-  "status": "running",
-  "step": 1800,
+  "loss_total": 0.0002914529468398541,
+  "pct": 100.0,
+  "phase": "done",
+  "status": "completed",
+  "step": 4199,
   "total_steps": 4200
 }

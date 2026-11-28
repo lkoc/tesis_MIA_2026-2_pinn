@@ -22,7 +22,6 @@ from typing import Any
 import zipfile
 
 import numpy as np
-from scipy.interpolate import LinearNDInterpolator
 from scipy.spatial import cKDTree
 import torch
 
@@ -122,39 +121,51 @@ def _estimate_discrete_field_and_flux(
             raise ValueError(f"El campo discreto no contiene nodos para la región {region.name!r}.")
         s_xy = dof_pts[src_mask]
         s_T = dof_vals[src_mask]
-        if len(s_xy) >= 3:
-            interp = LinearNDInterpolator(s_xy, s_T)
-            vals = np.asarray(interp(r_pts), dtype=float).ravel()
-            missing = ~np.isfinite(vals)
-            if np.any(missing):
-                vals[missing] = s_T[cKDTree(s_xy).query(r_pts[missing])[1]]
+        k = min(12, len(s_xy))
+        tree = cKDTree(s_xy, compact_nodes=False, balanced_tree=False)
+        dists, idx = tree.query(r_pts, k=k, workers=-1)
+        if k == 1:
+            dists = np.asarray(dists, dtype=float).reshape(-1, 1)
+            idx = np.asarray(idx, dtype=np.int64).reshape(-1, 1)
         else:
-            vals = s_T[cKDTree(s_xy).query(r_pts)[1]]
+            dists = np.asarray(dists, dtype=float)
+            idx = np.asarray(idx, dtype=np.int64)
+
+        if k >= 3:
+            # Mínimos cuadrados móviles locales (P2 con >=6 nodos, P1 con 3-5) en O(M log N)
+            scale = np.maximum(dists[:, -1], 1e-12)
+            dx = (s_xy[idx, 0] - r_pts[:, None, 0]) / scale[:, None]
+            dy = (s_xy[idx, 1] - r_pts[:, None, 1]) / scale[:, None]
+            w = 1.0 / np.maximum(dists / scale[:, None], 1e-4)
+            cols = [np.ones_like(dx), dx, dy]
+            if k >= 6:
+                cols.extend([dx * dx, dx * dy, dy * dy])
+            design = np.stack(cols, axis=-1) * w[..., None]
+            rhs_y = s_T[idx] * w
+            ata = np.einsum("nki,nkj->nij", design, design)
+            aty = np.einsum("nki,nk->ni", design, rhs_y)
+            reg_eye = np.eye(len(cols), dtype=float)[None, :, :] * (1e-8 * np.maximum(ata[:, 0, 0], 1.0))[:, None, None]
+            sol = np.linalg.solve(ata + reg_eye, aty[..., None])[..., 0]
+            vals = sol[:, 0]
+            grads = np.stack([sol[:, 1] / scale, sol[:, 2] / scale], axis=-1)
+            loc_min = np.min(s_T[idx], axis=1)
+            loc_max = np.max(s_T[idx], axis=1)
+            span = np.maximum(loc_max - loc_min, 1e-9)
+            bad = (~np.isfinite(vals)) | (vals < loc_min - 0.5 * span) | (vals > loc_max + 0.5 * span)
+            if np.any(bad):
+                sw = w[bad] ** 2
+                vals[bad] = np.sum(sw * s_T[idx[bad]], axis=1) / np.maximum(np.sum(sw, axis=1), 1e-30)
+                grads[bad] = 0.0
+            exact_hit = dists[:, 0] < 1e-12
+            vals[exact_hit] = s_T[idx[exact_hit, 0]]
+        else:
+            vals = s_T[idx[:, 0]]
+            grads = np.zeros((len(r_pts), 2), dtype=float)
         temps[q_mask] = vals
 
         if with_flux and flux is not None:
             k_vals = region.conductivity_spec.evaluate_numpy(r_pts[:, 0], r_pts[:, 1])
-            k_nbr = min(12, len(s_xy))
-            if k_nbr >= 6:
-                nearest = cKDTree(s_xy).query(r_pts, k=k_nbr)[1]
-                grads = np.zeros((len(r_pts), 2), dtype=float)
-                for row_idx, (pt, nbr_idx) in enumerate(zip(r_pts, nearest)):
-                    delta = s_xy[nbr_idx] - pt
-                    design = np.column_stack(
-                        [
-                            np.ones(len(delta)),
-                            delta[:, 0],
-                            delta[:, 1],
-                            delta[:, 0] ** 2,
-                            delta[:, 0] * delta[:, 1],
-                            delta[:, 1] ** 2,
-                        ]
-                    )
-                    coeffs = np.linalg.lstsq(design, s_T[nbr_idx], rcond=None)[0]
-                    grads[row_idx] = coeffs[1:3]
-                flux[q_mask] = -k_vals[:, None] * grads
-            else:
-                flux[q_mask] = 0.0
+            flux[q_mask] = -k_vals[:, None] * grads
 
     out: dict[str, np.ndarray] = {"T": temps, "region_ids": labels}
     if flux is not None:

@@ -1,0 +1,386 @@
+{
+  "compatibility_profile": {
+    "activation": "tanh",
+    "architecture": "M2",
+    "depth": 3,
+    "domain_shape": "rectangle",
+    "exact_boundary": false,
+    "exact_constraints": false,
+    "formulation": "mixed",
+    "input_normalization": "region_coordinates",
+    "mixed": true,
+    "model_kind": "mixed_subdomain",
+    "partition": "region",
+    "region_kinds": {
+      "background": "soil",
+      "cable_0_layer_0": "conductor",
+      "cable_0_layer_1": "conductor",
+      "cable_0_layer_2": "conductor",
+      "cable_0_layer_3": "conductor"
+    },
+    "region_names": [
+      "background",
+      "cable_0_layer_0",
+      "cable_0_layer_1",
+      "cable_0_layer_2",
+      "cable_0_layer_3"
+    ],
+    "subnets": {
+      "region:background": {
+        "in_features": 3,
+        "out_features": 3,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            3
+          ]
+        ]
+      },
+      "region:cable_0_layer_0": {
+        "in_features": 2,
+        "out_features": 3,
+        "shape_signature": [
+          [
+            2,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            3
+          ]
+        ]
+      },
+      "region:cable_0_layer_1": {
+        "in_features": 3,
+        "out_features": 3,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            3
+          ]
+        ]
+      },
+      "region:cable_0_layer_2": {
+        "in_features": 3,
+        "out_features": 3,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            3
+          ]
+        ]
+      },
+      "region:cable_0_layer_3": {
+        "in_features": 3,
+        "out_features": 3,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            3
+          ]
+        ]
+      }
+    },
+    "width": 32
+  },
+  "config": {
+    "accuracy_stop": null,
+    "activation": "tanh",
+    "adam_steps": 800,
+    "architecture": "M2",
+    "attention": null,
+    "base_architecture": "M2",
+    "chain_from": null,
+    "chain_mode": "residual",
+    "depth": 3,
+    "device": "cpu",
+    "divergence_stop": {
+      "check_nonfinite_grads": true,
+      "explosion_factor": 10000.0,
+      "growth_patience": 6,
+      "lbfgs_explosion_factor": 100.0,
+      "lbfgs_stagnation_checks": 8,
+      "max_loss": 1000000000000.0,
+      "min_growth_ratio": 1.05,
+      "patience_explosion": 3,
+      "warmup_steps": 150
+    },
+    "dtype": "float32",
+    "exact_energy": true,
+    "focus_criterion": "residual",
+    "focus_surfaces": false,
+    "focused": true,
+    "freeze_chain_source": true,
+    "full_audit": true,
+    "init_seed": 0,
+    "initializer": null,
+    "initializer_settings": {},
+    "input_normalization": "region_coordinates",
+    "lbfgs_iterations": 1,
+    "lbfgs_steps": 50,
+    "log_every": 100,
+    "lr": 0.002,
+    "point_schedule_stages": 0,
+    "point_schedule_start": 0.5,
+    "points": {
+      "n_boundary": 128,
+      "n_face": 128,
+      "n_interior": 512,
+      "n_layer": 256
+    },
+    "resample_every": 100,
+    "resume_from": null,
+    "sampling": "mixed",
+    "sampling_seed": 11,
+    "soil_envelope_gain": 1.0,
+    "study": null,
+    "trace_parameterization": "standard",
+    "transfer_mode": "auto",
+    "transfer_steps": 150,
+    "validation_every": 250,
+    "warm_start_from": null,
+    "weights": {
+      "constitutive": 1.0,
+      "dirichlet": 100.0,
+      "energy": 100.0,
+      "interface_flux": 100.0,
+      "interface_temperature": 100.0,
+      "neumann": 10.0,
+      "pde": 1.0,
+      "robin": 10.0
+    },
+    "width": 32
+  },
+  "flux_convention": "q = -k * grad(T); normal exterior",
+  "format": "pinn-v4-artifact-1",
+  "physics_sha256": "1e9688cdaa47884d45ef92bfabe886a28ba355cac4f68070c621ffb815ddaea9",
+  "problem": {
+    "boundaries": {
+      "bottom": {
+        "type": "dirichlet",
+        "value": 20.0
+      },
+      "left": {
+        "type": "dirichlet",
+        "value": 20.0
+      },
+      "right": {
+        "type": "dirichlet",
+        "value": 20.0
+      },
+      "top": {
+        "type": "dirichlet",
+        "value": 20.0
+      }
+    },
+    "domain": {
+      "bounds": [
+        -4.0,
+        4.0,
+        -4.0,
+        0.0
+      ],
+      "shape": "rectangle"
+    },
+    "family": "cable",
+    "id": "aras_single",
+    "metadata": {
+      "conductors": {
+        "centers": [
+          [
+            0.0,
+            -1.2
+          ]
+        ],
+        "layers": [
+          {
+            "inner_radius_m": 0,
+            "k_W_mK": 400,
+            "outer_radius_m": 0.01885
+          },
+          {
+            "inner_radius_m": 0.01885,
+            "k_W_mK": 0.2857,
+            "outer_radius_m": 0.04085
+          },
+          {
+            "inner_radius_m": 0.04085,
+            "k_W_mK": 384.6,
+            "outer_radius_m": 0.04935
+          },
+          {
+            "inner_radius_m": 0.04935,
+            "k_W_mK": 0.45,
+            "outer_radius_m": 0.05335
+          }
+        ],
+        "pair": null,
+        "radius_m": 0.05335
+      },
+      "electrical": {
+        "R20_ohm_m": 1.51e-05,
+        "alpha_1_K": 0.00393,
+        "current_A": 1657.0,
+        "power_W_m": 41.4592999
+      },
+      "original_definition": {},
+      "original_domain": {
+        "bounds": [
+          -4.0,
+          4.0,
+          -4.0,
+          0.0
+        ]
+      },
+      "source": {
+        "adaptation": "Dominio controlado 8 x 4 m; Dirichlet 20 C; pérdidas DC a 20 C; flujo circular uniforme. Kim usa nueve capas de la ficha corregida de 2025.",
+        "citation": "examples/aras_2005_154kv/data"
+      }
+    },
+    "reference": {},
+    "regions": [
+      {
+        "conductivity": 1.0,
+        "id": "background",
+        "priority": 0,
+        "shape": {
+          "bounds": [
+            -4.0,
+            4.0,
+            -4.0,
+            0.0
+          ],
+          "type": "rectangle"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 400,
+        "id": "cable_0_layer_0",
+        "priority": 1,
+        "shape": {
+          "center": [
+            0.0,
+            -1.2
+          ],
+          "radius_m": 0.01885,
+          "type": "disk"
+        },
+        "source": 37140.639932536345
+      },
+      {
+        "conductivity": 0.2857,
+        "id": "cable_0_layer_1",
+        "priority": 2,
+        "shape": {
+          "center": [
+            0.0,
+            -1.2
+          ],
+          "inner_radius_m": 0.01885,
+          "outer_radius_m": 0.04085,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 384.6,
+        "id": "cable_0_layer_2",
+        "priority": 3,
+        "shape": {
+          "center": [
+            0.0,
+            -1.2
+          ],
+          "inner_radius_m": 0.04085,
+          "outer_radius_m": 0.04935,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 0.45,
+        "id": "cable_0_layer_3",
+        "priority": 4,
+        "shape": {
+          "center": [
+            0.0,
+            -1.2
+          ],
+          "inner_radius_m": 0.04935,
+          "outer_radius_m": 0.05335,
+          "type": "annulus"
+        },
+        "source": 0.0
+      }
+    ],
+    "schema": "pinn-v4-problem-1",
+    "temperature_scale_K": 50.0,
+    "title": "aras_single"
+  },
+  "runtime": {
+    "torch": "2.9.0+xpu"
+  },
+  "schema_version": 4,
+  "seeds": {
+    "init": 0,
+    "sampling": 11,
+    "validation": 1000014
+  }
+}

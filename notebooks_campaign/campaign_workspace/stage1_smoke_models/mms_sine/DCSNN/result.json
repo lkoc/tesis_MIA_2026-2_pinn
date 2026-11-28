@@ -1,9 +1,9 @@
 {
   "architecture": "DCSNN",
-  "best_loss": 0.02334154024720192,
+  "best_loss": 0.031935710459947586,
   "best_step": 1209,
   "best_validation": {
-    "loss": 6.941722869873047,
+    "loss": 6.941722393035889,
     "step": 1199
   },
   "case": "mms_sine",
@@ -77,7 +77,7 @@
   },
   "device": "cpu",
   "divergence_stop": {
-    "best_loss": 7.26681661605835,
+    "best_loss": 7.266816139221191,
     "enabled": true,
     "lbfgs_early_stop": null,
     "message": null,
@@ -99,10 +99,10 @@
     "triggered": false
   },
   "dtype": "float32",
-  "elapsed_s": 47.492504399997415,
+  "elapsed_s": 43.629548899998554,
   "error": null,
   "evaluation": {
-    "Tmax_pred_C": 50.02508544921875,
+    "Tmax_pred_C": 49.83165740966797,
     "Tmax_ref_C": 49.99785413529973,
     "acceptance": {
       "accepted": true,
@@ -121,46 +121,46 @@
       "state": "accepted"
     },
     "balance": {
-      "global_constitutive_pct": 0.02503315970475578,
-      "global_derived_W_m": 0.059630068233616385,
-      "global_derived_pct": 0.02503315970475578,
+      "global_constitutive_pct": 0.009860597967188592,
+      "global_derived_W_m": 0.02348837048708674,
+      "global_derived_pct": 0.009860597967188592,
       "normalization": "integrated_source",
       "power_scale_W_m": 238.20432153551877,
       "region_constitutive_pct": {
-        "domain": 0.02503315970475578
+        "domain": 0.009860597967188592
       },
       "region_derived_W_m": {
-        "domain": 0.059630068233616385
+        "domain": 0.02348837048708674
       },
       "region_derived_pct": {
-        "domain": 0.02503315970475578
+        "domain": 0.009860597967188592
       }
     },
     "boundary": [
       {
         "region": "domain",
-        "rms": 0.06977912783622742,
+        "rms": 0.11661187559366226,
         "side": "bottom",
         "type": "dirichlet",
         "unit": "K"
       },
       {
         "region": "domain",
-        "rms": 0.16602075099945068,
+        "rms": 0.17211656272411346,
         "side": "top",
         "type": "dirichlet",
         "unit": "K"
       },
       {
         "region": "domain",
-        "rms": 0.16942669451236725,
+        "rms": 0.21756026148796082,
         "side": "left",
         "type": "dirichlet",
         "unit": "K"
       },
       {
         "region": "domain",
-        "rms": 0.1320389062166214,
+        "rms": 0.11132124066352844,
         "side": "right",
         "type": "dirichlet",
         "unit": "K"
@@ -170,16 +170,16 @@
     "conductor_mean_pred_C": {},
     "conductor_mean_ref_C": {},
     "constitutive_rms": {},
-    "error_Tmax_abs_K": 0.027231313919017452,
-    "error_Tmax_site_K": 0.027231313919017452,
+    "error_Tmax_abs_K": 0.1661967256317638,
+    "error_Tmax_site_K": 0.1661967256317638,
     "error_percentiles_K": {
-      "50": 0.23950261189005495,
-      "90": 0.5495133569929526,
-      "95": 0.6111029494988002,
-      "99": 0.7192337289339495
+      "50": 0.27176452265068285,
+      "90": 0.772685807555149,
+      "95": 0.9112064711600688,
+      "99": 1.1956704644603438
     },
-    "error_rise_pct": 0.09077753960731885,
-    "error_rise_site_pct": 0.09077753960731885,
+    "error_rise_pct": 0.5540287144612559,
+    "error_rise_site_pct": 0.5540287144612559,
     "hotspot_distance_m": 0.0,
     "hotspot_pred_xy": [
       0.49622018584000877,
@@ -191,24 +191,24 @@
     ],
     "interfaces": [],
     "level_C": 20.0,
-    "mae_K": 0.2734863700857145,
-    "max_error_K": 0.7570213078447878,
-    "nrmse_pct": 1.1168130205921643,
+    "mae_K": 0.3496341434047701,
+    "max_error_K": 1.2662168647017467,
+    "nrmse_pct": 1.5080872558332181,
     "pde_rms": {
-      "domain": 0.14241595566272736
+      "domain": 0.17589251697063446
     },
     "reference_label": "analytic_reference",
     "region_max_error_K": {
-      "domain": 0.7570213078447878
+      "domain": 1.2662168647017467
     },
     "region_rmse_K": {
-      "domain": 0.33501994088127246
+      "domain": 0.45239381523789335
     },
     "region_rmse_rise_pct": {
-      "domain": 1.1168130205921645
+      "domain": 1.5080872558332183
     },
     "rise_ref_K": 29.997854135299733,
-    "rmse_K": 0.3350199408812724,
+    "rmse_K": 0.4523938152378933,
     "temperature_normalization": "reference_rise",
     "temperature_normalization_K": 29.997854135299733
   },
@@ -234,22 +234,22 @@
     {
       "constitutive": 0.0,
       "dirichlet": 0.2399001121520996,
-      "energy": 0.7732923626899719,
+      "energy": 0.7732923030853271,
       "interface_flux": 0.0,
       "interface_temperature": 0.0,
       "lr": 0.001965592480911632,
       "neumann": 0.0,
-      "optimized_pde": 2.8458425998687744,
-      "pde": 2.8458425998687744,
+      "optimized_pde": 2.8458428382873535,
+      "pde": 2.8458428382873535,
       "phase": "adam",
       "robin": 0.0,
       "step": 100,
-      "total": 104.16509246826172
+      "total": 104.16508483886719
     },
     {
       "constitutive": 0.0,
-      "dirichlet": 0.22182919085025787,
-      "energy": 0.3019125759601593,
+      "dirichlet": 0.2218291461467743,
+      "energy": 0.30191269516944885,
       "interface_flux": 0.0,
       "interface_temperature": 0.0,
       "lr": 0.0018660663061149509,
@@ -259,28 +259,28 @@
       "phase": "adam",
       "robin": 0.0,
       "step": 200,
-      "total": 54.0260009765625
+      "total": 54.02600860595703
     },
     {
       "constitutive": 0.0,
-      "dirichlet": 0.12316353619098663,
+      "dirichlet": 0.12316352128982544,
       "energy": 0.14056499302387238,
       "interface_flux": 0.0,
       "interface_temperature": 0.0,
       "lr": 0.0017082006272729996,
       "neumann": 0.0,
-      "optimized_pde": 1.1797200441360474,
-      "pde": 1.1797200441360474,
+      "optimized_pde": 1.1797199249267578,
+      "pde": 1.1797199249267578,
       "phase": "adam",
       "robin": 0.0,
       "step": 300,
-      "total": 27.552574157714844,
-      "validation_loss": 26.883073806762695
+      "total": 27.552570343017578,
+      "validation_loss": 26.883071899414062
     },
     {
       "constitutive": 0.0,
-      "dirichlet": 0.07803762704133987,
-      "energy": 0.052519623190164566,
+      "dirichlet": 0.07803764194250107,
+      "energy": 0.05251969397068024,
       "interface_flux": 0.0,
       "interface_temperature": 0.0,
       "lr": 0.001502753729513485,
@@ -290,12 +290,12 @@
       "phase": "adam",
       "robin": 0.0,
       "step": 400,
-      "total": 13.918243408203125
+      "total": 13.918251991271973
     },
     {
       "constitutive": 0.0,
-      "dirichlet": 0.06834627687931061,
-      "energy": 0.019221916794776917,
+      "dirichlet": 0.068346306681633,
+      "energy": 0.019221926108002663,
       "interface_flux": 0.0,
       "interface_temperature": 0.0,
       "lr": 0.0012637264794016644,
@@ -305,74 +305,74 @@
       "phase": "adam",
       "robin": 0.0,
       "step": 500,
-      "total": 9.473526954650879
+      "total": 9.473530769348145
     },
     {
       "constitutive": 0.0,
-      "dirichlet": 0.0672510638833046,
-      "energy": 0.009438184089958668,
+      "dirichlet": 0.06725103408098221,
+      "energy": 0.009438196197152138,
       "interface_flux": 0.0,
       "interface_temperature": 0.0,
       "lr": 0.001007408189021453,
       "neumann": 0.0,
-      "optimized_pde": 0.6418887376785278,
-      "pde": 0.6418887376785278,
+      "optimized_pde": 0.6418886780738831,
+      "pde": 0.6418886780738831,
       "phase": "adam",
       "robin": 0.0,
       "step": 600,
-      "total": 8.310812950134277,
-      "validation_loss": 7.9478535652160645
+      "total": 8.310811996459961,
+      "validation_loss": 7.947851657867432
     },
     {
       "constitutive": 0.0,
-      "dirichlet": 0.06617632508277893,
-      "energy": 0.006385703571140766,
+      "dirichlet": 0.06617635488510132,
+      "energy": 0.0063857086934149265,
       "interface_flux": 0.0,
       "interface_temperature": 0.0,
       "lr": 0.0007512665262762603,
       "neumann": 0.0,
-      "optimized_pde": 0.6042968034744263,
-      "pde": 0.6042968034744263,
+      "optimized_pde": 0.6042966842651367,
+      "pde": 0.6042966842651367,
       "phase": "adam",
       "robin": 0.0,
       "step": 700,
-      "total": 7.860499382019043
+      "total": 7.860503196716309
     },
     {
       "constitutive": 0.0,
-      "dirichlet": 0.06492750346660614,
-      "energy": 0.0051439665257930756,
+      "dirichlet": 0.06492752581834793,
+      "energy": 0.0051439800299704075,
       "interface_flux": 0.0,
       "interface_temperature": 0.0,
       "lr": 0.0005127571221880596,
       "neumann": 0.0,
-      "optimized_pde": 0.6110988855361938,
-      "pde": 0.6110988855361938,
+      "optimized_pde": 0.6110987663269043,
+      "pde": 0.6110987663269043,
       "phase": "adam",
       "robin": 0.0,
       "step": 800,
-      "total": 7.618245601654053
+      "total": 7.618249416351318
     },
     {
       "constitutive": 0.0,
       "dirichlet": 0.06380291283130646,
-      "energy": 0.004627780988812447,
+      "energy": 0.004627775866538286,
       "interface_flux": 0.0,
       "interface_temperature": 0.0,
       "lr": 0.0003081339984900336,
       "neumann": 0.0,
-      "optimized_pde": 0.5819512605667114,
-      "pde": 0.5819512605667114,
+      "optimized_pde": 0.5819512009620667,
+      "pde": 0.5819512009620667,
       "phase": "adam",
       "robin": 0.0,
       "step": 900,
-      "total": 7.425020694732666,
-      "validation_loss": 7.100160121917725
+      "total": 7.425020217895508,
+      "validation_loss": 7.100159645080566
     },
     {
       "constitutive": 0.0,
-      "dirichlet": 0.06308432668447495,
-      "energy": 0.004385578911751509,
+      "dirichlet": 0.06308437883853912,
+      "energy": 0.004385567270219326,
       "interface_flux": 0.0,
       "interface_temperature": 0.0,
       "lr": 0.00015134188290650237,
@@ -382,83 +382,83 @@
       "phase": "adam",
       "robin": 0.0,
       "step": 1000,
-      "total": 7.343668460845947
+      "total": 7.343672275543213
     },
     {
       "constitutive": 0.0,
-      "dirichlet": 0.06272081285715103,
-      "energy": 0.004305512644350529,
+      "dirichlet": 0.06272076815366745,
+      "energy": 0.004305529408156872,
       "interface_flux": 0.0,
       "interface_temperature": 0.0,
       "lr": 5.3065899003261856e-05,
       "neumann": 0.0,
-      "optimized_pde": 0.5799570679664612,
-      "pde": 0.5799570679664612,
+      "optimized_pde": 0.5799569487571716,
+      "pde": 0.5799569487571716,
       "phase": "adam",
       "robin": 0.0,
       "step": 1100,
-      "total": 7.282589435577393
+      "total": 7.282586574554443
     },
     {
       "constitutive": 0.0,
-      "dirichlet": 0.06260369718074799,
-      "energy": 0.004271764308214188,
+      "dirichlet": 0.06260368227958679,
+      "energy": 0.0042717731557786465,
       "interface_flux": 0.0,
       "interface_temperature": 0.0,
       "lr": 2e-05,
       "neumann": 0.0,
-      "optimized_pde": 0.5792703628540039,
-      "pde": 0.5792703628540039,
+      "optimized_pde": 0.5792701840400696,
+      "pde": 0.5792701840400696,
       "phase": "adam",
       "robin": 0.0,
       "step": 1199,
-      "total": 7.26681661605835,
-      "validation_loss": 6.941722869873047
+      "total": 7.266816139221191,
+      "validation_loss": 6.941722393035889
     },
     {
       "constitutive": 0.0,
-      "dirichlet": 0.0049071963876485825,
-      "energy": 3.509258749545552e-05,
+      "dirichlet": 0.0054221926257014275,
+      "energy": 6.057002246961929e-05,
       "interface_flux": 0.0,
       "interface_temperature": 0.0,
       "lr": 1.0,
       "neumann": 0.0,
-      "optimized_pde": 0.22081516683101654,
-      "pde": 0.22081516683101654,
+      "optimized_pde": 0.20875100791454315,
+      "pde": 0.20875100791454315,
       "phase": "lbfgs",
       "robin": 0.0,
       "step": 1200,
-      "total": 0.7150440812110901
+      "total": 0.7570273280143738
     },
     {
       "constitutive": 0.0,
-      "dirichlet": 0.00017504052084404975,
-      "energy": 1.9479569068892033e-09,
+      "dirichlet": 0.00019856239669024944,
+      "energy": 7.184694368334021e-07,
       "interface_flux": 0.0,
       "interface_temperature": 0.0,
       "lr": 1.0,
       "neumann": 0.0,
-      "optimized_pde": 0.023998631164431572,
-      "pde": 0.023998631164431572,
+      "optimized_pde": 0.023083960637450218,
+      "pde": 0.023083960637450218,
       "phase": "lbfgs",
       "robin": 0.0,
       "step": 1205,
-      "total": 0.041502878069877625
+      "total": 0.043012045323848724
     },
     {
       "constitutive": 0.0,
-      "dirichlet": 8.720593177713454e-05,
-      "energy": 5.272275060974607e-08,
+      "dirichlet": 0.000114268041215837,
+      "energy": 1.4257148350793614e-08,
       "interface_flux": 0.0,
       "interface_temperature": 0.0,
       "lr": 1.0,
       "neumann": 0.0,
-      "optimized_pde": 0.014615673571825027,
-      "pde": 0.014615673571825027,
+      "optimized_pde": 0.020507479086518288,
+      "pde": 0.020507479086518288,
       "phase": "lbfgs",
       "robin": 0.0,
       "step": 1209,
-      "total": 0.02334154024720192
+      "total": 0.031935710459947586
     }
   ],
   "initializer_report": null,
@@ -474,8 +474,8 @@
   "status": "completed",
   "study": null,
   "training_elapsed_s": {
-    "adam": 32.689092199994775,
-    "lbfgs": 8.503107399999863
+    "adam": 34.12530389999847,
+    "lbfgs": 6.813302299999123
   },
   "transfer_report": null
 }

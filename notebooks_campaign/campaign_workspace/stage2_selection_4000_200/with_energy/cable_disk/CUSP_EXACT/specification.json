@@ -21,11 +21,11 @@
     ],
     "subnets": {
       "global": {
-        "in_features": 4,
+        "in_features": 3,
         "out_features": 1,
         "shape_signature": [
           [
-            4,
+            3,
             32
           ],
           [

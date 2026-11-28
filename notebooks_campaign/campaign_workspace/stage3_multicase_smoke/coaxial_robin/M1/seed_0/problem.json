@@ -1,0 +1,213 @@
+{
+  "boundaries": {
+    "bottom": {
+      "T_inf_C": 20.0,
+      "h_W_m2K": 15.0,
+      "type": "robin"
+    },
+    "left": {
+      "T_inf_C": 20.0,
+      "h_W_m2K": 15.0,
+      "type": "robin"
+    },
+    "right": {
+      "T_inf_C": 20.0,
+      "h_W_m2K": 15.0,
+      "type": "robin"
+    },
+    "top": {
+      "T_inf_C": 20.0,
+      "h_W_m2K": 15.0,
+      "type": "robin"
+    }
+  },
+  "domain": {
+    "bounds": [
+      -0.15,
+      0.15,
+      -0.15,
+      0.15
+    ],
+    "shape": "rectangle"
+  },
+  "family": "cable",
+  "id": "coaxial_robin",
+  "metadata": {
+    "conductors": {
+      "centers": [
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "layers": [
+        {
+          "inner_radius_m": 0.0,
+          "k_W_mK": 400.0,
+          "outer_radius_m": 0.0055
+        },
+        {
+          "inner_radius_m": 0.0055,
+          "k_W_mK": 0.286,
+          "outer_radius_m": 0.012
+        },
+        {
+          "inner_radius_m": 0.012,
+          "k_W_mK": 380.0,
+          "outer_radius_m": 0.013
+        },
+        {
+          "inner_radius_m": 0.013,
+          "k_W_mK": 0.45,
+          "outer_radius_m": 0.015
+        }
+      ],
+      "pair": null,
+      "radius_m": 0.015
+    },
+    "electrical": {
+      "R20_ohm_m": 0.000193,
+      "alpha_1_K": 0.00393,
+      "current_A": 270.0,
+      "power_W_m": 14.069700000000001
+    },
+    "original_definition": {
+      "boundary_conditions": {
+        "outer": {
+          "T_inf": {
+            "unit": "degC",
+            "value": 20.0
+          },
+          "h": {
+            "unit": "W/(m2 K)",
+            "value": 15.0
+          },
+          "type": "robin"
+        }
+      },
+      "contact": [],
+      "data_status": {
+        "boundary_conditions": {
+          "note": "Inherited coaxial case; Robin data chosen for verification",
+          "source": "pinn_v3_verification",
+          "status": "supuesto"
+        },
+        "geometry": {
+          "note": "Inherited coaxial case; Robin data chosen for verification",
+          "source": "pinn_v3_verification",
+          "status": "supuesto"
+        },
+        "materials": {
+          "note": "Inherited coaxial case; Robin data chosen for verification",
+          "source": "pinn_v3_verification",
+          "status": "supuesto"
+        },
+        "source": {
+          "note": "Inherited coaxial case; Robin data chosen for verification",
+          "source": "pinn_v3_verification",
+          "status": "supuesto"
+        }
+      },
+      "inconsistencies": [],
+      "provenance": [
+        {
+          "citation": "pinn_v3 verification builders (inherited coaxial case with chosen boundary data)",
+          "id": "pinn_v3_verification"
+        }
+      ]
+    },
+    "original_domain": {
+      "bounds": [
+        -0.15,
+        0.15,
+        -0.15,
+        0.15
+      ],
+      "outer_radius_m": 0.15
+    },
+    "source": {
+      "citation": "Synthetic concentric verification",
+      "physics_version": "explicit-heat-2d-v1"
+    }
+  },
+  "reference": {},
+  "regions": [
+    {
+      "conductivity": 1.0,
+      "id": "background",
+      "priority": 0,
+      "shape": {
+        "bounds": [
+          -0.15,
+          0.15,
+          -0.15,
+          0.15
+        ],
+        "type": "rectangle"
+      },
+      "source": 0.0
+    },
+    {
+      "conductivity": 400.0,
+      "id": "cable_0_layer_0",
+      "priority": 1,
+      "shape": {
+        "center": [
+          0.0,
+          0.0
+        ],
+        "radius_m": 0.0055,
+        "type": "disk"
+      },
+      "source": 148050.40018644894
+    },
+    {
+      "conductivity": 0.286,
+      "id": "cable_0_layer_1",
+      "priority": 2,
+      "shape": {
+        "center": [
+          0.0,
+          0.0
+        ],
+        "inner_radius_m": 0.0055,
+        "outer_radius_m": 0.012,
+        "type": "annulus"
+      },
+      "source": 0.0
+    },
+    {
+      "conductivity": 380.0,
+      "id": "cable_0_layer_2",
+      "priority": 3,
+      "shape": {
+        "center": [
+          0.0,
+          0.0
+        ],
+        "inner_radius_m": 0.012,
+        "outer_radius_m": 0.013,
+        "type": "annulus"
+      },
+      "source": 0.0
+    },
+    {
+      "conductivity": 0.45,
+      "id": "cable_0_layer_3",
+      "priority": 4,
+      "shape": {
+        "center": [
+          0.0,
+          0.0
+        ],
+        "inner_radius_m": 0.013,
+        "outer_radius_m": 0.015,
+        "type": "annulus"
+      },
+      "source": 0.0
+    }
+  ],
+  "schema": "pinn-v4-problem-1",
+  "temperature_scale_K": 30.0,
+  "title": "Concentric cable, Robin outer boundary"
+}

@@ -1,0 +1,209 @@
+{
+  "compatibility_profile": {
+    "activation": "tanh",
+    "architecture": "M1",
+    "depth": 3,
+    "domain_shape": "rectangle",
+    "exact_boundary": false,
+    "exact_constraints": false,
+    "formulation": "strong",
+    "input_normalization": "region_coordinates",
+    "mixed": false,
+    "model_kind": "baseline_subdomain",
+    "partition": "region",
+    "region_kinds": {
+      "domain": "soil"
+    },
+    "region_names": [
+      "domain"
+    ],
+    "subnets": {
+      "region:domain": {
+        "in_features": 2,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            2,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      }
+    },
+    "width": 32
+  },
+  "config": {
+    "accuracy_stop": null,
+    "activation": "tanh",
+    "adam_steps": 800,
+    "architecture": "M1",
+    "attention": null,
+    "base_architecture": "M1",
+    "chain_from": null,
+    "chain_mode": "residual",
+    "depth": 3,
+    "device": "cpu",
+    "divergence_stop": {
+      "check_nonfinite_grads": true,
+      "explosion_factor": 10000.0,
+      "growth_patience": 6,
+      "lbfgs_explosion_factor": 100.0,
+      "lbfgs_stagnation_checks": 8,
+      "max_loss": 1000000000000.0,
+      "min_growth_ratio": 1.05,
+      "patience_explosion": 3,
+      "warmup_steps": 150
+    },
+    "dtype": "float32",
+    "exact_energy": true,
+    "focus_criterion": "residual",
+    "focus_surfaces": false,
+    "focused": true,
+    "freeze_chain_source": true,
+    "full_audit": true,
+    "init_seed": 0,
+    "initializer": null,
+    "initializer_settings": {},
+    "input_normalization": "region_coordinates",
+    "lbfgs_iterations": 1,
+    "lbfgs_steps": 50,
+    "log_every": 100,
+    "lr": 0.002,
+    "point_schedule_stages": 0,
+    "point_schedule_start": 0.5,
+    "points": {
+      "n_boundary": 128,
+      "n_face": 128,
+      "n_interior": 512,
+      "n_layer": 256
+    },
+    "resample_every": 100,
+    "resume_from": null,
+    "sampling": "mixed",
+    "sampling_seed": 11,
+    "soil_envelope_gain": 1.0,
+    "study": null,
+    "trace_parameterization": "standard",
+    "transfer_mode": "auto",
+    "transfer_steps": 150,
+    "validation_every": 250,
+    "warm_start_from": null,
+    "weights": {
+      "constitutive": 1.0,
+      "dirichlet": 100.0,
+      "energy": 100.0,
+      "interface_flux": 100.0,
+      "interface_temperature": 100.0,
+      "neumann": 10.0,
+      "pde": 1.0,
+      "robin": 10.0
+    },
+    "width": 32
+  },
+  "flux_convention": "q = -k * grad(T); normal exterior",
+  "format": "pinn-v4-artifact-1",
+  "physics_sha256": "a24d1dc4a3b9b7645772673e247aef2beb5834181ffc1be3b3b81f4c99f3134f",
+  "problem": {
+    "boundaries": {
+      "bottom": {
+        "type": "dirichlet",
+        "value": {
+          "expression": "20 + 30*sin(pi*x)*sin(pi*y)"
+        }
+      },
+      "left": {
+        "type": "dirichlet",
+        "value": {
+          "expression": "20 + 30*sin(pi*x)*sin(pi*y)"
+        }
+      },
+      "right": {
+        "type": "dirichlet",
+        "value": {
+          "expression": "20 + 30*sin(pi*x)*sin(pi*y)"
+        }
+      },
+      "top": {
+        "type": "dirichlet",
+        "value": {
+          "expression": "20 + 30*sin(pi*x)*sin(pi*y)"
+        }
+      }
+    },
+    "domain": {
+      "bounds": [
+        0.0,
+        1.0,
+        0.0,
+        1.0
+      ],
+      "shape": "rectangle"
+    },
+    "family": "mms",
+    "id": "mms_smooth_2d",
+    "metadata": {
+      "original_definition": {},
+      "original_domain": {
+        "bounds": [
+          0.0,
+          1.0,
+          0.0,
+          1.0
+        ]
+      },
+      "source": {
+        "adaptation": "k=1+0.4 sin(2 pi x) cos(2 pi y); rango 0.6 a 1.4 W/(m K); T*=20+30 sin(pi x) sin(pi y)",
+        "citation": "Elaboración propia: extensión de la batería manufacturada del Plan"
+      }
+    },
+    "reference": {
+      "exact": {
+        "expression": "20 + 30*sin(pi*x)*sin(pi*y)"
+      }
+    },
+    "regions": [
+      {
+        "conductivity": {
+          "expression": "1+0.4*sin(2*pi*x)*cos(2*pi*y)"
+        },
+        "id": "domain",
+        "priority": 0,
+        "shape": {
+          "bounds": [
+            0.0,
+            1.0,
+            0.0,
+            1.0
+          ],
+          "type": "rectangle"
+        },
+        "source": {
+          "expression": "2*pi**2*(1+0.4*sin(2*pi*x)*cos(2*pi*y))*(30*sin(pi*x)*sin(pi*y))-30*pi*(0.8*pi*cos(2*pi*x)*cos(2*pi*y)*cos(pi*x)*sin(pi*y)-0.8*pi*sin(2*pi*x)*sin(2*pi*y)*sin(pi*x)*cos(pi*y))"
+        }
+      }
+    ],
+    "schema": "pinn-v4-problem-1",
+    "temperature_scale_K": 30.0,
+    "title": "mms_smooth_2d"
+  },
+  "runtime": {
+    "torch": "2.9.0+xpu"
+  },
+  "schema_version": 4,
+  "seeds": {
+    "init": 0,
+    "sampling": 11,
+    "validation": 1000014
+  }
+}

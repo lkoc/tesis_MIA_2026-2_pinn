@@ -1,0 +1,339 @@
+{
+  "compatibility_profile": {
+    "activation": "tanh",
+    "architecture": "M0R",
+    "depth": 3,
+    "domain_shape": "rectangle",
+    "exact_boundary": false,
+    "exact_constraints": false,
+    "formulation": "strong",
+    "input_normalization": "region_coordinates",
+    "mixed": false,
+    "model_kind": "global_region_scaled",
+    "partition": "global",
+    "region_kinds": {
+      "background": "soil",
+      "cable_0_layer_0": "conductor",
+      "cable_0_layer_1": "conductor",
+      "cable_0_layer_2": "conductor",
+      "cable_0_layer_3": "conductor"
+    },
+    "region_names": [
+      "background",
+      "cable_0_layer_0",
+      "cable_0_layer_1",
+      "cable_0_layer_2",
+      "cable_0_layer_3"
+    ],
+    "subnets": {
+      "global": {
+        "in_features": 11,
+        "out_features": 5,
+        "shape_signature": [
+          [
+            11,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            5
+          ]
+        ]
+      }
+    },
+    "width": 32
+  },
+  "config": {
+    "accuracy_stop": null,
+    "activation": "tanh",
+    "adam_steps": 800,
+    "architecture": "M0R",
+    "attention": null,
+    "base_architecture": "M0R",
+    "chain_from": null,
+    "chain_mode": "residual",
+    "depth": 3,
+    "device": "cpu",
+    "divergence_stop": {
+      "check_nonfinite_grads": true,
+      "explosion_factor": 10000.0,
+      "growth_patience": 6,
+      "lbfgs_explosion_factor": 100.0,
+      "lbfgs_stagnation_checks": 8,
+      "max_loss": 1000000000000.0,
+      "min_growth_ratio": 1.05,
+      "patience_explosion": 3,
+      "warmup_steps": 150
+    },
+    "dtype": "float32",
+    "exact_energy": true,
+    "focus_criterion": "residual",
+    "focus_surfaces": false,
+    "focused": true,
+    "freeze_chain_source": true,
+    "full_audit": true,
+    "init_seed": 1,
+    "initializer": null,
+    "initializer_settings": {},
+    "input_normalization": "region_coordinates",
+    "lbfgs_iterations": 1,
+    "lbfgs_steps": 50,
+    "log_every": 100,
+    "lr": 0.002,
+    "point_schedule_stages": 0,
+    "point_schedule_start": 0.5,
+    "points": {
+      "n_boundary": 128,
+      "n_face": 128,
+      "n_interior": 512,
+      "n_layer": 256
+    },
+    "resample_every": 100,
+    "resume_from": null,
+    "sampling": "mixed",
+    "sampling_seed": 12,
+    "soil_envelope_gain": 1.0,
+    "study": null,
+    "trace_parameterization": "standard",
+    "transfer_mode": "auto",
+    "transfer_steps": 150,
+    "validation_every": 250,
+    "warm_start_from": null,
+    "weights": {
+      "constitutive": 1.0,
+      "dirichlet": 100.0,
+      "energy": 100.0,
+      "interface_flux": 100.0,
+      "interface_temperature": 100.0,
+      "neumann": 10.0,
+      "pde": 1.0,
+      "robin": 10.0
+    },
+    "width": 32
+  },
+  "flux_convention": "q = -k * grad(T); normal exterior",
+  "format": "pinn-v4-artifact-1",
+  "physics_sha256": "c2ac54cad50d6979b4b6fb24720909fe4075fd4ea5f4042923f2720e9b9bfebe",
+  "problem": {
+    "boundaries": {
+      "bottom": {
+        "type": "dirichlet",
+        "value": 20.0
+      },
+      "left": {
+        "type": "dirichlet",
+        "value": 20.0
+      },
+      "right": {
+        "type": "dirichlet",
+        "value": 20.0
+      },
+      "top": {
+        "type": "dirichlet",
+        "value": 20.0
+      }
+    },
+    "domain": {
+      "bounds": [
+        -0.15,
+        0.15,
+        -0.15,
+        0.15
+      ],
+      "shape": "rectangle"
+    },
+    "family": "cable",
+    "id": "coaxial_bc_dirichlet",
+    "metadata": {
+      "conductors": {
+        "centers": [
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "layers": [
+          {
+            "inner_radius_m": 0.0,
+            "k_W_mK": 400.0,
+            "outer_radius_m": 0.0055
+          },
+          {
+            "inner_radius_m": 0.0055,
+            "k_W_mK": 0.286,
+            "outer_radius_m": 0.012
+          },
+          {
+            "inner_radius_m": 0.012,
+            "k_W_mK": 380.0,
+            "outer_radius_m": 0.013
+          },
+          {
+            "inner_radius_m": 0.013,
+            "k_W_mK": 0.45,
+            "outer_radius_m": 0.015
+          }
+        ],
+        "pair": null,
+        "radius_m": 0.015
+      },
+      "electrical": {
+        "R20_ohm_m": 0.000193,
+        "alpha_1_K": 0.00393,
+        "current_A": 270.0,
+        "power_W_m": 14.069700000000001
+      },
+      "original_definition": {
+        "boundary_conditions": {
+          "outer": {
+            "temperature": {
+              "unit": "degC",
+              "value": 20.0
+            },
+            "type": "dirichlet"
+          }
+        },
+        "contact": [],
+        "data_status": {
+          "boundary_conditions": {
+            "note": "Inherited coaxial case; explicit Dirichlet equal to the reference value",
+            "source": "pinn_v3_verification",
+            "status": "supuesto"
+          },
+          "geometry": {
+            "note": "Inherited coaxial case; explicit Dirichlet equal to the reference value",
+            "source": "pinn_v3_verification",
+            "status": "supuesto"
+          },
+          "materials": {
+            "note": "Inherited coaxial case; explicit Dirichlet equal to the reference value",
+            "source": "pinn_v3_verification",
+            "status": "supuesto"
+          },
+          "source": {
+            "note": "Inherited coaxial case; explicit Dirichlet equal to the reference value",
+            "source": "pinn_v3_verification",
+            "status": "supuesto"
+          }
+        },
+        "inconsistencies": [],
+        "provenance": [
+          {
+            "citation": "pinn_v3 verification builders (inherited coaxial case with chosen boundary data)",
+            "id": "pinn_v3_verification"
+          }
+        ]
+      },
+      "original_domain": {
+        "bounds": [
+          -0.15,
+          0.15,
+          -0.15,
+          0.15
+        ],
+        "outer_radius_m": 0.15
+      },
+      "source": {
+        "citation": "Synthetic concentric verification",
+        "physics_version": "explicit-heat-2d-v1"
+      }
+    },
+    "reference": {},
+    "regions": [
+      {
+        "conductivity": 1.0,
+        "id": "background",
+        "priority": 0,
+        "shape": {
+          "bounds": [
+            -0.15,
+            0.15,
+            -0.15,
+            0.15
+          ],
+          "type": "rectangle"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 400.0,
+        "id": "cable_0_layer_0",
+        "priority": 1,
+        "shape": {
+          "center": [
+            0.0,
+            0.0
+          ],
+          "radius_m": 0.0055,
+          "type": "disk"
+        },
+        "source": 148050.40018644894
+      },
+      {
+        "conductivity": 0.286,
+        "id": "cable_0_layer_1",
+        "priority": 2,
+        "shape": {
+          "center": [
+            0.0,
+            0.0
+          ],
+          "inner_radius_m": 0.0055,
+          "outer_radius_m": 0.012,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 380.0,
+        "id": "cable_0_layer_2",
+        "priority": 3,
+        "shape": {
+          "center": [
+            0.0,
+            0.0
+          ],
+          "inner_radius_m": 0.012,
+          "outer_radius_m": 0.013,
+          "type": "annulus"
+        },
+        "source": 0.0
+      },
+      {
+        "conductivity": 0.45,
+        "id": "cable_0_layer_3",
+        "priority": 4,
+        "shape": {
+          "center": [
+            0.0,
+            0.0
+          ],
+          "inner_radius_m": 0.013,
+          "outer_radius_m": 0.015,
+          "type": "annulus"
+        },
+        "source": 0.0
+      }
+    ],
+    "schema": "pinn-v4-problem-1",
+    "temperature_scale_K": 30.0,
+    "title": "Concentric cable, explicit Dirichlet outer boundary"
+  },
+  "runtime": {
+    "torch": "2.9.0+xpu"
+  },
+  "schema_version": 4,
+  "seeds": {
+    "init": 1,
+    "sampling": 12,
+    "validation": 1000015
+  }
+}

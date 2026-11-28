@@ -1,0 +1,207 @@
+{
+  "compatibility_profile": {
+    "activation": "tanh",
+    "architecture": "DCSNN",
+    "depth": 3,
+    "domain_shape": "rectangle",
+    "exact_boundary": false,
+    "exact_constraints": false,
+    "formulation": "strong",
+    "input_normalization": "region_coordinates",
+    "mixed": false,
+    "model_kind": "dcsnn_global",
+    "partition": "global",
+    "region_kinds": {
+      "domain": "soil"
+    },
+    "region_names": [
+      "domain"
+    ],
+    "subnets": {
+      "global": {
+        "in_features": 3,
+        "out_features": 1,
+        "shape_signature": [
+          [
+            3,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            32,
+            1
+          ]
+        ]
+      }
+    },
+    "width": 32
+  },
+  "config": {
+    "accuracy_stop": null,
+    "activation": "tanh",
+    "adam_steps": 800,
+    "architecture": "DCSNN",
+    "attention": null,
+    "base_architecture": "DCSNN",
+    "chain_from": null,
+    "chain_mode": "residual",
+    "depth": 3,
+    "device": "cpu",
+    "divergence_stop": {
+      "check_nonfinite_grads": true,
+      "explosion_factor": 10000.0,
+      "growth_patience": 6,
+      "lbfgs_explosion_factor": 100.0,
+      "lbfgs_stagnation_checks": 8,
+      "max_loss": 1000000000000.0,
+      "min_growth_ratio": 1.05,
+      "patience_explosion": 3,
+      "warmup_steps": 150
+    },
+    "dtype": "float32",
+    "exact_energy": true,
+    "focus_criterion": "residual",
+    "focus_surfaces": false,
+    "focused": true,
+    "freeze_chain_source": true,
+    "full_audit": true,
+    "init_seed": 2,
+    "initializer": null,
+    "initializer_settings": {},
+    "input_normalization": "region_coordinates",
+    "lbfgs_iterations": 1,
+    "lbfgs_steps": 50,
+    "log_every": 100,
+    "lr": 0.002,
+    "point_schedule_stages": 0,
+    "point_schedule_start": 0.5,
+    "points": {
+      "n_boundary": 128,
+      "n_face": 128,
+      "n_interior": 512,
+      "n_layer": 256
+    },
+    "resample_every": 100,
+    "resume_from": null,
+    "sampling": "mixed",
+    "sampling_seed": 13,
+    "soil_envelope_gain": 1.0,
+    "study": null,
+    "trace_parameterization": "standard",
+    "transfer_mode": "auto",
+    "transfer_steps": 150,
+    "validation_every": 250,
+    "warm_start_from": null,
+    "weights": {
+      "constitutive": 1.0,
+      "dirichlet": 100.0,
+      "energy": 100.0,
+      "interface_flux": 100.0,
+      "interface_temperature": 100.0,
+      "neumann": 10.0,
+      "pde": 1.0,
+      "robin": 10.0
+    },
+    "width": 32
+  },
+  "flux_convention": "q = -k * grad(T); normal exterior",
+  "format": "pinn-v4-artifact-1",
+  "physics_sha256": "410ac734349f72d77305a1ea5ebf89d386011e30b194073ec163259c4c7ea4ad",
+  "problem": {
+    "boundaries": {
+      "bottom": {
+        "type": "dirichlet",
+        "value": {
+          "expression": "20 + 30*x*(1-x)*(1+y)"
+        }
+      },
+      "left": {
+        "type": "dirichlet",
+        "value": {
+          "expression": "20 + 30*x*(1-x)*(1+y)"
+        }
+      },
+      "right": {
+        "type": "dirichlet",
+        "value": {
+          "expression": "20 + 30*x*(1-x)*(1+y)"
+        }
+      },
+      "top": {
+        "T_inf_C": {
+          "expression": "20 + 63*x*(1-x)"
+        },
+        "h_W_m2K": 10.0,
+        "type": "robin"
+      }
+    },
+    "domain": {
+      "bounds": [
+        0.0,
+        1.0,
+        0.0,
+        1.0
+      ],
+      "shape": "rectangle"
+    },
+    "family": "mms",
+    "id": "mms_robin",
+    "metadata": {
+      "original_definition": {},
+      "original_domain": {
+        "bounds": [
+          0.0,
+          1.0,
+          0.0,
+          1.0
+        ]
+      },
+      "source": {
+        "citation": "Plan/envío_rev1/04_Datos_objeto_estudio; MMS-2D-01/02; Robin de elaboración propia"
+      }
+    },
+    "reference": {
+      "exact": {
+        "expression": "20 + 30*x*(1-x)*(1+y)"
+      }
+    },
+    "regions": [
+      {
+        "conductivity": 1.0,
+        "id": "domain",
+        "priority": 0,
+        "shape": {
+          "bounds": [
+            0.0,
+            1.0,
+            0.0,
+            1.0
+          ],
+          "type": "rectangle"
+        },
+        "source": {
+          "expression": "60*(1+y)"
+        }
+      }
+    ],
+    "schema": "pinn-v4-problem-1",
+    "temperature_scale_K": 30.0,
+    "title": "mms_robin"
+  },
+  "runtime": {
+    "torch": "2.9.0+xpu"
+  },
+  "schema_version": 4,
+  "seeds": {
+    "init": 2,
+    "sampling": 13,
+    "validation": 1000016
+  }
+}

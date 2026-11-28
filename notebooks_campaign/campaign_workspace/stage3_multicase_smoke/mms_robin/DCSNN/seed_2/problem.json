@@ -1,0 +1,81 @@
+{
+  "boundaries": {
+    "bottom": {
+      "type": "dirichlet",
+      "value": {
+        "expression": "20 + 30*x*(1-x)*(1+y)"
+      }
+    },
+    "left": {
+      "type": "dirichlet",
+      "value": {
+        "expression": "20 + 30*x*(1-x)*(1+y)"
+      }
+    },
+    "right": {
+      "type": "dirichlet",
+      "value": {
+        "expression": "20 + 30*x*(1-x)*(1+y)"
+      }
+    },
+    "top": {
+      "T_inf_C": {
+        "expression": "20 + 63*x*(1-x)"
+      },
+      "h_W_m2K": 10.0,
+      "type": "robin"
+    }
+  },
+  "domain": {
+    "bounds": [
+      0.0,
+      1.0,
+      0.0,
+      1.0
+    ],
+    "shape": "rectangle"
+  },
+  "family": "mms",
+  "id": "mms_robin",
+  "metadata": {
+    "original_definition": {},
+    "original_domain": {
+      "bounds": [
+        0.0,
+        1.0,
+        0.0,
+        1.0
+      ]
+    },
+    "source": {
+      "citation": "Plan/envío_rev1/04_Datos_objeto_estudio; MMS-2D-01/02; Robin de elaboración propia"
+    }
+  },
+  "reference": {
+    "exact": {
+      "expression": "20 + 30*x*(1-x)*(1+y)"
+    }
+  },
+  "regions": [
+    {
+      "conductivity": 1.0,
+      "id": "domain",
+      "priority": 0,
+      "shape": {
+        "bounds": [
+          0.0,
+          1.0,
+          0.0,
+          1.0
+        ],
+        "type": "rectangle"
+      },
+      "source": {
+        "expression": "60*(1+y)"
+      }
+    }
+  ],
+  "schema": "pinn-v4-problem-1",
+  "temperature_scale_K": 30.0,
+  "title": "mms_robin"
+}

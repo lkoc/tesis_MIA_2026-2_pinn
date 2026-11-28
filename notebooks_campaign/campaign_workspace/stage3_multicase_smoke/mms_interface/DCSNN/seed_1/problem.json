@@ -1,0 +1,93 @@
+{
+  "boundaries": {
+    "bottom": {
+      "type": "dirichlet",
+      "value": {
+        "expression": "20 + where(x <= 0.5, 20*x, 10*(1 + (x - 0.5)/2))*sin(pi*y)"
+      }
+    },
+    "left": {
+      "type": "dirichlet",
+      "value": {
+        "expression": "20 + where(x <= 0.5, 20*x, 10*(1 + (x - 0.5)/2))*sin(pi*y)"
+      }
+    },
+    "right": {
+      "type": "dirichlet",
+      "value": {
+        "expression": "20 + where(x <= 0.5, 20*x, 10*(1 + (x - 0.5)/2))*sin(pi*y)"
+      }
+    },
+    "top": {
+      "type": "dirichlet",
+      "value": {
+        "expression": "20 + where(x <= 0.5, 20*x, 10*(1 + (x - 0.5)/2))*sin(pi*y)"
+      }
+    }
+  },
+  "domain": {
+    "bounds": [
+      0.0,
+      1.0,
+      0.0,
+      1.0
+    ],
+    "shape": "rectangle"
+  },
+  "family": "mms",
+  "id": "mms_interface",
+  "interfaces": [
+    {
+      "axis": "x",
+      "id": "material_interface",
+      "position": 0.5,
+      "regions": [
+        "domain",
+        "domain"
+      ]
+    }
+  ],
+  "metadata": {
+    "original_definition": {},
+    "original_domain": {
+      "bounds": [
+        0.0,
+        1.0,
+        0.0,
+        1.0
+      ]
+    },
+    "source": {
+      "citation": "Plan/envío_rev1/04_Datos_objeto_estudio; MMS-2D-01/02; Robin de elaboración propia"
+    }
+  },
+  "reference": {
+    "exact": {
+      "expression": "20 + where(x <= 0.5, 20*x, 10*(1 + (x - 0.5)/2))*sin(pi*y)"
+    }
+  },
+  "regions": [
+    {
+      "conductivity": {
+        "expression": "where(x<=0.5,0.5,2)"
+      },
+      "id": "domain",
+      "priority": 0,
+      "shape": {
+        "bounds": [
+          0.0,
+          1.0,
+          0.0,
+          1.0
+        ],
+        "type": "rectangle"
+      },
+      "source": {
+        "expression": "pi**2*where(x<=0.5,0.5,2)*where(x<=0.5,20*x,10*(1+(x-0.5)/2))*sin(pi*y)"
+      }
+    }
+  ],
+  "schema": "pinn-v4-problem-1",
+  "temperature_scale_K": 30.0,
+  "title": "mms_interface"
+}

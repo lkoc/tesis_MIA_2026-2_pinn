@@ -1,0 +1,66 @@
+{
+  "boundaries": {
+    "bottom": {
+      "type": "dirichlet",
+      "value": 20.0
+    },
+    "left": {
+      "type": "dirichlet",
+      "value": 20.0
+    },
+    "right": {
+      "type": "dirichlet",
+      "value": 20.0
+    },
+    "top": {
+      "type": "dirichlet",
+      "value": 20.0
+    }
+  },
+  "domain": {
+    "bounds": [
+      -1.0,
+      1.0,
+      -1.0,
+      1.0
+    ],
+    "shape": "rectangle"
+  },
+  "id": "cable_disk",
+  "reference": {},
+  "regions": [
+    {
+      "conductivity": 1.0,
+      "id": "soil",
+      "priority": 0,
+      "shape": {
+        "bounds": [
+          -1.0,
+          1.0,
+          -1.0,
+          1.0
+        ],
+        "type": "rectangle"
+      },
+      "source": 0.0
+    },
+    {
+      "conductivity": 380.0,
+      "id": "conductor",
+      "kind": "conductor",
+      "priority": 1,
+      "shape": {
+        "center": [
+          0.0,
+          0.0
+        ],
+        "radius_m": 0.1,
+        "type": "disk"
+      },
+      "source": 10000.0
+    }
+  ],
+  "schema": "pinn-v4-problem-1",
+  "temperature_scale_K": 100.0,
+  "title": "Single circular conductor in homogeneous soil"
+}
