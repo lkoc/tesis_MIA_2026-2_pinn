@@ -9,3 +9,17 @@ __pycache__/
 # Entorno virtual y configuración local de VS Code
 .venv/
 .vscode/
+
+# Artefactos binarios pesados de campañas (se conservan localmente; en Git se sincronizan los *.json y resúmenes)
+notebooks_campaign/campaign_workspace/stage*/**/*.pt
+notebooks_campaign/campaign_workspace/stage*/**/collocation.npz
+notebooks_campaign/campaign_workspace/stage*/**/evaluation.npz
+
+# Archivos temporales de compilación LaTeX
+presentacion/*.aux
+presentacion/*.log
+presentacion/*.nav
+presentacion/*.out
+presentacion/*.snm
+presentacion/*.toc
+presentacion/*.vrb

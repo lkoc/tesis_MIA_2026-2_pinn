@@ -4,13 +4,13 @@
     "loss": 35924.109375,
     "step": 0
   },
-  "completed_steps": 101,
-  "elapsed_s": 367.5,
+  "completed_steps": 201,
+  "elapsed_s": 723.23,
   "lbfgs_steps": 50,
-  "loss_total": 48.10730743408203,
-  "pct": 11.88,
+  "loss_total": 32.48780822753906,
+  "pct": 23.65,
   "phase": "adam",
   "status": "running",
-  "step": 100,
+  "step": 200,
   "total_steps": 850
 }
